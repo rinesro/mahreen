@@ -264,6 +264,10 @@ function renderAnakMuda(data) {
  * Satu radio button per minat. Radio bawaan HTML dipakai karena perilaku radio group
  * (satu pilihan aktif, panah untuk berpindah, dibaca "1 dari 5" oleh pembaca layar)
  * sudah disediakan browser tanpa kode tambahan.
+ *
+ * Pilihan disimpan di query URL, misalnya mulai.html?minat=teknologi, supaya hasilnya
+ * bisa dibagikan dan tetap ada saat halaman dimuat ulang. Dipakai replaceState (bukan
+ * pushState) supaya setiap ganti pilihan tidak menambah riwayat browser.
  */
 function renderMinat(daftarMinat, internship) {
   const fieldset = document.getElementById("minat-pilihan");
@@ -285,19 +289,40 @@ function renderMinat(daftarMinat, internship) {
     daftar.appendChild(pilihan);
 
     input.addEventListener("change", function () {
-      if (input.checked) tampilkanHasil(minat);
+      if (!input.checked) return;
+      tampilkanHasil(minat);
+      simpanDiUrl(minat.id);
     });
   });
   fieldset.appendChild(daftar);
 
+  function simpanDiUrl(id) {
+    const url = new URL(location.href);
+    url.searchParams.set("minat", id);
+    try {
+      history.replaceState(null, "", url);
+    } catch (e) {
+      // Sebagian browser menolak mengubah alamat file lokal. Pilihan tetap tampil, hanya tidak tersimpan di URL.
+    }
+  }
+
+  // Saat halaman dibuka dengan ?minat=..., langsung pilih dan tampilkan hasilnya.
+  // Nilai yang tidak dikenal diabaikan.
+  const dariUrl = new URLSearchParams(location.search).get("minat");
+  const minatAwal = daftarMinat.find(function (m) { return m.id === dariUrl; });
+  if (minatAwal) {
+    document.getElementById("minat-" + minatAwal.id).checked = true;
+    tampilkanHasil(minatAwal);
+  }
+
   function tampilkanHasil(minat) {
     const isi = [];
-    isi.push(buatElemen("h3", "minat-hasil__judul", minat.label));
+    isi.push(buatElemen("h2", "minat-hasil__judul", minat.label));
 
     // Posisi internship yang berkaitan, hanya kalau ada
     if (minat.posisi.length) {
       const blok = buatElemen("div", "minat-hasil__blok");
-      blok.appendChild(buatElemen("h4", "minat-hasil__subjudul", "Posisi internship yang berkaitan"));
+      blok.appendChild(buatElemen("h3", "minat-hasil__subjudul", "Posisi internship yang berkaitan"));
       blok.appendChild(buatDaftarLabel(minat.posisi, true));
       blok.appendChild(buatElemen("p", "minat-hasil__catatan", "Posisi di Batch 2. " + internship.statusPendaftaran));
       isi.push(blok);
@@ -305,13 +330,13 @@ function renderMinat(daftarMinat, internship) {
 
     // Unit Mahreen yang berkaitan
     const unit = buatElemen("div", "minat-hasil__blok");
-    unit.appendChild(buatElemen("h4", "minat-hasil__subjudul", "Di Mahreen"));
+    unit.appendChild(buatElemen("h3", "minat-hasil__subjudul", "Di Mahreen"));
     unit.appendChild(buatElemen("p", "minat-hasil__unit", minat.unit));
     isi.push(unit);
 
     // Akun yang bisa dipantau
     const akun = buatElemen("div", "minat-hasil__blok");
-    akun.appendChild(buatElemen("h4", "minat-hasil__subjudul", "Akun yang bisa kamu pantau"));
+    akun.appendChild(buatElemen("h3", "minat-hasil__subjudul", "Akun yang bisa kamu pantau"));
     const list = buatElemen("ul", "minat-hasil__akun");
     list.setAttribute("role", "list");
     minat.akun.forEach(function (a) {
