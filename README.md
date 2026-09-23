@@ -86,7 +86,7 @@ Kaitan dengan tiga kata kunci tugas:
 - Halaman Mulai memakai radio button bawaan HTML yang ditampilkan seperti tombol pilihan. Perilaku radio group (satu pilihan aktif, panah untuk berpindah, dibaca "1 dari 5" oleh pembaca layar) sudah disediakan browser tanpa ARIA buatan. Hasilnya diumumkan lewat `aria-live="polite"`.
 - Istilah bahasa Inggris ditandai `lang="en"` supaya dilafalkan dengan benar oleh pembaca layar.
 - Tautan kecil di keterangan sumber diberi padding supaya area sentuhnya sekitar 45px. Di bagian Jelajahi, seluruh blok bisa diklik, walaupun tautannya hanya di judul. Blok yang seluruhnya bisa diklik (Jelajahi, Lanjut) dan daftar akun di footer tidak bergaris bawah, garisnya muncul saat hover atau fokus. Tautan di dalam kalimat tetap bergaris bawah.
-- Logo resmi punya alt text ("Mahreen Indonesia" di header, "Logo" diikuti nama unit di halaman Karya dan Anak Muda). Cadangannya berupa wordmark (teks biasa) dan inisial yang disembunyikan dari pembaca layar, karena nama unit sudah ada di judul tepat di sebelahnya.
+- Logo resmi punya alt text ("Mahreen Indonesia" di header dan footer, "Logo" diikuti nama unit di halaman Karya dan Anak Muda). Versi crimson dipakai di latar terang, versi putih di latar gelap. Setiap logo punya ukuran tampil tetap, jadi teks di sekitarnya tidak bergeser saat gambar dimuat.
 
 ## Teknis
 
@@ -169,7 +169,7 @@ Contoh menambah unit baru:
 │  ├─ data.js          semua konten (objek MAHREEN)
 │  └─ main.js          fungsi render, menu, dan pemilihan per halaman lewat data-page
 └─ assets/
-   ├─ logo/            slot logo resmi (lihat assets/logo/README.md untuk nama file)
+   ├─ logo/            logo resmi versi crimson dan putih (lihat assets/logo/README.md)
    ├─ favicon.svg      motif bunga empat kelopak
    └─ og-image.png     gambar pratinjau saat tautan dibagikan (1200 x 630)
 ```
@@ -187,7 +187,6 @@ Situs statis, jadi bisa langsung di-deploy tanpa langkah build.
 
 - [ ] Ganti setiap `sumber.url` di `js/data.js` dengan tautan unggahan asli (tombol Bagikan di Instagram). Saat ini masih mengarah ke halaman akun.
 - [ ] Ganti nilai warna di `css/tokens.css` dengan hasil color picker dari template Canva resmi.
-- [ ] Taruh logo resmi di `assets/logo/` dengan nama file yang tercantum di `assets/logo/README.md` (logo utama dan logo tiap unit). Selama file belum ada, situs menampilkan wordmark dan inisial sebagai cadangan, tapi browser tetap mencatat file yang tidak ditemukan di console.
 - [ ] Ganti motif bunga dengan motif asli dari template.
 - [ ] Cek manual semua tautan Instagram, website, email, dan WhatsApp.
 

@@ -68,34 +68,16 @@ function buatSumber(sumber, className) {
 }
 
 /*
- * Slot logo unit, misalnya assets/logo/tanya-mahreen.png.
- * Inisial nama (misalnya "TM") tampil lebih dulu sebagai cadangan. Gambar logo baru
- * menggantikannya setelah berhasil dimuat, jadi kalau file belum ada tidak muncul
- * ikon gambar rusak. Inisial disembunyikan dari pembaca layar karena nama unit
- * sudah ada di judul tepat di sebelahnya; logo asli tetap diberi alt yang jelas.
+ * Logo unit versi crimson (untuk latar terang), misalnya assets/logo/tanya-mahreen-crimson.png.
+ * Kotaknya berukuran tetap di CSS, jadi teks di sebelahnya tidak bergeser saat gambar dimuat.
  */
 function buatLogo(src, nama, className) {
-  const wadah = buatElemen("span", "logo-slot" + (className ? " " + className : ""));
-
-  const inisial = buatElemen("span", "logo-slot__inisial", nama
-    .split(/\s+/)
-    .map(function (kata) { return kata.charAt(0); })
-    .join("")
-    .slice(0, 2)
-    .toUpperCase());
-  inisial.setAttribute("aria-hidden", "true");
-  wadah.appendChild(inisial);
-
   const img = new Image();
-  img.className = "logo-slot__gambar";
+  img.className = "logo" + (className ? " " + className : "");
   img.alt = "Logo " + nama;
-  img.addEventListener("load", function () {
-    wadah.replaceChildren(img);
-    wadah.classList.add("logo-slot--gambar");
-  });
+  img.decoding = "async";
   img.src = src;
-
-  return wadah;
+  return img;
 }
 
 /* Tautan ke akun Instagram, dengan ikon di depan nama akun. */
@@ -166,7 +148,7 @@ function renderUnit(daftarUnit) {
     // Proximity: logo, nama, bidang, penjelasan, dan akun dikelompokkan rapat
     const info = buatElemen("div", "unit__info");
     const kepala = buatElemen("div", "unit__kepala");
-    kepala.appendChild(buatLogo("assets/logo/" + unit.id + ".png", unit.nama, "unit__logo"));
+    kepala.appendChild(buatLogo("assets/logo/" + unit.id + "-crimson.png", unit.nama, "unit__logo"));
     const namaBidang = buatElemen("div");
     namaBidang.appendChild(buatElemen("h2", "unit__nama", unit.nama));
     const bidang = buatElemen("p", "unit__bidang", unit.bidang);
@@ -242,7 +224,7 @@ function renderAnakMuda(data) {
   // --- Kolom kiri ---
   const kiri = buatElemen("div", "anak-muda__kiri");
   const kepala = buatElemen("div", "anak-muda__kepala");
-  kepala.appendChild(buatLogo("assets/logo/internship.png", "Mahreen Indonesia Internship", "anak-muda__logo"));
+  kepala.appendChild(buatLogo("assets/logo/internship-crimson.png", "Mahreen Indonesia Internship", "anak-muda__logo"));
   kepala.appendChild(buatElemen("h2", "anak-muda__program", "Mahreen Indonesia Internship"));
   kiri.appendChild(kepala);
   kiri.appendChild(buatElemen("p", "anak-muda__ringkas", data.ringkas));

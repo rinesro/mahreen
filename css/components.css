@@ -101,31 +101,15 @@
   text-decoration-color: currentColor;
 }
 
-/* ---------- Slot logo unit (gambar logo, atau inisial sebagai cadangan) ---------- */
-.logo-slot {
-  display: inline-grid;
-  place-items: center;
+/* ---------- Logo unit (versi crimson di latar terang) ---------- */
+/*
+ * Logo unit berbentuk tegak (lebar sekitar setengah tinggi). Kotaknya berukuran tetap,
+ * jadi judul di sebelahnya tidak bergeser saat gambar selesai dimuat.
+ */
+.logo {
   flex-shrink: 0;
   width: 3.5rem; /* 56px */
-  height: 3.5rem;
-  overflow: hidden;
-  background-color: var(--color-surface);
-  border: var(--border-strong) solid var(--color-line);
-  border-radius: var(--radius-md);
-}
-
-.logo-slot__inisial {
-  font-family: var(--font-heading);
-  font-size: var(--fs-1);
-  font-weight: var(--fw-bold);
-  line-height: 1;
-  color: var(--color-secondary);
-}
-
-.logo-slot__gambar {
-  width: 100%;
-  height: 100%;
-  padding: 0.375rem;
+  height: 6rem;  /* 96px, cukup supaya tulisan di dalam logo masih terbaca */
   object-fit: contain;
 }
 
@@ -231,27 +215,11 @@ main > .section:first-child {
   text-decoration: none;
 }
 
-/* Logo resmi (assets/logo/mahreen.png) menggantikan wordmark begitu berhasil dimuat */
+/* Logo resmi versi crimson (assets/logo/mahreen-crimson.png) */
 .wordmark__logo {
   display: block;
   width: auto;
   height: 2.5rem; /* 40px */
-  max-width: 11rem;
-  object-fit: contain;
-}
-
-.wordmark__teks {
-  display: inline-flex;
-  gap: 0.3em;
-}
-
-.wordmark__utama {
-  font-weight: var(--fw-bold);
-}
-
-.wordmark__sub {
-  font-weight: var(--fw-semibold);
-  color: var(--color-primary);
 }
 
 /*
@@ -1396,6 +1364,14 @@ main > .section:first-child {
   row-gap: var(--space-6);
 }
 
+/* Logo resmi versi putih (assets/logo/mahreen-putih.png) di atas tagline */
+.site-footer__logo {
+  grid-column: 1 / -1;
+  width: auto;
+  height: 3rem; /* 48px */
+  margin-bottom: calc(var(--space-6) * -1 + var(--space-3)); /* rapatkan ke tagline: satu kelompok */
+}
+
 .site-footer__tagline {
   grid-column: 1 / -1;
   max-width: 16ch;
@@ -1510,17 +1486,33 @@ main > .section:first-child {
 }
 
 @media (min-width: 64em) {
+  /*
+   * Logo dan tagline bertumpuk di kolom kiri, dua kolom lainnya setinggi keduanya.
+   * Baris logo setinggi logonya saja, sisa tinggi kolom akun masuk ke baris tagline.
+   */
+  .site-footer__inner {
+    grid-template-rows: auto 1fr;
+  }
+
+  .site-footer__logo {
+    grid-column: 1 / span 4;
+    grid-row: 1;
+  }
+
   .site-footer__tagline {
     grid-column: 1 / span 4;
+    grid-row: 2;
     font-size: var(--fs-4);
   }
 
   .site-footer__kolom--akun {
     grid-column: 6 / span 4;
+    grid-row: 1 / span 2;
   }
 
   .site-footer__kolom--kontak {
     grid-column: 10 / -1;
+    grid-row: 1 / span 2;
   }
 
   /* Catatan di kiri, penanda tema di kanan bawah pada baris yang sama */

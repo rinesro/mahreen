@@ -1,16 +1,23 @@
-# Slot logo
+# Logo
 
-Taruh file logo resmi di folder ini dengan nama persis seperti di bawah. Selama file belum ada,
-situs menampilkan cadangan: wordmark "Mahreen Indonesia" di header, dan inisial di samping nama unit.
+Logo resmi Mahreen Indonesia berlatar transparan, diolah dari file resmi yang dikirim admin Mahreen.
+Setiap logo punya dua versi:
 
-| File | Dipakai di | Cadangan |
+- `-crimson`: untuk latar terang (header, halaman Karya, halaman Anak Muda).
+- `-putih`: untuk latar gelap atau bergradasi (footer).
+
+| File | Dipakai di | Ukuran tampil |
 |---|---|---|
-| `mahreen.png` | Header semua halaman (tinggi tampil 40px) | Wordmark "Mahreen Indonesia" |
-| `tanya-mahreen.png` | Halaman Karya, blok Tanya Mahreen (kotak 56px) | Inisial "TM" |
-| `peduli-mahreen.png` | Halaman Karya, blok Peduli Mahreen | Inisial "PM" |
-| `mahreen-csr.png` | Halaman Karya, blok Mahreen CSR | Inisial "MC" |
-| `mahreen-studio.png` | Halaman Karya, blok Mahreen Studio | Inisial "MS" |
-| `internship.png` | Halaman Anak Muda, di samping "Mahreen Indonesia Internship" | Inisial "MI" |
+| `mahreen-crimson.png` | Header semua halaman | tinggi 40px |
+| `mahreen-putih.png` | Footer semua halaman | tinggi 48px |
+| `tanya-mahreen-crimson.png` | Halaman Karya, blok Tanya Mahreen | kotak 56 x 96px |
+| `peduli-mahreen-crimson.png` | Halaman Karya, blok Peduli Mahreen | kotak 56 x 96px |
+| `mahreen-csr-crimson.png` | Halaman Karya, blok Mahreen CSR | kotak 56 x 96px |
+| `mahreen-studio-crimson.png` | Halaman Karya, blok Mahreen Studio | kotak 56 x 96px |
+| `internship-crimson.png` | Halaman Anak Muda, di samping "Mahreen Indonesia Internship" | kotak 56 x 96px |
 
-Saran format: PNG berlatar transparan. Untuk logo unit, gambar persegi minimal 112 x 112 px
-supaya tetap tajam di layar beresolusi tinggi. Untuk logo utama, tinggi minimal 80 px.
+Versi `-putih` untuk logo unit dan kedua file `monogram-*` belum dipakai, disimpan untuk kebutuhan berikutnya.
+
+Semua file sudah diperkecil dari ukuran aslinya (800px) supaya halaman ringan: logo unit setinggi 240px,
+logo utama dan monogram selebar 448px. Itu sekitar tiga kali ukuran tampil, jadi tetap tajam di layar
+beresolusi tinggi. Kalau mengganti file, pertahankan nama dan perbandingan ukurannya.
