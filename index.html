@@ -3,12 +3,36 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sorotan Mahreen</title>
+  <title>Sorotan Mahreen: rangkuman tidak resmi kegiatan Mahreen Indonesia</title>
   <meta name="description" content="Rangkuman tidak resmi program, kegiatan, dan kolaborasi Mahreen Indonesia dari unggahan Instagram publik, Mei sampai September 2026.">
+  <meta name="theme-color" content="#FFF5F9">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
+  <!--
+    Open Graph untuk pratinjau tautan saat dibagikan (WhatsApp, LinkedIn, X, dan lainnya).
+    Setelah deploy, ganti og:image dengan alamat lengkap (https://...) dan tambahkan og:url,
+    karena sebagian platform tidak membaca alamat relatif.
+  -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:site_name" content="Sorotan Mahreen">
+  <meta property="og:title" content="Sorotan Mahreen">
+  <meta property="og:description" content="Rangkuman tidak resmi program, kegiatan, dan kolaborasi Mahreen Indonesia dari unggahan Instagram publik, Mei sampai September 2026.">
+  <meta property="og:image" content="assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Judul Sorotan Mahreen dengan motif bunga empat kelopak berwarna oranye dan magenta.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!--
+    Font Google dimuat tanpa menahan tampilan halaman: file CSS-nya diunduh sebagai
+    "preload", lalu dijadikan stylesheet begitu selesai. Sampai font siap, teks tampil
+    dengan font sistem (display=swap). Blok noscript untuk browser tanpa JavaScript.
+  -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Poppins:wght@600;700&display=swap">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Poppins:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Poppins:wght@600;700&display=swap"></noscript>
 
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
