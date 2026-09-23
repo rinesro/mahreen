@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sorotan Mahreen: rangkuman tidak resmi kegiatan Mahreen Indonesia</title>
-  <meta name="description" content="Rangkuman tidak resmi program, kegiatan, dan kolaborasi Mahreen Indonesia dari unggahan Instagram publik, Mei sampai September 2026.">
+  <title>Mahreen untuk Anak Muda: Berkarya untuk Indonesia</title>
+  <meta name="description" content="Kenalan dengan Mahreen Indonesia, ekosistem kreatif, digital, bisnis, dan sosial, lewat tema Berkarya untuk Indonesia.">
   <meta name="theme-color" content="#FFF5F9">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
@@ -15,13 +15,13 @@
   -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="id_ID">
-  <meta property="og:site_name" content="Sorotan Mahreen">
-  <meta property="og:title" content="Sorotan Mahreen">
-  <meta property="og:description" content="Rangkuman tidak resmi program, kegiatan, dan kolaborasi Mahreen Indonesia dari unggahan Instagram publik, Mei sampai September 2026.">
+  <meta property="og:site_name" content="Mahreen untuk Anak Muda">
+  <meta property="og:title" content="Berkarya untuk Indonesia. Kamu mulai dari mana?">
+  <meta property="og:description" content="Kenalan dengan Mahreen Indonesia, ekosistem kreatif, digital, bisnis, dan sosial, lewat tema Berkarya untuk Indonesia.">
   <meta property="og:image" content="assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Judul Sorotan Mahreen dengan motif bunga empat kelopak berwarna oranye dan magenta.">
+  <meta property="og:image:alt" content="Tulisan Berkarya untuk Indonesia dengan motif bunga empat kelopak berwarna oranye dan magenta.">
   <meta name="twitter:card" content="summary_large_image">
 
   <!--
@@ -40,12 +40,10 @@
 
   <!--
     Script klasik (bukan module) dengan defer, dijalankan berurutan:
-    data.js (KEGIATAN), main.js (label dan fungsi bersama), lalu timeline.js dan story.js.
+    data.js (objek MAHREEN) dulu, lalu main.js yang merender isinya.
   -->
   <script src="js/data.js" defer></script>
   <script src="js/main.js" defer></script>
-  <script src="js/timeline.js" defer></script>
-  <script src="js/story.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#konten">Langsung ke konten</a>
@@ -62,37 +60,11 @@
       <circle r="9" style="fill: var(--motif-tengah, #D1227A)" />
     </symbol>
 
-    <!-- Ikon garis: viewBox 24, stroke 2, ujung membulat. Satu ikon per kategori. -->
-    <symbol id="ikon-program" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="3.5" y="3.5" width="7" height="7" rx="1.5" />
-      <rect x="13.5" y="3.5" width="7" height="7" rx="1.5" />
-      <rect x="3.5" y="13.5" width="7" height="7" rx="1.5" />
-      <rect x="13.5" y="13.5" width="7" height="7" rx="1.5" />
-    </symbol>
-    <symbol id="ikon-kegiatan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="3.5" y="5" width="17" height="15.5" rx="2" />
-      <path d="M3.5 10h17M8 3v4M16 3v4" />
-    </symbol>
-    <symbol id="ikon-kolaborasi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="9" cy="12" r="5.5" />
-      <circle cx="15" cy="12" r="5.5" />
-    </symbol>
-    <symbol id="ikon-segera-hadir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.9 2.9M15.5 15.5l2.9 2.9M5.6 18.4l2.9-2.9M15.5 8.5l2.9-2.9" />
-    </symbol>
+    <!-- Ikon garis: viewBox 24, stroke 2, ujung membulat. -->
     <symbol id="ikon-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
       <circle cx="12" cy="12" r="4" />
       <path d="M17.2 6.8h.01" />
-    </symbol>
-    <symbol id="ikon-tutup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M6 6l12 12M18 6L6 18" />
-    </symbol>
-    <symbol id="ikon-kiri" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M15 5l-7 7 7 7" />
-    </symbol>
-    <symbol id="ikon-kanan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M9 5l7 7-7 7" />
     </symbol>
   </svg>
 
@@ -105,9 +77,10 @@
       </a>
       <nav class="site-nav" aria-label="Navigasi utama">
         <ul class="site-nav__list" role="list">
-          <li><a class="site-nav__link" href="#program">Program</a></li>
-          <li><a class="site-nav__link" href="#timeline">Timeline</a></li>
-          <li><a class="site-nav__link" href="#akun">Akun Resmi</a></li>
+          <li><a class="site-nav__link" href="#kenalan">Kenalan</a></li>
+          <li><a class="site-nav__link" href="#karya">Karya</a></li>
+          <li><a class="site-nav__link" href="#anak-muda">Anak Muda</a></li>
+          <li><a class="site-nav__link" href="#mulai">Mulai</a></li>
         </ul>
       </nav>
     </div>
@@ -118,16 +91,15 @@
       <div class="container grid hero__inner">
         <div class="hero__teks">
           <h1 id="hero-judul" class="hero__judul">
-            Apa saja yang Mahreen Indonesia lakukan <span class="hero__sorot">untuk anak muda</span>?
+            Berkarya untuk Indonesia. <span class="hero__sorot">Kamu mulai dari mana?</span>
           </h1>
           <p class="hero__sub">
-            Rangkuman dari unggahan Instagram Mahreen Indonesia dan unit-unitnya, Mei sampai September 2026.
-            Setiap poin disertai tautan ke unggahan aslinya.
+            Mahreen Indonesia adalah ekosistem kreatif, digital, bisnis, dan sosial. Lewat unit-unitnya,
+            Mahreen berkarya di banyak bidang dan membuka ruang bagi anak muda untuk ikut berkarya.
           </p>
           <div class="hero__aksi">
-            <!-- Filter "Sedang berjalan" dibaca dari hash ini oleh js/timeline.js -->
-            <a class="btn btn--primary" href="#timeline?status=sedang-berjalan">Lihat yang sedang berjalan</a>
-            <a class="btn btn--secondary" href="#timeline">Jelajahi timeline</a>
+            <a class="btn btn--primary" href="#mulai">Cari yang cocok buat kamu</a>
+            <a class="btn btn--secondary" href="#kenalan">Kenalan dulu</a>
           </div>
         </div>
 
@@ -138,42 +110,37 @@
       </div>
     </section>
 
-    <section class="highlight" id="program" aria-labelledby="program-judul">
+    <!--
+      Judul dan pengantar tiap bagian ditulis langsung di HTML supaya tetap tampil
+      walaupun JavaScript gagal. Isi bagian dirender js/main.js dari objek MAHREEN.
+    -->
+    <section class="section kenalan" id="kenalan" aria-labelledby="kenalan-judul">
       <div class="container">
-        <h2 id="program-judul" class="highlight__judul">Sorotan per kategori</h2>
-        <p class="highlight__intro">Pilih kategori untuk membaca ringkasannya satu per satu, seperti story.</p>
-        <!-- Diisi oleh js/story.js: satu lingkaran per kategori, lengkap dengan jumlah item -->
-        <ul class="highlight__list" id="highlight-list" role="list"></ul>
+        <h2 id="kenalan-judul">Kenalan dulu sama Mahreen</h2>
+        <!-- Tahap 4: visi, misi, nilai, dan sumber dari MAHREEN.profil -->
       </div>
     </section>
 
-    <section class="section timeline" id="timeline" aria-labelledby="timeline-judul">
-      <div class="container grid">
-        <div class="timeline__isi">
-          <!-- tabindex="-1" supaya fokus bisa dipindah ke sini setelah tombol hero diklik -->
-          <h2 id="timeline-judul" class="timeline__judul" tabindex="-1">Timeline kegiatan</h2>
-          <p class="timeline__intro">
-            Diurutkan dari yang terbaru. Pilih status untuk menyaring daftar.
-          </p>
+    <section class="section karya" id="karya" aria-labelledby="karya-judul">
+      <div class="container">
+        <h2 id="karya-judul">Cara Mahreen berkarya untuk Indonesia</h2>
+        <p class="section__pengantar">Mahreen punya beberapa unit, dan masing-masing berkarya di bidang yang berbeda.</p>
+        <!-- Tahap 4: blok per unit dan "Juga dari Mahreen Indonesia" dari MAHREEN.unit dan MAHREEN.kegiatanBersama -->
+      </div>
+    </section>
 
-          <div class="filter" role="group" aria-label="Saring berdasarkan status">
-            <button class="filter__chip" type="button" data-status="semua" aria-pressed="true">Semua</button>
-            <button class="filter__chip" type="button" data-status="sedang-berjalan" aria-pressed="false">Sedang berjalan</button>
-            <button class="filter__chip" type="button" data-status="sudah-berlangsung" aria-pressed="false">Sudah berlangsung</button>
-            <button class="filter__chip" type="button" data-status="segera-hadir" aria-pressed="false">Segera hadir</button>
-          </div>
+    <section class="section anak-muda" id="anak-muda" aria-labelledby="anak-muda-judul">
+      <div class="container">
+        <h2 id="anak-muda-judul">Ruang berkarya untuk anak muda</h2>
+        <!-- Tahap 5: isi dari MAHREEN.internship -->
+      </div>
+    </section>
 
-          <!-- Jumlah hasil diumumkan ke screen reader setiap filter berganti -->
-          <p class="timeline__hasil" id="timeline-hasil" aria-live="polite"></p>
-
-          <!-- Diisi oleh js/timeline.js dari KEGIATAN -->
-          <ol class="timeline__list" id="timeline-list" role="list"></ol>
-
-          <p class="timeline__penutup">
-            Masih banyak kegiatan sebelumnya. Lihat selengkapnya di
-            <a href="https://www.instagram.com/mahreenindonesia/" target="_blank" rel="noopener">@mahreenindonesia<span class="visually-hidden"> (buka di tab baru)</span></a>.
-          </p>
-        </div>
+    <section class="section mulai" id="mulai" aria-labelledby="mulai-judul">
+      <div class="container">
+        <h2 id="mulai-judul">Kamu tertarik di bidang apa?</h2>
+        <p class="section__pengantar">Pilih satu, lalu lihat bagian Mahreen yang berkaitan dengan minatmu.</p>
+        <!-- Tahap 6: pilihan minat (radio group) dan hasil dari MAHREEN.minat -->
       </div>
     </section>
 
@@ -182,8 +149,7 @@
         <div class="akun__isi">
           <h2 id="akun-judul">Satu Mahreen, lima akun</h2>
           <p class="akun__intro">
-            Informasi Mahreen Indonesia dibagikan lewat lima akun Instagram berikut.
-            Fungsi tiap akun dirangkum dari unggahannya.
+            Informasi Mahreen Indonesia tersebar di beberapa akun Instagram. Ini fungsinya masing-masing.
           </p>
           <ul class="akun__list" role="list">
           <li class="akun__item">
@@ -191,14 +157,14 @@
               <svg class="ikon" aria-hidden="true" focusable="false"><use href="#ikon-instagram" /></svg>
               @mahreenindonesia<span class="visually-hidden"> (buka di tab baru)</span>
             </a>
-            <p class="akun__fungsi">Akun utama: info umum, seminar, dan pengumuman</p>
+            <p class="akun__fungsi">Akun utama: profil, seminar, dan pengumuman</p>
           </li>
           <li class="akun__item">
             <a class="akun__tautan" href="https://www.instagram.com/tanyamahreen/" target="_blank" rel="noopener">
               <svg class="ikon" aria-hidden="true" focusable="false"><use href="#ikon-instagram" /></svg>
               @tanyamahreen<span class="visually-hidden"> (buka di tab baru)</span>
             </a>
-            <p class="akun__fungsi">Layanan kreatif dan digital untuk UMKM dan bisnis</p>
+            <p class="akun__fungsi">Layanan kreatif dan digital</p>
           </li>
           <li class="akun__item">
             <a class="akun__tautan" href="https://www.instagram.com/pedulimahreen/" target="_blank" rel="noopener">
@@ -219,7 +185,7 @@
               <svg class="ikon" aria-hidden="true" focusable="false"><use href="#ikon-instagram" /></svg>
               @mahreenindonesiainternship<span class="visually-hidden"> (buka di tab baru)</span>
             </a>
-            <p class="akun__fungsi">Program magang, mentor, dan penghargaan peserta</p>
+            <p class="akun__fungsi">Program magang</p>
           </li>
           </ul>
         </div>
@@ -255,46 +221,12 @@
       </div>
 
       <p class="site-footer__catatan">
-        Halaman ini adalah prototype tidak resmi yang dibuat oleh Sandhika Hamzah untuk Creative Challenge
-        Mahreen Indonesia Internship Batch 2, berdasarkan unggahan publik Mahreen Indonesia.
+        Prototype oleh Sandhika Hamzah untuk Creative Challenge Mahreen Indonesia Internship Batch 2.
+        Informasi dirangkum dari unggahan publik Mahreen Indonesia, Mei sampai September 2026.
         Untuk informasi terbaru, cek akun resmi.
       </p>
     </div>
   </footer>
 
-  <!--
-    Story viewer. <dialog> dengan showModal() membuat bagian halaman lain tidak bisa difokus
-    selama story terbuka, dan tombol Esc menutupnya secara bawaan.
-  -->
-  <dialog class="story" id="story" aria-labelledby="story-kategori">
-    <div class="story__panel" id="story-panel">
-      <div class="story__progress" id="story-progress" aria-hidden="true"></div>
-
-      <div class="story__kepala">
-        <span class="story__ikon" id="story-ikon" aria-hidden="true"></span>
-        <div class="story__info">
-          <p class="story__kategori" id="story-kategori"></p>
-          <p class="story__posisi" id="story-posisi"></p>
-        </div>
-        <button class="story__tutup" type="button" id="story-tutup" aria-label="Tutup story">
-          <svg class="ikon" aria-hidden="true" focusable="false"><use href="#ikon-tutup" /></svg>
-        </button>
-      </div>
-
-      <!-- Isi slide diumumkan ke screen reader setiap berganti -->
-      <div class="story__slide" id="story-slide" aria-live="polite"></div>
-
-      <div class="story__nav">
-        <button class="btn btn--secondary btn--ikon story__nav-tombol" type="button" id="story-sebelumnya">
-          <svg class="ikon ikon--kecil" aria-hidden="true" focusable="false"><use href="#ikon-kiri" /></svg>
-          Sebelumnya
-        </button>
-        <button class="btn btn--primary btn--ikon story__nav-tombol story__nav-tombol--lanjut" type="button" id="story-berikutnya">
-          Berikutnya
-          <svg class="ikon ikon--kecil" aria-hidden="true" focusable="false"><use href="#ikon-kanan" /></svg>
-        </button>
-      </div>
-    </div>
-  </dialog>
 </body>
 </html>

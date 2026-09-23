@@ -1,5 +1,5 @@
 /*
- * Design tokens Sorotan Mahreen.
+ * Design tokens Mahreen untuk Anak Muda.
  * Semua nilai visual (warna, huruf, jarak, gerak) diatur di sini.
  * Komponen lain cukup memakai var(--nama-token), jadi mengganti warna
  * dari hasil color picker template Canva cukup dilakukan di file ini.
@@ -7,12 +7,12 @@
 
 :root {
   /* ---------- Warna merek (perkiraan, akan diganti dari template Canva) ---------- */
-  --color-primary: #D1227A;    /* tombol, label "Sedang berjalan", aksen */
+  --color-primary: #D1227A;    /* tombol, aksen, pilihan aktif */
   --color-secondary: #930D3C;  /* judul dan teks penting */
-  --color-accent: #F2653A;     /* label "Segera hadir", motif dekoratif */
+  --color-accent: #F2653A;     /* motif dekoratif, sorotan kecil */
   --color-bg: #FFF5F9;         /* latar utama */
   --color-ink: #2B0B1D;        /* teks utama */
-  --color-neutral: #6B6470;    /* label "Sudah berlangsung", teks sekunder */
+  --color-neutral: #6B6470;    /* teks sekunder, keterangan sumber */
   --color-dark: #1C1A1D;       /* footer */
 
   /* ---------- Warna turunan ---------- */
@@ -20,7 +20,7 @@
   --color-primary-soft: #FCE4EF;     /* tint pink untuk latar ringan, bukan untuk teks magenta */
   --color-accent-soft: #FDE3D8;      /* tint oranye untuk latar motif */
   --color-accent-strong: #A83A12;    /* oranye gelap, dipakai kalau oranye harus jadi teks */
-  --color-line: #EBD5DF;             /* garis pemisah dan garis timeline */
+  --color-line: #EBD5DF;             /* garis pemisah */
   --color-on-primary: #FFFFFF;       /* teks di atas magenta */
   --color-on-accent: var(--color-ink); /* teks di atas oranye (putih kurang kontras) */
   --color-on-dark: #F7EEF2;          /* teks di footer */
@@ -28,26 +28,12 @@
   --color-focus: var(--color-primary);
   --color-focus-on-dark: #FF8FC4;
 
-  /* ---------- Warna status ---------- */
-  /* Sedang berjalan: magenta penuh */
-  --status-berjalan-bg: var(--color-primary);
-  --status-berjalan-text: var(--color-on-primary);
-  --status-berjalan-border: var(--color-primary);
-  /* Segera hadir: oranye */
-  --status-segera-bg: var(--color-accent);
-  --status-segera-text: var(--color-on-accent);
-  --status-segera-border: var(--color-accent);
-  /* Sudah berlangsung: abu-abu garis tepi */
-  --status-lewat-bg: transparent;
-  --status-lewat-text: var(--color-neutral);
-  --status-lewat-border: var(--color-neutral);
-
   /* ---------- Tipografi ---------- */
   --font-heading: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-body: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   /* Skala kelipatan 1,25 dengan dasar 16px */
-  --fs--1: 0.8rem;      /* 12.8px: meta, label status */
+  --fs--1: 0.8rem;      /* 12.8px: keterangan sumber, teks kecil */
   --fs-0: 1rem;         /* 16px: teks baca */
   --fs-1: 1.25rem;      /* 20px: judul item */
   --fs-2: 1.5625rem;    /* 25px */
@@ -104,7 +90,7 @@
 
   /* ---------- Lapisan ---------- */
   --z-header: 10;
-  --z-dialog: 100;
+  --z-atas: 100;              /* skip link */
 }
 
 /* Grid 12 kolom mulai lebar tablet besar dan desktop */

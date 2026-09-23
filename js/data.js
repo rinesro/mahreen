@@ -1,310 +1,303 @@
 /*
- * Data kegiatan Sorotan Mahreen (sorotan Mei sampai September 2026).
- * Dirangkum dari unggahan Instagram publik Mahreen Indonesia dan unit-unitnya.
+ * Semua konten halaman Mahreen untuk Anak Muda.
+ * Dirangkum dari unggahan publik Mahreen Indonesia, Mei sampai September 2026.
  *
- * Menambah kegiatan baru cukup dengan menambah satu objek ke array ini.
- * Nilai status: "sedang-berjalan", "sudah-berlangsung", "segera-hadir".
- * Nilai kategori: "program", "kegiatan", "kolaborasi", "segera-hadir".
- * sumber: wajib, berisi label (akun dan tanggal unggahan) dan url unggahan aslinya.
- * ikuti: opsional. Kalau null, tombol ajakan tidak ditampilkan.
- * online: opsional. Kalau true, tampil label kecil "Online".
+ * Isi objek ini dirender oleh js/main.js. Memperbarui konten cukup di file ini.
+ * Setiap "sumber" berisi label (akun dan tanggal unggahan) dan url unggahannya.
+ * Nilai null berarti informasinya belum ada, dan bagian itu tidak ditampilkan.
  *
  * Sengaja memakai file .js (bukan .json + fetch) supaya halaman tetap jalan
  * saat index.html dibuka langsung tanpa server.
  */
-const KEGIATAN = [
-  {
-    "id": "tanya-mahreen",
-    "kategori": "program",
-    "judul": "Tanya Mahreen",
-    "tanggal": null,
-    "tanggalLabel": "Unit aktif",
-    "status": "sedang-berjalan",
-    "ringkasan": "Menurut unggahan @tanyamahreen, unit ini adalah layanan kreatif dan digital untuk UMKM, brand, dan bisnis.",
-    "detail": [
-      "Layanan yang disebutkan: website, branding, social media management, dan creative design."
+const MAHREEN = {
+  "profil": {
+    "ringkas": "Mahreen Indonesia adalah ekosistem kreatif, digital, bisnis, dan sosial.",
+    "visi": "Menjadi perusahaan yang inovatif dalam menghadirkan karya, solusi, dan kontribusi positif bagi masyarakat Indonesia, sampai ke tingkat internasional.",
+    "misi": [
+      "Mengembangkan bidang fashion, digital, kreatif, dan sosial secara profesional dan adaptif.",
+      "Menghadirkan layanan, karya, dan solusi yang bermanfaat bagi masyarakat, generasi muda, dan pelaku usaha.",
+      "Membangun kolaborasi dan pemberdayaan yang mendorong kreativitas, inovasi, dan perkembangan berkelanjutan.",
+      "Menjadikan Mahreen Indonesia ruang untuk bertumbuh, berkarya, dan berbagi manfaat."
+    ],
+    "nilai": [
+      {
+        "en": "Innovation",
+        "id": "Inovasi"
+      },
+      {
+        "en": "Collaboration",
+        "id": "Kolaborasi"
+      },
+      {
+        "en": "Impact",
+        "id": "Dampak"
+      }
     ],
     "sumber": {
-      "label": "@tanyamahreen, 26 Mei 2026",
+      "label": "@mahreenindonesia, 14 dan 19 Mei 2026",
+      "url": "https://www.instagram.com/mahreenindonesia/"
+    }
+  },
+  "unit": [
+    {
+      "id": "tanya-mahreen",
+      "nama": "Tanya Mahreen",
+      "bidang": "Academic, Creative, Digital Solution",
+      "apa": "Layanan kreatif dan digital untuk UMKM, brand, dan bisnis: website, branding, social media management, dan creative design.",
+      "contoh": "Tim magang Batch 1 untuk Digital Marketing Strategy dan Tanya Mahreen Website Development UI/UX mendapat penghargaan Best Team Player.",
+      "sumber": {
+        "label": "@tanyamahreen, 26 Mei 2026; @mahreenindonesiainternship, 1 September 2026",
+        "url": "https://www.instagram.com/tanyamahreen/"
+      },
+      "akun": "@tanyamahreen",
+      "akunUrl": "https://www.instagram.com/tanyamahreen/"
+    },
+    {
+      "id": "peduli-mahreen",
+      "nama": "Peduli Mahreen",
+      "bidang": "Social & Humanity Movement",
+      "apa": "Gerakan sosial dan kemanusiaan dengan empat tujuan: kepedulian, edukasi, bantuan sosial, dan pemberdayaan.",
+      "contoh": "Akhir Juni 2026, Peduli Mahreen memperkenalkan diri, membagikan cerita aksi sosialnya, dan mengajak followers menuliskan isu sosial yang menurut mereka paling mendesak.",
+      "sumber": {
+        "label": "@pedulimahreen, 29 dan 30 Juni 2026",
+        "url": "https://www.instagram.com/pedulimahreen/"
+      },
+      "akun": "@pedulimahreen",
+      "akunUrl": "https://www.instagram.com/pedulimahreen/"
+    },
+    {
+      "id": "mahreen-csr",
+      "nama": "Mahreen CSR",
+      "bidang": "Corporate Social Responsibility",
+      "apa": "Unit yang mengumumkan kemitraan resmi Mahreen dengan kampus, organisasi mahasiswa, brand, dan yayasan.",
+      "contoh": "Juli sampai Agustus 2026: kerja sama dengan Universitas Teknologi Bandung, Nice To Meet You (NTMY), Yayasan Fauzan Adzima Sukajadi, dan BEM Universitas Teknologi Bandung.",
+      "sumber": {
+        "label": "@mahreencsr, 7 Juli sampai 20 Agustus 2026",
+        "url": "https://www.instagram.com/mahreencsr/"
+      },
+      "akun": "@mahreencsr",
+      "akunUrl": "https://www.instagram.com/mahreencsr/"
+    },
+    {
+      "id": "mahreen-studio",
+      "nama": "Mahreen Studio",
+      "bidang": "Creative Lifestyle & Fashion",
+      "apa": "Unit Mahreen di bidang creative lifestyle dan fashion.",
+      "contoh": null,
+      "sumber": {
+        "label": "@mahreenindonesia, 19 Mei 2026",
+        "url": "https://www.instagram.com/mahreenindonesia/"
+      },
+      "akun": "@mahreenindonesia",
+      "akunUrl": "https://www.instagram.com/mahreenindonesia/"
+    }
+  ],
+  "kegiatanBersama": [
+    {
+      "judul": "Seminar AI for UMKM: Grow Your Business with AI",
+      "tanggal": "18 Juli 2026",
+      "keterangan": "Seminar gratis tentang pemanfaatan AI untuk UMKM.",
+      "sumber": {
+        "label": "@mahreenindonesia, 14 Juli 2026",
+        "url": "https://www.instagram.com/mahreenindonesia/"
+      }
+    },
+    {
+      "judul": "Seminar Nasional: Level Up Your Brand",
+      "tanggal": "8 Agustus 2026",
+      "keterangan": "Seminar online via Zoom tentang strategi digital marketing untuk UMKM.",
+      "sumber": {
+        "label": "@mahreenindonesia, 1 Agustus 2026",
+        "url": "https://www.instagram.com/mahreenindonesia/"
+      }
+    }
+  ],
+  "internship": {
+    "ringkas": "Program magang Mahreen Indonesia. Menurut pengumuman Batch 2, sistem kerjanya remote (WFH atau WFA).",
+    "periodeBatch2": "1 Oktober 2026 sampai 31 Januari 2027",
+    "statusPendaftaran": "Pendaftaran Batch 2 sudah ditutup.",
+    "benefit": [
+      "Learning dan mentoring",
+      "Pengalaman proyek nyata",
+      "Portofolio profesional",
+      "Peluang fee berbasis proyek",
+      "Sertifikat dan jam belajar",
+      "Jaringan ekosistem"
+    ],
+    "posisi": [
+      {
+        "grup": "Digital Marketing & Branding",
+        "daftar": [
+          "Graphic Design",
+          "Video Editor",
+          "Social Media Management"
+        ]
+      },
+      {
+        "grup": "Website Development",
+        "daftar": [
+          "UI/UX",
+          "Frontend Development",
+          "Backend Development"
+        ]
+      },
+      {
+        "grup": "Business Development & Partnership",
+        "daftar": []
+      }
+    ],
+    "mentorBatch2": [
+      "Website Development",
+      "Social Media Management",
+      "Graphic Design"
+    ],
+    "penghargaanBatch1": [
+      "Best Intern of the Batch",
+      "Most Outstanding Intern",
+      "Most Consistent Intern",
+      "Most Engaged Intern",
+      "Most Creative Designer",
+      "Creative Editing Award",
+      "Best Content Strategist",
+      "Web Innovator Award",
+      "Best Team Player",
+      "Most Improved Intern"
+    ],
+    "sumber": {
+      "label": "@mahreenindonesiainternship dan Story MI Batch 2, 30 Agustus sampai 14 September 2026",
+      "url": "https://www.instagram.com/mahreenindonesiainternship/"
+    },
+    "ikuti": {
+      "label": "Pantau batch berikutnya di @mahreenindonesiainternship",
+      "url": "https://www.instagram.com/mahreenindonesiainternship/"
+    }
+  },
+  "minat": [
+    {
+      "id": "visual",
+      "label": "Desain dan visual",
+      "posisi": [
+        "Graphic Design",
+        "UI/UX"
+      ],
+      "unit": "Mahreen Studio bergerak di creative lifestyle dan fashion.",
+      "akun": [
+        {
+          "nama": "@mahreenindonesiainternship",
+          "url": "https://www.instagram.com/mahreenindonesiainternship/"
+        },
+        {
+          "nama": "@mahreenindonesia",
+          "url": "https://www.instagram.com/mahreenindonesia/"
+        }
+      ]
+    },
+    {
+      "id": "konten",
+      "label": "Konten dan media sosial",
+      "posisi": [
+        "Social Media Management",
+        "Video Editor"
+      ],
+      "unit": "Social media management juga termasuk layanan Tanya Mahreen.",
+      "akun": [
+        {
+          "nama": "@mahreenindonesiainternship",
+          "url": "https://www.instagram.com/mahreenindonesiainternship/"
+        },
+        {
+          "nama": "@tanyamahreen",
+          "url": "https://www.instagram.com/tanyamahreen/"
+        }
+      ]
+    },
+    {
+      "id": "teknologi",
+      "label": "Teknologi dan website",
+      "posisi": [
+        "Frontend Development",
+        "Backend Development",
+        "UI/UX"
+      ],
+      "unit": "Website termasuk layanan Tanya Mahreen, dan websitenya pernah dikerjakan tim magang Batch 1.",
+      "akun": [
+        {
+          "nama": "@mahreenindonesiainternship",
+          "url": "https://www.instagram.com/mahreenindonesiainternship/"
+        },
+        {
+          "nama": "@tanyamahreen",
+          "url": "https://www.instagram.com/tanyamahreen/"
+        }
+      ]
+    },
+    {
+      "id": "bisnis",
+      "label": "Bisnis dan UMKM",
+      "posisi": [
+        "Business Development & Partnership"
+      ],
+      "unit": "Tanya Mahreen melayani UMKM dan bisnis, dan Mahreen beberapa kali mengadakan seminar untuk UMKM.",
+      "akun": [
+        {
+          "nama": "@mahreenindonesia",
+          "url": "https://www.instagram.com/mahreenindonesia/"
+        },
+        {
+          "nama": "@tanyamahreen",
+          "url": "https://www.instagram.com/tanyamahreen/"
+        }
+      ]
+    },
+    {
+      "id": "sosial",
+      "label": "Sosial dan kemanusiaan",
+      "posisi": [],
+      "unit": "Peduli Mahreen menjalankan gerakan sosial, dan Mahreen CSR mengumumkan kemitraan dengan kampus serta yayasan.",
+      "akun": [
+        {
+          "nama": "@pedulimahreen",
+          "url": "https://www.instagram.com/pedulimahreen/"
+        },
+        {
+          "nama": "@mahreencsr",
+          "url": "https://www.instagram.com/mahreencsr/"
+        }
+      ]
+    }
+  ],
+  "akun": [
+    {
+      "nama": "@mahreenindonesia",
+      "fungsi": "Akun utama: profil, seminar, dan pengumuman",
+      "url": "https://www.instagram.com/mahreenindonesia/"
+    },
+    {
+      "nama": "@tanyamahreen",
+      "fungsi": "Layanan kreatif dan digital",
       "url": "https://www.instagram.com/tanyamahreen/"
     },
-    "ikuti": {
-      "label": "Ikuti @tanyamahreen",
-      "url": "https://www.instagram.com/tanyamahreen/"
-    }
-  },
-  {
-    "id": "peduli-mahreen",
-    "kategori": "program",
-    "judul": "Peduli Mahreen",
-    "tanggal": null,
-    "tanggalLabel": "Unit aktif",
-    "status": "sedang-berjalan",
-    "ringkasan": "Unit gerakan sosial dan kemanusiaan Mahreen Indonesia. Unggahan \"Our Purpose\" mereka menyebut empat tujuan.",
-    "detail": [
-      "Kepedulian: menumbuhkan rasa peduli dan empati.",
-      "Edukasi: memberi edukasi dan inspirasi untuk generasi yang berpengetahuan dan berkarakter.",
-      "Bantuan sosial: menyalurkan bantuan secara tepat dan berkelanjutan.",
-      "Pemberdayaan: mendorong masyarakat berkembang, mandiri, dan bermanfaat bagi sekitarnya.",
-      "Cara bergabung sebagai relawan belum dijelaskan di unggahan yang dirangkum."
-    ],
-    "sumber": {
-      "label": "@pedulimahreen, unggahan Our Purpose",
+    {
+      "nama": "@pedulimahreen",
+      "fungsi": "Gerakan sosial dan kemanusiaan",
       "url": "https://www.instagram.com/pedulimahreen/"
     },
-    "ikuti": {
-      "label": "Ikuti @pedulimahreen",
-      "url": "https://www.instagram.com/pedulimahreen/"
-    }
-  },
-  {
-    "id": "mahreen-studio",
-    "kategori": "program",
-    "judul": "Mahreen Studio",
-    "tanggal": null,
-    "tanggalLabel": "Unit aktif",
-    "status": "sedang-berjalan",
-    "ringkasan": "Disebut dalam unggahan Our Ecosystem sebagai unit creative lifestyle dan fashion.",
-    "detail": [
-      "Detailnya belum dijelaskan di unggahan yang dirangkum."
-    ],
-    "sumber": {
-      "label": "@mahreenindonesia, 19 Mei 2026",
-      "url": "https://www.instagram.com/mahreenindonesia/"
-    },
-    "ikuti": null
-  },
-  {
-    "id": "mahreen-csr",
-    "kategori": "program",
-    "judul": "Mahreen CSR",
-    "tanggal": null,
-    "tanggalLabel": "Unit aktif",
-    "status": "sedang-berjalan",
-    "ringkasan": "Disebut dalam unggahan Our Ecosystem sebagai unit Corporate Social Responsibility. Pengumuman kemitraan resmi Mahreen dibagikan lewat akun ini.",
-    "detail": [],
-    "sumber": {
-      "label": "@mahreenindonesia, 19 Mei 2026",
-      "url": "https://www.instagram.com/mahreenindonesia/"
-    },
-    "ikuti": {
-      "label": "Ikuti @mahreencsr",
+    {
+      "nama": "@mahreencsr",
+      "fungsi": "Kemitraan dan tanggung jawab sosial",
       "url": "https://www.instagram.com/mahreencsr/"
-    }
-  },
-  {
-    "id": "mahreen-internship",
-    "kategori": "program",
-    "judul": "Mahreen Indonesia Internship",
-    "tanggal": "2026-10-01",
-    "tanggalLabel": "Batch 2: 1 Oktober 2026 sampai 31 Januari 2027",
-    "status": "sedang-berjalan",
-    "online": true,
-    "ringkasan": "Program magang Mahreen Indonesia. Menurut pengumuman Batch 2, sistem kerjanya remote (WFH atau WFA).",
-    "detail": [
-      "Benefit yang disebutkan: learning dan mentoring, pengalaman proyek nyata, portofolio profesional, peluang fee berbasis proyek, sertifikat dan jam belajar, serta jaringan ekosistem.",
-      "Posisi Batch 2: Graphic Design, Video Editor, Social Media Management, UI/UX, Frontend Development, Backend Development, serta Business Development dan Partnership.",
-      "Pendaftaran Batch 2 sudah ditutup."
-    ],
-    "sumber": {
-      "label": "Story MI Batch 2, 14 September 2026",
-      "url": "https://www.instagram.com/mahreenindonesiainternship/"
     },
-    "ikuti": {
-      "label": "Pantau batch berikutnya",
+    {
+      "nama": "@mahreenindonesiainternship",
+      "fungsi": "Program magang",
       "url": "https://www.instagram.com/mahreenindonesiainternship/"
     }
-  },
-  {
-    "id": "peduli-mahreen-kenalan",
-    "kategori": "kegiatan",
-    "judul": "Peduli Mahreen memperkenalkan diri",
-    "tanggal": "2026-06-29",
-    "tanggalLabel": "29 Juni 2026",
-    "status": "sudah-berlangsung",
-    "ringkasan": "@pedulimahreen membagikan cerita awal perjalanan, visi misi, dan aksi sosial yang sedang dijalankan.",
-    "detail": [
-      "Unggahan berikutnya (30 Juni) mengajak followers menuliskan isu sosial yang menurut mereka paling mendesak."
-    ],
-    "sumber": {
-      "label": "@pedulimahreen, 29 Juni 2026",
-      "url": "https://www.instagram.com/pedulimahreen/"
-    },
-    "ikuti": null
-  },
-  {
-    "id": "kolab-utb",
-    "kategori": "kolaborasi",
-    "judul": "Kerja sama dengan Universitas Teknologi Bandung",
-    "tanggal": "2026-07-07",
-    "tanggalLabel": "7 Juli 2026",
-    "status": "sudah-berlangsung",
-    "ringkasan": "Diumumkan sebagai kolaborasi di bidang pendidikan dan pengembangan sumber daya manusia.",
-    "detail": [],
-    "sumber": {
-      "label": "@mahreencsr, 7 Juli 2026",
-      "url": "https://www.instagram.com/mahreencsr/"
-    },
-    "ikuti": null
-  },
-  {
-    "id": "kolab-ntmy",
-    "kategori": "kolaborasi",
-    "judul": "Kemitraan dengan Nice To Meet You (NTMY)",
-    "tanggal": "2026-07-12",
-    "tanggalLabel": "12 Juli 2026",
-    "status": "sudah-berlangsung",
-    "ringkasan": "Diumumkan sebagai kemitraan resmi yang berkaitan dengan identitas merek dan Mahreen Indonesia Internship Program.",
-    "detail": [
-      "Unggahan menyebut pengembangan identitas merek, perencanaan logo, penguatan visual branding, dan pengembangan talenta kreatif."
-    ],
-    "sumber": {
-      "label": "@mahreencsr, 12 Juli 2026",
-      "url": "https://www.instagram.com/mahreencsr/"
-    },
-    "ikuti": null
-  },
-  {
-    "id": "seminar-ai-umkm",
-    "kategori": "kegiatan",
-    "judul": "Seminar AI for UMKM: Grow Your Business with AI",
-    "tanggal": "2026-07-18",
-    "tanggalLabel": "18 Juli 2026",
-    "status": "sudah-berlangsung",
-    "ringkasan": "Seminar gratis bertema pemanfaatan AI untuk UMKM.",
-    "detail": [
-      "Benefit yang disebutkan di poster: e-certificate dan materi dari pembicara profesional."
-    ],
-    "sumber": {
-      "label": "@mahreenindonesia, 14 Juli 2026",
-      "url": "https://www.instagram.com/mahreenindonesia/"
-    },
-    "ikuti": null
-  },
-  {
-    "id": "kolab-yayasan-fas",
-    "kategori": "kolaborasi",
-    "judul": "Kolaborasi dengan Yayasan Fauzan Adzima Sukajadi",
-    "tanggal": "2026-07-24",
-    "tanggalLabel": "24 Juli 2026",
-    "status": "sudah-berlangsung",
-    "ringkasan": "Diumumkan sebagai kemitraan untuk mendukung gerakan kebaikan di bidang pendidikan dan sosial.",
-    "detail": [],
-    "sumber": {
-      "label": "@mahreencsr, 24 Juli 2026",
-      "url": "https://www.instagram.com/mahreencsr/"
-    },
-    "ikuti": null
-  },
-  {
-    "id": "seminar-nasional-level-up",
-    "kategori": "kegiatan",
-    "judul": "Seminar Nasional: Level Up Your Brand",
-    "tanggal": "2026-08-08",
-    "tanggalLabel": "8 Agustus 2026",
-    "status": "sudah-berlangsung",
-    "online": true,
-    "ringkasan": "Seminar online via Zoom bertema strategi digital marketing untuk UMKM.",
-    "detail": [
-      "Dua sesi menurut poster: Digital Marketing Strategy dan Digital Financial Solutions."
-    ],
-    "sumber": {
-      "label": "@mahreenindonesia, 1 Agustus 2026",
-      "url": "https://www.instagram.com/mahreenindonesia/"
-    },
-    "ikuti": null
-  },
-  {
-    "id": "kolab-bem-utb",
-    "kategori": "kolaborasi",
-    "judul": "Official Partner BEM Universitas Teknologi Bandung",
-    "tanggal": "2026-08-20",
-    "tanggalLabel": "20 Agustus 2026",
-    "status": "sudah-berlangsung",
-    "ringkasan": "Diumumkan sebagai awal dari program dan ruang belajar bersama mahasiswa.",
-    "detail": [],
-    "sumber": {
-      "label": "@mahreencsr, 20 Agustus 2026",
-      "url": "https://www.instagram.com/mahreencsr/"
-    },
-    "ikuti": null
-  },
-  {
-    "id": "best-internship-awards-1",
-    "kategori": "kegiatan",
-    "judul": "Best Internship Awards Batch 1",
-    "tanggal": "2026-08-30",
-    "tanggalLabel": "30 Agustus sampai 1 September 2026",
-    "status": "sudah-berlangsung",
-    "ringkasan": "Penghargaan untuk peserta magang Batch 1 dalam 10 kategori.",
-    "detail": [
-      "Kategori: Best Intern of the Batch, Most Outstanding Intern, Most Consistent Intern, Most Engaged Intern, Most Creative Designer, Creative Editing Award, Best Content Strategist, Web Innovator Award, Best Team Player, dan Most Improved Intern."
-    ],
-    "sumber": {
-      "label": "@mahreenindonesiainternship, 30 Agustus 2026",
-      "url": "https://www.instagram.com/mahreenindonesiainternship/"
-    },
-    "ikuti": null
-  },
-  {
-    "id": "mentor-batch-2",
-    "kategori": "kegiatan",
-    "judul": "Perkenalan mentor Internship Batch 2",
-    "tanggal": "2026-09-12",
-    "tanggalLabel": "12 September 2026",
-    "status": "sudah-berlangsung",
-    "ringkasan": "Tiga mentor diperkenalkan untuk Batch 2.",
-    "detail": [
-      "Bidang mentoring: Website Development, Social Media Management, dan Graphic Design."
-    ],
-    "sumber": {
-      "label": "@mahreenindonesia, 12 September 2026",
-      "url": "https://www.instagram.com/mahreenindonesia/"
-    },
-    "ikuti": null
-  },
-  {
-    "id": "open-recruitment-batch-2",
-    "kategori": "kegiatan",
-    "judul": "Open recruitment Internship Batch 2",
-    "tanggal": "2026-09-14",
-    "tanggalLabel": "14 September 2026",
-    "status": "sudah-berlangsung",
-    "online": true,
-    "ringkasan": "Pengumuman pembukaan pendaftaran magang Batch 2 dengan sistem kerja remote.",
-    "detail": [
-      "Pendaftaran sudah ditutup."
-    ],
-    "sumber": {
-      "label": "Story MI Batch 2, 14 September 2026",
-      "url": "https://www.instagram.com/mahreenindonesiainternship/"
-    },
-    "ikuti": null
-  },
-  {
-    "id": "segera-hadir",
-    "kategori": "segera-hadir",
-    "judul": "Yang diumumkan akan hadir",
-    "tanggal": null,
-    "tanggalLabel": "Segera hadir",
-    "status": "segera-hadir",
-    "ringkasan": "Dalam unggahan What's Next, Mahreen menyebut beberapa hal yang sedang disiapkan.",
-    "detail": [
-      "Signature Collection",
-      "Creative Collaboration",
-      "Digital Services",
-      "Social Programs",
-      "Community Development",
-      "Future Expansion",
-      "Waktu dan detailnya belum diumumkan."
-    ],
-    "sumber": {
-      "label": "@mahreenindonesia, unggahan What's Next",
-      "url": "https://www.instagram.com/mahreenindonesia/"
-    },
-    "ikuti": {
-      "label": "Ikuti @mahreenindonesia",
-      "url": "https://www.instagram.com/mahreenindonesia/"
-    }
+  ],
+  "kontak": {
+    "website": "https://mahreenindonesia.com",
+    "email": "info@mahreenindonesia.com",
+    "whatsapp": "+62 896 5264 7385",
+    "whatsappUrl": "https://wa.me/6289652647385",
+    "alamat": "Jl. Kebon Kopi No. 153, Kota Cimahi, Jawa Barat 40535"
   }
-];
+};

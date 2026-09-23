@@ -170,7 +170,7 @@ strong {
   position: absolute;
   top: var(--space-1);
   left: var(--space-1);
-  z-index: calc(var(--z-dialog) + 1);
+  z-index: var(--z-atas);
   padding: var(--space-1) var(--space-2);
   background-color: var(--color-secondary);
   color: var(--color-on-primary);
