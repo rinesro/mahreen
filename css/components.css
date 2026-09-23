@@ -92,8 +92,12 @@
 }
 
 /* ---------- Bagian halaman ---------- */
+/* Pengantar di bawah judul bagian: satu pesan utama, sedikit lebih besar dari teks baca */
 .section__pengantar {
   margin-top: var(--space-2);
+  max-width: var(--measure-narrow);
+  font-size: var(--fs-1);
+  line-height: var(--lh-body);
 }
 
 /* ---------- Header ---------- */

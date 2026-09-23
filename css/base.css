@@ -148,6 +148,12 @@ strong {
   }
 }
 
+/* Elemen dengan atribut hidden selalu tersembunyi, walaupun kelasnya punya display lain.
+   Dipakai misalnya untuk hasil di bagian Mulai sebelum ada minat yang dipilih. */
+[hidden] {
+  display: none !important;
+}
+
 /* ---------- Utilitas aksesibilitas ---------- */
 /* Tersembunyi secara visual tapi tetap dibaca screen reader */
 .visually-hidden {
