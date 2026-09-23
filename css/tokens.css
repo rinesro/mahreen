@@ -29,11 +29,13 @@
   --color-focus-on-dark: #FF8FC4;
 
   /* ---------- Warna peran ---------- */
-  /* Pilihan aktif di bagian Mulai: magenta penuh dengan teks putih (kontras 4,98:1) */
+  /* Pilihan aktif di halaman Mulai: magenta penuh dengan teks putih (kontras 4,98:1) */
   --color-selected-bg: var(--color-primary);
   --color-selected-text: var(--color-on-primary);
-  /* Latar bagian yang perlu dipisahkan dari sekitarnya (common region), misalnya bagian Mulai */
+  /* Latar area yang perlu dipisahkan dari sekitarnya (common region), misalnya panel di halaman Mulai */
   --color-region: var(--color-surface);
+  /* Penanda halaman aktif di navigasi (selain aria-current="page") */
+  --color-current: var(--color-primary);
 
   /* ---------- Tipografi ---------- */
   --font-heading: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -44,8 +46,8 @@
   --fs-0: 1rem;         /* 16px: teks baca */
   --fs-1: 1.25rem;      /* 20px: pengantar bagian, judul blok kecil */
   --fs-2: 1.5625rem;    /* 25px: nama unit */
-  --fs-3: 1.953rem;     /* 31.25px: judul bagian */
-  --fs-4: 2.441rem;     /* 39px: judul hero di HP, tiga nilai Mahreen */
+  --fs-3: 1.953rem;     /* 31.25px: judul bagian, judul halaman di HP */
+  --fs-4: 2.441rem;     /* 39px: judul hero di HP, judul halaman di desktop, tiga nilai Mahreen */
   --fs-5: 3.052rem;     /* 48.8px: judul hero di desktop */
 
   --fw-regular: 400;

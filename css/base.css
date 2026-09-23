@@ -149,7 +149,7 @@ strong {
 }
 
 /* Elemen dengan atribut hidden selalu tersembunyi, walaupun kelasnya punya display lain.
-   Dipakai misalnya untuk hasil di bagian Mulai sebelum ada minat yang dipilih. */
+   Dipakai misalnya untuk tombol Menu sebelum JavaScript berjalan. */
 [hidden] {
   display: none !important;
 }

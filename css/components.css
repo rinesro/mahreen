@@ -118,8 +118,8 @@
 
 /* ---------- Bagian halaman ---------- */
 /*
- * Continuity: empat bagian cerita (Kenalan, Karya, Anak Muda, Mulai) diberi
- * motif bunga kecil yang sama di depan judulnya, sebagai penanda alur.
+ * Continuity: judul bagian dan judul halaman diberi motif bunga kecil yang sama
+ * di depannya, sebagai penanda alur cerita di keempat halaman.
  */
 .section__judul {
   display: flex;
@@ -136,7 +136,22 @@
   overflow: visible;
 }
 
-/* Pengantar di bawah judul bagian: satu pesan utama, sedikit lebih besar dari teks baca */
+/*
+ * Judul halaman (h1) di Karya, Anak Muda, dan Mulai. Ukurannya selevel judul bagian,
+ * bukan sebesar judul hero di Beranda, karena halaman ini adalah lanjutan alur cerita.
+ */
+.halaman__judul {
+  font-size: var(--fs-3);
+  line-height: var(--lh-tight);
+}
+
+@media (min-width: 64em) {
+  .halaman__judul {
+    font-size: var(--fs-4);
+  }
+}
+
+/* Pengantar di bawah judul: satu pesan utama, sedikit lebih besar dari teks baca */
 .section__pengantar {
   margin-top: var(--space-2);
   max-width: var(--measure-narrow);
