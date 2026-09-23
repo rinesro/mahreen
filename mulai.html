@@ -137,32 +137,43 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container grid site-footer__inner">
-      <!-- Logo resmi versi putih untuk latar gelap. Nama Mahreen sudah disebut di sekitarnya, jadi alt diisi singkat. -->
-      <img class="site-footer__logo" src="assets/logo/mahreen-putih.png" alt="Mahreen Indonesia" width="135" height="48" loading="lazy">
-      <p class="site-footer__tagline">Satu ide. Satu karya. Satu dampak.</p>
+    <div class="container">
+      <!--
+        Lapis atas: tiga kolom rata atas (merek, akun, kontak).
+        Kolom yang lebih pendek dibiarkan pendek, ruang di bawahnya tidak diisi.
+      -->
+      <div class="site-footer__atas">
+        <div class="site-footer__kolom site-footer__kolom--merek">
+          <!-- Logo resmi versi putih untuk latar gelap -->
+          <img class="site-footer__logo" src="assets/logo/mahreen-putih.png" alt="Mahreen Indonesia" width="135" height="48" loading="lazy">
+          <p class="site-footer__tagline">Satu ide. Satu karya. Satu dampak.</p>
+        </div>
 
-      <div class="site-footer__kolom site-footer__kolom--akun">
-        <h2 class="site-footer__judul">Satu Mahreen, lima akun</h2>
-        <p class="site-footer__intro">Informasi Mahreen tersebar di beberapa akun Instagram. Ini fungsinya masing-masing.</p>
-        <!-- Diisi dari MAHREEN.akun -->
-        <ul class="akun__list" id="akun-list" role="list"></ul>
+        <div class="site-footer__kolom site-footer__kolom--akun">
+          <h2 class="site-footer__judul">Satu Mahreen, lima akun</h2>
+          <p class="site-footer__intro">Informasi Mahreen tersebar di beberapa akun Instagram. Ini fungsinya masing-masing.</p>
+          <!-- Diisi dari MAHREEN.akun -->
+          <ul class="akun__list" id="akun-list" role="list"></ul>
+        </div>
+
+        <div class="site-footer__kolom site-footer__kolom--kontak">
+          <h2 class="site-footer__judul">Kontak resmi Mahreen Indonesia</h2>
+          <!-- Diisi dari MAHREEN.kontak -->
+          <address class="site-footer__alamat" id="kontak"></address>
+        </div>
       </div>
 
-      <div class="site-footer__kolom site-footer__kolom--kontak">
-        <h2 class="site-footer__judul">Kontak resmi Mahreen Indonesia</h2>
-        <!-- Diisi dari MAHREEN.kontak -->
-        <address class="site-footer__alamat" id="kontak"></address>
+      <!-- Lapis bawah: catatan prototype di kiri, penanda tema di kanan, dipisah garis tipis -->
+      <div class="site-footer__bawah">
+        <p class="site-footer__catatan">
+          Prototype oleh Sandhika Hamzah untuk Creative Challenge Mahreen Indonesia Internship Batch 2.
+          Informasi dirangkum dari unggahan publik Mahreen Indonesia, Mei sampai September 2026.
+          Untuk informasi terbaru, cek akun resmi.
+        </p>
+
+        <!-- Penanda tema di pojok kanan bawah, seperti di postingan Mahreen -->
+        <p class="tagar tagar--footer"><span class="tagar__pagar" aria-hidden="true">#</span> Berkarya untuk Indonesia</p>
       </div>
-
-      <p class="site-footer__catatan">
-        Prototype oleh Sandhika Hamzah untuk Creative Challenge Mahreen Indonesia Internship Batch 2.
-        Informasi dirangkum dari unggahan publik Mahreen Indonesia, Mei sampai September 2026.
-        Untuk informasi terbaru, cek akun resmi.
-      </p>
-
-      <!-- Penanda tema di pojok kanan bawah, seperti di postingan Mahreen -->
-      <p class="tagar tagar--footer"><span class="tagar__pagar" aria-hidden="true">#</span> Berkarya untuk Indonesia</p>
     </div>
   </footer>
 

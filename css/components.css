@@ -1285,8 +1285,7 @@ main > .section:first-child {
 
 /* Di footer: pojok kanan bawah, setelah catatan */
 .tagar--footer {
-  grid-column: 1 / -1;
-  justify-self: end;
+  flex-shrink: 0;
   color: var(--color-on-dark);
 }
 
@@ -1404,30 +1403,31 @@ main > .section:first-child {
   color: var(--color-on-dark);
 }
 
-.site-footer__inner {
-  row-gap: var(--space-6);
+/*
+ * Lapis atas: di HP bertumpuk satu kolom (merek, akun, kontak).
+ * Semua kolom rata atas; kolom yang lebih pendek tidak diregangkan.
+ */
+.site-footer__atas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-6) var(--grid-gutter);
+  align-items: start;
 }
 
 /* Logo resmi versi putih (assets/logo/mahreen-putih.png) di atas tagline */
 .site-footer__logo {
-  grid-column: 1 / -1;
   width: auto;
   height: 3rem; /* 48px */
-  margin-bottom: calc(var(--space-6) * -1 + var(--space-3)); /* rapatkan ke tagline: satu kelompok */
 }
 
 .site-footer__tagline {
-  grid-column: 1 / -1;
+  margin-top: var(--space-3);
   max-width: 16ch;
   font-family: var(--font-heading);
   font-size: var(--fs-3);
   font-weight: var(--fw-bold);
   line-height: var(--lh-tight);
   color: var(--color-on-dark);
-}
-
-.site-footer__kolom {
-  grid-column: 1 / -1;
 }
 
 .site-footer__judul {
@@ -1510,62 +1510,94 @@ main > .section:first-child {
   outline-color: var(--color-focus-on-dark);
 }
 
-.site-footer__catatan {
-  grid-column: 1 / -1;
-  max-width: 42ch; /* teks kecil memuat lebih banyak karakter per ch, jadi batasnya lebih sempit dari --measure */
+/*
+ * Lapis bawah: selebar penuh dengan garis pemisah tipis di atasnya.
+ * Di HP catatan dan penanda bertumpuk; di layar lebar sebaris, sejajar di tengah.
+ */
+.site-footer__bawah {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
   padding-top: var(--space-3);
   border-top: var(--border-thin) solid rgb(255 255 255 / 0.15);
+}
+
+.site-footer__catatan {
+  max-width: 42ch; /* teks kecil memuat lebih banyak karakter per ch, jadi batasnya lebih sempit dari --measure */
   font-size: var(--fs--1);
   color: var(--color-on-dark-muted);
 }
 
+/* Tablet: merek selebar penuh, akun dan kontak berdampingan di bawahnya */
 @media (min-width: 48em) {
-  .site-footer__kolom--akun {
-    grid-column: 1 / span 2;
+  .site-footer__atas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .site-footer__kolom--kontak {
-    grid-column: 3 / -1;
+  .site-footer__kolom--merek {
+    grid-column: 1 / -1;
+  }
+
+  .site-footer__bawah {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
+/*
+ * Desktop: tiga kolom rata atas pada grid 12 kolom.
+ * Layar desktop kecil (1024px): merek 3, akun 5, kontak 4 kolom, supaya alamat email
+ * di kolom kontak tidak terpotong. Daftar akun masih satu kolom.
+ */
 @media (min-width: 64em) {
-  /*
-   * Logo dan tagline bertumpuk di kolom kiri, dua kolom lainnya setinggi keduanya.
-   * Baris logo setinggi logonya saja, sisa tinggi kolom akun masuk ke baris tagline.
-   */
-  .site-footer__inner {
-    grid-template-rows: auto 1fr;
+  .site-footer__atas {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 
-  .site-footer__logo {
-    grid-column: 1 / span 4;
-    grid-row: 1;
-  }
-
-  .site-footer__tagline {
-    grid-column: 1 / span 4;
-    grid-row: 2;
-    font-size: var(--fs-4);
+  .site-footer__kolom--merek {
+    grid-column: 1 / span 3;
   }
 
   .site-footer__kolom--akun {
-    grid-column: 6 / span 4;
-    grid-row: 1 / span 2;
+    grid-column: 4 / span 5;
+  }
+
+  .site-footer__kolom--kontak {
+    grid-column: 9 / -1;
+  }
+}
+
+/*
+ * Desktop lebar (1280px ke atas): merek 3, akun 6, kontak 3 kolom. Daftar akun dibagi
+ * dua kolom kecil supaya tingginya tidak jauh melebihi dua kolom lainnya.
+ */
+@media (min-width: 80em) {
+  .site-footer__kolom--akun {
+    grid-column: 4 / span 6;
   }
 
   .site-footer__kolom--kontak {
     grid-column: 10 / -1;
-    grid-row: 1 / span 2;
   }
 
-  /* Catatan di kiri, penanda tema di kanan bawah pada baris yang sama */
-  .site-footer__catatan {
-    grid-column: 1 / span 8;
+  /*
+   * Diisi per kolom (3 akun di kiri, 2 di kanan), jadi urutan baca tetap dari atas ke bawah
+   * sama dengan urutan di HTML. Kolom kanan selebar isinya supaya
+   * @mahreenindonesiainternship tidak terpotong jadi dua baris.
+   */
+  .akun__list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: var(--space-2);
+    row-gap: var(--space-1);
   }
 
-  .tagar--footer {
-    grid-column: 9 / -1;
-    align-self: end;
+  .akun__item + .akun__item {
+    margin-top: 0;
   }
 }

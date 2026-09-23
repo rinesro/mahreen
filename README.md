@@ -23,7 +23,7 @@ Tema "Berkarya untuk Indonesia" dipakai sebagai alur cerita yang dibagi ke empat
 | 3 | **Anak Muda** (`anak-muda.html`) | Ruang yang Mahreen sediakan untuk anak muda: program magang |
 | 4 | **Mulai** (`mulai.html`) | Pembaca memilih minatnya, lalu diarahkan ke posisi magang, unit, dan akun yang relevan |
 
-Halaman Karya dan Anak Muda ditutup blok "Lanjut" ke halaman berikutnya, berisi judul halaman tujuan dan satu kalimat isinya, dengan seluruh blok sebagai area klik. Halaman Mulai ditutup blok "Kembali ke Beranda". Blok ini memakai gradasi kampanye yang sama dengan hero Beranda. Beranda sendiri tidak punya blok Lanjut, karena bagian Jelajahi sudah menautkan ketiga halaman lain dengan urutan yang sama. Footer di semua halaman memuat lima akun Instagram resmi (karena informasi Mahreen tersebar di beberapa akun) dan kontak resmi.
+Halaman Karya dan Anak Muda ditutup blok "Lanjut" ke halaman berikutnya, berisi judul halaman tujuan dan satu kalimat isinya, dengan seluruh blok sebagai area klik. Halaman Mulai ditutup blok "Kembali ke Beranda". Blok ini memakai gradasi kampanye yang sama dengan hero Beranda. Beranda sendiri tidak punya blok Lanjut, karena bagian Jelajahi sudah menautkan ketiga halaman lain dengan urutan yang sama. Footer di semua halaman memuat lima akun Instagram resmi (karena informasi Mahreen tersebar di beberapa akun) dan kontak resmi. Di desktop, footer disusun dua lapis. Lapis atas berisi tiga kolom rata atas: logo dan tagline, lima akun (dibagi dua kolom kecil mulai 1280px), dan kontak. Kolom yang lebih pendek dibiarkan pendek. Lapis bawah dipisah garis tipis dan berisi catatan prototype di kiri serta penanda "# Berkarya untuk Indonesia" di kanan. Di HP semuanya bertumpuk satu kolom.
 
 Kaitan dengan tiga kata kunci tugas:
 
