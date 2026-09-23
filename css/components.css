@@ -333,10 +333,20 @@ main > .section:first-child {
  * Mata bergerak dari judul (kiri atas) ke motif (kanan atas),
  * turun menyilang lewat subjudul, lalu berhenti di tombol (kiri bawah).
  */
+/*
+ * Latar gradasi magenta ke crimson (token --gradasi-kampanye), semua teks putih.
+ * Tombol dan garis fokus disesuaikan supaya tetap kontras di atas gradasi.
+ */
 .hero {
   position: relative;
   overflow: hidden;
   padding-block: var(--space-4) var(--space-8);
+  background: var(--gradasi-kampanye);
+  color: var(--color-on-gradasi);
+}
+
+.hero :focus-visible {
+  outline-color: var(--color-on-gradasi);
 }
 
 .hero__inner {
@@ -351,6 +361,7 @@ main > .section:first-child {
 /* Judul dua baris: tema sebagai benang merah, lalu pertanyaan untuk pembaca */
 .hero__judul {
   max-width: 18ch;
+  color: var(--color-on-gradasi);
 }
 
 .hero__tema,
@@ -358,8 +369,17 @@ main > .section:first-child {
   display: block;
 }
 
+/*
+ * Kalimat kedua tetap putih (warna lain di bawah 4,5:1 di titik terang gradasi),
+ * dibedakan dengan garis bawah oranye tebal sebagai sorotan dekoratif.
+ */
 .hero__sorot {
-  color: var(--color-primary);
+  color: var(--color-on-gradasi);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 0.12em;
+  text-underline-offset: 0.18em;
+  text-decoration-skip-ink: none;
 }
 
 .hero__sub {
@@ -367,6 +387,28 @@ main > .section:first-child {
   max-width: var(--measure-narrow);
   font-size: var(--fs-1);
   line-height: var(--lh-body);
+  color: var(--color-on-gradasi);
+}
+
+/* Tombol di atas gradasi: utama putih dengan teks crimson (8,89:1), kedua bergaris putih (min. 4,98:1) */
+.hero .btn--primary {
+  background-color: var(--color-on-gradasi);
+  border-color: var(--color-on-gradasi);
+  color: var(--color-secondary);
+}
+
+.hero .btn--primary:hover {
+  background-color: var(--color-primary-soft);
+  border-color: var(--color-primary-soft);
+}
+
+.hero .btn--secondary {
+  border-color: var(--color-on-gradasi);
+  color: var(--color-on-gradasi);
+}
+
+.hero .btn--secondary:hover {
+  background-color: rgb(255 255 255 / 0.15);
 }
 
 .hero__aksi {
@@ -391,9 +433,11 @@ main > .section:first-child {
   overflow: visible; /* ujung kelopak tidak terpotong saat bunga diputar */
 }
 
+/* Kelopak semi transparan dengan gradasi oranye ke merah (lihat #gradasi-kelopak di index.html) */
 .hero__bunga--besar {
-  --motif-kelopak: var(--color-accent);
-  --motif-tengah: var(--color-primary);
+  --motif-kelopak: url(#gradasi-kelopak);
+  --motif-tengah: var(--color-accent-soft);
+  opacity: 0.85;
   inset: 0 0 auto auto;
   width: 75%;
   height: 75%;
@@ -401,8 +445,9 @@ main > .section:first-child {
 }
 
 .hero__bunga--kecil {
-  --motif-kelopak: var(--color-primary);
-  --motif-tengah: var(--color-accent);
+  --motif-kelopak: url(#gradasi-kelopak);
+  --motif-tengah: var(--color-on-gradasi);
+  opacity: 0.6;
   inset: auto auto 0 0;
   width: 45%;
   height: 45%;

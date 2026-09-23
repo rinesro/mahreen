@@ -37,6 +37,17 @@
   /* Penanda halaman aktif di navigasi (selain aria-current="page") */
   --color-current: var(--color-primary);
 
+  /* ---------- Gradasi kampanye (hero Beranda) ---------- */
+  /*
+   * Magenta ke crimson seperti template kampanye Mahreen. Teks di atasnya selalu putih:
+   * kontras 4,98:1 di titik paling terang (magenta) sampai 8,89:1 di titik paling gelap.
+   */
+  --gradasi-kampanye: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  --color-on-gradasi: #FFFFFF;
+  /* Ujung kelopak: oranye di pangkal ke merah di ujung (dekoratif, bukan untuk teks) */
+  --color-kelopak-pangkal: var(--color-accent);
+  --color-kelopak-ujung: #E0263C;
+
   /* ---------- Tipografi ---------- */
   --font-heading: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-body: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
