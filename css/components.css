@@ -1223,6 +1223,54 @@ main > .section:first-child {
   }
 }
 
+/* ---------- Penanda tema "# Berkarya untuk Indonesia" ---------- */
+/*
+ * Gaya seperti penanda di pojok kanan bawah postingan Mahreen: teks kecil tebal
+ * dalam bingkai pil tipis, dengan tanda pagar berwarna. Dipakai di hero dan footer.
+ */
+.tagar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  max-width: none;
+  padding: 0.25rem var(--space-2);
+  border: 1.5px solid currentColor;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-size: var(--fs--1);
+  font-weight: var(--fw-semibold);
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.tagar__pagar {
+  font-weight: var(--fw-bold);
+}
+
+/* Di hero: putih di atas bagian gradasi yang paling gelap (pojok kanan bawah) */
+.tagar--hero {
+  position: absolute;
+  /* Sejajar tepi kanan isi (container), bukan tepi layar, di layar yang sangat lebar */
+  right: max(var(--page-padding), calc((100% - var(--container-max)) / 2));
+  bottom: var(--space-3);
+  color: var(--color-on-gradasi);
+}
+
+.tagar--hero .tagar__pagar {
+  color: var(--color-accent-soft);
+}
+
+/* Di footer: pojok kanan bawah, setelah catatan */
+.tagar--footer {
+  grid-column: 1 / -1;
+  justify-self: end;
+  color: var(--color-on-dark);
+}
+
+.tagar--footer .tagar__pagar {
+  color: var(--color-focus-on-dark);
+}
+
 /* ---------- Tautan "Lanjut" di akhir setiap halaman ---------- */
 /* Continuity: menuntun pembaca ke halaman berikutnya dalam alur cerita */
 .lanjut {
@@ -1385,5 +1433,15 @@ main > .section:first-child {
 
   .site-footer__kolom--kontak {
     grid-column: 10 / -1;
+  }
+
+  /* Catatan di kiri, penanda tema di kanan bawah pada baris yang sama */
+  .site-footer__catatan {
+    grid-column: 1 / span 8;
+  }
+
+  .tagar--footer {
+    grid-column: 9 / -1;
+    align-self: end;
   }
 }
