@@ -1,7 +1,7 @@
 /*
  * Komponen halaman Sorotan Mahreen.
  * Urutan: sprite SVG dan ikon, tombol, label status, header, hero,
- * highlight kategori, timeline, story viewer.
+ * highlight kategori, timeline, akun resmi, footer, story viewer.
  */
 
 /* ---------- Sprite SVG (hanya wadah <symbol>, tidak tampil) ---------- */
@@ -612,6 +612,170 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ---------- Satu Mahreen, lima akun ---------- */
+.akun {
+  background-color: var(--color-surface);
+  border-top: var(--border-thin) solid var(--color-line);
+}
+
+.akun__isi {
+  grid-column: 1 / -1;
+}
+
+.akun__intro {
+  margin-top: var(--space-2);
+}
+
+/* Daftar bergaris pemisah, bukan kartu, supaya tidak seragam dengan bagian lain */
+.akun__list {
+  margin-top: var(--space-4);
+  border-top: var(--border-thin) solid var(--color-line);
+}
+
+.akun__item {
+  max-width: none; /* batas panjang baris dari base.css tidak berlaku untuk baris daftar */
+  padding-block: var(--space-2);
+  border-bottom: var(--border-thin) solid var(--color-line);
+}
+
+.akun__tautan {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--touch-target);
+  font-family: var(--font-heading);
+  font-size: var(--fs-0); /* di HP cukup kecil agar nama akun terpanjang muat satu baris */
+  font-weight: var(--fw-semibold);
+  color: var(--color-secondary);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.akun__tautan .ikon {
+  color: var(--color-primary);
+}
+
+.akun__tautan:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+.akun__fungsi {
+  color: var(--color-neutral);
+}
+
+@media (min-width: 64em) {
+  .akun__isi {
+    grid-column: 1 / span 8;
+  }
+
+  /*
+   * Desktop: nama akun di kiri, fungsinya di kanan.
+   * Subgrid membuat kolom kanan semua baris sejajar mengikuti nama akun terpanjang.
+   */
+  .akun__list {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    column-gap: var(--space-6);
+  }
+
+  .akun__item {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    align-items: center;
+  }
+
+  .akun__tautan {
+    font-size: var(--fs-1);
+  }
+}
+
+/* ---------- Footer (gaya gelap bertekstur) ---------- */
+.site-footer {
+  padding-block: var(--space-8) var(--space-6);
+  background-color: var(--color-dark);
+  /* Tekstur halus: pola titik kecil di atas warna gelap */
+  background-image: radial-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 8px 8px;
+  color: var(--color-on-dark);
+}
+
+.site-footer__inner {
+  row-gap: var(--space-5);
+}
+
+.site-footer__tagline {
+  grid-column: 1 / -1;
+  max-width: 16ch;
+  font-family: var(--font-heading);
+  font-size: var(--fs-3);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  color: var(--color-on-dark);
+}
+
+.site-footer__kolom {
+  grid-column: 1 / -1;
+}
+
+.site-footer__judul {
+  font-size: var(--fs-0);
+  font-weight: var(--fw-semibold);
+  color: var(--color-on-dark);
+}
+
+.site-footer__alamat {
+  margin-top: var(--space-1);
+  font-style: normal;
+  color: var(--color-on-dark-muted);
+}
+
+.site-footer__list {
+  margin-top: var(--space-1);
+  color: var(--color-on-dark-muted);
+}
+
+.site-footer__alamat .site-footer__list {
+  margin-top: 0;
+}
+
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  color: var(--color-on-dark);
+  overflow-wrap: anywhere;
+}
+
+.site-footer a:focus-visible {
+  outline-color: var(--color-focus-on-dark);
+}
+
+.site-footer__catatan {
+  grid-column: 1 / -1;
+  max-width: none;
+  padding-top: var(--space-3);
+  border-top: var(--border-thin) solid rgb(255 255 255 / 0.15);
+  font-size: var(--fs--1);
+  color: var(--color-on-dark-muted);
+}
+
+@media (min-width: 64em) {
+  .site-footer__tagline {
+    grid-column: 1 / span 5;
+    font-size: var(--fs-4);
+  }
+
+  .site-footer__kolom:nth-of-type(1) {
+    grid-column: 7 / span 3;
+  }
+
+  .site-footer__kolom:nth-of-type(2) {
+    grid-column: 10 / span 3;
   }
 }
 
