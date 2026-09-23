@@ -202,11 +202,11 @@ function renderKegiatanBersama(daftar) {
 
 /* ---------- Anak Muda: program magang ---------- */
 /* Daftar pendek sebagai label (misalnya posisi atau bidang mentoring). */
-function buatDaftarLabel(daftar, bahasaInggris) {
+function buatDaftarLabel(daftar, bahasaInggris, varian) {
   const ul = buatElemen("ul", "label-list");
   ul.setAttribute("role", "list");
   daftar.forEach(function (teks) {
-    const li = buatElemen("li", "label", teks);
+    const li = buatElemen("li", "label" + (varian ? " label--" + varian : ""), teks);
     if (bahasaInggris) li.lang = "en";
     ul.appendChild(li);
   });
@@ -275,18 +275,23 @@ function renderAnakMuda(data) {
   posisi.appendChild(buatElemen("h3", "anak-muda__subjudul", "Posisi di Batch 2"));
   data.posisi.forEach(function (grup) {
     const g = buatElemen("div", "posisi__grup");
-    const nama = buatElemen("h4", "posisi__nama", grup.grup);
-    nama.lang = "en";
-    g.appendChild(nama);
-    // Grup tanpa rincian (daftar kosong) cukup ditampilkan namanya
-    if (grup.daftar.length) g.appendChild(buatDaftarLabel(grup.daftar, true));
+    if (grup.daftar.length) {
+      const nama = buatElemen("h4", "posisi__nama", grup.grup);
+      nama.lang = "en";
+      g.appendChild(nama);
+      g.appendChild(buatDaftarLabel(grup.daftar, true));
+    } else {
+      // Grup tanpa rincian posisi (misalnya Business Development & Partnership) adalah posisinya sendiri
+      g.appendChild(buatDaftarLabel([grup.grup], true));
+    }
     posisi.appendChild(g);
   });
   kanan.appendChild(posisi);
 
   const mentor = buatElemen("div", "anak-muda__blok");
   mentor.appendChild(buatElemen("h3", "anak-muda__subjudul", "Bidang mentoring Batch 2"));
-  mentor.appendChild(buatDaftarLabel(data.mentorBatch2, true));
+  // Bergaris tepi saja, supaya tidak tertukar dengan chip posisi yang berisi warna
+  mentor.appendChild(buatDaftarLabel(data.mentorBatch2, true, "garis"));
   kanan.appendChild(mentor);
 
   tataLetak.appendChild(kanan);

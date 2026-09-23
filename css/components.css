@@ -958,6 +958,11 @@ main > .section:first-child {
   margin-top: var(--space-2);
 }
 
+/* Proximity: jarak antargrup (24px) jelas lebih lebar dari jarak antarchip (8px) */
+.posisi__grup + .posisi__grup {
+  margin-top: var(--space-3);
+}
+
 .posisi__nama {
   font-size: var(--fs-0);
   font-weight: var(--fw-semibold);
@@ -972,14 +977,21 @@ main > .section:first-child {
   margin-top: var(--space-1);
 }
 
+/* Chip posisi: berisi warna pink muda */
 .label {
   padding: 0.25rem var(--space-2);
-  background-color: var(--color-bg);
-  border: var(--border-thin) solid var(--color-line);
+  background-color: var(--color-primary-soft);
+  border: var(--border-thin) solid var(--color-primary-soft);
   border-radius: var(--radius-pill);
   font-size: var(--fs--1);
   font-weight: var(--fw-semibold);
   color: var(--color-secondary);
+}
+
+/* Chip bidang mentoring: bergaris tepi saja, latar transparan, supaya berbeda dari chip posisi */
+.label--garis {
+  background-color: transparent;
+  border-color: var(--color-primary);
 }
 
 /*
