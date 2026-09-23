@@ -151,6 +151,20 @@
   }
 }
 
+/*
+ * Di halaman Karya, Anak Muda, dan Mulai, bagian pertama langsung berisi judul halaman.
+ * Jarak atasnya dibuat lebih kecil dari bagian biasa supaya judul tidak terlalu jauh dari header.
+ */
+main > .section:first-child {
+  padding-top: var(--space-5);
+}
+
+@media (min-width: 64em) {
+  main > .section:first-child {
+    padding-top: var(--space-8);
+  }
+}
+
 /* Pengantar di bawah judul: satu pesan utama, sedikit lebih besar dari teks baca */
 .section__pengantar {
   margin-top: var(--space-2);

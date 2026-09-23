@@ -118,7 +118,7 @@ function renderUnit(daftarUnit) {
 
     // Proximity: nama, bidang, penjelasan, dan akun dikelompokkan rapat
     const info = buatElemen("div", "unit__info");
-    info.appendChild(buatElemen("h3", "unit__nama", unit.nama));
+    info.appendChild(buatElemen("h2", "unit__nama", unit.nama));
     const bidang = buatElemen("p", "unit__bidang", unit.bidang);
     bidang.lang = "en";
     info.appendChild(bidang);
@@ -148,14 +148,14 @@ function renderKegiatanBersama(daftar) {
   const wadah = document.getElementById("karya-bersama");
   if (!wadah || !daftar.length) return;
 
-  wadah.appendChild(buatElemen("h3", "bersama__judul", "Juga dari Mahreen Indonesia"));
+  wadah.appendChild(buatElemen("h2", "bersama__judul", "Juga dari Mahreen Indonesia"));
 
   const list = buatElemen("ul", "bersama__list");
   list.setAttribute("role", "list");
   daftar.forEach(function (k) {
     const li = buatElemen("li", "bersama__item");
     li.appendChild(buatElemen("p", "bersama__tanggal", k.tanggal));
-    li.appendChild(buatElemen("h4", "bersama__nama", k.judul));
+    li.appendChild(buatElemen("h3", "bersama__nama", k.judul));
     li.appendChild(buatElemen("p", "bersama__keterangan", k.keterangan));
     li.appendChild(buatSumber(k.sumber));
     list.appendChild(li);
