@@ -1272,33 +1272,101 @@ main > .section:first-child {
 }
 
 /* ---------- Tautan "Lanjut" di akhir setiap halaman ---------- */
-/* Continuity: menuntun pembaca ke halaman berikutnya dalam alur cerita */
+/*
+ * Continuity: menuntun pembaca ke halaman berikutnya dalam alur cerita.
+ * Seluruh blok adalah satu tautan (area klik luas), berisi judul halaman tujuan
+ * dan satu kalimat isinya. Latarnya gradasi kampanye yang sama dengan hero,
+ * supaya blok ini terasa sebagai bagian dari alur, bukan kartu biasa.
+ */
 .lanjut {
   padding-block: var(--space-6);
-  background-color: var(--color-surface);
-  border-top: var(--border-thin) solid var(--color-line);
 }
 
-.lanjut__tautan {
-  display: inline-flex;
-  align-items: center;
-  min-height: var(--touch-target);
+.lanjut__blok {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  row-gap: var(--space-1);
+  padding: var(--space-4) var(--space-3);
+  /* ruang kanan untuk motif bunga supaya tidak menutupi teks */
+  padding-right: var(--space-10);
+  border-radius: var(--radius-lg);
+  background: var(--gradasi-kampanye);
+  color: var(--color-on-gradasi);
+  text-decoration: none;
+}
+
+.lanjut__label {
+  font-size: var(--fs--1);
+  font-weight: var(--fw-semibold);
+  color: var(--color-accent-soft); /* 7,26:1 di crimson, jauh di atas 4,5:1 juga di magenta */
+}
+
+.lanjut__judul {
+  max-width: 20ch;
   font-family: var(--font-heading);
-  font-size: var(--fs-1);
+  font-size: var(--fs-2);
   font-weight: var(--fw-bold);
-  line-height: var(--lh-snug);
-  color: var(--color-secondary);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.25em;
+  line-height: var(--lh-tight);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.18em;
+  text-decoration-skip-ink: none;
+  text-wrap: balance;
 }
 
-.lanjut__tautan:hover {
-  color: var(--color-primary);
+.lanjut__teks {
+  max-width: var(--measure-narrow);
+  color: var(--color-on-gradasi);
+}
+
+/* Bunga empat kelopak di pojok kanan, sebagian keluar dari blok */
+.lanjut__motif {
+  --motif-kelopak: var(--color-accent);
+  --motif-tengah: var(--color-accent-soft);
+  position: absolute;
+  right: calc(var(--space-4) * -1);
+  bottom: calc(var(--space-4) * -1);
+  width: 7rem;
+  height: 7rem;
+  overflow: visible;
+  opacity: 0.85;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+/* Respons terhadap aksi pengguna: bunga berputar sedikit saat blok disorot atau difokus */
+.lanjut__blok:hover .lanjut__motif,
+.lanjut__blok:focus-visible .lanjut__motif {
+  transform: rotate(45deg);
+}
+
+.lanjut__blok:hover .lanjut__judul {
+  text-decoration-color: var(--color-on-gradasi);
+}
+
+.lanjut__blok:focus-visible {
+  outline-color: var(--color-secondary);
+  border-radius: var(--radius-lg);
 }
 
 @media (min-width: 48em) {
-  .lanjut__tautan {
-    font-size: var(--fs-2);
+  .lanjut__blok {
+    padding: var(--space-5) var(--space-6);
+    padding-right: calc(var(--space-12) + var(--space-6));
+  }
+
+  .lanjut__judul {
+    font-size: var(--fs-3);
+  }
+
+  .lanjut__motif {
+    right: var(--space-4);
+    top: 50%;
+    bottom: auto;
+    width: 8rem;
+    height: 8rem;
+    margin-top: -4rem;
   }
 }
 
