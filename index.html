@@ -16,11 +16,12 @@
 
   <!--
     Script klasik (bukan module) dengan defer, dijalankan berurutan:
-    data.js (KEGIATAN), main.js (label dan fungsi bersama), lalu timeline.js.
+    data.js (KEGIATAN), main.js (label dan fungsi bersama), lalu timeline.js dan story.js.
   -->
   <script src="js/data.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/timeline.js" defer></script>
+  <script src="js/story.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#konten">Langsung ke konten</a>
@@ -59,6 +60,15 @@
       <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
       <circle cx="12" cy="12" r="4" />
       <path d="M17.2 6.8h.01" />
+    </symbol>
+    <symbol id="ikon-tutup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 6l12 12M18 6L6 18" />
+    </symbol>
+    <symbol id="ikon-kiri" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 5l-7 7 7 7" />
+    </symbol>
+    <symbol id="ikon-kanan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 5l7 7-7 7" />
     </symbol>
   </svg>
 
@@ -105,7 +115,12 @@
     </section>
 
     <section class="highlight" id="program" aria-labelledby="program-judul">
-      <!-- Tahap 5: highlight kategori -->
+      <div class="container">
+        <h2 id="program-judul" class="highlight__judul">Sorotan per kategori</h2>
+        <p class="highlight__intro">Pilih kategori untuk membaca ringkasannya satu per satu, seperti story.</p>
+        <!-- Diisi oleh js/story.js: satu lingkaran per kategori, lengkap dengan jumlah item -->
+        <ul class="highlight__list" id="highlight-list" role="list"></ul>
+      </div>
     </section>
 
     <section class="section timeline" id="timeline" aria-labelledby="timeline-judul">
@@ -147,6 +162,39 @@
     <!-- Tahap 6: footer gelap -->
   </footer>
 
-  <!-- Tahap 5: story viewer (dialog) -->
+  <!--
+    Story viewer. <dialog> dengan showModal() membuat bagian halaman lain tidak bisa difokus
+    selama story terbuka, dan tombol Esc menutupnya secara bawaan.
+  -->
+  <dialog class="story" id="story" aria-labelledby="story-kategori">
+    <div class="story__panel" id="story-panel">
+      <div class="story__progress" id="story-progress" aria-hidden="true"></div>
+
+      <div class="story__kepala">
+        <span class="story__ikon" id="story-ikon" aria-hidden="true"></span>
+        <div class="story__info">
+          <p class="story__kategori" id="story-kategori"></p>
+          <p class="story__posisi" id="story-posisi"></p>
+        </div>
+        <button class="story__tutup" type="button" id="story-tutup" aria-label="Tutup story">
+          <svg class="ikon" aria-hidden="true" focusable="false"><use href="#ikon-tutup" /></svg>
+        </button>
+      </div>
+
+      <!-- Isi slide diumumkan ke screen reader setiap berganti -->
+      <div class="story__slide" id="story-slide" aria-live="polite"></div>
+
+      <div class="story__nav">
+        <button class="btn btn--secondary btn--ikon story__nav-tombol" type="button" id="story-sebelumnya">
+          <svg class="ikon ikon--kecil" aria-hidden="true" focusable="false"><use href="#ikon-kiri" /></svg>
+          Sebelumnya
+        </button>
+        <button class="btn btn--primary btn--ikon story__nav-tombol story__nav-tombol--lanjut" type="button" id="story-berikutnya">
+          Berikutnya
+          <svg class="ikon ikon--kecil" aria-hidden="true" focusable="false"><use href="#ikon-kanan" /></svg>
+        </button>
+      </div>
+    </div>
+  </dialog>
 </body>
 </html>

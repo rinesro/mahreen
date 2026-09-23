@@ -1,6 +1,6 @@
 /*
  * Label dan fungsi bersama.
- * Dipakai oleh js/timeline.js (dan nanti story viewer), jadi file ini
+ * Dipakai oleh js/timeline.js dan js/story.js, jadi file ini
  * harus dimuat sebelum keduanya. KEGIATAN tersedia dari js/data.js.
  */
 
@@ -19,6 +19,25 @@ const KATEGORI_LABEL = {
 };
 
 const SVG_NS = "http://www.w3.org/2000/svg";
+
+/*
+ * Urutan dari terbaru, dipakai timeline dan story viewer:
+ * 1. Item tanpa tanggal (unit yang masih aktif dan yang diumumkan akan hadir) di paling atas,
+ *    diurutkan menurut status: sedang berjalan, lalu segera hadir.
+ * 2. Item bertanggal, dari tanggal paling baru ke paling lama.
+ * Mengembalikan array baru, array aslinya tidak diubah.
+ */
+function urutkanKegiatan(daftar) {
+  const urutanStatus = Object.keys(STATUS_LABEL);
+  return daftar.slice().sort(function (a, b) {
+    if (!a.tanggal && !b.tanggal) {
+      return urutanStatus.indexOf(a.status) - urutanStatus.indexOf(b.status);
+    }
+    if (!a.tanggal) return -1;
+    if (!b.tanggal) return 1;
+    return b.tanggal.localeCompare(a.tanggal);
+  });
+}
 
 /* Membuat elemen HTML. Teks selalu lewat textContent, bukan innerHTML, supaya aman. */
 function buatElemen(tag, className, teks) {
@@ -54,6 +73,42 @@ function buatTautanLuar(url, teks, className) {
   a.appendChild(document.createTextNode(teks));
   a.appendChild(buatElemen("span", "visually-hidden", " (buka di tab baru)"));
   return a;
+}
+
+/*
+ * Baris meta: label status, lalu tanggal dan keterangan online dalam satu teks
+ * supaya patah barisnya wajar. Label tanggal yang sama persis dengan label status
+ * (misalnya "Segera hadir") tidak diulang.
+ */
+function buatMeta(item, className) {
+  const meta = buatElemen("p", className);
+  meta.appendChild(buatLabelStatus(item.status));
+
+  const keterangan = buatElemen("span");
+  if (item.tanggalLabel && item.tanggalLabel !== STATUS_LABEL[item.status]) {
+    const waktu = buatElemen(item.tanggal ? "time" : "span", null, item.tanggalLabel);
+    if (item.tanggal) waktu.dateTime = item.tanggal;
+    keterangan.appendChild(waktu);
+  }
+  if (item.online) {
+    keterangan.appendChild(document.createTextNode(keterangan.childNodes.length ? " \u00B7 Online" : "Online"));
+  }
+  if (keterangan.childNodes.length) meta.appendChild(keterangan);
+
+  meta.appendChild(buatElemen("span", "visually-hidden", "Kategori: " + KATEGORI_LABEL[item.kategori]));
+  return meta;
+}
+
+/*
+ * Tautan ke unggahan asli, lalu tombol ikuti kalau datanya ada.
+ * Dibungkus satu div supaya tata letaknya sama di timeline dan story.
+ */
+function buatAksi(item, className) {
+  const aksi = buatElemen("div", className);
+  aksi.appendChild(buatTautanSumber(item));
+  const ikuti = buatTombolIkuti(item);
+  if (ikuti) aksi.appendChild(ikuti);
+  return aksi;
 }
 
 /* Keterangan sumber kecil, misalnya "Sumber: @tanyamahreen, 26 Mei 2026". */

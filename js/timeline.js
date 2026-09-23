@@ -12,23 +12,7 @@
   const chips = Array.from(document.querySelectorAll(".filter__chip"));
   if (!list || !section) return;
 
-  const URUTAN_STATUS = Object.keys(STATUS_LABEL);
-
-  /*
-   * Urutan dari terbaru:
-   * 1. Item tanpa tanggal (unit yang masih aktif dan yang diumumkan akan hadir) di paling atas,
-   *    diurutkan menurut status: sedang berjalan, lalu segera hadir.
-   * 2. Item bertanggal, dari tanggal paling baru ke paling lama.
-   * Array asli KEGIATAN tidak diubah.
-   */
-  const terurut = KEGIATAN.slice().sort(function (a, b) {
-    if (!a.tanggal && !b.tanggal) {
-      return URUTAN_STATUS.indexOf(a.status) - URUTAN_STATUS.indexOf(b.status);
-    }
-    if (!a.tanggal) return -1;
-    if (!b.tanggal) return 1;
-    return b.tanggal.localeCompare(a.tanggal);
-  });
+  const terurut = urutkanKegiatan(KEGIATAN);
 
   function buatItem(item) {
     const li = buatElemen("li", "timeline__item timeline__item--" + item.status);
@@ -41,24 +25,7 @@
     const isi = buatElemen("article", "timeline__konten");
 
     // Tingkat 1: meta (status dan tanggal), kecil
-    const meta = buatElemen("p", "timeline__meta");
-    meta.appendChild(buatLabelStatus(item.status));
-
-    // Tanggal dan keterangan online digabung satu teks supaya patah barisnya wajar.
-    // Label tanggal yang sama persis dengan label status (misalnya "Segera hadir") tidak diulang.
-    const keterangan = buatElemen("span", "timeline__tanggal");
-    if (item.tanggalLabel && item.tanggalLabel !== STATUS_LABEL[item.status]) {
-      const waktu = buatElemen(item.tanggal ? "time" : "span", null, item.tanggalLabel);
-      if (item.tanggal) waktu.dateTime = item.tanggal;
-      keterangan.appendChild(waktu);
-    }
-    if (item.online) {
-      keterangan.appendChild(document.createTextNode(keterangan.childNodes.length ? " \u00B7 Online" : "Online"));
-    }
-    if (keterangan.childNodes.length) meta.appendChild(keterangan);
-
-    meta.appendChild(buatElemen("span", "visually-hidden", "Kategori: " + KATEGORI_LABEL[item.kategori]));
-    isi.appendChild(meta);
+    isi.appendChild(buatMeta(item, "timeline__meta"));
 
     // Tingkat 2: judul, besar dan tebal
     isi.appendChild(buatElemen("h3", "timeline__judul-item", item.judul));
@@ -70,11 +37,7 @@
     isi.appendChild(buatKeteranganSumber(item, "timeline__sumber"));
 
     // Tautan ke unggahan asli, lalu tombol ikuti kalau datanya ada
-    const aksi = buatElemen("div", "timeline__aksi");
-    aksi.appendChild(buatTautanSumber(item));
-    const ikuti = buatTombolIkuti(item);
-    if (ikuti) aksi.appendChild(ikuti);
-    isi.appendChild(aksi);
+    isi.appendChild(buatAksi(item, "timeline__aksi"));
 
     li.appendChild(isi);
     return li;
