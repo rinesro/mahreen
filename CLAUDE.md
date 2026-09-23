@@ -23,13 +23,24 @@ Temuan dari observasi Instagram Mahreen (Mei sampai September 2026):
 
 ## Konsep
 
-Satu halaman pusat informasi bernama **Sorotan Mahreen** yang merangkum program, kegiatan, dan kolaborasi Mahreen, dengan pola yang sudah akrab bagi anak muda (highlight ala Instagram), dan label status yang jelas.
+Satu halaman kurasi bernama **Sorotan Mahreen** yang merangkum program, kegiatan, dan kolaborasi Mahreen **berdasarkan unggahan Instagram publik mereka**, dengan pola yang sudah akrab bagi anak muda (highlight ala Instagram), dan label status yang jelas.
 
 - **Dikenal:** highlight kategori dan timeline menunjukkan semua yang Mahreen lakukan.
 - **Dipahami:** setiap item dijelaskan singkat dengan bahasa santai.
-- **Diikuti:** setiap item punya label status. Tombol aksi hanya muncul untuk yang masih bisa diikuti. Item yang sudah lewat diberi ajakan untuk mengikuti akun terkait supaya tidak ketinggalan kegiatan berikutnya.
+- **Diikuti:** setiap item punya label status dan tautan ke unggahan aslinya. Untuk program yang masih berjalan, ada ajakan mengikuti akun terkait supaya tidak ketinggalan kesempatan berikutnya.
 
 Cakupan data: **sorotan Mei sampai September 2026**. Halaman harus jujur menyebut ini dan mengarahkan ke Instagram untuk kegiatan lainnya.
+
+## Sudut pandang (paling penting)
+
+Website ini adalah **rangkuman dari pihak luar** (peserta challenge), bukan website resmi dan bukan suara Mahreen.
+
+- Jangan menulis dengan kata "kami" seolah-olah Mahreen yang berbicara.
+- Jangan memakai bahasa promosi atau jualan ("naik level", "solusi terbaik", "wujudkan impianmu", dan sejenisnya).
+- Jangan menebak siapa yang cocok, apa manfaatnya bagi pembaca, atau apa yang akan terjadi ke depan.
+- Setiap klaim harus bersumber dari unggahan. Tulis dengan pola netral seperti "Menurut unggahan @akun, ..." atau "Diumumkan lewat @akun pada tanggal ...".
+- Setiap item wajib menampilkan sumbernya (akun dan tanggal unggahan) beserta tautan "Lihat unggahan aslinya".
+- Kalau informasinya tidak ada di unggahan, tulis apa adanya ("Detailnya belum dijelaskan di unggahan yang dirangkum"), jangan diisi dengan asumsi.
 
 ## Tech stack
 
@@ -64,20 +75,19 @@ Kalau `main.js` terlalu panjang, boleh dipecah per bagian (misalnya `timeline.js
 
 1. **Header:** wordmark "Mahreen Indonesia" (nanti diganti logo resmi dari template Canva), navigasi: Program, Timeline, Akun Resmi.
 2. **Hero** (pola baca Z):
-   - Judul: "Semua yang Mahreen lakukan untuk anak muda, dalam satu halaman."
-   - Subjudul: "Program, kegiatan, dan kolaborasi Mahreen Indonesia tersebar di lima akun Instagram. Di sini semuanya dirangkum, lengkap dengan mana yang masih bisa kamu ikuti."
-   - Keterangan kecil: "Sorotan Mei sampai September 2026"
-   - Tombol utama: "Lihat yang bisa kamu ikuti" (scroll ke timeline dengan filter "Bisa diikuti" aktif)
+   - Judul: "Apa saja yang Mahreen Indonesia lakukan untuk anak muda?"
+   - Subjudul: "Rangkuman dari unggahan Instagram Mahreen Indonesia dan unit-unitnya, Mei sampai September 2026. Setiap poin disertai tautan ke unggahan aslinya."
+   - Tombol utama: "Lihat yang sedang berjalan" (scroll ke timeline dengan filter "Sedang berjalan" aktif)
    - Tombol kedua: "Jelajahi timeline"
    - Motif bunga empat kelopak dari template sebagai elemen dekoratif.
 3. **Highlight kategori:** empat lingkaran ala highlight Instagram: Program, Kegiatan, Kolaborasi, Segera Hadir. Klik membuka **story viewer** berisi item kategori tersebut.
 4. **Timeline** (pola baca F):
-   - Filter chip: Semua, Bisa diikuti, Sedang berjalan, Sudah berlangsung, Segera hadir.
+   - Filter chip: Semua, Sedang berjalan, Sudah berlangsung, Segera hadir.
    - Garis vertikal timeline di kiri, item urut dari terbaru.
-   - Setiap item: label status dan tanggal (kecil), judul (besar, tebal), ringkasan (ukuran baca normal), lalu tombol aksi atau ajakan follow.
+   - Setiap item: label status dan tanggal (kecil), judul (besar, tebal), ringkasan (ukuran baca normal), keterangan sumber, tautan "Lihat unggahan aslinya", dan ajakan follow jika programnya masih berjalan.
    - Penutup timeline: "Masih banyak kegiatan sebelumnya. Lihat selengkapnya di @mahreenindonesia."
 5. **Satu Mahreen, lima akun:** daftar akun Instagram resmi beserta fungsi masing-masing (lihat data di bawah).
-6. **Footer** (gaya gelap, jembatan ke identitas korporat Mahreen): tagline "Satu ide. Satu karya. Satu dampak.", alamat, kontak, tautan sosial media, dan baris kredit: "Prototype oleh Sandhika Hamzah untuk Creative Challenge Mahreen Indonesia Internship Batch 2."
+6. **Footer** (gaya gelap, jembatan ke identitas korporat Mahreen): tagline "Satu ide. Satu karya. Satu dampak.", kontak resmi dari kop surat Mahreen, tautan sosial media, dan catatan: "Halaman ini adalah prototype tidak resmi yang dibuat oleh Sandhika Hamzah untuk Creative Challenge Mahreen Indonesia Internship Batch 2, berdasarkan unggahan publik Mahreen Indonesia. Untuk informasi terbaru, cek akun resmi."
 
 ## Story viewer
 
@@ -86,7 +96,7 @@ Kalau `main.js` terlalu panjang, boleh dipecah per bagian (misalnya `timeline.js
 - Navigasi: ketuk kanan atau kiri, swipe di HP, tombol panah keyboard, Esc untuk menutup, tombol tutup yang jelas.
 - Tidak auto-play, supaya pengguna membaca dengan tempo sendiri.
 - Aksesibel: `role="dialog"`, `aria-modal`, fokus terkunci di dalam dialog, fokus kembali ke highlight saat ditutup.
-- Setiap slide menampilkan: label status, judul, ringkasan, poin detail, dan tombol aksi jika ada.
+- Setiap slide menampilkan: label status, judul, ringkasan, poin detail, sumber, dan tautan ke unggahan aslinya.
 
 ## Arahan desain (prinsip desain grafis dan DKV)
 
@@ -94,7 +104,7 @@ Kalau `main.js` terlalu panjang, boleh dipecah per bagian (misalnya `timeline.js
 
 | Token | Perkiraan | Peran |
 |---|---|---|
-| `--color-primary` | `#D1227A` | Tombol, label "Bisa diikuti", aksen |
+| `--color-primary` | `#D1227A` | Tombol, label "Sedang berjalan", aksen |
 | `--color-secondary` | `#930D3C` | Judul dan teks penting |
 | `--color-accent` | `#F2653A` | Label "Segera hadir", motif dekoratif |
 | `--color-bg` | `#FFF5F9` | Latar utama |
@@ -102,7 +112,7 @@ Kalau `main.js` terlalu panjang, boleh dipecah per bagian (misalnya `timeline.js
 | `--color-neutral` | `#6B6470` | Label "Sudah berlangsung", teks sekunder |
 | `--color-dark` | `#1C1A1D` | Footer |
 
-**Warna status bermakna.** Makin bisa ditindaklanjuti, makin kuat warnanya: Bisa diikuti (magenta penuh), Sedang berjalan (magenta garis tepi), Segera hadir (oranye), Sudah berlangsung (abu-abu garis tepi). Selalu sertakan teks label, jangan hanya warna.
+**Warna status bermakna.** Sedang berjalan (magenta penuh), Segera hadir (oranye), Sudah berlangsung (abu-abu garis tepi). Selalu sertakan teks label, jangan hanya warna.
 
 **Hierarki.** Tiga tingkat per item: meta (status dan tanggal), judul, ringkasan. Orang harus bisa memindai judul saja dan sudah paham.
 
@@ -122,13 +132,19 @@ Kalau `main.js` terlalu panjang, boleh dipecah per bagian (misalnya `timeline.js
 
 - Jangan pernah memakai em dash atau en dash di teks mana pun. Pakai koma, titik, atau kata "sampai".
 - Bahasa Indonesia santai tapi sopan, kalimat pendek, sapaan "kamu".
-- Jangan mengarang fakta, link pendaftaran, harga, atau jadwal. Hanya pakai data di file ini.
+- Jangan mengarang fakta, link pendaftaran, harga, jadwal, manfaat, atau target pengguna. Hanya pakai data di file ini, dengan sudut pandang pihak luar.
 - Jangan menampilkan foto atau nama pribadi orang (mentor, penerima penghargaan, struktur organisasi).
 - Hindari tampilan generik: jangan pakai label huruf kapital semua di atas setiap judul, jangan tambahkan panah "→" di setiap tombol, jangan jadikan semua konten kartu identik dengan bayangan yang sama.
 
 ## Data kegiatan
 
-Salin data ini ke `js/data.js` dalam bentuk `const KEGIATAN = [ ... ];` (isi array sama persis dengan di bawah). Nilai `status`: `bisa-diikuti`, `sedang-berjalan`, `sudah-berlangsung`, `segera-hadir`. Nilai `kategori`: `program`, `kegiatan`, `kolaborasi`, `segera-hadir`.
+Salin data ini ke `js/data.js` dalam bentuk `const KEGIATAN = [ ... ];` (isi array sama persis dengan di bawah).
+
+Nilai `status`: `sedang-berjalan`, `sudah-berlangsung`, `segera-hadir`. Nilai `kategori`: `program`, `kegiatan`, `kolaborasi`, `segera-hadir`.
+
+- `sumber` wajib ditampilkan di setiap item sebagai keterangan kecil dan tautan "Lihat unggahan aslinya".
+- `ikuti` bersifat opsional. Jika `null`, jangan tampilkan tombol ajakan.
+- `online: true` ditampilkan sebagai label kecil "Online".
 
 ```json
 [
@@ -137,56 +153,79 @@ Salin data ini ke `js/data.js` dalam bentuk `const KEGIATAN = [ ... ];` (isi arr
     "kategori": "program",
     "judul": "Tanya Mahreen",
     "tanggal": null,
-    "tanggalLabel": "Layanan aktif",
-    "status": "bisa-diikuti",
-    "ringkasan": "Partner kreatif dan digital untuk UMKM, brand, dan bisnis yang ingin naik level.",
+    "tanggalLabel": "Unit aktif",
+    "status": "sedang-berjalan",
+    "ringkasan": "Menurut unggahan @tanyamahreen, unit ini adalah layanan kreatif dan digital untuk UMKM, brand, dan bisnis.",
     "detail": [
-      "Layanan utama: website, branding, social media management, dan creative design.",
-      "Cocok kalau kamu punya usaha, atau ingin membantu usaha keluarga dan teman agar makin dikenal."
+      "Layanan yang disebutkan: website, branding, social media management, dan creative design."
     ],
-    "aksi": { "label": "Kenalan dengan Tanya Mahreen", "url": "https://www.instagram.com/tanyamahreen/" }
+    "sumber": {
+      "label": "@tanyamahreen, 26 Mei 2026",
+      "url": "https://www.instagram.com/tanyamahreen/"
+    },
+    "ikuti": {
+      "label": "Ikuti @tanyamahreen",
+      "url": "https://www.instagram.com/tanyamahreen/"
+    }
   },
   {
     "id": "peduli-mahreen",
     "kategori": "program",
     "judul": "Peduli Mahreen",
     "tanggal": null,
-    "tanggalLabel": "Program aktif",
+    "tanggalLabel": "Unit aktif",
     "status": "sedang-berjalan",
-    "ringkasan": "Gerakan sosial dan kemanusiaan dari Mahreen Indonesia.",
+    "ringkasan": "Unit gerakan sosial dan kemanusiaan Mahreen Indonesia. Unggahan \"Our Purpose\" mereka menyebut empat tujuan.",
     "detail": [
-      "Kepedulian: menumbuhkan rasa peduli dan empati untuk lingkungan yang lebih baik.",
+      "Kepedulian: menumbuhkan rasa peduli dan empati.",
       "Edukasi: memberi edukasi dan inspirasi untuk generasi yang berpengetahuan dan berkarakter.",
       "Bantuan sosial: menyalurkan bantuan secara tepat dan berkelanjutan.",
-      "Pemberdayaan: membantu masyarakat berkembang, mandiri, dan bermanfaat bagi sekitarnya."
+      "Pemberdayaan: mendorong masyarakat berkembang, mandiri, dan bermanfaat bagi sekitarnya.",
+      "Cara bergabung sebagai relawan belum dijelaskan di unggahan yang dirangkum."
     ],
-    "aksi": { "label": "Ikuti @pedulimahreen", "url": "https://www.instagram.com/pedulimahreen/" }
+    "sumber": {
+      "label": "@pedulimahreen, unggahan Our Purpose",
+      "url": "https://www.instagram.com/pedulimahreen/"
+    },
+    "ikuti": {
+      "label": "Ikuti @pedulimahreen",
+      "url": "https://www.instagram.com/pedulimahreen/"
+    }
   },
   {
     "id": "mahreen-studio",
     "kategori": "program",
     "judul": "Mahreen Studio",
     "tanggal": null,
-    "tanggalLabel": "Program aktif",
+    "tanggalLabel": "Unit aktif",
     "status": "sedang-berjalan",
-    "ringkasan": "Unit Mahreen di bidang creative lifestyle dan fashion.",
+    "ringkasan": "Disebut dalam unggahan Our Ecosystem sebagai unit creative lifestyle dan fashion.",
     "detail": [
-      "Informasi lengkapnya belum banyak dibagikan. Pantau kabarnya di akun utama Mahreen."
+      "Detailnya belum dijelaskan di unggahan yang dirangkum."
     ],
-    "aksi": { "label": "Ikuti @mahreenindonesia", "url": "https://www.instagram.com/mahreenindonesia/" }
+    "sumber": {
+      "label": "@mahreenindonesia, 19 Mei 2026",
+      "url": "https://www.instagram.com/mahreenindonesia/"
+    },
+    "ikuti": null
   },
   {
     "id": "mahreen-csr",
     "kategori": "program",
     "judul": "Mahreen CSR",
     "tanggal": null,
-    "tanggalLabel": "Program aktif",
+    "tanggalLabel": "Unit aktif",
     "status": "sedang-berjalan",
-    "ringkasan": "Unit yang mengurus kemitraan dan tanggung jawab sosial Mahreen.",
-    "detail": [
-      "Semua pengumuman kolaborasi resmi Mahreen dibagikan lewat akun ini."
-    ],
-    "aksi": { "label": "Ikuti @mahreencsr", "url": "https://www.instagram.com/mahreencsr/" }
+    "ringkasan": "Disebut dalam unggahan Our Ecosystem sebagai unit Corporate Social Responsibility. Pengumuman kemitraan resmi Mahreen dibagikan lewat akun ini.",
+    "detail": [],
+    "sumber": {
+      "label": "@mahreenindonesia, 19 Mei 2026",
+      "url": "https://www.instagram.com/mahreenindonesia/"
+    },
+    "ikuti": {
+      "label": "Ikuti @mahreencsr",
+      "url": "https://www.instagram.com/mahreencsr/"
+    }
   },
   {
     "id": "mahreen-internship",
@@ -196,13 +235,20 @@ Salin data ini ke `js/data.js` dalam bentuk `const KEGIATAN = [ ... ];` (isi arr
     "tanggalLabel": "Batch 2: 1 Oktober 2026 sampai 31 Januari 2027",
     "status": "sedang-berjalan",
     "online": true,
-    "ringkasan": "Program magang remote (WFH atau WFA), jadi bisa diikuti dari mana saja di Indonesia.",
+    "ringkasan": "Program magang Mahreen Indonesia. Menurut pengumuman Batch 2, sistem kerjanya remote (WFH atau WFA).",
     "detail": [
-      "Benefit: learning dan mentoring, pengalaman proyek nyata, portofolio profesional, peluang fee berbasis proyek, sertifikat dan jam belajar, serta jaringan ekosistem.",
+      "Benefit yang disebutkan: learning dan mentoring, pengalaman proyek nyata, portofolio profesional, peluang fee berbasis proyek, sertifikat dan jam belajar, serta jaringan ekosistem.",
       "Posisi Batch 2: Graphic Design, Video Editor, Social Media Management, UI/UX, Frontend Development, Backend Development, serta Business Development dan Partnership.",
       "Pendaftaran Batch 2 sudah ditutup."
     ],
-    "aksi": { "label": "Pantau batch berikutnya", "url": "https://www.instagram.com/mahreenindonesiainternship/" }
+    "sumber": {
+      "label": "Story MI Batch 2, 14 September 2026",
+      "url": "https://www.instagram.com/mahreenindonesiainternship/"
+    },
+    "ikuti": {
+      "label": "Pantau batch berikutnya",
+      "url": "https://www.instagram.com/mahreenindonesiainternship/"
+    }
   },
   {
     "id": "peduli-mahreen-kenalan",
@@ -211,11 +257,47 @@ Salin data ini ke `js/data.js` dalam bentuk `const KEGIATAN = [ ... ];` (isi arr
     "tanggal": "2026-06-29",
     "tanggalLabel": "29 Juni 2026",
     "status": "sudah-berlangsung",
-    "ringkasan": "Peduli Mahreen membagikan cerita awal perjalanan, visi misi, dan aksi sosial yang sedang diperjuangkan.",
+    "ringkasan": "@pedulimahreen membagikan cerita awal perjalanan, visi misi, dan aksi sosial yang sedang dijalankan.",
     "detail": [
-      "Mereka juga mengajak followers menyampaikan isu sosial yang menurut mereka paling mendesak."
+      "Unggahan berikutnya (30 Juni) mengajak followers menuliskan isu sosial yang menurut mereka paling mendesak."
     ],
-    "aksi": { "label": "Ikuti @pedulimahreen", "url": "https://www.instagram.com/pedulimahreen/" }
+    "sumber": {
+      "label": "@pedulimahreen, 29 Juni 2026",
+      "url": "https://www.instagram.com/pedulimahreen/"
+    },
+    "ikuti": null
+  },
+  {
+    "id": "kolab-utb",
+    "kategori": "kolaborasi",
+    "judul": "Kerja sama dengan Universitas Teknologi Bandung",
+    "tanggal": "2026-07-07",
+    "tanggalLabel": "7 Juli 2026",
+    "status": "sudah-berlangsung",
+    "ringkasan": "Diumumkan sebagai kolaborasi di bidang pendidikan dan pengembangan sumber daya manusia.",
+    "detail": [],
+    "sumber": {
+      "label": "@mahreencsr, 7 Juli 2026",
+      "url": "https://www.instagram.com/mahreencsr/"
+    },
+    "ikuti": null
+  },
+  {
+    "id": "kolab-ntmy",
+    "kategori": "kolaborasi",
+    "judul": "Kemitraan dengan Nice To Meet You (NTMY)",
+    "tanggal": "2026-07-12",
+    "tanggalLabel": "12 Juli 2026",
+    "status": "sudah-berlangsung",
+    "ringkasan": "Diumumkan sebagai kemitraan resmi yang berkaitan dengan identitas merek dan Mahreen Indonesia Internship Program.",
+    "detail": [
+      "Unggahan menyebut pengembangan identitas merek, perencanaan logo, penguatan visual branding, dan pengembangan talenta kreatif."
+    ],
+    "sumber": {
+      "label": "@mahreencsr, 12 Juli 2026",
+      "url": "https://www.instagram.com/mahreencsr/"
+    },
+    "ikuti": null
   },
   {
     "id": "seminar-ai-umkm",
@@ -224,11 +306,30 @@ Salin data ini ke `js/data.js` dalam bentuk `const KEGIATAN = [ ... ];` (isi arr
     "tanggal": "2026-07-18",
     "tanggalLabel": "18 Juli 2026",
     "status": "sudah-berlangsung",
-    "ringkasan": "Seminar gratis tentang cara AI membantu UMKM meningkatkan produktivitas dan pertumbuhan bisnis.",
+    "ringkasan": "Seminar gratis bertema pemanfaatan AI untuk UMKM.",
     "detail": [
-      "Benefit peserta: e-certificate, belajar dari pembicara profesional, dan strategi memakai AI untuk UMKM."
+      "Benefit yang disebutkan di poster: e-certificate dan materi dari pembicara profesional."
     ],
-    "aksi": { "label": "Ikuti @mahreenindonesia untuk seminar berikutnya", "url": "https://www.instagram.com/mahreenindonesia/" }
+    "sumber": {
+      "label": "@mahreenindonesia, 14 Juli 2026",
+      "url": "https://www.instagram.com/mahreenindonesia/"
+    },
+    "ikuti": null
+  },
+  {
+    "id": "kolab-yayasan-fas",
+    "kategori": "kolaborasi",
+    "judul": "Kolaborasi dengan Yayasan Fauzan Adzima Sukajadi",
+    "tanggal": "2026-07-24",
+    "tanggalLabel": "24 Juli 2026",
+    "status": "sudah-berlangsung",
+    "ringkasan": "Diumumkan sebagai kemitraan untuk mendukung gerakan kebaikan di bidang pendidikan dan sosial.",
+    "detail": [],
+    "sumber": {
+      "label": "@mahreencsr, 24 Juli 2026",
+      "url": "https://www.instagram.com/mahreencsr/"
+    },
+    "ikuti": null
   },
   {
     "id": "seminar-nasional-level-up",
@@ -238,12 +339,30 @@ Salin data ini ke `js/data.js` dalam bentuk `const KEGIATAN = [ ... ];` (isi arr
     "tanggalLabel": "8 Agustus 2026",
     "status": "sudah-berlangsung",
     "online": true,
-    "ringkasan": "Seminar online via Zoom tentang strategi digital marketing dan solusi keuangan digital untuk UMKM.",
+    "ringkasan": "Seminar online via Zoom bertema strategi digital marketing untuk UMKM.",
     "detail": [
-      "Dua sesi: Digital Marketing Strategy dan Digital Financial Solutions.",
-      "Benefit peserta: e-certificate nasional, AI prompt kit untuk bisnis, digital marketing checklist, content calendar 30 hari, dan Canva template pack."
+      "Dua sesi menurut poster: Digital Marketing Strategy dan Digital Financial Solutions."
     ],
-    "aksi": { "label": "Ikuti @mahreenindonesia untuk seminar berikutnya", "url": "https://www.instagram.com/mahreenindonesia/" }
+    "sumber": {
+      "label": "@mahreenindonesia, 1 Agustus 2026",
+      "url": "https://www.instagram.com/mahreenindonesia/"
+    },
+    "ikuti": null
+  },
+  {
+    "id": "kolab-bem-utb",
+    "kategori": "kolaborasi",
+    "judul": "Official Partner BEM Universitas Teknologi Bandung",
+    "tanggal": "2026-08-20",
+    "tanggalLabel": "20 Agustus 2026",
+    "status": "sudah-berlangsung",
+    "ringkasan": "Diumumkan sebagai awal dari program dan ruang belajar bersama mahasiswa.",
+    "detail": [],
+    "sumber": {
+      "label": "@mahreencsr, 20 Agustus 2026",
+      "url": "https://www.instagram.com/mahreencsr/"
+    },
+    "ikuti": null
   },
   {
     "id": "best-internship-awards-1",
@@ -256,7 +375,11 @@ Salin data ini ke `js/data.js` dalam bentuk `const KEGIATAN = [ ... ];` (isi arr
     "detail": [
       "Kategori: Best Intern of the Batch, Most Outstanding Intern, Most Consistent Intern, Most Engaged Intern, Most Creative Designer, Creative Editing Award, Best Content Strategist, Web Innovator Award, Best Team Player, dan Most Improved Intern."
     ],
-    "aksi": { "label": "Lihat di @mahreenindonesiainternship", "url": "https://www.instagram.com/mahreenindonesiainternship/" }
+    "sumber": {
+      "label": "@mahreenindonesiainternship, 30 Agustus 2026",
+      "url": "https://www.instagram.com/mahreenindonesiainternship/"
+    },
+    "ikuti": null
   },
   {
     "id": "mentor-batch-2",
@@ -265,11 +388,15 @@ Salin data ini ke `js/data.js` dalam bentuk `const KEGIATAN = [ ... ];` (isi arr
     "tanggal": "2026-09-12",
     "tanggalLabel": "12 September 2026",
     "status": "sudah-berlangsung",
-    "ringkasan": "Tiga mentor diperkenalkan untuk mendampingi peserta Batch 2.",
+    "ringkasan": "Tiga mentor diperkenalkan untuk Batch 2.",
     "detail": [
       "Bidang mentoring: Website Development, Social Media Management, dan Graphic Design."
     ],
-    "aksi": null
+    "sumber": {
+      "label": "@mahreenindonesia, 12 September 2026",
+      "url": "https://www.instagram.com/mahreenindonesia/"
+    },
+    "ikuti": null
   },
   {
     "id": "open-recruitment-batch-2",
@@ -279,93 +406,46 @@ Salin data ini ke `js/data.js` dalam bentuk `const KEGIATAN = [ ... ];` (isi arr
     "tanggalLabel": "14 September 2026",
     "status": "sudah-berlangsung",
     "online": true,
-    "ringkasan": "Pembukaan pendaftaran magang Batch 2 dengan sistem kerja remote.",
+    "ringkasan": "Pengumuman pembukaan pendaftaran magang Batch 2 dengan sistem kerja remote.",
     "detail": [
-      "Pendaftaran sudah ditutup. Batch berikutnya akan diumumkan lewat Instagram."
+      "Pendaftaran sudah ditutup."
     ],
-    "aksi": { "label": "Pantau batch berikutnya", "url": "https://www.instagram.com/mahreenindonesiainternship/" }
-  },
-  {
-    "id": "kolab-utb",
-    "kategori": "kolaborasi",
-    "judul": "Kerja sama dengan Universitas Teknologi Bandung",
-    "tanggal": "2026-07-07",
-    "tanggalLabel": "7 Juli 2026",
-    "status": "sudah-berlangsung",
-    "ringkasan": "Kolaborasi untuk mendukung dunia pendidikan dan pengembangan sumber daya manusia di Indonesia.",
-    "detail": [],
-    "aksi": null
-  },
-  {
-    "id": "kolab-ntmy",
-    "kategori": "kolaborasi",
-    "judul": "Kemitraan dengan Nice To Meet You (NTMY)",
-    "tanggal": "2026-07-12",
-    "tanggalLabel": "12 Juli 2026",
-    "status": "sudah-berlangsung",
-    "ringkasan": "Kemitraan untuk memperkuat identitas merek dan membuka ruang bagi talenta muda lewat Mahreen Indonesia Internship.",
-    "detail": [
-      "Fokus kerja sama: pengembangan identitas merek, perencanaan logo, penguatan visual branding, dan pengembangan talenta kreatif."
-    ],
-    "aksi": null
-  },
-  {
-    "id": "kolab-yayasan-fas",
-    "kategori": "kolaborasi",
-    "judul": "Kolaborasi dengan Yayasan Fauzan Adzima Sukajadi",
-    "tanggal": "2026-07-24",
-    "tanggalLabel": "24 Juli 2026",
-    "status": "sudah-berlangsung",
-    "ringkasan": "Kemitraan untuk mendukung gerakan kebaikan yang nyata dan berkelanjutan di bidang pendidikan dan sosial.",
-    "detail": [],
-    "aksi": null
-  },
-  {
-    "id": "kolab-bem-utb",
-    "kategori": "kolaborasi",
-    "judul": "Official Partner BEM Universitas Teknologi Bandung",
-    "tanggal": "2026-08-20",
-    "tanggalLabel": "20 Agustus 2026",
-    "status": "sudah-berlangsung",
-    "ringkasan": "Awal dari berbagai program, ruang belajar, dan kesempatan bertumbuh bersama mahasiswa.",
-    "detail": [],
-    "aksi": null
-  },
-  {
-    "id": "ajak-kolaborasi",
-    "kategori": "kolaborasi",
-    "judul": "Ajak Mahreen berkolaborasi",
-    "tanggal": null,
-    "tanggalLabel": "Terbuka",
-    "status": "bisa-diikuti",
-    "ringkasan": "Punya organisasi, komunitas, atau BEM kampus? Kamu bisa menghubungi Mahreen untuk menjajaki kerja sama.",
-    "detail": [
-      "Hubungi lewat email info@mahreenindonesia.com atau WhatsApp resmi Mahreen."
-    ],
-    "aksi": { "label": "Hubungi lewat WhatsApp", "url": "https://wa.me/6289652647385" }
+    "sumber": {
+      "label": "Story MI Batch 2, 14 September 2026",
+      "url": "https://www.instagram.com/mahreenindonesiainternship/"
+    },
+    "ikuti": null
   },
   {
     "id": "segera-hadir",
     "kategori": "segera-hadir",
-    "judul": "Yang sedang disiapkan Mahreen",
+    "judul": "Yang diumumkan akan hadir",
     "tanggal": null,
     "tanggalLabel": "Segera hadir",
     "status": "segera-hadir",
-    "ringkasan": "Mahreen mengumumkan beberapa hal baru yang sedang disiapkan.",
+    "ringkasan": "Dalam unggahan What's Next, Mahreen menyebut beberapa hal yang sedang disiapkan.",
     "detail": [
       "Signature Collection",
       "Creative Collaboration",
       "Digital Services",
       "Social Programs",
       "Community Development",
-      "Future Expansion"
+      "Future Expansion",
+      "Waktu dan detailnya belum diumumkan."
     ],
-    "aksi": { "label": "Ikuti @mahreenindonesia", "url": "https://www.instagram.com/mahreenindonesia/" }
+    "sumber": {
+      "label": "@mahreenindonesia, unggahan What's Next",
+      "url": "https://www.instagram.com/mahreenindonesia/"
+    },
+    "ikuti": {
+      "label": "Ikuti @mahreenindonesia",
+      "url": "https://www.instagram.com/mahreenindonesia/"
+    }
   }
 ]
 ```
 
-Catatan: semua URL Instagram dibuat dari nama akun yang terlihat di postingan. Saya akan mengecek setiap link secara manual sebelum deploy.
+Catatan: `sumber.url` saat ini masih mengarah ke halaman akun. Saya akan menggantinya dengan link unggahan asli masing-masing (salin dari tombol Bagikan di Instagram) sebelum deploy.
 
 ## Data akun resmi
 
@@ -389,7 +469,7 @@ Kontak resmi (dari kop surat Mahreen):
 1. `chore`: struktur folder, `index.html` kerangka dasar, `.gitignore`, dan `js/data.js` berisi data kegiatan.
 2. `feat`: design tokens dan base styles (warna, tipografi, spacing, fokus, reduced motion).
 3. `feat`: header dan hero.
-4. `feat`: timeline dengan render dari `KEGIATAN` dan filter status (termasuk filter dari tombol hero dan sinkron ke URL hash, misalnya `#timeline?status=bisa-diikuti`).
+4. `feat`: timeline dengan render dari `KEGIATAN` dan filter status (termasuk filter dari tombol hero dan sinkron ke URL hash, misalnya `#timeline?status=sedang-berjalan`).
 5. `feat`: highlight kategori dan story viewer.
 6. `feat`: section akun resmi dan footer.
 7. `fix`: pengecekan responsif (360px, 768px, 1280px), aksesibilitas keyboard, dan kontras.
@@ -398,7 +478,8 @@ Kontak resmi (dari kop surat Mahreen):
 
 ## Definisi selesai
 
-- Semua item dari `js/data.js` tampil dengan label status yang benar.
+- Semua item dari `js/data.js` tampil dengan label status, sumber, dan tautan unggahan aslinya.
+- Tidak ada kalimat bernada promosi atau yang ditulis seolah-olah suara resmi Mahreen.
 - Filter dan story viewer berfungsi dengan mouse, sentuhan, dan keyboard.
 - Tidak ada em dash atau en dash di seluruh teks.
 - Tampilan rapi di HP dan desktop.

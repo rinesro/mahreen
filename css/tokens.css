@@ -7,7 +7,7 @@
 
 :root {
   /* ---------- Warna merek (perkiraan, akan diganti dari template Canva) ---------- */
-  --color-primary: #D1227A;    /* tombol, label "Bisa diikuti", aksen */
+  --color-primary: #D1227A;    /* tombol, label "Sedang berjalan", aksen */
   --color-secondary: #930D3C;  /* judul dan teks penting */
   --color-accent: #F2653A;     /* label "Segera hadir", motif dekoratif */
   --color-bg: #FFF5F9;         /* latar utama */
@@ -28,14 +28,10 @@
   --color-focus: var(--color-primary);
   --color-focus-on-dark: #FF8FC4;
 
-  /* ---------- Warna status (makin bisa ditindaklanjuti, makin kuat) ---------- */
-  /* Bisa diikuti: magenta penuh */
-  --status-bisa-bg: var(--color-primary);
-  --status-bisa-text: var(--color-on-primary);
-  --status-bisa-border: var(--color-primary);
-  /* Sedang berjalan: magenta garis tepi */
-  --status-berjalan-bg: transparent;
-  --status-berjalan-text: var(--color-primary);
+  /* ---------- Warna status ---------- */
+  /* Sedang berjalan: magenta penuh */
+  --status-berjalan-bg: var(--color-primary);
+  --status-berjalan-text: var(--color-on-primary);
   --status-berjalan-border: var(--color-primary);
   /* Segera hadir: oranye */
   --status-segera-bg: var(--color-accent);

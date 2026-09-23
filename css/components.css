@@ -123,7 +123,7 @@
 
 /* ---------- Hero (pola baca Z) ---------- */
 /*
- * HP: motif kecil di kanan atas, lalu judul, subjudul, tombol, keterangan.
+ * HP: motif kecil di kanan atas, lalu judul, subjudul, dan tombol.
  * Desktop: teks di kolom 1 sampai 7 (kiri), motif di kolom 8 sampai 12 (kanan atas).
  * Mata bergerak dari judul (kiri atas) ke motif (kanan atas),
  * turun menyilang lewat subjudul, lalu berhenti di tombol (kiri bawah).
@@ -163,13 +163,6 @@
   flex-wrap: wrap;
   gap: var(--space-2);
   margin-top: var(--space-4);
-}
-
-.hero__cakupan {
-  margin-top: var(--space-3);
-  font-size: var(--fs--1);
-  font-weight: var(--fw-medium);
-  color: var(--color-neutral);
 }
 
 /* Motif dekoratif: dua bunga yang saling tumpang tindih */
