@@ -115,7 +115,17 @@
   --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
 
   /* ---------- Lapisan ---------- */
-  --z-atas: 100;              /* skip link */
+  /* Hanya tiga lapisan. Konten dan footer sengaja tidak diberi z-index. */
+  --z-header: 100;            /* header sticky */
+  --z-menu: 110;              /* menu dropdown di HP, di atas header */
+  --z-atas: 1000;             /* skip link saat mendapat fokus, di atas segalanya */
+
+  /*
+   * Tinggi header untuk scroll-padding-top. Nilai ini cadangan; main.js menggantinya
+   * dengan tinggi header sebenarnya (ResizeObserver), karena tingginya berubah
+   * saat navigasi turun ke baris kedua di tablet kecil.
+   */
+  --tinggi-header: 4.0625rem; /* 65px */
 }
 
 /* Grid 12 kolom mulai lebar tablet besar dan desktop */

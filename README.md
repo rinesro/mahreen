@@ -82,6 +82,10 @@ Kaitan dengan tiga kata kunci tugas:
 - Halaman aktif ditandai `aria-current="page"` (ditulis langsung di HTML setiap halaman) dan gaya yang berbeda dari hover. Tautan biasa yang aktif berwarna magenta dengan garis bawah tebal berjarak, sedangkan hover hanya berwarna crimson dengan garis tipis. Tombol "Cari yang Cocok" berlatar magenta, berubah crimson saat hover, dan saat aktif menjadi latar pink muda bergaris tepi magenta. Gaya aktif tidak berubah saat di-hover.
 - Di layar di bawah 480px, navigasi dilipat di balik tombol "Menu" (disclosure dengan `aria-expanded`). Tombol Esc menutup menu dan mengembalikan fokus ke tombolnya.
 - Tanpa JavaScript, tombol Menu tidak muncul dan navigasi tampil lengkap.
+- Header sticky di semua halaman, dengan latar solid dan bayangan tipis setelah halaman di-scroll lebih dari 8px. `<header>` harus tetap anak langsung `<body>`, karena elemen sticky hanya menempel selama induknya masih terlihat.
+- Di bawah 768px, header bergeser ke atas saat scroll ke bawah dan muncul lagi saat scroll ke atas (memakai `transform`). Header tidak disembunyikan saat menu HP terbuka, saat posisi di dekat paling atas halaman, atau saat ada elemen di header yang sedang fokus. Dengan `prefers-reduced-motion`, header tetap bergeser tanpa animasi.
+- Lapisan (z-index) hanya tiga: header 100, menu dropdown HP 110, dan skip link 1000. Konten dan footer tidak diberi z-index.
+- `scroll-padding-top` di `<html>` mengikuti tinggi header (diukur `main.js` lewat ResizeObserver), jadi tujuan skip link dan elemen yang difokus keyboard tidak tertutup header.
 
 **Aksesibilitas.**
 - HTML semantik, skip link yang hanya muncul saat mendapat fokus, dan garis fokus yang terlihat saat navigasi keyboard.

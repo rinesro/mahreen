@@ -486,6 +486,77 @@ function pasangMenu() {
   });
 }
 
+/* ---------- Header sticky ---------- */
+/*
+ * 1. Bayangan tipis setelah halaman di-scroll lebih dari 8px.
+ * 2. Di bawah 768px: header sembunyi saat scroll ke bawah dan muncul saat scroll ke atas.
+ *    Tidak disembunyikan kalau menu HP terbuka, posisi di paling atas halaman,
+ *    atau ada elemen di dalam header yang sedang fokus.
+ * 3. Tinggi header sebenarnya disimpan di --tinggi-header untuk scroll-padding-top.
+ */
+function pasangHeader() {
+  const header = document.querySelector(".site-header");
+  if (!header) return;
+
+  const layarKecil = window.matchMedia("(max-width: 47.99em)");
+  const tombolMenu = header.querySelector(".menu-tombol");
+  const AMBANG_BAYANGAN = 8;
+  const AMBANG_GERAK = 4; // abaikan gerak scroll sangat kecil supaya header tidak berkedip
+  let posisiTerakhir = window.scrollY;
+  let menunggu = false;
+
+  function bolehSembunyi(y) {
+    if (!layarKecil.matches) return false;
+    if (y <= header.offsetHeight) return false; // dekat paling atas halaman
+    if (tombolMenu && tombolMenu.getAttribute("aria-expanded") === "true") return false;
+    if (header.contains(document.activeElement)) return false;
+    return true;
+  }
+
+  function perbarui() {
+    menunggu = false;
+    const y = window.scrollY;
+    header.classList.toggle("site-header--bergulir", y > AMBANG_BAYANGAN);
+
+    const selisih = y - posisiTerakhir;
+    if (Math.abs(selisih) < AMBANG_GERAK) return;
+    if (selisih > 0 && bolehSembunyi(y)) {
+      header.classList.add("site-header--sembunyi");
+    } else if (selisih < 0 || !bolehSembunyi(y)) {
+      header.classList.remove("site-header--sembunyi");
+    }
+    posisiTerakhir = y;
+  }
+
+  window.addEventListener("scroll", function () {
+    if (!menunggu) {
+      menunggu = true;
+      window.requestAnimationFrame(perbarui);
+    }
+  }, { passive: true });
+
+  // Fokus keyboard masuk ke header (misalnya Shift+Tab): tampilkan lagi
+  header.addEventListener("focusin", function () {
+    header.classList.remove("site-header--sembunyi");
+  });
+
+  // Kembali ke layar lebar: header tidak pernah disembunyikan
+  layarKecil.addEventListener("change", function () {
+    header.classList.remove("site-header--sembunyi");
+  });
+
+  // Tinggi header berubah saat navigasi turun ke baris kedua (480 sampai 767px)
+  function simpanTinggi() {
+    document.documentElement.style.setProperty("--tinggi-header", header.offsetHeight + "px");
+  }
+  simpanTinggi();
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(simpanTinggi).observe(header);
+  }
+
+  perbarui();
+}
+
 /* ---------- Jalankan ---------- */
 /*
  * Setiap halaman hanya merender bagiannya sendiri, berdasarkan data-page pada <body>:
@@ -508,6 +579,7 @@ const RENDER_HALAMAN = {
 };
 
 pasangMenu();
+pasangHeader();
 
 if (typeof MAHREEN !== "undefined") {
   const halaman = document.body.dataset.page;

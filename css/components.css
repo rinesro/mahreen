@@ -190,8 +190,43 @@ main > .section:first-child {
 }
 
 /* ---------- Header ---------- */
+/*
+ * Sticky di semua halaman. Latar solid supaya konten di bawahnya tidak terlihat tembus.
+ * <header> harus anak langsung <body>: elemen sticky hanya menempel selama induknya
+ * masih terlihat, jadi di dalam pembungkus lain ia akan ikut tergulir pergi.
+ */
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background-color: var(--color-bg);
   border-bottom: var(--border-thin) solid var(--color-line);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+/* Bayangan tipis setelah halaman di-scroll lebih dari 8px (kelas dipasang main.js) */
+.site-header--bergulir {
+  box-shadow: 0 2px 8px rgb(43 11 29 / 0.08);
+}
+
+/*
+ * Di bawah 768px: header bergeser ke atas saat pembaca scroll ke bawah, dan kembali
+ * saat scroll ke atas. Memakai transform supaya tidak mengubah tata letak.
+ * Aturan kapan boleh sembunyi ada di main.js (pasangHeader).
+ */
+@media (max-width: 47.99em) {
+  .site-header--sembunyi {
+    transform: translateY(-100%);
+    box-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header {
+    transition: none;
+  }
 }
 
 .site-header__inner {
@@ -351,15 +386,31 @@ main > .section:first-child {
     display: none;
   }
 
+  /*
+   * Menu terbuka melayang tepat di bawah header (tidak mendorong konten),
+   * dengan latar solid dan lapisan di atas header.
+   */
+  .site-header__inner {
+    position: relative;
+  }
+
   .js .site-nav--terbuka {
     display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: var(--z-menu);
+    padding: 0 var(--page-padding) var(--space-2);
+    background-color: var(--color-bg);
+    border-bottom: var(--border-thin) solid var(--color-line);
+    box-shadow: 0 8px 16px rgb(43 11 29 / 0.08);
     animation: menu-buka var(--duration-base) var(--ease-out);
   }
 
   .js .site-nav__list {
     flex-direction: column;
-    margin: var(--space-1) 0 var(--space-1);
-    border-top: var(--border-thin) solid var(--color-line);
+    margin: 0;
   }
 
   .js .site-nav__link {

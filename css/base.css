@@ -18,6 +18,11 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /*
+   * Header sticky menutupi bagian atas layar. Dengan scroll-padding, tujuan skip link,
+   * tautan, dan elemen yang difokus keyboard berhenti tepat di bawah header.
+   */
+  scroll-padding-top: calc(var(--tinggi-header) + var(--space-1));
 }
 
 body {
