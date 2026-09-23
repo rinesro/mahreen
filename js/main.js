@@ -189,7 +189,7 @@ function renderAnakMuda(data) {
 
   // --- Kolom kiri ---
   const kiri = buatElemen("div", "anak-muda__kiri");
-  kiri.appendChild(buatElemen("h3", "anak-muda__program", "Mahreen Indonesia Internship"));
+  kiri.appendChild(buatElemen("h2", "anak-muda__program", "Mahreen Indonesia Internship"));
   kiri.appendChild(buatElemen("p", "anak-muda__ringkas", data.ringkas));
 
   const fakta = buatElemen("dl", "fakta");
@@ -241,7 +241,7 @@ function renderAnakMuda(data) {
 
   // --- Sorotan kategori penghargaan ---
   const sorotan = buatElemen("div", "penghargaan");
-  sorotan.appendChild(buatElemen("h3", "penghargaan__judul", data.penghargaanBatch1.length + " kategori penghargaan Batch 1"));
+  sorotan.appendChild(buatElemen("h2", "penghargaan__judul", data.penghargaanBatch1.length + " kategori penghargaan Batch 1"));
   sorotan.appendChild(buatElemen("p", "penghargaan__pengantar", "Gambaran hal yang dikerjakan dan dihargai dari peserta magang."));
   const daftar = buatElemen("ol", "penghargaan__list");
   daftar.setAttribute("role", "list");
