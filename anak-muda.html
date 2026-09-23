@@ -76,10 +76,18 @@
 
   <header class="site-header">
     <div class="container site-header__inner">
-      <!-- Wordmark sementara, nanti diganti logo resmi dari template Canva -->
+      <!--
+        Slot logo resmi. Wordmark tampil lebih dulu, lalu diganti logo begitu file
+        assets/logo/mahreen.png berhasil dimuat (onload). Kalau file belum ada, atau
+        JavaScript mati, wordmark tetap tampil dan tidak muncul ikon gambar rusak.
+      -->
       <a class="wordmark" href="index.html">
-        <span class="wordmark__utama">Mahreen</span>
-        <span class="wordmark__sub">Indonesia</span>
+        <img class="wordmark__logo" src="assets/logo/mahreen.png" alt="Mahreen Indonesia" height="40" hidden
+             onload="this.hidden = false; this.nextElementSibling.hidden = true;">
+        <span class="wordmark__teks">
+          <span class="wordmark__utama">Mahreen</span>
+          <span class="wordmark__sub">Indonesia</span>
+        </span>
       </a>
       <!--
         Tombol Menu hanya dipakai di layar di bawah 480px. Tombol ini disembunyikan (hidden)
