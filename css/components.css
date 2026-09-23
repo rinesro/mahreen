@@ -1,7 +1,7 @@
 /*
  * Komponen halaman Mahreen untuk Anak Muda.
  * Urutan: sprite SVG dan ikon, tombol, keterangan sumber, bagian halaman,
- * header, hero, akun resmi, footer.
+ * header, hero, Kenalan, Karya, akun resmi, footer.
  */
 
 /* ---------- Sprite SVG (hanya wadah <symbol>, tidak tampil) ---------- */
@@ -81,9 +81,15 @@
 .sumber {
   font-size: var(--fs--1);
   color: var(--color-neutral);
+  overflow-wrap: anywhere; /* label sumber bisa berisi nama akun panjang */
 }
 
+/*
+ * Tautan di teks kecil diberi padding atas dan bawah supaya area sentuhnya
+ * mendekati 48px. Pada elemen inline, padding ini tidak mengubah jarak antarbaris.
+ */
 .sumber a {
+  padding-block: 0.9375rem; /* 15px atas dan bawah, total area sentuh sekitar 45px */
   color: inherit;
 }
 
@@ -91,7 +97,45 @@
   color: var(--color-secondary);
 }
 
+/* ---------- Tautan akun Instagram (ikon + nama akun) ---------- */
+.tautan-akun {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--touch-target);
+  font-weight: var(--fw-semibold);
+  color: var(--color-secondary);
+  overflow-wrap: anywhere;
+}
+
+.tautan-akun .ikon {
+  color: var(--color-primary);
+}
+
+.tautan-akun:hover {
+  color: var(--color-primary);
+}
+
 /* ---------- Bagian halaman ---------- */
+/*
+ * Continuity: empat bagian cerita (Kenalan, Karya, Anak Muda, Mulai) diberi
+ * motif bunga kecil yang sama di depan judulnya, sebagai penanda alur.
+ */
+.section__judul {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.section__penanda {
+  --motif-kelopak: var(--color-accent);
+  --motif-tengah: var(--color-primary);
+  width: 1.25em;
+  height: 1.25em;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
 /* Pengantar di bawah judul bagian: satu pesan utama, sedikit lebih besar dari teks baca */
 .section__pengantar {
   margin-top: var(--space-2);
@@ -299,6 +343,249 @@
 
   .hero__motif {
     grid-column: 8 / -1;
+  }
+}
+
+/* ---------- Kenalan ---------- */
+.kenalan {
+  background-color: var(--color-surface);
+  border-top: var(--border-thin) solid var(--color-line);
+}
+
+.kenalan__isi {
+  margin-top: var(--space-5);
+}
+
+.kenalan__visi-misi {
+  display: grid;
+  gap: var(--space-5);
+}
+
+/* Label kecil di atas tiap kelompok: bukan huruf kapital semua */
+.kenalan__label {
+  font-size: var(--fs-0);
+  font-weight: var(--fw-semibold);
+  color: var(--color-neutral);
+}
+
+/* Visi sebagai kutipan: lebih besar dari teks biasa, dengan garis oranye di kiri */
+.kenalan__visi-teks {
+  margin-top: var(--space-1);
+  padding-left: var(--space-2);
+  border-left: 4px solid var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: var(--fs-1);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  color: var(--color-secondary);
+}
+
+.kenalan__misi-list {
+  margin-top: var(--space-1);
+  padding-left: var(--space-3);
+}
+
+.kenalan__misi-list li + li {
+  margin-top: var(--space-1);
+}
+
+.kenalan__misi-list li::marker {
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+}
+
+.kenalan__nilai {
+  margin-top: var(--space-6);
+}
+
+/* Tiga nilai ditampilkan besar, dengan padanan bahasa Indonesia kecil di bawahnya */
+.nilai {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.nilai__item {
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--space-2);
+  border-top: 4px solid var(--color-primary);
+}
+
+.nilai__en {
+  font-family: var(--font-heading);
+  font-size: var(--fs-3);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  color: var(--color-secondary);
+}
+
+.nilai__id {
+  margin-top: 0.25rem;
+  font-size: var(--fs--1);
+  font-weight: var(--fw-semibold);
+  color: var(--color-neutral);
+}
+
+.kenalan__sumber {
+  margin-top: var(--space-4);
+}
+
+@media (min-width: 48em) {
+  .nilai {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64em) {
+  .kenalan__visi-misi {
+    grid-template-columns: 5fr 7fr;
+    column-gap: var(--space-8);
+  }
+
+  .kenalan__visi-teks {
+    font-size: var(--fs-2);
+  }
+
+  .nilai__en {
+    font-size: var(--fs-4);
+  }
+}
+
+/* ---------- Karya: blok per unit ---------- */
+.unit-list {
+  margin-top: var(--space-5);
+}
+
+/* Blok unit dipisahkan garis, bukan kartu, supaya tidak seragam dan tidak ramai */
+.unit {
+  max-width: none;
+  padding-block: var(--space-4);
+  border-top: var(--border-thin) solid var(--color-line);
+}
+
+.unit:last-child {
+  border-bottom: var(--border-thin) solid var(--color-line);
+}
+
+.unit__nama {
+  font-size: var(--fs-2);
+  font-weight: var(--fw-bold);
+}
+
+.unit__bidang {
+  margin-top: 0.25rem;
+  font-size: var(--fs--1);
+  font-weight: var(--fw-semibold);
+  color: var(--color-neutral);
+}
+
+.unit__apa {
+  margin-top: var(--space-2);
+}
+
+.unit__akun {
+  margin-top: var(--space-1);
+}
+
+.unit--ringkas .unit__sumber {
+  margin-top: 0;
+}
+
+/* Kotak contoh nyata: latar oranye muda sebagai sorotan kecil (common region) */
+.unit__contoh {
+  margin-top: var(--space-2);
+  padding: var(--space-3);
+  background-color: var(--color-accent-soft);
+  border-radius: var(--radius-md);
+}
+
+.unit__contoh-label {
+  font-size: var(--fs--1);
+  font-weight: var(--fw-bold);
+  color: var(--color-accent-strong);
+}
+
+.unit__contoh-teks {
+  margin-top: var(--space-1);
+}
+
+.unit__contoh .unit__sumber {
+  margin-top: var(--space-2);
+}
+
+/*
+ * Desktop: unit dengan contoh dibagi dua kolom (keterangan 5 kolom, contoh 7 kolom),
+ * jadi contoh nyata mendapat ruang terbesar. Unit ringkas hanya selebar kolom keterangan.
+ */
+@media (min-width: 64em) {
+  .unit--dengan-contoh {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--grid-gutter);
+    align-items: start;
+  }
+
+  .unit--dengan-contoh .unit__info {
+    grid-column: 1 / span 5;
+  }
+
+  .unit--dengan-contoh .unit__contoh {
+    grid-column: 6 / -1;
+    margin-top: 0;
+  }
+
+  .unit--ringkas .unit__info {
+    max-width: 38rem;
+  }
+}
+
+/* ---------- Karya: "Juga dari Mahreen Indonesia" ---------- */
+.karya__bersama {
+  margin-top: var(--space-8);
+}
+
+.bersama__judul {
+  font-size: var(--fs-1);
+}
+
+.bersama__list {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+}
+
+.bersama__item {
+  max-width: none;
+  padding-left: var(--space-2);
+  border-left: 3px solid var(--color-primary);
+}
+
+.bersama__tanggal {
+  font-size: var(--fs--1);
+  font-weight: var(--fw-semibold);
+  color: var(--color-accent-strong);
+}
+
+.bersama__nama {
+  margin-top: 0.25rem;
+  font-size: var(--fs-0);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+}
+
+.bersama__keterangan {
+  margin-top: var(--space-1);
+}
+
+.bersama__item .sumber {
+  margin-top: var(--space-1);
+}
+
+@media (min-width: 48em) {
+  .bersama__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-6);
   }
 }
 
