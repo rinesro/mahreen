@@ -16,16 +16,27 @@ Konteks dari studi kasus: program dan peluang Mahreen belum selalu mudah dikenal
 
 Tema "Berkarya untuk Indonesia" dipakai sebagai alur cerita yang dibagi ke empat halaman:
 
-1. **Beranda** (`index.html`): siapa Mahreen (visi, misi, dan tiga nilai).
-2. **Karya** (`karya.html`): bagaimana Mahreen berkarya lewat unit-unitnya, dengan contoh nyata dari unggahan mereka.
-3. **Anak Muda** (`anak-muda.html`): ruang yang Mahreen sediakan untuk anak muda, yaitu program magang.
-4. **Mulai** (`mulai.html`): pembaca memilih minatnya, lalu diarahkan ke posisi magang, unit, dan akun Mahreen yang relevan.
+| Urutan | Halaman | Isi |
+|---|---|---|
+| 1 | **Beranda** (`index.html`) | Siapa Mahreen: visi, misi, tiga nilai, dan tautan untuk menjelajah |
+| 2 | **Karya** (`karya.html`) | Bagaimana Mahreen berkarya lewat unit-unitnya, dengan contoh nyata dari unggahan mereka |
+| 3 | **Anak Muda** (`anak-muda.html`) | Ruang yang Mahreen sediakan untuk anak muda: program magang |
+| 4 | **Mulai** (`mulai.html`) | Pembaca memilih minatnya, lalu diarahkan ke posisi magang, unit, dan akun yang relevan |
+
+Setiap halaman ditutup tautan "Lanjut" ke halaman berikutnya, dan halaman Mulai ditutup "Kembali ke Beranda". Footer di semua halaman memuat lima akun Instagram resmi (karena informasi Mahreen tersebar di beberapa akun) dan kontak resmi.
 
 Kaitan dengan tiga kata kunci tugas:
 
-- **Menarik:** alur bercerita dengan tema sebagai benang merah, visual mengikuti identitas kampanye Mahreen, dan satu bagian interaktif.
-- **Mudah dipahami:** satu bagian satu pesan, bahasa sederhana, dan istilah Inggris pada tiga nilai diberi padanan bahasa Indonesia.
-- **Relevan:** bagian Mulai menghubungkan minat pembaca (desain, konten, teknologi, bisnis, sosial) dengan bagian Mahreen yang berkaitan.
+- **Menarik:** alur bercerita dengan tema sebagai benang merah, visual mengikuti identitas kampanye Mahreen, dan satu halaman interaktif.
+- **Mudah dipahami:** satu halaman satu tujuan, bahasa sederhana, dan istilah Inggris pada tiga nilai diberi padanan bahasa Indonesia.
+- **Relevan:** halaman Mulai menghubungkan minat pembaca (desain, konten, teknologi, bisnis, sosial) dengan bagian Mahreen yang berkaitan.
+
+### Kenapa multi-halaman, bukan satu halaman panjang
+
+- **Satu halaman, satu tujuan.** Pembaca yang hanya ingin tahu soal magang bisa langsung ke Anak Muda tanpa melewati bagian lain. Setiap halaman punya satu judul utama (`h1`), dan isinya bisa dipahami hanya dengan membaca judul-judulnya.
+- **Alur cerita lebih terasa.** Tautan "Lanjut" di akhir setiap halaman membuat urutan Beranda, Karya, Anak Muda, lalu Mulai jadi langkah yang jelas, bukan sekadar gulir panjang.
+- **Bisa dibagikan per topik.** Setiap halaman punya alamat, `<title>`, deskripsi, dan pratinjau Open Graph sendiri. Pilihan di halaman Mulai bahkan tersimpan di alamatnya (misalnya `mulai.html?minat=teknologi`), jadi hasilnya bisa langsung dibagikan.
+- **Tetap sederhana.** Keempat halaman memakai CSS, `data.js`, dan `main.js` yang sama. Tidak perlu router atau build tool.
 
 ### Aturan isi
 
@@ -34,12 +45,13 @@ Kaitan dengan tiga kata kunci tugas:
 - Mahreen dibicarakan sebagai orang ketiga, dan pembaca disapa "kamu". Tidak memakai "kami" dan tidak memakai bahasa jualan.
 - Tidak ada foto atau nama pribadi orang.
 - Tidak ada em dash atau en dash di seluruh teks.
+- Tidak ada tautan anchor ke bagian di halaman yang sama, kecuali skip link untuk aksesibilitas.
 
 ## Keputusan desain
 
-**Pola baca.** Hero memakai pola Z: judul di kiri atas, motif bunga di kanan atas, subjudul menyilang ke bawah, lalu tombol di kiri bawah. Di tablet dan desktop pola ini terbentuk lewat grid; di HP semuanya bertumpuk.
+**Pola baca.** Hero di Beranda memakai pola Z: judul di kiri atas, motif bunga di kanan atas, subjudul menyilang ke bawah, lalu tombol di kiri bawah. Di tablet dan desktop pola ini terbentuk lewat grid; di HP semuanya bertumpuk.
 
-**Hierarki.** Setiap bagian punya satu judul yang jelas, satu pengantar (satu pesan utama), lalu detail. Judul-judul bagian saja sudah cukup untuk memahami isi halaman.
+**Hierarki.** Setiap halaman punya satu `h1`. Judul halaman Karya, Anak Muda, dan Mulai dibuat selevel judul bagian, tidak sebesar judul hero, karena halaman-halaman ini adalah lanjutan alur cerita. Level judul di dalam halaman tidak pernah meloncat (misalnya dari `h1` langsung ke `h3`), karena pembaca layar memakai urutan judul untuk bernavigasi.
 
 **Warna.** Gaya kampanye Mahreen (magenta, pink, kelopak oranye) untuk seluruh halaman, dan gaya gelap bertekstur hanya untuk footer. Semua nilai ada di `css/tokens.css`. Kontras teks selalu minimal 4,5:1, dan beberapa kombinasi sengaja dihindari:
 
@@ -54,29 +66,37 @@ Kaitan dengan tiga kata kunci tugas:
 
 **Gestalt.**
 - Proximity: nama, bidang, penjelasan, dan akun satu unit dikelompokkan rapat, dan antar unit diberi jarak lebar.
-- Similarity: semua unit punya struktur yang sama.
-- Continuity: motif bunga kecil di depan judul empat bagian cerita menandai alurnya.
-- Common region: kotak "Contoh nyata" berlatar oranye muda, dan bagian Mulai berada dalam satu panel putih.
+- Similarity: header, footer, tombol, dan keterangan sumber sama persis di keempat halaman.
+- Continuity: tautan "Lanjut" antarhalaman, nomor 01 sampai 03 di bagian Jelajahi, dan motif bunga kecil di depan judul halaman dan judul bagian.
+- Common region: kotak "Contoh nyata" berlatar oranye muda, dan area interaktif di halaman Mulai berada dalam satu panel putih.
 
 **Variasi yang bermakna.** Blok unit tidak dibuat kartu identik. Unit yang punya contoh nyata dibagi dua di desktop (keterangan di kiri, contoh di kanan) sehingga contohnya mendapat ruang terbesar. Unit tanpa contoh tampil ringkas. Sorotan 10 kategori penghargaan menjadi satu-satunya blok berlatar merah tua.
 
-**Grid dan ruang.** 4 kolom di HP dan 12 kolom mulai 1024px, jarak kelipatan 8px, dan area sentuh minimal 48px.
+**Grid dan ruang.** 4 kolom di HP dan 12 kolom mulai 1024px, jarak kelipatan 8px, dan area sentuh minimal 44px.
 
-**Motion.** Hanya untuk merespons aksi pengguna: hasil di bagian Mulai muncul dengan fade pendek. Semua gerak mati kalau pengguna memilih `prefers-reduced-motion`.
+**Motion.** Hanya untuk merespons aksi pengguna: membuka menu dan memilih minat. Semua gerak mati kalau pengguna memilih `prefers-reduced-motion`.
+
+**Navigasi.**
+- Halaman aktif ditandai warna magenta dan garis bawah tebal, ditambah `aria-current="page"` untuk pembaca layar. Penanda ini ditulis langsung di HTML setiap halaman.
+- Di layar di bawah 480px, navigasi dilipat di balik tombol "Menu" (disclosure dengan `aria-expanded`). Tombol Esc menutup menu dan mengembalikan fokus ke tombolnya.
+- Tanpa JavaScript, tombol Menu tidak muncul dan navigasi tampil lengkap.
 
 **Aksesibilitas.**
 - HTML semantik, skip link yang hanya muncul saat mendapat fokus, dan garis fokus yang terlihat saat navigasi keyboard.
-- Bagian Mulai memakai radio button bawaan HTML yang ditampilkan seperti tombol pilihan. Perilaku radio group (satu pilihan aktif, panah untuk berpindah, dibaca "1 dari 5" oleh pembaca layar) sudah disediakan browser tanpa ARIA buatan. Hasilnya diumumkan lewat `aria-live="polite"`.
+- Halaman Mulai memakai radio button bawaan HTML yang ditampilkan seperti tombol pilihan. Perilaku radio group (satu pilihan aktif, panah untuk berpindah, dibaca "1 dari 5" oleh pembaca layar) sudah disediakan browser tanpa ARIA buatan. Hasilnya diumumkan lewat `aria-live="polite"`.
 - Istilah bahasa Inggris ditandai `lang="en"` supaya dilafalkan dengan benar oleh pembaca layar.
-- Tautan kecil di keterangan sumber diberi padding supaya area sentuhnya tetap sekitar 45px.
+- Tautan kecil di keterangan sumber diberi padding supaya area sentuhnya sekitar 45px. Di bagian Jelajahi, seluruh blok bisa diklik, walaupun tautannya hanya di judul.
 
 ## Teknis
 
 - **HTML, CSS, dan JavaScript murni.** Tanpa framework, tanpa build tool, tanpa npm.
 - **Konten dipisah dari tampilan.** Semua konten ada di `js/data.js` sebagai `const MAHREEN = { ... };`, dan dirender oleh `js/main.js`.
-- **Tidak memakai `fetch()` atau `type="module"`.** Keduanya diblokir browser saat `index.html` dibuka langsung tanpa server. Sebagai gantinya, `data.js` dan `main.js` dimuat berurutan dengan `<script defer>` biasa.
+- **Satu `main.js` untuk empat halaman.** Setiap halaman memuat file yang sama. `main.js` membaca `data-page` pada `<body>` (`beranda`, `karya`, `anak-muda`, atau `mulai`) untuk menentukan bagian mana yang dirender.
+- **Tidak memakai `fetch()` atau `type="module"`.** Keduanya diblokir browser saat halaman dibuka langsung tanpa server. Sebagai gantinya, `data.js` dan `main.js` dimuat berurutan dengan `<script defer>` biasa.
+- **Tetap terbaca tanpa JavaScript.** Header, navigasi, footer, teks hero, dan judul setiap halaman ditulis langsung di HTML.
+- **Tanpa pergeseran tata letak.** Isi halaman dalam dirender sesaat setelah halaman tampil. Supaya tautan "Lanjut" dan footer tidak terdorong ke bawah di depan pembaca, keduanya disembunyikan (tetap memakan tempat) sampai `main.js` selesai. Kalau JavaScript gagal di tengah jalan, keduanya tetap muncul setelah 2 detik.
+- **Pilihan minat di URL.** Halaman Mulai memakai `history.replaceState`, jadi mengganti pilihan tidak menambah riwayat browser dan tombol Back tetap kembali ke halaman sebelumnya.
 - **Teks aman.** Semua teks dari data dimasukkan lewat `textContent`, bukan `innerHTML`.
-- **Tetap terbaca tanpa JavaScript.** Judul hero dan judul setiap bagian ditulis langsung di HTML, jadi tetap tampil kalau JavaScript gagal.
 - **Font Google tidak menahan tampilan.** Font dimuat tanpa memblokir render; sampai font siap, teks tampil dengan font sistem.
 
 ## Cara menjalankan
@@ -98,19 +118,20 @@ Semua konten ada di satu objek `MAHREEN`. Mengubah isi halaman cukup di file ini
 
 | Kunci | Tampil di | Isi |
 |---|---|---|
-| `profil` | Kenalan | `visi`, `misi` (daftar), `nilai` (`en` dan padanan `id`), `sumber` |
+| `profil` | Beranda, "Kenalan dulu sama Mahreen" | `visi`, `misi` (daftar), `nilai` (`en` dan padanan `id`), `sumber` |
 | `unit` | Karya | Satu objek per unit: `nama`, `bidang`, `apa`, `contoh`, `sumber`, `akun`, `akunUrl` |
 | `kegiatanBersama` | Karya, "Juga dari Mahreen Indonesia" | `judul`, `tanggal`, `keterangan`, `sumber` |
 | `internship` | Anak Muda, juga catatan di Mulai | `ringkas`, `periodeBatch2`, `statusPendaftaran`, `benefit`, `posisi` per `grup`, `mentorBatch2`, `penghargaanBatch1`, `sumber`, `ikuti` |
-| `minat` | Mulai | Satu objek per pilihan: `id`, `label`, `posisi`, `unit`, `akun` |
-| `akun` | Satu Mahreen, lima akun | `nama`, `fungsi`, `url` |
-| `kontak` | Footer | `website`, `email`, `whatsapp`, `whatsappUrl`, `alamat` |
+| `minat` | Mulai | Satu objek per pilihan: `id` (juga dipakai di URL), `label`, `posisi`, `unit`, `akun` |
+| `akun` | Footer semua halaman | `nama`, `fungsi`, `url` |
+| `kontak` | Footer semua halaman | `website`, `email`, `whatsapp`, `whatsappUrl`, `alamat` |
 
 Aturan kecil yang perlu diingat:
 
 - Setiap `sumber` berisi `label` (akun dan tanggal unggahan) dan `url` (tautan ke unggahannya).
 - `contoh: null` pada unit berarti belum ada contoh nyata. Unit itu tampil ringkas tanpa kotak contoh.
 - `posisi: []` pada minat berarti tidak ada posisi magang yang berkaitan. Blok posisinya tidak ditampilkan.
+- `id` pada minat muncul di alamat halaman (`mulai.html?minat=id`). Kalau `id` diganti, tautan lama yang sudah dibagikan tidak akan memilih apa pun, tapi halamannya tetap terbuka normal.
 - Jumlah pada judul "10 kategori penghargaan Batch 1" dihitung otomatis dari panjang `penghargaanBatch1`.
 
 Contoh menambah unit baru:
@@ -135,21 +156,23 @@ Contoh menambah unit baru:
 
 ```
 /
-├─ index.html          Beranda
-├─ karya.html          Karya
-├─ anak-muda.html      Anak Muda
-├─ mulai.html          Mulai
+├─ index.html          Beranda (data-page="beranda")
+├─ karya.html          Karya (data-page="karya")
+├─ anak-muda.html      Anak Muda (data-page="anak-muda")
+├─ mulai.html          Mulai (data-page="mulai")
 ├─ css/
 │  ├─ tokens.css       design tokens: warna, huruf, jarak, gerak
 │  ├─ base.css         reset, tipografi dasar, grid, fokus, reduced motion
 │  └─ components.css   semua komponen, urut sesuai alur halaman
 ├─ js/
 │  ├─ data.js          semua konten (objek MAHREEN)
-│  └─ main.js          fungsi render, dipilih lewat data-page pada <body>
+│  └─ main.js          fungsi render, menu, dan pemilihan per halaman lewat data-page
 └─ assets/
    ├─ favicon.svg      motif bunga empat kelopak
    └─ og-image.png     gambar pratinjau saat tautan dibagikan (1200 x 630)
 ```
+
+Header dan footer ditulis ulang di setiap file HTML (bukan disisipkan lewat JavaScript) supaya tetap tampil tanpa JavaScript. Kalau salah satunya diubah, ubah di keempat file.
 
 ## Deploy
 
@@ -162,18 +185,18 @@ Situs statis, jadi bisa langsung di-deploy tanpa langkah build.
 
 - [ ] Ganti setiap `sumber.url` di `js/data.js` dengan tautan unggahan asli (tombol Bagikan di Instagram). Saat ini masih mengarah ke halaman akun.
 - [ ] Ganti nilai warna di `css/tokens.css` dengan hasil color picker dari template Canva resmi.
-- [ ] Ganti wordmark di header dengan logo resmi, dan motif bunga dengan motif asli dari template.
+- [ ] Ganti wordmark di header keempat halaman dengan logo resmi, dan motif bunga dengan motif asli dari template.
 - [ ] Cek manual semua tautan Instagram, website, email, dan WhatsApp.
 
 ### Setelah deploy
 
-- [ ] Ganti `og:image` di `index.html` dengan alamat lengkap (`https://.../assets/og-image.png`) dan tambahkan `og:url`. WhatsApp, LinkedIn, dan Facebook tidak membaca alamat relatif.
-- [ ] Coba bagikan tautannya sekali untuk memastikan pratinjaunya muncul.
+- [ ] Di keempat file HTML, ganti `og:image` dengan alamat lengkap (`https://.../assets/og-image.png`) dan tambahkan `og:url` sesuai alamat halamannya. WhatsApp, LinkedIn, dan Facebook tidak membaca alamat relatif.
+- [ ] Coba bagikan tautan setiap halaman sekali untuk memastikan pratinjaunya muncul.
 
 ## Hasil pengecekan
 
-- **Lighthouse** (mobile dan desktop): Performance 100, Accessibility 100, Best Practices 96, SEO 100. Poin Best Practices berkurang karena Google Fonts diblokir di lingkungan pengujian.
-- **Audit axe** (WCAG 2.2 AA): tidak ada pelanggaran, sebelum dan sesudah memilih minat.
+- **Lighthouse** (mobile dan desktop, keempat halaman): Performance 99 sampai 100, Accessibility 100, Best Practices 96, SEO 100. Poin Best Practices berkurang karena Google Fonts diblokir di lingkungan pengujian.
+- **Audit axe** (WCAG 2.2 AA): tidak ada pelanggaran di keempat halaman, termasuk saat menu terbuka dan saat minat dipilih.
 - **Responsif:** tanpa scroll horizontal di lebar 320px, 360px, 768px, dan 1280px. Baris teks terpanjang 73 karakter.
-- **Keyboard:** 30 elemen bisa dicapai dengan Tab dalam urutan yang logis, semuanya dengan garis fokus yang terlihat. Bagian Mulai bisa dipakai dengan panah dan spasi.
-- **Area sentuh:** semua tautan dan pilihan minimal 44px.
+- **Keyboard:** semua elemen bisa dicapai dengan Tab dalam urutan yang logis, dengan garis fokus yang terlihat. Menu bisa dibuka dan ditutup dengan keyboard, dan halaman Mulai bisa dipakai dengan panah dan spasi.
+- **Tanpa JavaScript:** navigasi, judul, dan tautan "Lanjut" tetap tampil di keempat halaman.
