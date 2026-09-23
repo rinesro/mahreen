@@ -189,6 +189,28 @@ strong {
   transform: translateY(0);
 }
 
+/* ---------- Mencegah pergeseran tata letak ---------- */
+/*
+ * Di halaman Karya, Anak Muda, dan Mulai, isi utama dirender main.js sesaat setelah
+ * halaman tampil. Tanpa aturan ini, tautan Lanjut dan footer yang sudah terlihat akan
+ * terdorong ke bawah (layout shift). Jadi keduanya disembunyikan (tetap memakan tempat)
+ * sampai main.js memasang kelas "siap" pada <body>.
+ * Pengaman: kalau JavaScript gagal di tengah jalan, animasi cadangan tetap menampilkan
+ * keduanya setelah 2 detik. Tanpa JavaScript sama sekali, kelas "js" tidak ada dan
+ * aturan ini tidak berlaku.
+ */
+.js body:not(.siap) .lanjut,
+.js body:not(.siap) .site-footer {
+  visibility: hidden;
+  animation: tampil-cadangan 0s 2s forwards;
+}
+
+@keyframes tampil-cadangan {
+  to {
+    visibility: visible;
+  }
+}
+
 /* ---------- Gerak ---------- */
 @media (prefers-reduced-motion: no-preference) {
   html {

@@ -457,3 +457,6 @@ if (typeof MAHREEN !== "undefined") {
   renderAkun(MAHREEN.akun);
   renderKontak(MAHREEN.kontak);
 }
+
+// Isi sudah lengkap: tautan Lanjut dan footer boleh tampil (lihat base.css)
+document.body.classList.add("siap");
