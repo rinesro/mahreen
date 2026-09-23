@@ -3,26 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mahreen untuk Anak Muda: Berkarya untuk Indonesia</title>
-  <meta name="description" content="Kenalan dengan Mahreen Indonesia, ekosistem kreatif, digital, bisnis, dan sosial, lewat tema Berkarya untuk Indonesia.">
+  <title>Ruang berkarya untuk anak muda | Mahreen untuk Anak Muda</title>
+  <meta name="description" content="Program magang Mahreen Indonesia: periode Batch 2, benefit, posisi, bidang mentoring, dan kategori penghargaan Batch 1.">
   <meta name="theme-color" content="#FFF5F9">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-
-  <!--
-    Open Graph untuk pratinjau tautan saat dibagikan (WhatsApp, LinkedIn, X, dan lainnya).
-    Setelah deploy, ganti og:image dengan alamat lengkap (https://...) dan tambahkan og:url,
-    karena sebagian platform tidak membaca alamat relatif.
-  -->
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="id_ID">
-  <meta property="og:site_name" content="Mahreen untuk Anak Muda">
-  <meta property="og:title" content="Berkarya untuk Indonesia. Kamu mulai dari mana?">
-  <meta property="og:description" content="Kenalan dengan Mahreen Indonesia, ekosistem kreatif, digital, bisnis, dan sosial, lewat tema Berkarya untuk Indonesia.">
-  <meta property="og:image" content="assets/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Tulisan Berkarya untuk Indonesia dengan motif bunga empat kelopak berwarna oranye dan magenta.">
-  <meta name="twitter:card" content="summary_large_image">
 
   <!--
     Font Google dimuat tanpa menahan tampilan halaman: file CSS-nya diunduh sebagai
@@ -46,7 +30,7 @@
   <script src="js/data.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
-<body data-page="beranda">
+<body data-page="anak-muda">
   <a class="skip-link" href="#konten">Langsung ke konten</a>
 
   <!-- Sprite SVG: motif bunga empat kelopak dan ikon garis, dipakai ulang lewat <use> -->
@@ -88,51 +72,14 @@
   </header>
 
   <main id="konten">
-    <section class="hero" aria-labelledby="hero-judul">
-      <div class="container grid hero__inner">
-        <div class="hero__teks">
-          <h1 id="hero-judul" class="hero__judul">
-            <span class="hero__tema">Berkarya untuk Indonesia.</span>
-            <span class="hero__sorot">Kamu mulai dari mana?</span>
-          </h1>
-          <p class="hero__sub">
-            Mahreen Indonesia adalah ekosistem kreatif, digital, bisnis, dan sosial. Lewat unit-unitnya,
-            Mahreen berkarya di banyak bidang dan membuka ruang bagi anak muda untuk ikut berkarya.
-          </p>
-          <div class="hero__aksi">
-            <a class="btn btn--primary" href="mulai.html">Cari yang cocok buat kamu</a>
-            <a class="btn btn--secondary" href="karya.html">Lihat karya Mahreen</a>
-          </div>
-        </div>
-
-        <div class="hero__motif" aria-hidden="true">
-          <svg class="hero__bunga hero__bunga--besar"><use href="#motif-bunga" /></svg>
-          <svg class="hero__bunga hero__bunga--kecil"><use href="#motif-bunga" /></svg>
-        </div>
-      </div>
-    </section>
-
-    <!-- Visi, misi, tiga nilai, dan sumber dirender js/main.js dari MAHREEN.profil -->
-    <section class="section kenalan" aria-labelledby="kenalan-judul">
+    <section class="section anak-muda" aria-labelledby="anak-muda-judul">
       <div class="container">
-        <h2 id="kenalan-judul" class="section__judul">
+        <h1 id="anak-muda-judul" class="section__judul halaman__judul">
           <svg class="section__penanda" aria-hidden="true" focusable="false"><use href="#motif-bunga" /></svg>
-          Kenalan dulu sama Mahreen
-        </h2>
-        <div class="kenalan__isi" id="kenalan-isi"></div>
-      </div>
-    </section>
-
-    <section class="section akun" id="akun" aria-labelledby="akun-judul">
-      <div class="container grid">
-        <div class="akun__isi">
-          <h2 id="akun-judul">Satu Mahreen, lima akun</h2>
-          <p class="akun__intro">
-            Informasi Mahreen Indonesia tersebar di beberapa akun Instagram. Ini fungsinya masing-masing.
-          </p>
-          <!-- Diisi dari MAHREEN.akun -->
-          <ul class="akun__list" id="akun-list" role="list"></ul>
-        </div>
+          Ruang berkarya untuk anak muda
+        </h1>
+        <!-- Program magang dari MAHREEN.internship -->
+        <div class="anak-muda__isi" id="anak-muda-isi"></div>
       </div>
     </section>
   </main>

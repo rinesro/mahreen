@@ -2,9 +2,9 @@
  * Merender isi halaman dari objek MAHREEN (js/data.js).
  * File ini dimuat setelah data.js, keduanya dengan <script defer>.
  *
- * Urutan render mengikuti alur halaman: Kenalan, Karya, Anak Muda, Mulai,
- * akun resmi, lalu kontak di footer.
- * Setiap fungsi render berhenti diam-diam kalau wadahnya tidak ada di HTML.
+ * Situs terdiri dari empat halaman yang memuat file yang sama. Bagian yang dirender
+ * ditentukan oleh atribut data-page pada <body> (lihat bagian "Jalankan" di bawah).
+ * Setiap fungsi render juga berhenti diam-diam kalau wadahnya tidak ada di HTML.
  */
 
 const SVG_NS = "http://www.w3.org/2000/svg";
@@ -373,12 +373,29 @@ function renderKontak(kontak) {
 }
 
 /* ---------- Jalankan ---------- */
+/*
+ * Setiap halaman hanya merender bagiannya sendiri, berdasarkan data-page pada <body>:
+ * beranda, karya, anak-muda, atau mulai. Kontak di footer dirender di semua halaman.
+ */
+const RENDER_HALAMAN = {
+  "beranda": function () {
+    renderKenalan(MAHREEN.profil);
+    renderAkun(MAHREEN.akun);
+  },
+  "karya": function () {
+    renderUnit(MAHREEN.unit);
+    renderKegiatanBersama(MAHREEN.kegiatanBersama);
+  },
+  "anak-muda": function () {
+    renderAnakMuda(MAHREEN.internship);
+  },
+  "mulai": function () {
+    renderMinat(MAHREEN.minat, MAHREEN.internship);
+  },
+};
+
 if (typeof MAHREEN !== "undefined") {
-  renderKenalan(MAHREEN.profil);
-  renderUnit(MAHREEN.unit);
-  renderKegiatanBersama(MAHREEN.kegiatanBersama);
-  renderAnakMuda(MAHREEN.internship);
-  renderMinat(MAHREEN.minat, MAHREEN.internship);
-  renderAkun(MAHREEN.akun);
+  const halaman = document.body.dataset.page;
+  if (RENDER_HALAMAN[halaman]) RENDER_HALAMAN[halaman]();
   renderKontak(MAHREEN.kontak);
 }

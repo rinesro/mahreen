@@ -14,14 +14,12 @@ Konteks dari studi kasus: program dan peluang Mahreen belum selalu mudah dikenal
 
 ## Konsep
 
-Tema "Berkarya untuk Indonesia" dipakai sebagai alur cerita halaman, dari atas ke bawah:
+Tema "Berkarya untuk Indonesia" dipakai sebagai alur cerita yang dibagi ke empat halaman:
 
-1. **Kenalan:** siapa Mahreen (visi, misi, dan tiga nilai).
-2. **Karya:** bagaimana Mahreen berkarya lewat unit-unitnya, dengan contoh nyata dari unggahan mereka.
-3. **Anak Muda:** ruang yang Mahreen sediakan untuk anak muda, yaitu program magang.
-4. **Mulai:** pembaca memilih minatnya, lalu diarahkan ke posisi magang, unit, dan akun Mahreen yang relevan.
-
-Setelah itu ada daftar lima akun Instagram resmi (karena informasi Mahreen tersebar di beberapa akun) dan footer berisi kontak resmi.
+1. **Beranda** (`index.html`): siapa Mahreen (visi, misi, dan tiga nilai).
+2. **Karya** (`karya.html`): bagaimana Mahreen berkarya lewat unit-unitnya, dengan contoh nyata dari unggahan mereka.
+3. **Anak Muda** (`anak-muda.html`): ruang yang Mahreen sediakan untuk anak muda, yaitu program magang.
+4. **Mulai** (`mulai.html`): pembaca memilih minatnya, lalu diarahkan ke posisi magang, unit, dan akun Mahreen yang relevan.
 
 Kaitan dengan tiga kata kunci tugas:
 
@@ -137,14 +135,17 @@ Contoh menambah unit baru:
 
 ```
 /
-├─ index.html          kerangka halaman, judul tiap bagian, dan sprite ikon SVG
+├─ index.html          Beranda
+├─ karya.html          Karya
+├─ anak-muda.html      Anak Muda
+├─ mulai.html          Mulai
 ├─ css/
 │  ├─ tokens.css       design tokens: warna, huruf, jarak, gerak
 │  ├─ base.css         reset, tipografi dasar, grid, fokus, reduced motion
 │  └─ components.css   semua komponen, urut sesuai alur halaman
 ├─ js/
 │  ├─ data.js          semua konten (objek MAHREEN)
-│  └─ main.js          fungsi render tiap bagian
+│  └─ main.js          fungsi render, dipilih lewat data-page pada <body>
 └─ assets/
    ├─ favicon.svg      motif bunga empat kelopak
    └─ og-image.png     gambar pratinjau saat tautan dibagikan (1200 x 630)

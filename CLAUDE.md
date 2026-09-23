@@ -14,6 +14,7 @@ Konteks dari studi kasus: program dan peluang Mahreen belum selalu mudah dikenal
 Kerangka HTML dan mungkin sebagian tampilan sudah dibuat berdasarkan konsep lama (katalog dan timeline kegiatan). Konsepnya sekarang **berubah menjadi website perkenalan**. Sesuaikan kode yang ada, jangan mulai dari nol:
 - Pertahankan yang masih cocok (struktur folder, design tokens, base styles).
 - Hapus bagian konsep lama: timeline, filter status, highlight kategori, dan story viewer.
+- Situs sekarang **multi-halaman** (empat halaman), bukan satu halaman dengan tautan anchor.
 - Ganti isi `js/data.js` dengan data baru di bawah.
 
 ## Cara kerja yang saya minta
@@ -25,15 +26,15 @@ Kerangka HTML dan mungkin sebagian tampilan sudah dibuat berdasarkan konsep lama
 
 ## Konsep
 
-Mahreen Indonesia diperkenalkan **lewat tema "Berkarya untuk Indonesia"**. Tema ini menjadi alur cerita halaman:
+Mahreen Indonesia diperkenalkan **lewat tema "Berkarya untuk Indonesia"**. Tema ini menjadi alur cerita yang dibagi ke empat halaman:
 1. Siapa Mahreen.
 2. Bagaimana Mahreen berkarya untuk Indonesia lewat unit-unitnya, dengan contoh nyata dari unggahan mereka.
 3. Ruang yang Mahreen sediakan untuk anak muda.
 4. Pembaca memilih minatnya dan diarahkan ke bagian Mahreen yang relevan.
 
 Kaitan dengan kata kunci tugas:
-- **Menarik:** alur bercerita dengan tema sebagai benang merah, visual mengikuti identitas kampanye Mahreen, satu bagian interaktif.
-- **Mudah dipahami:** satu bagian satu pesan, bahasa sederhana, istilah asing diberi padanan.
+- **Menarik:** alur bercerita dengan tema sebagai benang merah, visual mengikuti identitas kampanye Mahreen, satu halaman interaktif.
+- **Mudah dipahami:** satu halaman satu tujuan, bahasa sederhana, istilah asing diberi padanan.
 - **Relevan:** fokus pada hal yang bisa dihubungkan anak muda dengan minatnya sendiri.
 
 ## Aturan fakta dan bahasa (wajib)
@@ -50,64 +51,71 @@ Kaitan dengan kata kunci tugas:
 
 - **HTML, CSS, dan JavaScript murni.** Tanpa framework, tanpa build tool, tanpa npm. Bisa dibuka dengan klik dua kali `index.html`.
 - CSS dengan custom properties sebagai design tokens.
-- Semua konten ada di `js/data.js` sebagai `const MAHREEN = { ... };`, dirender oleh `js/main.js`. Tidak memakai `fetch()` atau `type="module"` karena keduanya diblokir saat file dibuka langsung tanpa server. Muat dengan `<script defer>`: `data.js` dulu, lalu `main.js`.
-- Teks hero dan judul bagian boleh ditulis langsung di HTML supaya tetap tampil walaupun JavaScript gagal.
+- Semua konten ada di `js/data.js` sebagai `const MAHREEN = { ... };`, dirender oleh `js/main.js`. Setiap halaman memuat kedua file ini, dan `main.js` membaca `document.body.dataset.page` untuk menentukan apa yang dirender. Tidak memakai `fetch()` atau `type="module"` karena keduanya diblokir saat file dibuka langsung tanpa server. Muat dengan `<script defer>`: `data.js` dulu, lalu `main.js`.
+- Header, footer, teks hero, dan judul halaman ditulis langsung di HTML setiap halaman (tidak disisipkan lewat JS), supaya navigasi dan isi utama tetap tampil walaupun JavaScript gagal.
 - Ikon SVG inline bergaya garis dengan ketebalan sama. Font dari Google Fonts.
 - Deploy statis ke Vercel atau GitHub Pages.
 
 ```
 /
-├─ index.html
+├─ index.html       (Beranda)
+├─ karya.html
+├─ anak-muda.html
+├─ mulai.html
 ├─ css/ (tokens.css, base.css, components.css)
 ├─ js/  (data.js, main.js)
 ├─ assets/
 └─ README.md
 ```
 
-## Struktur halaman dan teks
+## Struktur situs dan teks
 
-**1. Header**
-Wordmark "Mahreen Indonesia" (nanti diganti logo resmi). Navigasi: Kenalan, Karya, Anak Muda, Mulai.
+Situs terdiri dari **empat halaman**. Tidak ada tautan anchor ke bagian di halaman yang sama, kecuali skip link untuk aksesibilitas.
 
-**2. Hero** (pola baca Z)
-- Judul: "Berkarya untuk Indonesia. Kamu mulai dari mana?"
-- Subjudul: "Mahreen Indonesia adalah ekosistem kreatif, digital, bisnis, dan sosial. Lewat unit-unitnya, Mahreen berkarya di banyak bidang dan membuka ruang bagi anak muda untuk ikut berkarya."
-- Tombol utama: "Cari yang cocok buat kamu" (ke bagian Mulai)
-- Tombol kedua: "Kenalan dulu" (ke bagian Kenalan)
-- Motif bunga empat kelopak dari template sebagai elemen dekoratif.
+### Elemen di semua halaman
 
-**3. Kenalan** (`#kenalan`)
-- Judul: "Kenalan dulu sama Mahreen"
-- Isi: `profil.visi`, lalu empat `profil.misi` dalam daftar ringkas.
-- Tiga nilai dari `profil.nilai`, ditampilkan besar: Innovation, Collaboration, Impact, masing-masing dengan padanan bahasa Indonesia kecil di bawahnya.
-- Keterangan sumber dari `profil.sumber`.
+- **Header:** logo (wordmark "Mahreen Indonesia" sementara, nanti diganti logo resmi) dan navigasi: Beranda, Karya, Anak Muda, Mulai. Halaman aktif ditandai secara visual dan dengan `aria-current="page"`. Di layar di bawah 480px, navigasi menjadi tombol "Menu" sederhana (disclosure dengan `aria-expanded`).
+- **Tautan "Lanjut"** di akhir isi setiap halaman, mengarah ke halaman berikutnya dalam alur cerita: Beranda, lalu Karya, lalu Anak Muda, lalu Mulai. Teksnya menyebut tujuan, misalnya "Lanjut: Cara Mahreen berkarya".
+- **Footer** (gaya gelap): tagline "Satu ide. Satu karya. Satu dampak.", daftar lima akun resmi dari `akun` beserta fungsinya, `kontak`, dan catatan: "Prototype oleh Sandhika Hamzah untuk Creative Challenge Mahreen Indonesia Internship Batch 2. Informasi dirangkum dari unggahan publik Mahreen Indonesia, Mei sampai September 2026. Untuk informasi terbaru, cek akun resmi."
+- `<title>` dan meta description berbeda di setiap halaman.
 
-**4. Karya** (`#karya`)
+### 1. Beranda (`index.html`, `data-page="beranda"`)
+
+- **Hero** (pola baca Z)
+  - Judul: "Berkarya untuk Indonesia. Kamu mulai dari mana?"
+  - Subjudul: "Mahreen Indonesia adalah ekosistem kreatif, digital, bisnis, dan sosial. Lewat unit-unitnya, Mahreen berkarya di banyak bidang dan membuka ruang bagi anak muda untuk ikut berkarya."
+  - Tombol utama: "Cari yang cocok buat kamu" ke `mulai.html`
+  - Tombol kedua: "Lihat karya Mahreen" ke `karya.html`
+  - Motif bunga empat kelopak sebagai elemen dekoratif.
+- **Kenalan dulu sama Mahreen:** `profil.visi`, empat `profil.misi` dalam daftar ringkas, dan tiga `profil.nilai` ditampilkan besar dengan padanan bahasa Indonesia kecil di bawahnya. Keterangan sumber dari `profil.sumber`.
+- **Jelajahi:** tiga blok tautan ke halaman Karya, Anak Muda, dan Mulai, masing-masing dengan satu kalimat penjelasan.
+- Lanjut: Karya.
+
+### 2. Karya (`karya.html`, `data-page="karya"`)
+
 - Judul: "Cara Mahreen berkarya untuk Indonesia"
 - Pengantar: "Mahreen punya beberapa unit, dan masing-masing berkarya di bidang yang berbeda."
 - Satu blok per `unit`: nama, bidang, penjelasan (`apa`), contoh nyata (`contoh`, lewati jika `null`), sumber, dan tautan akun.
-- Sub-bagian kecil "Juga dari Mahreen Indonesia" berisi `kegiatanBersama`.
-- Tata letak blok jangan kartu identik semua. Beri variasi yang bermakna, misalnya unit dengan contoh nyata diberi ruang lebih besar.
+- Sub-bagian "Juga dari Mahreen Indonesia" berisi `kegiatanBersama`.
+- Tata letak blok jangan kartu identik semua. Unit dengan contoh nyata diberi ruang lebih besar.
+- Lanjut: Anak Muda.
 
-**5. Anak Muda** (`#anak-muda`)
+### 3. Anak Muda (`anak-muda.html`, `data-page="anak-muda"`)
+
 - Judul: "Ruang berkarya untuk anak muda"
 - Isi dari `internship`: ringkasan, periode Batch 2, status pendaftaran, benefit, posisi per grup, dan bidang mentoring.
 - Sorotan "10 kategori penghargaan Batch 1" dari `penghargaanBatch1`, sebagai gambaran apa yang dikerjakan dan dihargai dari peserta.
-- Tombol: `internship.ikuti`.
-- Keterangan sumber.
+- Tombol: `internship.ikuti`. Keterangan sumber.
+- Lanjut: Mulai.
 
-**6. Mulai** (`#mulai`), satu-satunya bagian interaktif
+### 4. Mulai (`mulai.html`, `data-page="mulai"`), satu-satunya halaman interaktif
+
 - Judul: "Kamu tertarik di bidang apa?"
 - Pengantar: "Pilih satu, lalu lihat bagian Mahreen yang berkaitan dengan minatmu."
-- Tombol pilihan dari `minat` (berperilaku seperti radio group, bisa dengan keyboard).
-- Hasil yang muncul: posisi internship yang berkaitan (jika ada, dengan catatan "posisi di Batch 2"), kalimat `unit`, dan daftar `akun` yang bisa dipantau.
-- Hasil diumumkan ke pembaca layar dengan `aria-live="polite"`.
-
-**7. Satu Mahreen, lima akun**
-Daftar `akun` beserta fungsinya, karena informasi Mahreen tersebar di beberapa akun.
-
-**8. Footer** (gaya gelap)
-Tagline "Satu ide. Satu karya. Satu dampak.", `kontak`, dan catatan: "Prototype oleh Sandhika Hamzah untuk Creative Challenge Mahreen Indonesia Internship Batch 2. Informasi dirangkum dari unggahan publik Mahreen Indonesia, Mei sampai September 2026. Untuk informasi terbaru, cek akun resmi."
+- Tombol pilihan dari `minat`, berperilaku seperti radio group dan bisa dipakai dengan keyboard.
+- Hasil: posisi internship yang berkaitan (jika ada, dengan catatan "posisi di Batch 2"), kalimat `unit`, dan daftar `akun` yang bisa dipantau. Diumumkan dengan `aria-live="polite"`.
+- Pilihan disimpan di query URL (misalnya `mulai.html?minat=teknologi`) supaya hasilnya bisa dibagikan dan tetap ada saat halaman dimuat ulang.
+- Penutup: tautan "Kembali ke Beranda".
 
 ## Arahan desain (prinsip desain grafis dan DKV)
 
@@ -123,17 +131,17 @@ Tagline "Satu ide. Satu karya. Satu dampak.", `kontak`, dan catatan: "Prototype 
 | `--color-neutral` | `#6B6470` | Teks sekunder, keterangan sumber |
 | `--color-dark` | `#1C1A1D` | Footer |
 
-**Hierarki.** Setiap bagian punya satu judul yang jelas, satu pesan utama, lalu detail. Pembaca harus paham isi halaman hanya dengan membaca judul-judul bagian.
+**Hierarki.** Setiap halaman punya satu judul utama (`h1`) dan satu tujuan. Pembaca harus paham isi halaman hanya dengan membaca judul-judulnya.
 
 **Tipografi.** Poppins untuk judul, Plus Jakarta Sans untuk teks. Skala ukuran kelipatan 1,25. Panjang baris 45 sampai 75 karakter.
 
-**Gestalt.** Proximity untuk mengelompokkan isi satu unit. Similarity untuk perlakuan unit yang konsisten. Continuity lewat alur cerita dari atas ke bawah. Common region untuk memisahkan bagian interaktif.
+**Gestalt.** Proximity untuk mengelompokkan isi satu unit. Similarity untuk header, footer, dan komponen yang konsisten di semua halaman. Continuity lewat tautan "Lanjut" antarhalaman. Common region untuk memisahkan area interaktif.
 
 **Grid dan ruang.** 12 kolom di desktop, 4 kolom di HP, spacing kelipatan 8px, ruang kosong yang cukup.
 
 **Ikon dan motif.** Ikon garis seragam. Motif bunga empat kelopak secukupnya, misalnya di hero dan sebagai penanda bagian.
 
-**Motion.** Hanya untuk merespons aksi pengguna (memilih minat). Hormati `prefers-reduced-motion`.
+**Motion.** Hanya untuk merespons aksi pengguna (memilih minat, membuka menu). Hormati `prefers-reduced-motion`.
 
 **Mobile first dan aksesibilitas.** Desain dari layar HP dulu. Kontras minimal 4,5:1. Area sentuh minimal 44px. Fokus keyboard terlihat. HTML semantik. Skip link hanya muncul saat mendapat fokus.
 
@@ -442,21 +450,22 @@ Catatan: URL sumber masih mengarah ke halaman akun. Saya akan menggantinya denga
 
 ## Tahapan kerja
 
-1. `refactor`: sesuaikan kerangka dengan konsep baru, hapus sisa konsep lama, ganti `js/data.js`.
+1. `refactor`: pecah menjadi empat halaman, hapus sisa konsep lama, ganti `js/data.js`.
 2. `feat`: design tokens dan base styles (atau sesuaikan yang sudah ada).
-3. `feat`: header dan hero.
-4. `feat`: bagian Kenalan dan Karya.
-5. `feat`: bagian Anak Muda.
-6. `feat`: bagian Mulai (interaktif).
-7. `feat`: bagian akun resmi dan footer.
-8. `fix`: responsif (360px, 768px, 1280px), keyboard, dan kontras.
-9. `perf`: Lighthouse 90 ke atas, meta tag, Open Graph.
-10. `docs`: README berisi tugas, konsep, keputusan desain, cara memperbarui `js/data.js`, dan cara menjalankan.
+3. `feat`: header dengan navigasi aktif dan menu mobile, footer, dan tautan "Lanjut" di semua halaman.
+4. `feat`: halaman Beranda.
+5. `feat`: halaman Karya.
+6. `feat`: halaman Anak Muda.
+7. `feat`: halaman Mulai (interaktif).
+8. `fix`: responsif (360px, 768px, 1280px), keyboard, dan kontras di semua halaman.
+9. `perf`: Lighthouse 90 ke atas di setiap halaman, meta tag, Open Graph per halaman.
+10. `docs`: README berisi tugas, konsep, keputusan desain (termasuk alasan memilih multi-halaman), cara memperbarui `js/data.js`, dan cara menjalankan.
 
 ## Definisi selesai
 
 - Semua bagian tampil dari data, tanpa fakta di luar file ini.
-- Bagian Mulai berfungsi dengan mouse, sentuhan, dan keyboard.
+- Halaman Mulai berfungsi dengan mouse, sentuhan, dan keyboard.
+- Navigasi dan tautan "Lanjut" konsisten di keempat halaman, tanpa tautan anchor selain skip link.
 - Tidak ada em dash, en dash, kata "kami", atau bahasa jualan.
 - Rapi di HP dan desktop, Lighthouse 90 ke atas.
 - Bisa dibuka tanpa server dan sudah ter-deploy publik.
