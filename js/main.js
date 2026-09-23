@@ -259,10 +259,83 @@ function renderAnakMuda(data) {
   wadah.appendChild(buatSumber(data.sumber, "sumber anak-muda__sumber"));
 }
 
+/* ---------- Mulai: pilih minat ---------- */
+/*
+ * Satu radio button per minat. Radio bawaan HTML dipakai karena perilaku radio group
+ * (satu pilihan aktif, panah untuk berpindah, dibaca "1 dari 5" oleh pembaca layar)
+ * sudah disediakan browser tanpa kode tambahan.
+ */
+function renderMinat(daftarMinat, internship) {
+  const fieldset = document.getElementById("minat-pilihan");
+  const hasil = document.getElementById("minat-hasil");
+  if (!fieldset || !hasil) return;
+
+  const daftar = buatElemen("div", "minat__daftar");
+  daftarMinat.forEach(function (minat) {
+    const pilihan = buatElemen("div", "minat__pilihan");
+    const input = buatElemen("input", "minat__input");
+    input.type = "radio";
+    input.name = "minat";
+    input.id = "minat-" + minat.id;
+    input.value = minat.id;
+    const label = buatElemen("label", "minat__label", minat.label);
+    label.htmlFor = input.id;
+    pilihan.appendChild(input);
+    pilihan.appendChild(label);
+    daftar.appendChild(pilihan);
+
+    input.addEventListener("change", function () {
+      if (input.checked) tampilkanHasil(minat);
+    });
+  });
+  fieldset.appendChild(daftar);
+
+  function tampilkanHasil(minat) {
+    const isi = [];
+    isi.push(buatElemen("h3", "minat-hasil__judul", minat.label));
+
+    // Posisi internship yang berkaitan, hanya kalau ada
+    if (minat.posisi.length) {
+      const blok = buatElemen("div", "minat-hasil__blok");
+      blok.appendChild(buatElemen("h4", "minat-hasil__subjudul", "Posisi internship yang berkaitan"));
+      blok.appendChild(buatDaftarLabel(minat.posisi, true));
+      blok.appendChild(buatElemen("p", "minat-hasil__catatan", "Posisi di Batch 2. " + internship.statusPendaftaran));
+      isi.push(blok);
+    }
+
+    // Unit Mahreen yang berkaitan
+    const unit = buatElemen("div", "minat-hasil__blok");
+    unit.appendChild(buatElemen("h4", "minat-hasil__subjudul", "Di Mahreen"));
+    unit.appendChild(buatElemen("p", "minat-hasil__unit", minat.unit));
+    isi.push(unit);
+
+    // Akun yang bisa dipantau
+    const akun = buatElemen("div", "minat-hasil__blok");
+    akun.appendChild(buatElemen("h4", "minat-hasil__subjudul", "Akun yang bisa kamu pantau"));
+    const list = buatElemen("ul", "minat-hasil__akun");
+    list.setAttribute("role", "list");
+    minat.akun.forEach(function (a) {
+      const li = buatElemen("li");
+      li.appendChild(buatTautanAkun(a.nama, a.url));
+      list.appendChild(li);
+    });
+    akun.appendChild(list);
+    isi.push(akun);
+
+    hasil.replaceChildren.apply(hasil, isi);
+
+    // Animasi muncul dipicu ulang setiap pilihan berganti (mati kalau reduced motion)
+    hasil.classList.remove("minat-hasil--muncul");
+    void hasil.offsetWidth;
+    hasil.classList.add("minat-hasil--muncul");
+  }
+}
+
 /* ---------- Jalankan ---------- */
 if (typeof MAHREEN !== "undefined") {
   renderKenalan(MAHREEN.profil);
   renderUnit(MAHREEN.unit);
   renderKegiatanBersama(MAHREEN.kegiatanBersama);
   renderAnakMuda(MAHREEN.internship);
+  renderMinat(MAHREEN.minat, MAHREEN.internship);
 }

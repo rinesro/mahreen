@@ -157,7 +157,20 @@
           Kamu tertarik di bidang apa?
         </h2>
         <p class="section__pengantar">Pilih satu, lalu lihat bagian Mahreen yang berkaitan dengan minatmu.</p>
-        <!-- Tahap 6: pilihan minat (radio group) dan hasil dari MAHREEN.minat -->
+        <!--
+          Common region: pilihan dan hasil berada dalam satu panel, terpisah dari bagian lain.
+          Pilihan dirender dari MAHREEN.minat sebagai radio button bawaan HTML,
+          jadi panah kiri dan kanan (atau atas dan bawah) langsung berpindah pilihan.
+        -->
+        <div class="mulai__panel">
+          <fieldset class="minat" id="minat-pilihan">
+            <legend class="visually-hidden">Pilih bidang yang kamu minati</legend>
+          </fieldset>
+          <!-- Hasil diumumkan ke pembaca layar setiap pilihan berganti -->
+          <div class="minat-hasil" id="minat-hasil" aria-live="polite">
+            <p class="minat-hasil__kosong">Pilih salah satu bidang untuk melihat hasilnya di sini.</p>
+          </div>
+        </div>
       </div>
     </section>
 

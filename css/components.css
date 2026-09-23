@@ -1,7 +1,7 @@
 /*
  * Komponen halaman Mahreen untuk Anak Muda.
  * Urutan: sprite SVG dan ikon, tombol, keterangan sumber, bagian halaman,
- * header, hero, Kenalan, Karya, Anak Muda, akun resmi, footer.
+ * header, hero, Kenalan, Karya, Anak Muda, Mulai, akun resmi, footer.
  */
 
 /* ---------- Sprite SVG (hanya wadah <symbol>, tidak tampil) ---------- */
@@ -775,6 +775,170 @@
   .penghargaan__item {
     flex-direction: column;
     gap: 0.25rem;
+  }
+}
+
+/* ---------- Mulai: pilih minat (satu-satunya bagian interaktif) ---------- */
+/* Common region: pilihan dan hasil berada dalam satu panel putih bergaris */
+.mulai__panel {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  padding: var(--space-3);
+  background-color: var(--color-region);
+  border: var(--border-strong) solid var(--color-line);
+  border-radius: var(--radius-lg);
+}
+
+.minat {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.minat__daftar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.minat__pilihan {
+  position: relative;
+}
+
+/* Radio asli disembunyikan secara visual tapi tetap bisa difokus dan dipakai keyboard */
+.minat__input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.minat__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--touch-target);
+  padding: 0 var(--space-2);
+  background-color: var(--color-surface);
+  border: var(--border-strong) solid var(--color-line);
+  border-radius: var(--radius-pill);
+  font-weight: var(--fw-semibold);
+  color: var(--color-ink);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+/* Lingkaran kecil di depan label: penanda bahwa hanya satu yang bisa dipilih */
+.minat__label::before {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  border: var(--border-strong) solid currentColor;
+  border-radius: 50%;
+}
+
+.minat__label:hover {
+  border-color: var(--color-primary);
+}
+
+.minat__input:checked + .minat__label {
+  background-color: var(--color-selected-bg);
+  border-color: var(--color-selected-bg);
+  color: var(--color-selected-text);
+}
+
+/* Titik di tengah lingkaran saat terpilih */
+.minat__input:checked + .minat__label::before {
+  background: radial-gradient(currentColor 0 35%, transparent 40%);
+}
+
+.minat__input:focus-visible + .minat__label {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* Hasil */
+.minat-hasil {
+  min-height: 6rem;
+}
+
+.minat-hasil--muncul {
+  animation: minat-muncul var(--duration-base) var(--ease-out);
+}
+
+.minat-hasil__kosong {
+  color: var(--color-neutral);
+}
+
+.minat-hasil__judul {
+  font-size: var(--fs-2);
+}
+
+.minat-hasil__blok {
+  margin-top: var(--space-3);
+}
+
+.minat-hasil__subjudul {
+  font-size: var(--fs--1);
+  font-weight: var(--fw-semibold);
+  color: var(--color-neutral);
+}
+
+.minat-hasil__catatan {
+  margin-top: var(--space-1);
+  font-size: var(--fs--1);
+  color: var(--color-neutral);
+}
+
+.minat-hasil__unit {
+  margin-top: 0.25rem;
+  font-size: var(--fs-1);
+  line-height: var(--lh-body);
+}
+
+.minat-hasil__akun {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--space-3);
+}
+
+@keyframes minat-muncul {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Desktop: pilihan bertumpuk di kiri, hasil di kanan */
+@media (min-width: 64em) {
+  .mulai__panel {
+    grid-template-columns: 4fr 7fr;
+    column-gap: var(--space-8);
+    padding: var(--space-6);
+  }
+
+  .minat__daftar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .minat__label {
+    width: 100%;
+  }
+
+  .minat-hasil {
+    padding-left: var(--space-6);
+    border-left: var(--border-thin) solid var(--color-line);
   }
 }
 
