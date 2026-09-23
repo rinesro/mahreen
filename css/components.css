@@ -1097,11 +1097,7 @@
     font-size: var(--fs-4);
   }
 
-  .site-footer__kolom:nth-of-type(1) {
-    grid-column: 7 / span 3;
-  }
-
-  .site-footer__kolom:nth-of-type(2) {
-    grid-column: 10 / span 3;
+  .site-footer__kolom {
+    grid-column: 8 / -1;
   }
 }

@@ -2,8 +2,8 @@
  * Merender isi halaman dari objek MAHREEN (js/data.js).
  * File ini dimuat setelah data.js, keduanya dengan <script defer>.
  *
- * Isi tiap bagian ditambahkan bertahap:
- * Kenalan dan Karya (Tahap 4), Anak Muda (Tahap 5), Mulai (Tahap 6).
+ * Urutan render mengikuti alur halaman: Kenalan, Karya, Anak Muda, Mulai,
+ * akun resmi, lalu kontak di footer.
  * Setiap fungsi render berhenti diam-diam kalau wadahnya tidak ada di HTML.
  */
 
@@ -331,6 +331,47 @@ function renderMinat(daftarMinat, internship) {
   }
 }
 
+/* ---------- Satu Mahreen, lima akun ---------- */
+function renderAkun(daftarAkun) {
+  const list = document.getElementById("akun-list");
+  if (!list) return;
+
+  daftarAkun.forEach(function (akun) {
+    const li = buatElemen("li", "akun__item");
+    li.appendChild(buatTautanAkun(akun.nama, akun.url, "akun__tautan"));
+    li.appendChild(buatElemen("p", "akun__fungsi", akun.fungsi));
+    list.appendChild(li);
+  });
+}
+
+/* ---------- Footer: kontak resmi ---------- */
+function renderKontak(kontak) {
+  const wadah = document.getElementById("kontak");
+  if (!wadah) return;
+
+  wadah.appendChild(buatElemen("p", null, kontak.alamat));
+
+  const list = buatElemen("ul", "site-footer__list");
+  list.setAttribute("role", "list");
+
+  // Alamat website ditampilkan tanpa "https://" supaya ringkas
+  const website = buatElemen("li");
+  website.appendChild(buatTautanLuar(kontak.website, kontak.website.replace(/^https?:\/\//, "")));
+  list.appendChild(website);
+
+  const email = buatElemen("li");
+  const tautanEmail = buatElemen("a", null, kontak.email);
+  tautanEmail.href = "mailto:" + kontak.email;
+  email.appendChild(tautanEmail);
+  list.appendChild(email);
+
+  const wa = buatElemen("li");
+  wa.appendChild(buatTautanLuar(kontak.whatsappUrl, "WhatsApp " + kontak.whatsapp));
+  list.appendChild(wa);
+
+  wadah.appendChild(list);
+}
+
 /* ---------- Jalankan ---------- */
 if (typeof MAHREEN !== "undefined") {
   renderKenalan(MAHREEN.profil);
@@ -338,4 +379,6 @@ if (typeof MAHREEN !== "undefined") {
   renderKegiatanBersama(MAHREEN.kegiatanBersama);
   renderAnakMuda(MAHREEN.internship);
   renderMinat(MAHREEN.minat, MAHREEN.internship);
+  renderAkun(MAHREEN.akun);
+  renderKontak(MAHREEN.kontak);
 }
