@@ -57,8 +57,13 @@
   --lh-snug: 1.3;       /* judul kecil */
   --lh-body: 1.6;       /* teks baca */
 
-  --measure: 65ch;      /* panjang baris ideal (45 sampai 75 karakter) */
-  --measure-narrow: 45ch;
+  /*
+   * Panjang baris ideal 45 sampai 75 karakter. Satuan ch mengikuti lebar angka "0",
+   * yang lebih lebar dari rata-rata huruf: di Plus Jakarta Sans, 1ch memuat sekitar
+   * 1,5 karakter teks biasa. Jadi 46ch sekitar 70 karakter, dan 34ch sekitar 50 karakter.
+   */
+  --measure: 46ch;
+  --measure-narrow: 34ch;
 
   /* ---------- Jarak (kelipatan 8px) ---------- */
   --space-1: 0.5rem;    /* 8px */
