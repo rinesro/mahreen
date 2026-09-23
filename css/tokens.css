@@ -21,6 +21,7 @@
   --color-accent-soft: #FDE3D8;      /* tint oranye untuk latar motif */
   --color-accent-strong: #A83A12;    /* oranye gelap, dipakai kalau oranye harus jadi teks */
   --color-line: #EBD5DF;             /* garis pemisah */
+  --color-line-strong: #D9A9BF;      /* garis bawah tautan di teks kecil (sumber) */
   --color-on-primary: #FFFFFF;       /* teks di atas magenta */
   --color-on-accent: var(--color-ink); /* teks di atas oranye (putih kurang kontras) */
   --color-on-dark: #F7EEF2;          /* teks di footer */

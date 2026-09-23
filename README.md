@@ -85,7 +85,7 @@ Kaitan dengan tiga kata kunci tugas:
 - HTML semantik, skip link yang hanya muncul saat mendapat fokus, dan garis fokus yang terlihat saat navigasi keyboard.
 - Halaman Mulai memakai radio button bawaan HTML yang ditampilkan seperti tombol pilihan. Perilaku radio group (satu pilihan aktif, panah untuk berpindah, dibaca "1 dari 5" oleh pembaca layar) sudah disediakan browser tanpa ARIA buatan. Hasilnya diumumkan lewat `aria-live="polite"`.
 - Istilah bahasa Inggris ditandai `lang="en"` supaya dilafalkan dengan benar oleh pembaca layar.
-- Tautan kecil di keterangan sumber diberi padding supaya area sentuhnya sekitar 45px. Di bagian Jelajahi, seluruh blok bisa diklik, walaupun tautannya hanya di judul.
+- Tautan kecil di keterangan sumber diberi padding supaya area sentuhnya sekitar 45px. Di bagian Jelajahi, seluruh blok bisa diklik, walaupun tautannya hanya di judul. Blok yang seluruhnya bisa diklik (Jelajahi, Lanjut) dan daftar akun di footer tidak bergaris bawah, garisnya muncul saat hover atau fokus. Tautan di dalam kalimat tetap bergaris bawah.
 - Logo resmi punya alt text ("Mahreen Indonesia" di header, "Logo" diikuti nama unit di halaman Karya dan Anak Muda). Cadangannya berupa wordmark (teks biasa) dan inisial yang disembunyikan dari pembaca layar, karena nama unit sudah ada di judul tepat di sebelahnya.
 
 ## Teknis
@@ -129,7 +129,7 @@ Semua konten ada di satu objek `MAHREEN`. Mengubah isi halaman cukup di file ini
 
 Aturan kecil yang perlu diingat:
 
-- Setiap `sumber` berisi `label` (akun dan tanggal unggahan) dan `url` (tautan ke unggahannya).
+- Setiap `sumber` berisi `label` (akun dan tanggal unggahan) dan `url` (tautan ke unggahannya). Di halaman, hanya nama akun di `label` yang menjadi tautan: akun pertama memakai `url`, akun berikutnya (kalau ada) memakai alamat akunnya dari `akun`.
 - `contoh: null` pada unit berarti belum ada contoh nyata. Unit itu tampil ringkas tanpa kotak contoh.
 - `posisi: []` pada minat berarti tidak ada posisi magang yang berkaitan. Blok posisinya tidak ditampilkan.
 - `id` pada minat muncul di alamat halaman (`mulai.html?minat=id`). Kalau `id` diganti, tautan lama yang sudah dibagikan tidak akan memilih apa pun, tapi halamannya tetap terbuka normal.

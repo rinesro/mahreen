@@ -41,13 +41,29 @@ function buatTautanLuar(url, teks, className) {
 }
 
 /*
- * Keterangan sumber kecil dengan tautan ke unggahannya, misalnya
- * "Sumber: @tanyamahreen, 26 Mei 2026". Dipakai di semua bagian yang memuat fakta.
+ * Keterangan sumber kecil, misalnya "Sumber: @tanyamahreen, 26 Mei 2026".
+ * Hanya nama akun yang menjadi tautan, tanggal tetap teks biasa. Akun pertama
+ * memakai sumber.url (nanti diganti tautan unggahan aslinya), akun berikutnya
+ * memakai alamat akun dari MAHREEN.akun. Dipakai di semua bagian yang memuat fakta.
  */
 function buatSumber(sumber, className) {
   const p = buatElemen("p", className || "sumber");
   p.appendChild(document.createTextNode("Sumber: "));
-  p.appendChild(buatTautanLuar(sumber.url, sumber.label));
+
+  const pola = /@[A-Za-z0-9._]*[A-Za-z0-9_]/g;
+  let akhir = 0;
+  let pertama = true;
+  let cocok;
+  while ((cocok = pola.exec(sumber.label)) !== null) {
+    const nama = cocok[0];
+    const akun = MAHREEN.akun.find(function (a) { return a.nama === nama; });
+    const url = pertama ? sumber.url : akun && akun.url;
+    p.appendChild(document.createTextNode(sumber.label.slice(akhir, cocok.index)));
+    p.appendChild(url ? buatTautanLuar(url, nama) : document.createTextNode(nama));
+    akhir = cocok.index + nama.length;
+    pertama = false;
+  }
+  p.appendChild(document.createTextNode(sumber.label.slice(akhir)));
   return p;
 }
 

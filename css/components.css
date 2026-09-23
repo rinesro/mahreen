@@ -91,10 +91,14 @@
 .sumber a {
   padding-block: 0.9375rem; /* 15px atas dan bawah, total area sentuh sekitar 45px */
   color: inherit;
+  /* Hanya nama akun yang jadi tautan, dengan garis tipis berwarna lembut */
+  text-decoration-color: var(--color-line-strong);
 }
 
-.sumber a:hover {
+.sumber a:hover,
+.sumber a:focus-visible {
   color: var(--color-secondary);
+  text-decoration-color: currentColor;
 }
 
 /* ---------- Slot logo unit (gambar logo, atau inisial sebagai cadangan) ---------- */
@@ -411,17 +415,9 @@ main > .section:first-child {
   display: block;
 }
 
-/*
- * Kalimat kedua tetap putih (warna lain di bawah 4,5:1 di titik terang gradasi),
- * dibedakan dengan garis bawah oranye tebal sebagai sorotan dekoratif.
- */
+/* Kalimat kedua tetap putih: warna lain di bawah 4,5:1 di titik terang gradasi */
 .hero__sorot {
   color: var(--color-on-gradasi);
-  text-decoration: underline;
-  text-decoration-color: var(--color-accent);
-  text-decoration-thickness: 0.12em;
-  text-underline-offset: 0.18em;
-  text-decoration-skip-ink: none;
 }
 
 .hero__sub {
@@ -673,8 +669,10 @@ main > .section:first-child {
   font-size: var(--fs-1);
 }
 
+/* Seluruh blok bisa diklik, jadi garis bawah hanya muncul saat hover atau fokus */
 .jelajahi__judul a {
   color: var(--color-secondary);
+  text-decoration: none;
   text-decoration-thickness: 2px;
   text-underline-offset: 0.2em;
 }
@@ -685,8 +683,10 @@ main > .section:first-child {
   inset: 0;
 }
 
-.jelajahi__item:hover .jelajahi__judul a {
+.jelajahi__item:hover .jelajahi__judul a,
+.jelajahi__judul a:focus-visible {
   color: var(--color-primary);
+  text-decoration: underline;
 }
 
 .jelajahi__teks {
@@ -1308,7 +1308,6 @@ main > .section:first-child {
   font-size: var(--fs-2);
   font-weight: var(--fw-bold);
   line-height: var(--lh-tight);
-  text-decoration: underline;
   text-decoration-color: var(--color-accent);
   text-decoration-thickness: 0.1em;
   text-underline-offset: 0.18em;
@@ -1341,8 +1340,10 @@ main > .section:first-child {
   transform: rotate(45deg);
 }
 
-.lanjut__blok:hover .lanjut__judul {
-  text-decoration-color: var(--color-on-gradasi);
+/* Seluruh blok bisa diklik, jadi garis bawah hanya muncul saat hover atau fokus */
+.lanjut__blok:hover .lanjut__judul,
+.lanjut__blok:focus-visible .lanjut__judul {
+  text-decoration-line: underline;
 }
 
 .lanjut__blok:focus-visible {
@@ -1430,6 +1431,14 @@ main > .section:first-child {
   min-height: 2.75rem; /* 44px, area sentuh minimal */
   font-weight: var(--fw-semibold);
   color: var(--color-on-dark);
+  text-decoration: none;
+}
+
+/* Daftar akun sudah jelas berupa tautan (ikon Instagram), garis bawah hanya saat hover atau fokus */
+.site-footer .akun__tautan:hover,
+.site-footer .akun__tautan:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
 }
 
 /* Ikon memakai pink terang supaya tetap terlihat di latar gelap */
