@@ -21,13 +21,60 @@
 <body>
   <a class="skip-link" href="#konten">Langsung ke konten</a>
 
+  <!-- Sprite SVG: motif bunga empat kelopak, dipakai ulang lewat <use> -->
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="motif-bunga" viewBox="-50 -50 100 100">
+      <g style="fill: var(--motif-kelopak, #F2653A)">
+        <path d="M0 -6 C -22 -16 -16 -48 0 -48 C 16 -48 22 -16 0 -6 Z" />
+        <path d="M0 -6 C -22 -16 -16 -48 0 -48 C 16 -48 22 -16 0 -6 Z" transform="rotate(90)" />
+        <path d="M0 -6 C -22 -16 -16 -48 0 -48 C 16 -48 22 -16 0 -6 Z" transform="rotate(180)" />
+        <path d="M0 -6 C -22 -16 -16 -48 0 -48 C 16 -48 22 -16 0 -6 Z" transform="rotate(270)" />
+      </g>
+      <circle r="9" style="fill: var(--motif-tengah, #D1227A)" />
+    </symbol>
+  </svg>
+
   <header class="site-header">
-    <!-- Tahap 3: wordmark dan navigasi (Program, Timeline, Akun Resmi) -->
+    <div class="container site-header__inner">
+      <!-- Wordmark sementara, nanti diganti logo resmi dari template Canva -->
+      <a class="wordmark" href="#hero">
+        <span class="wordmark__utama">Mahreen</span>
+        <span class="wordmark__sub">Indonesia</span>
+      </a>
+      <nav class="site-nav" aria-label="Navigasi utama">
+        <ul class="site-nav__list" role="list">
+          <li><a class="site-nav__link" href="#program">Program</a></li>
+          <li><a class="site-nav__link" href="#timeline">Timeline</a></li>
+          <li><a class="site-nav__link" href="#akun">Akun Resmi</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main id="konten">
     <section class="hero" id="hero" aria-labelledby="hero-judul">
-      <!-- Tahap 3: hero -->
+      <div class="container grid hero__inner">
+        <div class="hero__teks">
+          <h1 id="hero-judul" class="hero__judul">
+            Semua yang Mahreen lakukan <span class="hero__sorot">untuk anak muda</span>, dalam satu halaman.
+          </h1>
+          <p class="hero__sub">
+            Program, kegiatan, dan kolaborasi Mahreen Indonesia tersebar di lima akun Instagram.
+            Di sini semuanya dirangkum, lengkap dengan mana yang masih bisa kamu ikuti.
+          </p>
+          <div class="hero__aksi">
+            <!-- Filter "Bisa diikuti" dibaca dari hash ini oleh js/main.js (Tahap 4) -->
+            <a class="btn btn--primary" href="#timeline?status=bisa-diikuti">Lihat yang bisa kamu ikuti</a>
+            <a class="btn btn--secondary" href="#timeline">Jelajahi timeline</a>
+          </div>
+          <p class="hero__cakupan">Sorotan Mei sampai September 2026</p>
+        </div>
+
+        <div class="hero__motif" aria-hidden="true">
+          <svg class="hero__bunga hero__bunga--besar"><use href="#motif-bunga" /></svg>
+          <svg class="hero__bunga hero__bunga--kecil"><use href="#motif-bunga" /></svg>
+        </div>
+      </div>
     </section>
 
     <section class="highlight" id="program" aria-labelledby="program-judul">

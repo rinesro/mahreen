@@ -1,1 +1,225 @@
-/* Komponen: diisi mulai Tahap 3 */
+/*
+ * Komponen halaman Sorotan Mahreen.
+ * Urutan: sprite SVG, tombol, header, hero.
+ */
+
+/* ---------- Sprite SVG (hanya wadah <symbol>, tidak tampil) ---------- */
+.svg-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* ---------- Tombol ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-target);
+  padding: 0 var(--space-3);
+  border: var(--border-strong) solid transparent;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: var(--fs-0);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+/* Aksi utama: magenta penuh, paling menonjol */
+.btn--primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+/* Aksi kedua: garis tepi, jelas lebih ringan dari tombol utama */
+.btn--secondary {
+  background-color: transparent;
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.btn--secondary:hover {
+  background-color: var(--color-primary-soft);
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  border-bottom: var(--border-thin) solid var(--color-line);
+}
+
+.site-header__inner {
+  display: flex;
+  flex-wrap: wrap; /* di HP navigasi turun ke baris kedua kalau tidak muat */
+  align-items: center;
+  justify-content: space-between;
+  column-gap: var(--space-3);
+  padding-block: var(--space-1);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  min-height: var(--touch-target);
+  font-family: var(--font-heading);
+  font-size: var(--fs-1);
+  line-height: var(--lh-snug);
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+.wordmark__utama {
+  font-weight: var(--fw-bold);
+}
+
+.wordmark__sub {
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+}
+
+.site-nav__list {
+  display: flex;
+  gap: var(--space-1);
+  /* geser ke kiri supaya teks link pertama sejajar dengan wordmark saat turun baris */
+  margin-inline-start: calc(var(--space-1) * -1);
+}
+
+.site-nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  padding-inline: var(--space-1);
+  font-weight: var(--fw-semibold);
+  color: var(--color-ink);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.site-nav__link:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+@media (min-width: 40em) {
+  .site-nav__list {
+    margin-inline-start: 0;
+  }
+}
+
+/* ---------- Hero (pola baca Z) ---------- */
+/*
+ * HP: motif kecil di kanan atas, lalu judul, subjudul, tombol, keterangan.
+ * Desktop: teks di kolom 1 sampai 7 (kiri), motif di kolom 8 sampai 12 (kanan atas).
+ * Mata bergerak dari judul (kiri atas) ke motif (kanan atas),
+ * turun menyilang lewat subjudul, lalu berhenti di tombol (kiri bawah).
+ */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: var(--space-4) var(--space-8);
+}
+
+.hero__inner {
+  row-gap: var(--space-2);
+  align-items: center;
+}
+
+.hero__teks {
+  grid-column: 1 / -1;
+}
+
+.hero__judul {
+  max-width: 18ch;
+}
+
+.hero__sorot {
+  color: var(--color-primary);
+}
+
+.hero__sub {
+  margin-top: var(--space-3);
+  max-width: var(--measure-narrow);
+  font-size: var(--fs-1);
+  line-height: var(--lh-body);
+}
+
+.hero__aksi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.hero__cakupan {
+  margin-top: var(--space-3);
+  font-size: var(--fs--1);
+  font-weight: var(--fw-medium);
+  color: var(--color-neutral);
+}
+
+/* Motif dekoratif: dua bunga yang saling tumpang tindih */
+.hero__motif {
+  grid-column: 1 / -1;
+  order: -1; /* di HP tampil di atas teks */
+  justify-self: end;
+  position: relative;
+  width: 7.5rem;
+  aspect-ratio: 1;
+}
+
+.hero__bunga {
+  position: absolute;
+  overflow: visible; /* ujung kelopak tidak terpotong saat bunga diputar */
+}
+
+.hero__bunga--besar {
+  --motif-kelopak: var(--color-accent);
+  --motif-tengah: var(--color-primary);
+  inset: 0 0 auto auto;
+  width: 75%;
+  height: 75%;
+  transform: rotate(12deg);
+}
+
+.hero__bunga--kecil {
+  --motif-kelopak: var(--color-primary);
+  --motif-tengah: var(--color-accent);
+  inset: auto auto 0 0;
+  width: 45%;
+  height: 45%;
+  transform: rotate(-20deg);
+}
+
+@media (min-width: 64em) {
+  .hero {
+    padding-block: var(--space-10) var(--space-12);
+  }
+
+  .hero__teks {
+    grid-column: 1 / span 7;
+  }
+
+  .hero__motif {
+    grid-column: 8 / -1;
+    order: 0;
+    align-self: start;
+    justify-self: center;
+    width: 100%;
+    max-width: 26rem;
+  }
+}
