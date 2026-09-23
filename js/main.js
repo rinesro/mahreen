@@ -148,6 +148,8 @@ function renderUnit(daftarUnit) {
     // Proximity: logo, nama, bidang, penjelasan, dan akun dikelompokkan rapat
     const info = buatElemen("div", "unit__info");
     const kepala = buatElemen("div", "unit__kepala");
+    // Unit tanpa contoh dibuat satu baris ringkas: kepala di kiri, keterangan di kanan
+    const detail = unit.contoh ? info : buatElemen("div", "unit__detail");
     kepala.appendChild(buatLogo("assets/logo/" + unit.id + "-crimson.png", unit.nama, "unit__logo"));
     const namaBidang = buatElemen("div");
     namaBidang.appendChild(buatElemen("h2", "unit__nama", unit.nama));
@@ -156,9 +158,10 @@ function renderUnit(daftarUnit) {
     namaBidang.appendChild(bidang);
     kepala.appendChild(namaBidang);
     info.appendChild(kepala);
-    info.appendChild(buatElemen("p", "unit__apa", unit.apa));
-    info.appendChild(buatTautanAkun(unit.akun, unit.akunUrl, "tautan-akun unit__akun"));
+    detail.appendChild(buatElemen("p", "unit__apa", unit.apa));
+    detail.appendChild(buatTautanAkun(unit.akun, unit.akunUrl, "tautan-akun unit__akun"));
     li.appendChild(info);
+    if (detail !== info) li.appendChild(detail);
 
     if (unit.contoh) {
       const contoh = buatElemen("div", "unit__contoh");
@@ -168,7 +171,7 @@ function renderUnit(daftarUnit) {
       li.appendChild(contoh);
     } else {
       // Tanpa contoh, sumber tetap ditampilkan di bawah keterangan unit
-      info.appendChild(buatSumber(unit.sumber, "sumber unit__sumber"));
+      detail.appendChild(buatSumber(unit.sumber, "sumber unit__sumber"));
     }
 
     list.appendChild(li);

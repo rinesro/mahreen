@@ -70,7 +70,7 @@ Kaitan dengan tiga kata kunci tugas:
 - Continuity: tautan "Lanjut" antarhalaman, nomor 01 sampai 03 di bagian Jelajahi, dan motif bunga kecil di depan judul halaman dan judul bagian.
 - Common region: kotak "Contoh nyata" berlatar oranye muda, dan area interaktif di halaman Mulai berada dalam satu panel putih.
 
-**Variasi yang bermakna.** Blok unit tidak dibuat kartu identik. Unit yang punya contoh nyata dibagi dua di desktop (keterangan di kiri, contoh di kanan) sehingga contohnya mendapat ruang terbesar. Unit tanpa contoh tampil ringkas. Sorotan 10 kategori penghargaan menjadi satu-satunya blok berlatar merah tua.
+**Variasi yang bermakna.** Blok unit tidak dibuat kartu identik. Unit yang punya contoh nyata dibagi dua di desktop (keterangan di kiri, contoh di kanan) sehingga contohnya mendapat ruang terbesar. Unit tanpa contoh tampil sebagai satu baris ringkas: di desktop, logo dan nama di kolom kiri, keterangan, akun, dan sumber di kolom kanan, tanpa kotak contoh yang kosong. Sorotan 10 kategori penghargaan menjadi satu-satunya blok berlatar merah tua.
 
 **Grid dan ruang.** 4 kolom di HP dan 12 kolom mulai 1024px, jarak kelipatan 8px, dan area sentuh minimal 44px.
 

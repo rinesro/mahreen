@@ -731,6 +731,10 @@ main > .section:first-child {
   margin-top: var(--space-1);
 }
 
+.unit--ringkas {
+  padding-block: var(--space-3); /* lebih rapat dari unit dengan contoh nyata */
+}
+
 .unit--ringkas .unit__sumber {
   margin-top: 0;
 }
@@ -759,7 +763,7 @@ main > .section:first-child {
 
 /*
  * Desktop: unit dengan contoh dibagi dua kolom (keterangan 5 kolom, contoh 7 kolom),
- * jadi contoh nyata mendapat ruang terbesar. Unit ringkas hanya selebar kolom keterangan.
+ * jadi contoh nyata mendapat ruang terbesar.
  */
 @media (min-width: 64em) {
   .unit--dengan-contoh {
@@ -778,8 +782,36 @@ main > .section:first-child {
     margin-top: 0;
   }
 
+  /*
+   * Unit tanpa contoh nyata: satu baris ringkas. Kepala (logo, nama, bidang) di kolom kiri
+   * yang sama lebarnya dengan unit lain, keterangan dan akun di kolom kanan, tanpa kotak contoh kosong.
+   */
+  .unit--ringkas {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--grid-gutter);
+    align-items: center;
+  }
+
   .unit--ringkas .unit__info {
-    max-width: 38rem;
+    grid-column: 1 / span 5;
+  }
+
+  /* Akun dan sumber sebaris di bawah keterangan */
+  .unit--ringkas .unit__detail {
+    grid-column: 6 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: var(--space-3);
+  }
+
+  .unit--ringkas .unit__apa {
+    flex-basis: 100%;
+  }
+
+  .unit--ringkas .unit__apa {
+    margin-top: 0;
   }
 }
 
