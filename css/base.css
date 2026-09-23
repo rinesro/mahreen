@@ -1,1 +1,200 @@
-/* Base styles: diisi di Tahap 2 */
+/*
+ * Base styles: reset ringan, tipografi dasar, tata letak dasar,
+ * fokus keyboard, dan penghormatan pada prefers-reduced-motion.
+ * Semua nilai diambil dari css/tokens.css.
+ */
+
+/* ---------- Reset ringan ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-0);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg,
+picture,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+}
+
+/* ---------- Tipografi ---------- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  color: var(--color-secondary);
+  line-height: var(--lh-snug);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--fs-4);
+  line-height: var(--lh-tight);
+}
+
+h2 {
+  font-size: var(--fs-3);
+  line-height: var(--lh-tight);
+}
+
+h3 {
+  font-size: var(--fs-1);
+  font-weight: var(--fw-semibold);
+}
+
+p,
+li {
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+strong {
+  font-weight: var(--fw-semibold);
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+@media (min-width: 64em) {
+  h1 {
+    font-size: var(--fs-5);
+  }
+}
+
+/* ---------- Fokus keyboard ---------- */
+/* :focus-visible hanya muncul saat navigasi keyboard, tidak saat klik mouse */
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: 2px;
+}
+
+/* ---------- Tata letak dasar ---------- */
+.container {
+  width: 100%;
+  max-width: calc(var(--container-max) + var(--page-padding) * 2);
+  margin-inline: auto;
+  padding-inline: var(--page-padding);
+}
+
+/* Grid 4 kolom di HP, 12 kolom di desktop (lihat --grid-columns) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  column-gap: var(--grid-gutter);
+}
+
+.section {
+  padding-block: var(--space-8);
+}
+
+@media (min-width: 64em) {
+  .section {
+    padding-block: var(--space-12);
+  }
+}
+
+/* ---------- Utilitas aksesibilitas ---------- */
+/* Tersembunyi secara visual tapi tetap dibaca screen reader */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Tautan lompat ke konten, muncul saat mendapat fokus keyboard */
+.skip-link {
+  position: absolute;
+  top: var(--space-1);
+  left: var(--space-1);
+  z-index: calc(var(--z-dialog) + 1);
+  padding: var(--space-1) var(--space-2);
+  background-color: var(--color-secondary);
+  color: var(--color-on-primary);
+  font-weight: var(--fw-semibold);
+  border-radius: var(--radius-sm);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* ---------- Gerak ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Jaring pengaman: hentikan animasi dan transisi apa pun kalau pengguna meminta gerak minimal */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

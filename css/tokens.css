@@ -1,1 +1,129 @@
-/* Design tokens: diisi di Tahap 2 */
+/*
+ * Design tokens Sorotan Mahreen.
+ * Semua nilai visual (warna, huruf, jarak, gerak) diatur di sini.
+ * Komponen lain cukup memakai var(--nama-token), jadi mengganti warna
+ * dari hasil color picker template Canva cukup dilakukan di file ini.
+ */
+
+:root {
+  /* ---------- Warna merek (perkiraan, akan diganti dari template Canva) ---------- */
+  --color-primary: #D1227A;    /* tombol, label "Bisa diikuti", aksen */
+  --color-secondary: #930D3C;  /* judul dan teks penting */
+  --color-accent: #F2653A;     /* label "Segera hadir", motif dekoratif */
+  --color-bg: #FFF5F9;         /* latar utama */
+  --color-ink: #2B0B1D;        /* teks utama */
+  --color-neutral: #6B6470;    /* label "Sudah berlangsung", teks sekunder */
+  --color-dark: #1C1A1D;       /* footer */
+
+  /* ---------- Warna turunan ---------- */
+  --color-surface: #FFFFFF;          /* latar kartu atau panel di atas --color-bg */
+  --color-primary-soft: #FCE4EF;     /* tint pink untuk latar ringan, bukan untuk teks magenta */
+  --color-accent-soft: #FDE3D8;      /* tint oranye untuk latar motif */
+  --color-accent-strong: #A83A12;    /* oranye gelap, dipakai kalau oranye harus jadi teks */
+  --color-line: #EBD5DF;             /* garis pemisah dan garis timeline */
+  --color-on-primary: #FFFFFF;       /* teks di atas magenta */
+  --color-on-accent: var(--color-ink); /* teks di atas oranye (putih kurang kontras) */
+  --color-on-dark: #F7EEF2;          /* teks di footer */
+  --color-on-dark-muted: #BFB6BD;    /* teks sekunder di footer */
+  --color-focus: var(--color-primary);
+  --color-focus-on-dark: #FF8FC4;
+
+  /* ---------- Warna status (makin bisa ditindaklanjuti, makin kuat) ---------- */
+  /* Bisa diikuti: magenta penuh */
+  --status-bisa-bg: var(--color-primary);
+  --status-bisa-text: var(--color-on-primary);
+  --status-bisa-border: var(--color-primary);
+  /* Sedang berjalan: magenta garis tepi */
+  --status-berjalan-bg: transparent;
+  --status-berjalan-text: var(--color-primary);
+  --status-berjalan-border: var(--color-primary);
+  /* Segera hadir: oranye */
+  --status-segera-bg: var(--color-accent);
+  --status-segera-text: var(--color-on-accent);
+  --status-segera-border: var(--color-accent);
+  /* Sudah berlangsung: abu-abu garis tepi */
+  --status-lewat-bg: transparent;
+  --status-lewat-text: var(--color-neutral);
+  --status-lewat-border: var(--color-neutral);
+
+  /* ---------- Tipografi ---------- */
+  --font-heading: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Skala kelipatan 1,25 dengan dasar 16px */
+  --fs--1: 0.8rem;      /* 12.8px: meta, label status */
+  --fs-0: 1rem;         /* 16px: teks baca */
+  --fs-1: 1.25rem;      /* 20px: judul item */
+  --fs-2: 1.5625rem;    /* 25px */
+  --fs-3: 1.953rem;     /* 31.25px: judul section */
+  --fs-4: 2.441rem;     /* 39px: judul hero di HP */
+  --fs-5: 3.052rem;     /* 48.8px: judul hero di desktop */
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --lh-tight: 1.15;     /* judul besar */
+  --lh-snug: 1.3;       /* judul kecil */
+  --lh-body: 1.6;       /* teks baca */
+
+  --measure: 65ch;      /* panjang baris ideal (45 sampai 75 karakter) */
+  --measure-narrow: 45ch;
+
+  /* ---------- Jarak (kelipatan 8px) ---------- */
+  --space-1: 0.5rem;    /* 8px */
+  --space-2: 1rem;      /* 16px */
+  --space-3: 1.5rem;    /* 24px */
+  --space-4: 2rem;      /* 32px */
+  --space-5: 2.5rem;    /* 40px */
+  --space-6: 3rem;      /* 48px */
+  --space-8: 4rem;      /* 64px */
+  --space-10: 5rem;     /* 80px */
+  --space-12: 6rem;     /* 96px */
+
+  /* ---------- Grid ---------- */
+  --grid-columns: 4;          /* HP */
+  --grid-gutter: var(--space-2);
+  --page-padding: var(--space-2);
+  --container-max: 75rem;     /* 1200px */
+
+  /* ---------- Ukuran interaksi ---------- */
+  --touch-target: 3rem;       /* 48px, di atas batas minimal 44px dan tetap kelipatan 8 */
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 3px;
+
+  /* ---------- Bentuk ---------- */
+  --radius-sm: 0.5rem;        /* 8px */
+  --radius-md: 1rem;          /* 16px */
+  --radius-lg: 1.5rem;        /* 24px */
+  --radius-pill: 999px;
+  --border-thin: 1px;
+  --border-strong: 2px;
+
+  /* ---------- Gerak (hanya untuk respons aksi pengguna) ---------- */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* ---------- Lapisan ---------- */
+  --z-header: 10;
+  --z-dialog: 100;
+}
+
+/* Grid 12 kolom mulai lebar tablet besar dan desktop */
+@media (min-width: 64em) {
+  :root {
+    --grid-columns: 12;
+    --grid-gutter: var(--space-3);
+    --page-padding: var(--space-4);
+  }
+}
+
+/* Matikan semua durasi gerak kalau pengguna meminta gerak minimal */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+  }
+}
