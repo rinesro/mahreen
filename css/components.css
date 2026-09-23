@@ -135,11 +135,19 @@
   color: var(--color-primary);
 }
 
+/*
+ * HP: navigasi turun ke baris kedua dan dibagi rata selebar layar,
+ * supaya empat tautan muat tanpa ada yang pecah jadi dua baris.
+ */
+.site-nav {
+  flex-basis: 100%;
+}
+
 .site-nav__list {
   display: flex;
-  gap: var(--space-1);
-  /* geser ke kiri supaya teks link pertama sejajar dengan wordmark saat turun baris */
-  margin-inline-start: calc(var(--space-1) * -1);
+  justify-content: space-between;
+  /* geser ke kiri dan kanan supaya teks tautan tepi sejajar dengan tepi konten */
+  margin-inline: calc(var(--space-1) * -1);
 }
 
 .site-nav__link {
@@ -150,6 +158,7 @@
   font-weight: var(--fw-semibold);
   color: var(--color-ink);
   text-decoration: none;
+  white-space: nowrap;
   border-radius: var(--radius-sm);
   transition: color var(--duration-fast) var(--ease-out);
 }
@@ -161,15 +170,21 @@
 }
 
 @media (min-width: 40em) {
+  .site-nav {
+    flex-basis: auto;
+  }
+
   .site-nav__list {
-    margin-inline-start: 0;
+    gap: var(--space-1);
+    margin-inline: 0 calc(var(--space-1) * -1);
   }
 }
 
 /* ---------- Hero (pola baca Z) ---------- */
 /*
  * HP: motif kecil di kanan atas, lalu judul, subjudul, dan tombol.
- * Desktop: teks di kolom 1 sampai 7 (kiri), motif di kolom 8 sampai 12 (kanan atas).
+ * Tablet (768px): teks di kolom 1 sampai 3, motif di kolom 4 (grid 4 kolom).
+ * Desktop: teks di kolom 1 sampai 7, motif di kolom 8 sampai 12 (grid 12 kolom).
  * Mata bergerak dari judul (kiri atas) ke motif (kanan atas),
  * turun menyilang lewat subjudul, lalu berhenti di tombol (kiri bawah).
  */
@@ -180,7 +195,7 @@
 }
 
 .hero__inner {
-  row-gap: var(--space-2);
+  row-gap: var(--space-1);
   align-items: center;
 }
 
@@ -188,8 +203,14 @@
   grid-column: 1 / -1;
 }
 
+/* Judul dua baris: tema sebagai benang merah, lalu pertanyaan untuk pembaca */
 .hero__judul {
   max-width: 18ch;
+}
+
+.hero__tema,
+.hero__sorot {
+  display: block;
 }
 
 .hero__sorot {
@@ -216,7 +237,7 @@
   order: -1; /* di HP tampil di atas teks */
   justify-self: end;
   position: relative;
-  width: 7.5rem;
+  width: 5rem; /* kecil di HP supaya tombol hero tetap terlihat di layar pertama */
   aspect-ratio: 1;
 }
 
@@ -243,6 +264,30 @@
   transform: rotate(-20deg);
 }
 
+@media (min-width: 48em) {
+  .hero {
+    padding-block: var(--space-8) var(--space-10);
+  }
+
+  /* Lebar judul cukup dibatasi kolom grid, supaya tema dan pertanyaan masing-masing satu baris */
+  .hero__judul {
+    max-width: none;
+  }
+
+  .hero__teks {
+    grid-column: 1 / span 3;
+  }
+
+  .hero__motif {
+    grid-column: 4 / -1;
+    order: 0;
+    align-self: start;
+    justify-self: center;
+    width: 100%;
+    max-width: 26rem;
+  }
+}
+
 @media (min-width: 64em) {
   .hero {
     padding-block: var(--space-10) var(--space-12);
@@ -254,11 +299,6 @@
 
   .hero__motif {
     grid-column: 8 / -1;
-    order: 0;
-    align-self: start;
-    justify-self: center;
-    width: 100%;
-    max-width: 26rem;
   }
 }
 
