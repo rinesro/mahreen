@@ -14,9 +14,13 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
 
-  <!-- Script klasik (bukan module) dengan defer: data.js dulu, lalu main.js -->
+  <!--
+    Script klasik (bukan module) dengan defer, dijalankan berurutan:
+    data.js (KEGIATAN), main.js (label dan fungsi bersama), lalu timeline.js.
+  -->
   <script src="js/data.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/timeline.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#konten">Langsung ke konten</a>
@@ -31,6 +35,30 @@
         <path d="M0 -6 C -22 -16 -16 -48 0 -48 C 16 -48 22 -16 0 -6 Z" transform="rotate(270)" />
       </g>
       <circle r="9" style="fill: var(--motif-tengah, #D1227A)" />
+    </symbol>
+
+    <!-- Ikon garis: viewBox 24, stroke 2, ujung membulat. Satu ikon per kategori. -->
+    <symbol id="ikon-program" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3.5" y="3.5" width="7" height="7" rx="1.5" />
+      <rect x="13.5" y="3.5" width="7" height="7" rx="1.5" />
+      <rect x="3.5" y="13.5" width="7" height="7" rx="1.5" />
+      <rect x="13.5" y="13.5" width="7" height="7" rx="1.5" />
+    </symbol>
+    <symbol id="ikon-kegiatan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3.5" y="5" width="17" height="15.5" rx="2" />
+      <path d="M3.5 10h17M8 3v4M16 3v4" />
+    </symbol>
+    <symbol id="ikon-kolaborasi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="9" cy="12" r="5.5" />
+      <circle cx="15" cy="12" r="5.5" />
+    </symbol>
+    <symbol id="ikon-segera-hadir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.9 2.9M15.5 15.5l2.9 2.9M5.6 18.4l2.9-2.9M15.5 8.5l2.9-2.9" />
+    </symbol>
+    <symbol id="ikon-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <path d="M17.2 6.8h.01" />
     </symbol>
   </svg>
 
@@ -80,8 +108,34 @@
       <!-- Tahap 5: highlight kategori -->
     </section>
 
-    <section class="timeline" id="timeline" aria-labelledby="timeline-judul">
-      <!-- Tahap 4: filter status dan daftar kegiatan dari KEGIATAN -->
+    <section class="section timeline" id="timeline" aria-labelledby="timeline-judul">
+      <div class="container grid">
+        <div class="timeline__isi">
+          <!-- tabindex="-1" supaya fokus bisa dipindah ke sini setelah tombol hero diklik -->
+          <h2 id="timeline-judul" class="timeline__judul" tabindex="-1">Timeline kegiatan</h2>
+          <p class="timeline__intro">
+            Diurutkan dari yang terbaru. Pilih status untuk menyaring daftar.
+          </p>
+
+          <div class="filter" role="group" aria-label="Saring berdasarkan status">
+            <button class="filter__chip" type="button" data-status="semua" aria-pressed="true">Semua</button>
+            <button class="filter__chip" type="button" data-status="sedang-berjalan" aria-pressed="false">Sedang berjalan</button>
+            <button class="filter__chip" type="button" data-status="sudah-berlangsung" aria-pressed="false">Sudah berlangsung</button>
+            <button class="filter__chip" type="button" data-status="segera-hadir" aria-pressed="false">Segera hadir</button>
+          </div>
+
+          <!-- Jumlah hasil diumumkan ke screen reader setiap filter berganti -->
+          <p class="timeline__hasil" id="timeline-hasil" aria-live="polite"></p>
+
+          <!-- Diisi oleh js/timeline.js dari KEGIATAN -->
+          <ol class="timeline__list" id="timeline-list" role="list"></ol>
+
+          <p class="timeline__penutup">
+            Masih banyak kegiatan sebelumnya. Lihat selengkapnya di
+            <a href="https://www.instagram.com/mahreenindonesia/" target="_blank" rel="noopener">@mahreenindonesia<span class="visually-hidden"> (buka di tab baru)</span></a>.
+          </p>
+        </div>
+      </div>
     </section>
 
     <section class="akun" id="akun" aria-labelledby="akun-judul">

@@ -1,6 +1,6 @@
 /*
  * Komponen halaman Sorotan Mahreen.
- * Urutan: sprite SVG, tombol, header, hero.
+ * Urutan: sprite SVG dan ikon, tombol, label status, header, hero, timeline.
  */
 
 /* ---------- Sprite SVG (hanya wadah <symbol>, tidak tampil) ---------- */
@@ -9,6 +9,18 @@
   width: 0;
   height: 0;
   overflow: hidden;
+}
+
+/* ---------- Ikon garis ---------- */
+.ikon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.ikon--kecil {
+  width: 1.125rem;
+  height: 1.125rem;
 }
 
 /* ---------- Tombol ---------- */
@@ -53,6 +65,61 @@
 
 .btn--secondary:hover {
   background-color: var(--color-primary-soft);
+}
+
+/* Tombol kecil dengan ikon, dipakai untuk ajakan ikuti akun */
+.btn--ikon {
+  gap: var(--space-1);
+  padding-inline: var(--space-2) var(--space-3);
+  justify-content: flex-start;
+  text-align: left;
+  overflow-wrap: anywhere; /* nama akun panjang boleh dipatah supaya tidak melebihi layar HP */
+}
+
+/* ---------- Tautan ke unggahan asli ---------- */
+.tautan-sumber {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  font-weight: var(--fw-semibold);
+  color: var(--color-secondary);
+}
+
+.tautan-sumber:hover {
+  color: var(--color-primary);
+}
+
+/* ---------- Label status ---------- */
+/* Yang masih berjalan paling kuat warnanya. Teks label selalu ada, warna hanya penguat. */
+.status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.5rem;
+  padding-inline: var(--space-1);
+  border: var(--border-strong) solid;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs--1);
+  font-weight: var(--fw-semibold);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.status--sedang-berjalan {
+  background-color: var(--status-berjalan-bg);
+  border-color: var(--status-berjalan-border);
+  color: var(--status-berjalan-text);
+}
+
+.status--segera-hadir {
+  background-color: var(--status-segera-bg);
+  border-color: var(--status-segera-border);
+  color: var(--status-segera-text);
+}
+
+.status--sudah-berlangsung {
+  background-color: var(--status-lewat-bg);
+  border-color: var(--status-lewat-border);
+  color: var(--status-lewat-text);
 }
 
 /* ---------- Header ---------- */
@@ -214,5 +281,218 @@
     justify-self: center;
     width: 100%;
     max-width: 26rem;
+  }
+}
+
+/* ---------- Timeline (pola baca F) ---------- */
+/*
+ * Semua isi rata kiri di kolom 1 sampai 8, supaya mata memindai
+ * turun di sisi kiri (label dan judul) lalu membaca ke kanan seperlunya.
+ */
+.timeline__isi {
+  grid-column: 1 / -1;
+}
+
+.timeline__judul:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.timeline__intro {
+  margin-top: var(--space-2);
+}
+
+@media (min-width: 64em) {
+  .timeline__isi {
+    grid-column: 1 / span 8;
+  }
+}
+
+/*
+ * Filter chip.
+ * HP: satu baris yang bisa digeser ke samping, supaya tidak memakan empat baris.
+ * Baris dibuat selebar layar (margin negatif) agar chip terakhir terlihat terpotong,
+ * tanda bahwa masih ada pilihan di kanan.
+ */
+.filter {
+  display: flex;
+  gap: var(--space-1);
+  margin-top: var(--space-4);
+  margin-inline: calc(var(--page-padding) * -1);
+  padding: 0.25rem var(--page-padding); /* ruang untuk cincin fokus */
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.filter::-webkit-scrollbar {
+  display: none;
+}
+
+.filter__chip {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+@media (min-width: 40em) {
+  .filter {
+    flex-wrap: wrap;
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow-x: visible;
+  }
+}
+
+.filter__chip {
+  min-height: var(--touch-target);
+  padding-inline: var(--space-2);
+  background-color: var(--color-surface);
+  border: var(--border-thin) solid var(--color-line);
+  border-radius: var(--radius-pill);
+  font-weight: var(--fw-semibold);
+  color: var(--color-ink);
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.filter__chip:hover {
+  border-color: var(--color-primary);
+}
+
+.filter__chip[aria-pressed="true"] {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: var(--color-on-primary);
+}
+
+.timeline__hasil {
+  margin-top: var(--space-2);
+  font-size: var(--fs--1);
+  color: var(--color-neutral);
+}
+
+/* Daftar dan garis vertikal */
+.timeline__list {
+  --penanda: 2.5rem; /* 40px */
+  position: relative;
+  margin-top: var(--space-4);
+}
+
+/* Continuity: satu garis yang menuntun mata dari item teratas ke terbawah */
+.timeline__list::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--penanda) / 2 - 1px);
+  width: 2px;
+  background-color: var(--color-line);
+}
+
+/* Proximity: jarak antar item lebar, jarak di dalam item rapat */
+.timeline__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--penanda) minmax(0, 1fr);
+  column-gap: var(--space-2);
+}
+
+/* Animasi hanya setelah pengguna mengganti filter (kelas dipasang oleh js/timeline.js) */
+.timeline__list.sudah-difilter .timeline__item {
+  animation: timeline-muncul var(--duration-base) var(--ease-out);
+}
+
+.timeline__item + .timeline__item {
+  margin-top: var(--space-6);
+}
+
+/* Similarity: penanda berisi ikon kategori, sama untuk semua item sekategori */
+.timeline__penanda {
+  display: grid;
+  place-items: center;
+  width: var(--penanda);
+  height: var(--penanda);
+  background-color: var(--color-bg);
+  border: var(--border-strong) solid var(--color-line);
+  border-radius: 50%;
+  color: var(--color-secondary);
+}
+
+.timeline__item--sedang-berjalan .timeline__penanda {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.timeline__item--segera-hadir .timeline__penanda {
+  border-color: var(--color-accent);
+}
+
+.timeline__konten {
+  padding-top: var(--space-1); /* sejajarkan label status dengan tengah penanda */
+}
+
+.timeline__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--space-1);
+  row-gap: 0.25rem;
+  font-size: var(--fs--1);
+  font-weight: var(--fw-medium);
+  color: var(--color-neutral);
+}
+
+.timeline__judul-item {
+  margin-top: var(--space-1);
+  font-size: var(--fs-1);
+  font-weight: var(--fw-bold);
+}
+
+.timeline__ringkasan {
+  margin-top: var(--space-1);
+}
+
+/* Keterangan sumber: kecil dan abu-abu, di bawah ringkasan */
+.timeline__sumber {
+  margin-top: var(--space-2);
+  font-size: var(--fs--1);
+  color: var(--color-neutral);
+}
+
+.timeline__aksi {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--space-3);
+  row-gap: var(--space-1);
+}
+
+.timeline__kosong {
+  padding-left: calc(var(--penanda) + var(--space-2));
+  color: var(--color-neutral);
+}
+
+.timeline__penutup {
+  margin-top: var(--space-8);
+  padding-top: var(--space-3);
+  border-top: var(--border-thin) solid var(--color-line);
+}
+
+@media (min-width: 64em) {
+  .timeline__judul-item {
+    font-size: var(--fs-2);
+  }
+}
+
+/* Motion hanya saat filter berganti (item dibuat ulang). Mati otomatis kalau reduced motion. */
+@keyframes timeline-muncul {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
