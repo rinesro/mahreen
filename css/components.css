@@ -1256,7 +1256,7 @@ main > .section:first-child {
 
 .site-footer__catatan {
   grid-column: 1 / -1;
-  max-width: none;
+  max-width: 42ch; /* teks kecil memuat lebih banyak karakter per ch, jadi batasnya lebih sempit dari --measure */
   padding-top: var(--space-3);
   border-top: var(--border-thin) solid rgb(255 255 255 / 0.15);
   font-size: var(--fs--1);
