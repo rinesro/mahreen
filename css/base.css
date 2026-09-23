@@ -164,6 +164,9 @@ strong {
 
 /* Tautan lompat ke konten, muncul saat mendapat fokus keyboard */
 .skip-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
   position: absolute;
   top: var(--space-1);
   left: var(--space-1);

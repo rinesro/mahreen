@@ -597,6 +597,16 @@
   border-top: var(--border-thin) solid var(--color-line);
 }
 
+/*
+ * Tautan di tengah kalimat diberi area sentuh setinggi 48px lewat padding,
+ * lalu margin negatif supaya jarak antarbaris teks tidak berubah.
+ */
+.timeline__penutup a {
+  display: inline-block;
+  padding-block: 0.875rem;
+  margin-block: -0.875rem;
+}
+
 @media (min-width: 64em) {
   .timeline__judul-item {
     font-size: var(--fs-2);
