@@ -163,9 +163,106 @@ function renderKegiatanBersama(daftar) {
   wadah.appendChild(list);
 }
 
+/* ---------- Anak Muda: program magang ---------- */
+/* Daftar pendek sebagai label (misalnya posisi atau bidang mentoring). */
+function buatDaftarLabel(daftar, bahasaInggris) {
+  const ul = buatElemen("ul", "label-list");
+  ul.setAttribute("role", "list");
+  daftar.forEach(function (teks) {
+    const li = buatElemen("li", "label", teks);
+    if (bahasaInggris) li.lang = "en";
+    ul.appendChild(li);
+  });
+  return ul;
+}
+
+/*
+ * Kiri (desktop): ringkasan, periode, status, dan tombol pantau.
+ * Kanan: benefit, posisi per grup, dan bidang mentoring.
+ * Bawah: sorotan kategori penghargaan Batch 1, lalu sumber.
+ */
+function renderAnakMuda(data) {
+  const wadah = document.getElementById("anak-muda-isi");
+  if (!wadah) return;
+
+  const tataLetak = buatElemen("div", "anak-muda__tata");
+
+  // --- Kolom kiri ---
+  const kiri = buatElemen("div", "anak-muda__kiri");
+  kiri.appendChild(buatElemen("h3", "anak-muda__program", "Mahreen Indonesia Internship"));
+  kiri.appendChild(buatElemen("p", "anak-muda__ringkas", data.ringkas));
+
+  const fakta = buatElemen("dl", "fakta");
+  [["Periode Batch 2", data.periodeBatch2], ["Status pendaftaran", data.statusPendaftaran]].forEach(function (baris) {
+    const grup = buatElemen("div", "fakta__baris");
+    grup.appendChild(buatElemen("dt", "fakta__label", baris[0]));
+    grup.appendChild(buatElemen("dd", "fakta__isi", baris[1]));
+    fakta.appendChild(grup);
+  });
+  kiri.appendChild(fakta);
+
+  if (data.ikuti) {
+    const tombol = buatTautanLuar(data.ikuti.url, data.ikuti.label, "btn btn--primary btn--ikon anak-muda__ikuti");
+    tombol.prepend(buatIkon("ikon-instagram", "ikon ikon--kecil"));
+    kiri.appendChild(tombol);
+  }
+  tataLetak.appendChild(kiri);
+
+  // --- Kolom kanan ---
+  const kanan = buatElemen("div", "anak-muda__kanan");
+
+  const benefit = buatElemen("div", "anak-muda__blok");
+  benefit.appendChild(buatElemen("h3", "anak-muda__subjudul", "Benefit yang disebutkan"));
+  const daftarBenefit = buatElemen("ul", "benefit-list");
+  data.benefit.forEach(function (teks) { daftarBenefit.appendChild(buatElemen("li", null, teks)); });
+  benefit.appendChild(daftarBenefit);
+  kanan.appendChild(benefit);
+
+  const posisi = buatElemen("div", "anak-muda__blok");
+  posisi.appendChild(buatElemen("h3", "anak-muda__subjudul", "Posisi di Batch 2"));
+  data.posisi.forEach(function (grup) {
+    const g = buatElemen("div", "posisi__grup");
+    const nama = buatElemen("h4", "posisi__nama", grup.grup);
+    nama.lang = "en";
+    g.appendChild(nama);
+    // Grup tanpa rincian (daftar kosong) cukup ditampilkan namanya
+    if (grup.daftar.length) g.appendChild(buatDaftarLabel(grup.daftar, true));
+    posisi.appendChild(g);
+  });
+  kanan.appendChild(posisi);
+
+  const mentor = buatElemen("div", "anak-muda__blok");
+  mentor.appendChild(buatElemen("h3", "anak-muda__subjudul", "Bidang mentoring Batch 2"));
+  mentor.appendChild(buatDaftarLabel(data.mentorBatch2, true));
+  kanan.appendChild(mentor);
+
+  tataLetak.appendChild(kanan);
+  wadah.appendChild(tataLetak);
+
+  // --- Sorotan kategori penghargaan ---
+  const sorotan = buatElemen("div", "penghargaan");
+  sorotan.appendChild(buatElemen("h3", "penghargaan__judul", data.penghargaanBatch1.length + " kategori penghargaan Batch 1"));
+  sorotan.appendChild(buatElemen("p", "penghargaan__pengantar", "Gambaran hal yang dikerjakan dan dihargai dari peserta magang."));
+  const daftar = buatElemen("ol", "penghargaan__list");
+  daftar.setAttribute("role", "list");
+  data.penghargaanBatch1.forEach(function (nama, i) {
+    const li = buatElemen("li", "penghargaan__item");
+    li.appendChild(buatElemen("span", "penghargaan__nomor", String(i + 1).padStart(2, "0")));
+    const teks = buatElemen("span", "penghargaan__nama", nama);
+    teks.lang = "en";
+    li.appendChild(teks);
+    daftar.appendChild(li);
+  });
+  sorotan.appendChild(daftar);
+  wadah.appendChild(sorotan);
+
+  wadah.appendChild(buatSumber(data.sumber, "sumber anak-muda__sumber"));
+}
+
 /* ---------- Jalankan ---------- */
 if (typeof MAHREEN !== "undefined") {
   renderKenalan(MAHREEN.profil);
   renderUnit(MAHREEN.unit);
   renderKegiatanBersama(MAHREEN.kegiatanBersama);
+  renderAnakMuda(MAHREEN.internship);
 }

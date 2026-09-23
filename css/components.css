@@ -1,7 +1,7 @@
 /*
  * Komponen halaman Mahreen untuk Anak Muda.
  * Urutan: sprite SVG dan ikon, tombol, keterangan sumber, bagian halaman,
- * header, hero, Kenalan, Karya, akun resmi, footer.
+ * header, hero, Kenalan, Karya, Anak Muda, akun resmi, footer.
  */
 
 /* ---------- Sprite SVG (hanya wadah <symbol>, tidak tampil) ---------- */
@@ -586,6 +586,195 @@
   .bersama__list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: var(--space-6);
+  }
+}
+
+/* ---------- Anak Muda: program magang ---------- */
+.anak-muda {
+  background-color: var(--color-surface);
+  border-top: var(--border-thin) solid var(--color-line);
+}
+
+.anak-muda__isi {
+  margin-top: var(--space-5);
+}
+
+.anak-muda__tata {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.anak-muda__program {
+  font-size: var(--fs-2);
+}
+
+.anak-muda__ringkas {
+  margin-top: var(--space-1);
+  font-size: var(--fs-1);
+  line-height: var(--lh-body);
+}
+
+/* Fakta Batch 2: label kecil di atas, isinya tebal */
+.fakta {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  padding: var(--space-2) 0;
+  border-block: var(--border-thin) solid var(--color-line);
+}
+
+.fakta__label {
+  font-size: var(--fs--1);
+  font-weight: var(--fw-semibold);
+  color: var(--color-neutral);
+}
+
+.fakta__isi {
+  margin: 0;
+  font-weight: var(--fw-semibold);
+  color: var(--color-secondary);
+}
+
+/* Padding kanan sama dengan kiri supaya nama akun terpanjang muat utuh di layar 360px */
+.anak-muda__ikuti {
+  margin-top: var(--space-3);
+  padding-inline: var(--space-2);
+}
+
+.anak-muda__kanan {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.anak-muda__subjudul {
+  font-size: var(--fs-1);
+}
+
+/* Benefit: daftar bertanda bunga kecil magenta */
+.benefit-list {
+  display: grid;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+  padding-left: var(--space-3);
+}
+
+.benefit-list li::marker {
+  color: var(--color-primary);
+}
+
+.posisi__grup {
+  margin-top: var(--space-2);
+}
+
+.posisi__nama {
+  font-size: var(--fs-0);
+  font-weight: var(--fw-semibold);
+  color: var(--color-ink);
+}
+
+/* Label: daftar pendek seperti posisi atau bidang mentoring (bukan tombol) */
+.label-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+}
+
+.label {
+  padding: 0.25rem var(--space-2);
+  background-color: var(--color-bg);
+  border: var(--border-thin) solid var(--color-line);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs--1);
+  font-weight: var(--fw-semibold);
+  color: var(--color-secondary);
+}
+
+/*
+ * Sorotan kategori penghargaan: satu-satunya blok berlatar merah tua di bagian ini,
+ * supaya menonjol sebagai gambaran hal yang dihargai dari peserta.
+ * Nomor memakai oranye muda (kontras 7,26:1), bukan oranye utama (2,83:1).
+ */
+.penghargaan {
+  margin-top: var(--space-8);
+  padding: var(--space-4) var(--space-3);
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-lg);
+  color: var(--color-on-primary);
+}
+
+.penghargaan__judul {
+  font-size: var(--fs-2);
+  color: var(--color-on-primary);
+}
+
+.penghargaan__pengantar {
+  margin-top: var(--space-1);
+  color: var(--color-primary-soft);
+}
+
+.penghargaan__list {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.penghargaan__item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  max-width: none;
+  padding-top: var(--space-2);
+  border-top: var(--border-thin) solid rgb(255 255 255 / 0.2);
+}
+
+.penghargaan__nomor {
+  font-family: var(--font-heading);
+  font-size: var(--fs-1);
+  font-weight: var(--fw-bold);
+  color: var(--color-accent-soft);
+}
+
+.penghargaan__nama {
+  font-weight: var(--fw-semibold);
+}
+
+.anak-muda__sumber {
+  margin-top: var(--space-3);
+}
+
+@media (min-width: 48em) {
+  .penghargaan {
+    padding: var(--space-6);
+  }
+
+  .penghargaan__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-4);
+  }
+}
+
+@media (min-width: 64em) {
+  .anak-muda__tata {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--grid-gutter);
+  }
+
+  .anak-muda__kiri {
+    grid-column: 1 / span 5;
+  }
+
+  .anak-muda__kanan {
+    grid-column: 7 / -1;
+  }
+
+  .penghargaan__list {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .penghargaan__item {
+    flex-direction: column;
+    gap: 0.25rem;
   }
 }
 
