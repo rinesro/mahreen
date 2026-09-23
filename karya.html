@@ -18,6 +18,12 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Poppins:wght@600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Poppins:wght@600;700&display=swap"></noscript>
 
+  <!--
+    Penanda bahwa JavaScript berjalan. Dipasang paling awal supaya menu di HP langsung
+    terlipat tanpa berkedip. Tanpa JavaScript, kelas ini tidak ada dan navigasi tampil lengkap.
+  -->
+  <script>document.documentElement.classList.add("js");</script>
+
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
@@ -51,6 +57,9 @@
       <circle cx="12" cy="12" r="4" />
       <path d="M17.2 6.8h.01" />
     </symbol>
+    <symbol id="ikon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </symbol>
   </svg>
 
   <header class="site-header">
@@ -60,10 +69,18 @@
         <span class="wordmark__utama">Mahreen</span>
         <span class="wordmark__sub">Indonesia</span>
       </a>
+      <!--
+        Tombol Menu hanya dipakai di layar di bawah 480px. Tombol ini disembunyikan (hidden)
+        sampai main.js berjalan, jadi tanpa JavaScript navigasi tetap tampil lengkap.
+      -->
+      <button class="menu-tombol" type="button" aria-expanded="false" aria-controls="navigasi-utama" hidden>
+        <svg class="ikon" aria-hidden="true" focusable="false"><use href="#ikon-menu" /></svg>
+        Menu
+      </button>
       <nav class="site-nav" id="navigasi-utama" aria-label="Navigasi utama">
         <ul class="site-nav__list" role="list">
           <li><a class="site-nav__link" href="index.html">Beranda</a></li>
-          <li><a class="site-nav__link" href="karya.html">Karya</a></li>
+          <li><a class="site-nav__link" href="karya.html" aria-current="page">Karya</a></li>
           <li><a class="site-nav__link" href="anak-muda.html">Anak Muda</a></li>
           <li><a class="site-nav__link" href="mulai.html">Mulai</a></li>
         </ul>
@@ -84,13 +101,27 @@
         <div class="karya__bersama" id="karya-bersama"></div>
       </div>
     </section>
+
+    <!-- Continuity: tautan ke halaman berikutnya dalam alur cerita -->
+    <nav class="lanjut" aria-label="Halaman berikutnya">
+      <div class="container">
+        <a class="lanjut__tautan" href="anak-muda.html">Lanjut: Ruang berkarya untuk anak muda</a>
+      </div>
+    </nav>
   </main>
 
   <footer class="site-footer">
     <div class="container grid site-footer__inner">
       <p class="site-footer__tagline">Satu ide. Satu karya. Satu dampak.</p>
 
-      <div class="site-footer__kolom">
+      <div class="site-footer__kolom site-footer__kolom--akun">
+        <h2 class="site-footer__judul">Satu Mahreen, lima akun</h2>
+        <p class="site-footer__intro">Informasi Mahreen tersebar di beberapa akun Instagram. Ini fungsinya masing-masing.</p>
+        <!-- Diisi dari MAHREEN.akun -->
+        <ul class="akun__list" id="akun-list" role="list"></ul>
+      </div>
+
+      <div class="site-footer__kolom site-footer__kolom--kontak">
         <h2 class="site-footer__judul">Kontak resmi Mahreen Indonesia</h2>
         <!-- Diisi dari MAHREEN.kontak -->
         <address class="site-footer__alamat" id="kontak"></address>

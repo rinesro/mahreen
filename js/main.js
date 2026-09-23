@@ -372,15 +372,45 @@ function renderKontak(kontak) {
   wadah.appendChild(list);
 }
 
+/* ---------- Menu navigasi di HP ---------- */
+/*
+ * Di bawah 480px navigasi dilipat di balik tombol "Menu" (disclosure).
+ * Tombolnya hidden di HTML dan baru ditampilkan di sini, jadi tanpa JavaScript
+ * navigasi tetap tampil lengkap. aria-expanded memberi tahu pembaca layar
+ * apakah menu sedang terbuka. Tombol Esc menutup menu dan mengembalikan fokus ke tombol.
+ */
+function pasangMenu() {
+  const tombol = document.querySelector(".menu-tombol");
+  const nav = document.getElementById("navigasi-utama");
+  if (!tombol || !nav) return;
+
+  tombol.hidden = false;
+
+  function atur(terbuka) {
+    tombol.setAttribute("aria-expanded", String(terbuka));
+    nav.classList.toggle("site-nav--terbuka", terbuka);
+  }
+
+  tombol.addEventListener("click", function () {
+    atur(tombol.getAttribute("aria-expanded") !== "true");
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && tombol.getAttribute("aria-expanded") === "true") {
+      atur(false);
+      tombol.focus();
+    }
+  });
+}
+
 /* ---------- Jalankan ---------- */
 /*
  * Setiap halaman hanya merender bagiannya sendiri, berdasarkan data-page pada <body>:
- * beranda, karya, anak-muda, atau mulai. Kontak di footer dirender di semua halaman.
+ * beranda, karya, anak-muda, atau mulai. Menu, akun, dan kontak di footer ada di semua halaman.
  */
 const RENDER_HALAMAN = {
   "beranda": function () {
     renderKenalan(MAHREEN.profil);
-    renderAkun(MAHREEN.akun);
   },
   "karya": function () {
     renderUnit(MAHREEN.unit);
@@ -394,8 +424,11 @@ const RENDER_HALAMAN = {
   },
 };
 
+pasangMenu();
+
 if (typeof MAHREEN !== "undefined") {
   const halaman = document.body.dataset.page;
   if (RENDER_HALAMAN[halaman]) RENDER_HALAMAN[halaman]();
+  renderAkun(MAHREEN.akun);
   renderKontak(MAHREEN.kontak);
 }

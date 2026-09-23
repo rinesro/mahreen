@@ -1,7 +1,7 @@
 /*
  * Komponen halaman Mahreen untuk Anak Muda.
  * Urutan: sprite SVG dan ikon, tombol, keterangan sumber, bagian halaman,
- * header, hero, Kenalan, Karya, Anak Muda, Mulai, akun resmi, footer.
+ * header dan menu, hero, Kenalan, Karya, Anak Muda, Mulai, tautan Lanjut, footer.
  */
 
 /* ---------- Sprite SVG (hanya wadah <symbol>, tidak tampil) ---------- */
@@ -169,7 +169,7 @@
   flex-wrap: wrap; /* di HP navigasi turun ke baris kedua kalau tidak muat */
   align-items: center;
   justify-content: space-between;
-  column-gap: var(--space-3);
+  column-gap: var(--space-2); /* rapat supaya wordmark dan tombol Menu muat sebaris di 360px */
   padding-block: var(--space-1);
 }
 
@@ -228,6 +228,14 @@
   text-decoration-thickness: 2px;
 }
 
+/* Halaman aktif: warna magenta dan garis bawah tebal, selain aria-current="page" untuk pembaca layar */
+.site-nav__link[aria-current="page"] {
+  color: var(--color-current);
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.35em;
+}
+
 @media (min-width: 40em) {
   .site-nav {
     flex-basis: auto;
@@ -236,6 +244,70 @@
   .site-nav__list {
     gap: var(--space-1);
     margin-inline: 0 calc(var(--space-1) * -1);
+  }
+}
+
+/*
+ * Menu di HP (di bawah 480px), hanya kalau JavaScript berjalan (kelas "js" pada <html>).
+ * Navigasi dilipat di balik tombol Menu, lalu tampil sebagai daftar bertumpuk saat dibuka.
+ */
+.menu-tombol {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--touch-target);
+  padding: 0 var(--space-2);
+  background-color: var(--color-surface);
+  border: var(--border-strong) solid var(--color-secondary);
+  border-radius: var(--radius-pill);
+  font-weight: var(--fw-semibold);
+  color: var(--color-secondary);
+}
+
+.menu-tombol[aria-expanded="true"] {
+  background-color: var(--color-secondary);
+  color: var(--color-on-primary);
+}
+
+@media (max-width: 29.99em) {
+  .js .site-nav {
+    display: none;
+  }
+
+  .js .site-nav--terbuka {
+    display: block;
+    animation: menu-buka var(--duration-base) var(--ease-out);
+  }
+
+  .js .site-nav__list {
+    flex-direction: column;
+    margin: var(--space-1) 0 var(--space-1);
+    border-top: var(--border-thin) solid var(--color-line);
+  }
+
+  .js .site-nav__link {
+    width: 100%;
+    padding-inline: 0;
+    border-bottom: var(--border-thin) solid var(--color-line);
+    border-radius: 0;
+  }
+}
+
+/* Di 480px ke atas navigasi selalu tampil, tombol Menu tidak dipakai */
+@media (min-width: 30em) {
+  .menu-tombol {
+    display: none;
+  }
+}
+
+@keyframes menu-buka {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -957,86 +1029,38 @@
   }
 }
 
-/* ---------- Satu Mahreen, lima akun ---------- */
-.akun {
+/* ---------- Tautan "Lanjut" di akhir setiap halaman ---------- */
+/* Continuity: menuntun pembaca ke halaman berikutnya dalam alur cerita */
+.lanjut {
+  padding-block: var(--space-6);
   background-color: var(--color-surface);
   border-top: var(--border-thin) solid var(--color-line);
 }
 
-.akun__isi {
-  grid-column: 1 / -1;
-}
-
-.akun__intro {
-  margin-top: var(--space-2);
-}
-
-/* Daftar bergaris pemisah, bukan kartu, supaya tidak seragam dengan bagian lain */
-.akun__list {
-  margin-top: var(--space-4);
-  border-top: var(--border-thin) solid var(--color-line);
-}
-
-.akun__item {
-  max-width: none; /* batas panjang baris dari base.css tidak berlaku untuk baris daftar */
-  padding-block: var(--space-2);
-  border-bottom: var(--border-thin) solid var(--color-line);
-}
-
-.akun__tautan {
+.lanjut__tautan {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-1);
   min-height: var(--touch-target);
   font-family: var(--font-heading);
-  font-size: var(--fs-0); /* di HP cukup kecil agar nama akun terpanjang muat satu baris */
-  font-weight: var(--fw-semibold);
+  font-size: var(--fs-1);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
   color: var(--color-secondary);
-  text-decoration: none;
-  overflow-wrap: anywhere;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.25em;
 }
 
-.akun__tautan .ikon {
+.lanjut__tautan:hover {
   color: var(--color-primary);
 }
 
-.akun__tautan:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-}
-
-.akun__fungsi {
-  color: var(--color-neutral);
-}
-
-@media (min-width: 64em) {
-  .akun__isi {
-    grid-column: 1 / span 8;
-  }
-
-  /*
-   * Desktop: nama akun di kiri, fungsinya di kanan.
-   * Subgrid membuat kolom kanan semua baris sejajar mengikuti nama akun terpanjang.
-   */
-  .akun__list {
-    display: grid;
-    grid-template-columns: max-content minmax(0, 1fr);
-    column-gap: var(--space-6);
-  }
-
-  .akun__item {
-    display: grid;
-    grid-column: 1 / -1;
-    grid-template-columns: subgrid;
-    align-items: center;
-  }
-
-  .akun__tautan {
-    font-size: var(--fs-1);
+@media (min-width: 48em) {
+  .lanjut__tautan {
+    font-size: var(--fs-2);
   }
 }
 
-/* ---------- Footer (gaya gelap bertekstur) ---------- */
+/* ---------- Footer (gaya gelap bertekstur, sama di semua halaman) ---------- */
 .site-footer {
   padding-block: var(--space-8) var(--space-6);
   background-color: var(--color-dark);
@@ -1047,7 +1071,7 @@
 }
 
 .site-footer__inner {
-  row-gap: var(--space-5);
+  row-gap: var(--space-6);
 }
 
 .site-footer__tagline {
@@ -1068,6 +1092,45 @@
   font-size: var(--fs-0);
   font-weight: var(--fw-semibold);
   color: var(--color-on-dark);
+}
+
+.site-footer__intro {
+  margin-top: 0.25rem;
+  font-size: var(--fs--1);
+  color: var(--color-on-dark-muted);
+}
+
+/* Lima akun resmi: nama akun di atas, fungsinya di bawah */
+.akun__list {
+  margin-top: var(--space-2);
+}
+
+.akun__item {
+  max-width: none;
+}
+
+.akun__item + .akun__item {
+  margin-top: var(--space-1);
+}
+
+.site-footer .akun__tautan {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 2.75rem; /* 44px, area sentuh minimal */
+  font-weight: var(--fw-semibold);
+  color: var(--color-on-dark);
+}
+
+/* Ikon memakai pink terang supaya tetap terlihat di latar gelap */
+.akun__tautan .ikon {
+  color: var(--color-focus-on-dark);
+}
+
+.akun__fungsi {
+  margin-top: -0.5rem;
+  font-size: var(--fs--1);
+  color: var(--color-on-dark-muted);
 }
 
 .site-footer__alamat {
@@ -1106,13 +1169,27 @@
   color: var(--color-on-dark-muted);
 }
 
+@media (min-width: 48em) {
+  .site-footer__kolom--akun {
+    grid-column: 1 / span 2;
+  }
+
+  .site-footer__kolom--kontak {
+    grid-column: 3 / -1;
+  }
+}
+
 @media (min-width: 64em) {
   .site-footer__tagline {
-    grid-column: 1 / span 5;
+    grid-column: 1 / span 4;
     font-size: var(--fs-4);
   }
 
-  .site-footer__kolom {
-    grid-column: 8 / -1;
+  .site-footer__kolom--akun {
+    grid-column: 6 / span 4;
+  }
+
+  .site-footer__kolom--kontak {
+    grid-column: 10 / -1;
   }
 }
