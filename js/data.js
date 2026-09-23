@@ -168,7 +168,8 @@ const MAHREEN = {
       "url": "https://www.instagram.com/mahreenindonesiainternship/"
     },
     "ikuti": {
-      "label": "Pantau batch berikutnya di @mahreenindonesiainternship",
+      "label": "Pantau batch berikutnya",
+      "akun": "@mahreenindonesiainternship",
       "url": "https://www.instagram.com/mahreenindonesiainternship/"
     }
   },

@@ -256,10 +256,23 @@ function renderAnakMuda(data) {
   });
   kiri.appendChild(fakta);
 
+  /*
+   * Tombol dengan label pendek, lalu nama akun sebagai keterangan kecil di bawahnya.
+   * Keterangan dihubungkan ke tombol lewat aria-describedby, jadi pembaca layar
+   * tetap mendengar ke akun mana tombol ini mengarah.
+   */
   if (data.ikuti) {
+    const aksi = buatElemen("div", "anak-muda__aksi");
     const tombol = buatTautanLuar(data.ikuti.url, data.ikuti.label, "btn btn--primary btn--ikon anak-muda__ikuti");
     tombol.prepend(buatIkon("ikon-instagram", "ikon ikon--kecil"));
-    kiri.appendChild(tombol);
+    aksi.appendChild(tombol);
+    if (data.ikuti.akun) {
+      const keterangan = buatElemen("p", "anak-muda__ikuti-akun", "di Instagram " + data.ikuti.akun);
+      keterangan.id = "ikuti-akun";
+      tombol.setAttribute("aria-describedby", keterangan.id);
+      aksi.appendChild(keterangan);
+    }
+    kiri.appendChild(aksi);
   }
   tataLetak.appendChild(kiri);
 

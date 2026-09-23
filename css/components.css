@@ -917,9 +917,20 @@ main > .section:first-child {
 }
 
 /* Padding kanan sama dengan kiri supaya nama akun terpanjang muat utuh di layar 360px */
-.anak-muda__ikuti {
+.anak-muda__aksi {
   margin-top: var(--space-3);
+}
+
+.anak-muda__ikuti {
   padding-inline: var(--space-2);
+}
+
+/* Nama akun tujuan tombol, kecil di bawahnya (proximity: satu kelompok dengan tombol) */
+.anak-muda__ikuti-akun {
+  margin-top: var(--space-1);
+  font-size: var(--fs--1);
+  color: var(--color-neutral);
+  overflow-wrap: anywhere;
 }
 
 .anak-muda__kanan {

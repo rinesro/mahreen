@@ -122,7 +122,7 @@ Semua konten ada di satu objek `MAHREEN`. Mengubah isi halaman cukup di file ini
 | `profil` | Beranda, "Kenalan dulu sama Mahreen" | `visi`, `misi` (daftar), `nilai` (`en` dan padanan `id`), `sumber` |
 | `unit` | Karya | Satu objek per unit: `nama`, `bidang`, `apa`, `contoh`, `sumber`, `akun`, `akunUrl` |
 | `kegiatanBersama` | Karya, "Juga dari Mahreen Indonesia" | `judul`, `tanggal`, `keterangan`, `sumber` |
-| `internship` | Anak Muda, juga catatan di Mulai | `ringkas`, `periodeBatch2`, `statusPendaftaran`, `benefit`, `posisi` per `grup`, `mentorBatch2`, `penghargaanBatch1`, `sumber`, `ikuti` |
+| `internship` | Anak Muda, juga catatan di Mulai | `ringkas`, `periodeBatch2`, `statusPendaftaran`, `benefit`, `posisi` per `grup`, `mentorBatch2`, `penghargaanBatch1`, `sumber`, `ikuti` (`label` tombol, `akun` sebagai keterangan kecil di bawahnya, `url`) |
 | `minat` | Mulai | Satu objek per pilihan: `id` (juga dipakai di URL), `label`, `posisi`, `unit`, `akun` |
 | `akun` | Footer semua halaman | `nama`, `fungsi`, `url` |
 | `kontak` | Footer semua halaman | `website`, `email`, `whatsapp`, `whatsappUrl`, `alamat` |
