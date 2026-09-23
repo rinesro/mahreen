@@ -105,7 +105,7 @@ function buatTautanAkun(nama, url, className) {
   return a;
 }
 
-/* ---------- Kenalan: visi, misi, tiga nilai ---------- */
+/* ---------- Kenalan: visi, misi, tiga kata kunci ---------- */
 function renderKenalan(profil) {
   const wadah = document.getElementById("kenalan-isi");
   if (!wadah) return;
@@ -127,9 +127,9 @@ function renderKenalan(profil) {
 
   wadah.appendChild(visiMisi);
 
-  // Tiga nilai ditampilkan besar, istilah Inggrisnya diberi padanan bahasa Indonesia
+  // Tiga kata kunci ditampilkan besar, istilah Inggrisnya diberi padanan bahasa Indonesia
   const nilai = buatElemen("div", "kenalan__nilai");
-  nilai.appendChild(buatElemen("h3", "kenalan__label", "Tiga nilai Mahreen"));
+  nilai.appendChild(buatElemen("h3", "kenalan__label", "Tiga kata kunci Mahreen"));
   const daftarNilai = buatElemen("ul", "nilai");
   daftarNilai.setAttribute("role", "list");
   profil.nilai.forEach(function (n) {

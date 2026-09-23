@@ -57,7 +57,7 @@ const MAHREEN = {
       "nama": "Peduli Mahreen",
       "bidang": "Social & Humanity Movement",
       "apa": "Gerakan sosial dan kemanusiaan dengan empat tujuan: kepedulian, edukasi, bantuan sosial, dan pemberdayaan.",
-      "contoh": "Akhir Juni 2026, Peduli Mahreen memperkenalkan diri, membagikan cerita aksi sosialnya, dan mengajak followers menuliskan isu sosial yang menurut mereka paling mendesak.",
+      "contoh": "Akhir Juni 2026, Peduli Mahreen memperkenalkan diri lewat cerita awal perjalanan, visi misi, dan hal yang sedang diperjuangkan, lalu mengajak followers menuliskan isu sosial yang menurut mereka paling mendesak.",
       "sumber": {
         "label": "@pedulimahreen, 29 dan 30 Juni 2026",
         "url": "https://www.instagram.com/pedulimahreen/"
@@ -69,7 +69,7 @@ const MAHREEN = {
       "id": "mahreen-csr",
       "nama": "Mahreen CSR",
       "bidang": "Corporate Social Responsibility",
-      "apa": "Unit yang mengumumkan kemitraan resmi Mahreen dengan kampus, organisasi mahasiswa, brand, dan yayasan.",
+      "apa": "Pengumuman kemitraan resmi Mahreen dibagikan lewat akun ini.",
       "contoh": "Juli sampai Agustus 2026: kerja sama dengan Universitas Teknologi Bandung, Nice To Meet You (NTMY), Yayasan Fauzan Adzima Sukajadi, dan BEM Universitas Teknologi Bandung.",
       "sumber": {
         "label": "@mahreencsr, 7 Juli sampai 20 Agustus 2026",
@@ -220,7 +220,7 @@ const MAHREEN = {
         "Backend Development",
         "UI/UX"
       ],
-      "unit": "Website termasuk layanan Tanya Mahreen, dan websitenya pernah dikerjakan tim magang Batch 1.",
+      "unit": "Website termasuk layanan Tanya Mahreen. Ada tim magang Batch 1 di Tanya Mahreen Website Development UI/UX yang meraih Best Team Player.",
       "akun": [
         {
           "nama": "@mahreenindonesiainternship",
@@ -238,7 +238,7 @@ const MAHREEN = {
       "posisi": [
         "Business Development & Partnership"
       ],
-      "unit": "Tanya Mahreen melayani UMKM dan bisnis, dan Mahreen beberapa kali mengadakan seminar untuk UMKM.",
+      "unit": "Tanya Mahreen melayani UMKM dan bisnis, dan Mahreen mengadakan seminar untuk UMKM pada Juli dan Agustus 2026.",
       "akun": [
         {
           "nama": "@mahreenindonesia",

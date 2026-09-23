@@ -582,7 +582,7 @@ main > .section:first-child {
   margin-top: var(--space-6);
 }
 
-/* Tiga nilai ditampilkan besar, dengan padanan bahasa Indonesia kecil di bawahnya */
+/* Tiga kata kunci ditampilkan besar, dengan padanan bahasa Indonesia kecil di bawahnya */
 .nilai {
   display: grid;
   gap: var(--space-3);

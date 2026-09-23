@@ -18,7 +18,7 @@ Tema "Berkarya untuk Indonesia" dipakai sebagai alur cerita yang dibagi ke empat
 
 | Urutan | Halaman | Isi |
 |---|---|---|
-| 1 | **Beranda** (`index.html`) | Siapa Mahreen: visi, misi, tiga nilai, dan tautan untuk menjelajah |
+| 1 | **Beranda** (`index.html`) | Siapa Mahreen: visi, misi, tiga kata kunci, dan tautan untuk menjelajah |
 | 2 | **Karya** (`karya.html`) | Bagaimana Mahreen berkarya lewat unit-unitnya, dengan contoh nyata dari unggahan mereka |
 | 3 | **Anak Muda** (`anak-muda.html`) | Ruang yang Mahreen sediakan untuk anak muda: program magang |
 | 4 | **Mulai** (`mulai.html`) | Pembaca memilih minatnya, lalu diarahkan ke posisi magang, unit, dan akun yang relevan |
@@ -28,7 +28,7 @@ Setiap halaman ditutup blok "Lanjut" ke halaman berikutnya, berisi judul halaman
 Kaitan dengan tiga kata kunci tugas:
 
 - **Menarik:** alur bercerita dengan tema sebagai benang merah, visual mengikuti identitas kampanye Mahreen, dan satu halaman interaktif.
-- **Mudah dipahami:** satu halaman satu tujuan, bahasa sederhana, dan istilah Inggris pada tiga nilai diberi padanan bahasa Indonesia.
+- **Mudah dipahami:** satu halaman satu tujuan, bahasa sederhana, dan istilah Inggris pada tiga kata kunci diberi padanan bahasa Indonesia.
 - **Relevan:** halaman Mulai menghubungkan minat pembaca (desain, konten, teknologi, bisnis, sosial) dengan bagian Mahreen yang berkaitan.
 
 ### Kenapa multi-halaman, bukan satu halaman panjang
@@ -119,7 +119,7 @@ Semua konten ada di satu objek `MAHREEN`. Mengubah isi halaman cukup di file ini
 
 | Kunci | Tampil di | Isi |
 |---|---|---|
-| `profil` | Beranda, "Kenalan dulu sama Mahreen" | `visi`, `misi` (daftar), `nilai` (`en` dan padanan `id`), `sumber` |
+| `profil` | Beranda, "Kenalan dulu sama Mahreen" | `visi`, `misi` (daftar), `nilai` (tiga kata kunci: `en` dan padanan `id`), `sumber` |
 | `unit` | Karya | Satu objek per unit: `nama`, `bidang`, `apa`, `contoh`, `sumber`, `akun`, `akunUrl` |
 | `kegiatanBersama` | Karya, "Juga dari Mahreen Indonesia" | `judul`, `tanggal`, `keterangan`, `sumber` |
 | `internship` | Anak Muda, juga catatan di Mulai | `ringkas`, `periodeBatch2`, `statusPendaftaran`, `benefit`, `posisi` per `grup`, `mentorBatch2`, `penghargaanBatch1`, `sumber`, `ikuti` (`label` tombol, `akun` sebagai keterangan kecil di bawahnya, `url`) |
