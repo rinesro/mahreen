@@ -16,12 +16,12 @@ Konteks dari studi kasus: program dan peluang Mahreen belum selalu mudah dikenal
 
 Tema "Berkarya untuk Indonesia" dipakai sebagai alur cerita yang dibagi ke empat halaman:
 
-| Urutan | Halaman | Isi |
-|---|---|---|
-| 1 | **Beranda** (`index.html`) | Siapa Mahreen: visi, misi, tiga kata kunci, dan tautan untuk menjelajah |
-| 2 | **Karya** (`karya.html`) | Bagaimana Mahreen berkarya lewat unit-unitnya, dengan contoh nyata dari unggahan mereka |
-| 3 | **Anak Muda** (`anak-muda.html`) | Ruang yang Mahreen sediakan untuk anak muda: program magang |
-| 4 | **Mulai** (`mulai.html`) | Pembaca memilih minatnya, lalu diarahkan ke posisi magang, unit, dan akun yang relevan |
+| Urutan | Halaman | Label di navigasi | Isi |
+|---|---|---|---|
+| 1 | **Beranda** (`index.html`) | Beranda | Siapa Mahreen: visi, misi, tiga kata kunci, dan tautan untuk menjelajah |
+| 2 | **Karya** (`karya.html`) | Unit & Kegiatan | Bagaimana Mahreen berkarya lewat unit-unitnya, dengan contoh nyata dari unggahan mereka |
+| 3 | **Anak Muda** (`anak-muda.html`) | Magang | Ruang yang Mahreen sediakan untuk anak muda: program magang |
+| 4 | **Mulai** (`mulai.html`) | Cari yang Cocok | Pembaca memilih minatnya, lalu diarahkan ke posisi magang, unit, dan akun yang relevan |
 
 Halaman Karya dan Anak Muda ditutup blok "Lanjut" ke halaman berikutnya, berisi judul halaman tujuan dan satu kalimat isinya, dengan seluruh blok sebagai area klik. Halaman Mulai ditutup blok "Kembali ke Beranda". Blok ini memakai gradasi kampanye yang sama dengan hero Beranda. Beranda sendiri tidak punya blok Lanjut, karena bagian Jelajahi sudah menautkan ketiga halaman lain dengan urutan yang sama. Footer di semua halaman memuat lima akun Instagram resmi (karena informasi Mahreen tersebar di beberapa akun) dan kontak resmi. Di desktop, footer disusun dua lapis. Lapis atas berisi tiga kolom rata atas: logo dan tagline, lima akun (dibagi dua kolom kecil mulai 1280px), dan kontak. Kolom yang lebih pendek dibiarkan pendek. Lapis bawah dipisah garis tipis dan berisi catatan prototype di kiri serta penanda "# Berkarya untuk Indonesia" di kanan. Di HP semuanya bertumpuk satu kolom.
 
@@ -77,7 +77,9 @@ Kaitan dengan tiga kata kunci tugas:
 **Motion.** Hanya untuk merespons aksi pengguna: membuka menu dan memilih minat. Semua gerak mati kalau pengguna memilih `prefers-reduced-motion`.
 
 **Navigasi.**
-- Halaman aktif ditandai warna magenta dan garis bawah tebal, ditambah `aria-current="page"` untuk pembaca layar. Penanda ini ditulis langsung di HTML setiap halaman.
+- Label navigasi memakai nama yang langsung menjelaskan isinya: Beranda, Unit & Kegiatan, Magang, dan Cari yang Cocok. Nama halaman di README (Karya, Anak Muda, Mulai) tetap dipakai sebagai nama file dan nama internal.
+- "Cari yang Cocok" mengarah ke satu-satunya halaman interaktif, jadi tampil sebagai tombol kecil bergaya tombol utama.
+- Halaman aktif ditandai `aria-current="page"` (ditulis langsung di HTML setiap halaman) dan gaya yang berbeda dari hover. Tautan biasa yang aktif berwarna magenta dengan garis bawah tebal berjarak, sedangkan hover hanya berwarna crimson dengan garis tipis. Tombol "Cari yang Cocok" berlatar magenta, berubah crimson saat hover, dan saat aktif menjadi latar pink muda bergaris tepi magenta. Gaya aktif tidak berubah saat di-hover.
 - Di layar di bawah 480px, navigasi dilipat di balik tombol "Menu" (disclosure dengan `aria-expanded`). Tombol Esc menutup menu dan mengembalikan fokus ke tombolnya.
 - Tanpa JavaScript, tombol Menu tidak muncul dan navigasi tampil lengkap.
 

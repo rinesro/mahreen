@@ -233,8 +233,11 @@ main > .section:first-child {
 .site-nav__list {
   display: flex;
   justify-content: space-between;
-  /* geser ke kiri dan kanan supaya teks tautan tepi sejajar dengan tepi konten */
-  margin-inline: calc(var(--space-1) * -1);
+  /*
+   * Geser ke kiri supaya teks tautan pertama sejajar dengan tepi konten.
+   * Kanan tidak digeser: item terakhir berupa tombol, tepinya yang disejajarkan.
+   */
+  margin-inline: calc(var(--space-1) * -1) 0;
 }
 
 .site-nav__link {
@@ -250,18 +253,64 @@ main > .section:first-child {
   transition: color var(--duration-fast) var(--ease-out);
 }
 
+/* Hover: hanya warna crimson dan garis tipis, supaya tidak sama dengan penanda halaman aktif */
 .site-nav__link:hover {
-  color: var(--color-primary);
+  color: var(--color-secondary);
   text-decoration: underline;
-  text-decoration-thickness: 2px;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
 }
 
-/* Halaman aktif: warna magenta dan garis bawah tebal, selain aria-current="page" untuk pembaca layar */
-.site-nav__link[aria-current="page"] {
+/*
+ * Halaman aktif: warna magenta dan garis bawah tebal berjarak (3px), selain
+ * aria-current="page" untuk pembaca layar. Tidak berubah saat di-hover.
+ */
+.site-nav__link[aria-current="page"],
+.site-nav__link[aria-current="page"]:hover {
   color: var(--color-current);
   text-decoration: underline;
   text-decoration-thickness: 3px;
   text-underline-offset: 0.35em;
+}
+
+/*
+ * "Cari yang Cocok": tautan ke halaman interaktif, tampil sebagai tombol kecil
+ * bergaya tombol utama (magenta, teks putih 4,98:1). Tinggi tetap 44px untuk area sentuh.
+ */
+.site-nav__link--aksi {
+  min-height: 2.75rem;
+  margin-block: 0.125rem; /* 44px + 2 x 2px = 48px, sejajar dengan tautan lain */
+  padding-inline: var(--space-2);
+  background-color: var(--color-primary);
+  border: var(--border-strong) solid var(--color-primary);
+  border-radius: var(--radius-pill);
+  color: var(--color-on-primary);
+  transition: background-color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out);
+}
+
+/* Hover: magenta menjadi crimson, tanpa garis bawah */
+.site-nav__link--aksi:hover {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: var(--color-on-primary);
+  text-decoration: none;
+}
+
+/*
+ * Aktif (sedang di halaman Mulai): tombol "terisi lembut", latar pink muda, garis tepi magenta,
+ * teks crimson (7,4:1). Berbeda dari keadaan biasa maupun hover, dan tidak berubah saat di-hover.
+ */
+.site-nav__link--aksi[aria-current="page"],
+.site-nav__link--aksi[aria-current="page"]:hover {
+  background-color: var(--color-primary-soft);
+  border-color: var(--color-primary);
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+.site-nav__link--aksi:focus-visible {
+  outline-offset: var(--focus-ring-offset);
+  border-radius: var(--radius-pill);
 }
 
 @media (min-width: 40em) {
@@ -271,7 +320,7 @@ main > .section:first-child {
 
   .site-nav__list {
     gap: var(--space-1);
-    margin-inline: 0 calc(var(--space-1) * -1);
+    margin-inline: 0;
   }
 }
 
@@ -318,6 +367,15 @@ main > .section:first-child {
     padding-inline: 0;
     border-bottom: var(--border-thin) solid var(--color-line);
     border-radius: 0;
+  }
+
+  /* Di menu HP, tombol "Cari yang Cocok" tetap berbentuk tombol, di bawah tautan lain */
+  .js .site-nav__link--aksi {
+    justify-content: center;
+    margin-top: var(--space-2);
+    padding-inline: var(--space-2);
+    border-bottom: var(--border-strong) solid var(--color-primary);
+    border-radius: var(--radius-pill);
   }
 }
 
