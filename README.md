@@ -1,6 +1,6 @@
 # Mahreen untuk Anak Muda
 
-![Pratinjau Mahreen untuk Anak Muda: tulisan "Berkarya untuk Indonesia. Kamu mulai dari mana?" dengan motif bunga empat kelopak](assets/og-image.png)
+![Tampilan Beranda Mahreen untuk Anak Muda: judul Berkarya untuk Indonesia. Kamu mulai dari mana? dengan tombol Lihat program aktif dan Lihat karya Mahreen](assets/preview.png)
 
 Website perkenalan Mahreen Indonesia untuk generasi muda, dengan tema **Berkarya untuk Indonesia**.
 
@@ -64,7 +64,8 @@ Informasi tentang Mahreen Indonesia tersebar di lima akun Instagram (@mahreenind
 ├─ assets/
 │  ├─ logo/             logo resmi versi crimson dan putih
 │  ├─ favicon.svg
-│  └─ og-image.png      gambar pratinjau saat tautan dibagikan
+│  ├─ og-image.png      gambar pratinjau saat tautan dibagikan
+│  └─ preview.png       tangkapan layar Beranda untuk README
 ├─ .gitignore
 └─ README.md
 ```
