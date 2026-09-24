@@ -320,7 +320,7 @@ function renderAnakMuda(data) {
  * (satu pilihan aktif, panah untuk berpindah, dibaca "1 dari 5" oleh pembaca layar)
  * sudah disediakan browser tanpa kode tambahan.
  *
- * Pilihan disimpan di query URL, misalnya ikut-berkarya.html?minat=teknologi, supaya hasilnya
+ * Pilihan disimpan di query URL, misalnya anak-muda.html?minat=teknologi, supaya hasilnya
  * bisa dibagikan dan tetap ada saat halaman dimuat ulang. Dipakai replaceState (bukan
  * pushState) supaya setiap ganti pilihan tidak menambah riwayat browser.
  */
@@ -371,43 +371,74 @@ function renderMinat(daftarMinat, internship) {
   }
 
   function tampilkanHasil(minat) {
-    const isi = [];
-    isi.push(buatElemen("h3", "minat-hasil__judul", minat.label));
+    // Petunjuk awal tidak diperlukan lagi setelah ada pilihan
+    const petunjuk = document.getElementById("minat-petunjuk");
+    if (petunjuk) petunjuk.hidden = true;
 
-    // Posisi internship yang berkaitan, hanya kalau ada
+    // Panel hasil baru dibuat di sini, jadi sebelum memilih tidak ada panel kosong
+    const panel = buatElemen("div", "minat-hasil__panel");
+    panel.appendChild(buatElemen("h3", "minat-hasil__judul", minat.label));
+
+    const isi = buatElemen("div", "minat-hasil__isi");
+
+    // Posisi magang yang berkaitan (chip), hanya kalau ada
     if (minat.posisi.length) {
       const blok = buatElemen("div", "minat-hasil__blok");
-      blok.appendChild(buatElemen("h4", "minat-hasil__subjudul", "Posisi internship yang berkaitan"));
+      blok.appendChild(buatElemen("h4", "minat-hasil__subjudul", "Posisi magang yang berkaitan"));
       blok.appendChild(buatDaftarLabel(minat.posisi, true));
       blok.appendChild(buatElemen("p", "minat-hasil__catatan", "Posisi di Batch 2. " + internship.statusPendaftaran));
-      isi.push(blok);
+      if (minat.mentorBatch2) {
+        const mentor = buatElemen("p", "minat-hasil__mentor");
+        mentor.appendChild(buatElemen("strong", null, "Ada mentor di Batch 2"));
+        if (minat.mentorBidang) {
+          mentor.appendChild(document.createTextNode(", untuk bidang "));
+          const bidang = buatElemen("span", null, minat.mentorBidang);
+          bidang.lang = "en";
+          mentor.appendChild(bidang);
+        }
+        mentor.appendChild(document.createTextNode("."));
+        blok.appendChild(mentor);
+      }
+      isi.appendChild(blok);
     }
 
-    // Unit Mahreen yang berkaitan
-    const unit = buatElemen("div", "minat-hasil__blok");
-    unit.appendChild(buatElemen("h4", "minat-hasil__subjudul", "Di Mahreen"));
-    unit.appendChild(buatElemen("p", "minat-hasil__unit", minat.unit));
-    isi.push(unit);
+    // Penghargaan Batch 1 yang diraih peserta di posisi ini (tanpa nama orang)
+    if (minat.penghargaanBatch1.length) {
+      const blok = buatElemen("div", "minat-hasil__blok");
+      blok.appendChild(buatElemen("h4", "minat-hasil__subjudul", "Penghargaan Batch 1 untuk posisi ini"));
+      const list = buatElemen("ul", "minat-hasil__penghargaan");
+      list.setAttribute("role", "list");
+      minat.penghargaanBatch1.forEach(function (p) {
+        const li = buatElemen("li");
+        const nama = buatElemen("span", "minat-hasil__penghargaan-nama", p.nama);
+        nama.lang = "en";
+        li.appendChild(nama);
+        const oleh = buatElemen("span", "minat-hasil__penghargaan-oleh", "diraih peserta " + p.posisi);
+        li.appendChild(oleh);
+        list.appendChild(li);
+      });
+      blok.appendChild(list);
+      isi.appendChild(blok);
+    }
 
-    // Akun yang bisa dipantau
-    const akun = buatElemen("div", "minat-hasil__blok");
-    akun.appendChild(buatElemen("h4", "minat-hasil__subjudul", "Akun yang bisa kamu pantau"));
-    const list = buatElemen("ul", "minat-hasil__akun");
-    list.setAttribute("role", "list");
-    minat.akun.forEach(function (a) {
-      const li = buatElemen("li");
-      li.appendChild(buatTautanAkun(a.nama, a.url));
-      list.appendChild(li);
-    });
-    akun.appendChild(list);
-    isi.push(akun);
+    // Catatan dan tombol, kalau ada
+    if (minat.catatan || minat.tombol) {
+      const blok = buatElemen("div", "minat-hasil__blok");
+      if (minat.catatan) blok.appendChild(buatElemen("p", "minat-hasil__keterangan", minat.catatan));
+      if (minat.tombol) {
+        const tombol = buatElemen("a", "btn btn--secondary minat-hasil__tombol", minat.tombol.label);
+        tombol.href = minat.tombol.url;
+        blok.appendChild(tombol);
+      }
+      isi.appendChild(blok);
+    }
 
-    hasil.replaceChildren.apply(hasil, isi);
+    panel.appendChild(isi);
+    panel.appendChild(buatSumber(minat.sumber, "sumber minat-hasil__sumber"));
+    hasil.replaceChildren(panel);
 
     // Animasi muncul dipicu ulang setiap pilihan berganti (mati kalau reduced motion)
-    hasil.classList.remove("minat-hasil--muncul");
-    void hasil.offsetWidth;
-    hasil.classList.add("minat-hasil--muncul");
+    panel.classList.add("minat-hasil--muncul");
   }
 }
 
@@ -614,10 +645,10 @@ const RENDER_HALAMAN = {
   },
   "anak-muda": function () {
     renderAnakMuda(MAHREEN.internship);
+    renderMinat(MAHREEN.minat, MAHREEN.internship);
   },
   "ikut-berkarya": function () {
     renderProgram(MAHREEN.programBerjalan);
-    renderMinat(MAHREEN.minat, MAHREEN.internship);
   },
 };
 

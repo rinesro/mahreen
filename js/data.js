@@ -241,17 +241,28 @@ const MAHREEN = {
         "Graphic Design",
         "UI/UX"
       ],
-      "unit": "Mahreen Studio mengembangkan apparel, visual branding, dan identitas kreatif.",
-      "akun": [
+      "mentorBatch2": true,
+      "mentorBidang": "Graphic Design",
+      "penghargaanBatch1": [
         {
-          "nama": "@mahreenindonesiainternship",
-          "url": "https://www.instagram.com/mahreenindonesiainternship/"
+          "nama": "Best Intern of the Batch",
+          "posisi": "Graphic Design"
         },
         {
-          "nama": "@mahreenindonesia",
-          "url": "https://www.instagram.com/mahreenindonesia/"
+          "nama": "Most Outstanding Intern",
+          "posisi": "Graphic Design"
+        },
+        {
+          "nama": "Most Creative Designer",
+          "posisi": "Graphic Design"
         }
-      ]
+      ],
+      "catatan": null,
+      "tombol": null,
+      "sumber": {
+        "label": "@mahreenindonesiainternship, 30 Agustus sampai 1 September 2026; Story MI Batch 2, 14 September 2026",
+        "url": "https://www.instagram.com/mahreenindonesiainternship/"
+      }
     },
     {
       "id": "konten",
@@ -260,17 +271,28 @@ const MAHREEN = {
         "Social Media Management",
         "Video Editor"
       ],
-      "unit": "Social media management juga termasuk layanan Tanya Mahreen.",
-      "akun": [
+      "mentorBatch2": true,
+      "mentorBidang": "Social Media Management",
+      "penghargaanBatch1": [
         {
-          "nama": "@mahreenindonesiainternship",
-          "url": "https://www.instagram.com/mahreenindonesiainternship/"
+          "nama": "Most Consistent Intern",
+          "posisi": "Video Editor"
         },
         {
-          "nama": "@tanyamahreen",
-          "url": "https://www.instagram.com/tanyamahreen/"
+          "nama": "Creative Editing Award",
+          "posisi": "Video Editor"
+        },
+        {
+          "nama": "Best Content Strategist",
+          "posisi": "Social Media Management"
         }
-      ]
+      ],
+      "catatan": null,
+      "tombol": null,
+      "sumber": {
+        "label": "@mahreenindonesiainternship, 30 Agustus sampai 1 September 2026; Story MI Batch 2, 14 September 2026",
+        "url": "https://www.instagram.com/mahreenindonesiainternship/"
+      }
     },
     {
       "id": "teknologi",
@@ -280,17 +302,24 @@ const MAHREEN = {
         "Backend Development",
         "UI/UX"
       ],
-      "unit": "Website termasuk layanan Tanya Mahreen. Ada tim magang Batch 1 di Tanya Mahreen Website Development UI/UX yang meraih Best Team Player.",
-      "akun": [
+      "mentorBatch2": true,
+      "mentorBidang": "Website Development",
+      "penghargaanBatch1": [
         {
-          "nama": "@mahreenindonesiainternship",
-          "url": "https://www.instagram.com/mahreenindonesiainternship/"
+          "nama": "Most Engaged Intern",
+          "posisi": "Website Development"
         },
         {
-          "nama": "@tanyamahreen",
-          "url": "https://www.instagram.com/tanyamahreen/"
+          "nama": "Web Innovator Award",
+          "posisi": "Website Development"
         }
-      ]
+      ],
+      "catatan": null,
+      "tombol": null,
+      "sumber": {
+        "label": "@mahreenindonesiainternship, 30 Agustus sampai 1 September 2026; Story MI Batch 2, 14 September 2026",
+        "url": "https://www.instagram.com/mahreenindonesiainternship/"
+      }
     },
     {
       "id": "bisnis",
@@ -298,33 +327,32 @@ const MAHREEN = {
       "posisi": [
         "Business Development & Partnership"
       ],
-      "unit": "Tanya Mahreen melayani UMKM dan bisnis, dan Mahreen mengadakan seminar untuk UMKM pada Juli dan Agustus 2026.",
-      "akun": [
-        {
-          "nama": "@mahreenindonesia",
-          "url": "https://www.instagram.com/mahreenindonesia/"
-        },
-        {
-          "nama": "@tanyamahreen",
-          "url": "https://www.instagram.com/tanyamahreen/"
-        }
-      ]
+      "mentorBatch2": false,
+      "mentorBidang": null,
+      "penghargaanBatch1": [],
+      "catatan": "Bidang mentoring untuk posisi ini belum disebutkan di pengumuman Batch 2.",
+      "tombol": null,
+      "sumber": {
+        "label": "@mahreenindonesiainternship, 30 Agustus sampai 1 September 2026; Story MI Batch 2, 14 September 2026",
+        "url": "https://www.instagram.com/mahreenindonesiainternship/"
+      }
     },
     {
       "id": "sosial",
       "label": "Sosial dan kemanusiaan",
       "posisi": [],
-      "unit": "Peduli Mahreen menjalankan gerakan sosial, dan Mahreen CSR mengumumkan kemitraan dengan kampus serta yayasan.",
-      "akun": [
-        {
-          "nama": "@pedulimahreen",
-          "url": "https://www.instagram.com/pedulimahreen/"
-        },
-        {
-          "nama": "@mahreencsr",
-          "url": "https://www.instagram.com/mahreencsr/"
-        }
-      ]
+      "mentorBatch2": false,
+      "mentorBidang": null,
+      "penghargaanBatch1": [],
+      "catatan": "Belum ada posisi magang khusus bidang sosial di Batch 2. Kegiatan sosial Mahreen dijalankan lewat Peduli Mahreen.",
+      "tombol": {
+        "label": "Lihat Peduli Mahreen di Ikut Berkarya",
+        "url": "ikut-berkarya.html"
+      },
+      "sumber": {
+        "label": "@mahreenindonesiainternship, 30 Agustus sampai 1 September 2026; Story MI Batch 2, 14 September 2026",
+        "url": "https://www.instagram.com/mahreenindonesiainternship/"
+      }
     }
   ],
   "akun": [

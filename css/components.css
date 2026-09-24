@@ -1266,25 +1266,14 @@ main > .section:first-child {
   }
 }
 
-/* Bagian kedua di halaman yang sama: jarak atas lebih rapat karena masih satu alur */
-.program-berjalan + .mulai {
+/* ---------- Program Magang: pilih bidang minat (satu-satunya bagian interaktif) ---------- */
+/* Masih satu alur dengan isi magang di atasnya, jadi jarak atasnya dirapatkan */
+.anak-muda + .pilih-posisi {
   padding-top: 0;
 }
 
-/* ---------- Mulai: pilih minat (satu-satunya bagian interaktif) ---------- */
-/* Common region: pilihan dan hasil berada dalam satu panel putih bergaris */
-.mulai__panel {
-  display: grid;
-  gap: var(--space-4);
-  margin-top: var(--space-5);
-  padding: var(--space-3);
-  background-color: var(--color-region);
-  border: var(--border-strong) solid var(--color-line);
-  border-radius: var(--radius-lg);
-}
-
 .minat {
-  margin: 0;
+  margin: var(--space-4) 0 0;
   padding: 0;
   border: 0;
   min-width: 0;
@@ -1356,17 +1345,27 @@ main > .section:first-child {
   outline-offset: var(--focus-ring-offset);
 }
 
-/* Hasil */
-.minat-hasil {
-  min-height: 6rem;
+/* Petunjuk kecil sebelum memilih, diganti panel hasil setelah ada pilihan */
+.minat__petunjuk {
+  margin-top: var(--space-2);
+  font-size: var(--fs--1);
+  color: var(--color-neutral);
+}
+
+/*
+ * Hasil. Wadah aria-live selalu ada tapi tanpa gaya, jadi sebelum memilih tidak
+ * memakan tempat. Panelnya (common region putih bergaris) dibuat main.js setelah memilih.
+ */
+.minat-hasil__panel {
+  margin-top: var(--space-4);
+  padding: var(--space-3);
+  background-color: var(--color-region);
+  border: var(--border-strong) solid var(--color-line);
+  border-radius: var(--radius-lg);
 }
 
 .minat-hasil--muncul {
   animation: minat-muncul var(--duration-base) var(--ease-out);
-}
-
-.minat-hasil__kosong {
-  color: var(--color-neutral);
 }
 
 .minat-hasil__judul {
@@ -1389,16 +1388,48 @@ main > .section:first-child {
   color: var(--color-neutral);
 }
 
-.minat-hasil__unit {
-  margin-top: 0.25rem;
-  font-size: var(--fs-1);
-  line-height: var(--lh-body);
+.minat-hasil__mentor {
+  margin-top: var(--space-2);
 }
 
-.minat-hasil__akun {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: var(--space-3);
+/* Penghargaan: nama penghargaan tebal, posisi peraih di bawahnya lebih kecil */
+.minat-hasil__penghargaan {
+  margin-top: var(--space-1);
+}
+
+.minat-hasil__penghargaan li {
+  max-width: none;
+}
+
+.minat-hasil__penghargaan li + li {
+  margin-top: var(--space-1);
+}
+
+.minat-hasil__penghargaan-nama {
+  display: block;
+  font-weight: var(--fw-semibold);
+  color: var(--color-secondary);
+}
+
+.minat-hasil__penghargaan-oleh {
+  display: block;
+  font-size: var(--fs--1);
+  color: var(--color-neutral);
+}
+
+.minat-hasil__keterangan {
+  max-width: var(--measure);
+}
+
+/* Labelnya panjang: di HP boleh dua baris, jadi diberi ruang atas dan bawah */
+.minat-hasil__tombol {
+  margin-top: var(--space-2);
+  padding-block: var(--space-1);
+  text-wrap: balance;
+}
+
+.minat-hasil__sumber {
+  margin-top: var(--space-3);
 }
 
 @keyframes minat-muncul {
@@ -1412,26 +1443,17 @@ main > .section:first-child {
   }
 }
 
-/* Desktop: pilihan bertumpuk di kiri, hasil di kanan */
+/* Desktop: pilihan tetap sebaris di atas; isi hasil dibagi dua kolom kalau ada lebih dari satu blok */
 @media (min-width: 64em) {
-  .mulai__panel {
-    grid-template-columns: 4fr 7fr;
-    column-gap: var(--space-8);
-    padding: var(--space-6);
+  .minat-hasil__panel {
+    padding: var(--space-5) var(--space-6);
   }
 
-  .minat__daftar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .minat__label {
-    width: 100%;
-  }
-
-  .minat-hasil {
-    padding-left: var(--space-6);
-    border-left: var(--border-thin) solid var(--color-line);
+  .minat-hasil__isi {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-6);
+    align-items: start;
   }
 }
 

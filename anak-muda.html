@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ruang berkarya untuk anak muda | Mahreen untuk Anak Muda</title>
-  <meta name="description" content="Program magang Mahreen Indonesia: periode Batch 2, benefit, posisi, bidang mentoring, dan kategori penghargaan Batch 1.">
+  <meta name="description" content="Program magang Mahreen Indonesia: periode Batch 2, benefit, posisi, bidang mentoring, kategori penghargaan Batch 1, dan posisi yang berkaitan dengan minatmu.">
   <meta name="theme-color" content="#FFF5F9">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
@@ -13,7 +13,7 @@
   <meta property="og:locale" content="id_ID">
   <meta property="og:site_name" content="Mahreen untuk Anak Muda">
   <meta property="og:title" content="Ruang berkarya untuk anak muda">
-  <meta property="og:description" content="Program magang Mahreen Indonesia: periode Batch 2, benefit, posisi, bidang mentoring, dan kategori penghargaan Batch 1.">
+  <meta property="og:description" content="Program magang Mahreen Indonesia: periode Batch 2, benefit, posisi, bidang mentoring, kategori penghargaan Batch 1, dan posisi yang berkaitan dengan minatmu.">
   <meta property="og:image" content="assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -108,6 +108,28 @@
         </h1>
         <!-- Program magang dari MAHREEN.internship -->
         <div class="anak-muda__isi" id="anak-muda-isi"></div>
+      </div>
+    </section>
+
+    <!--
+      Pilih bidang minat: satu-satunya bagian interaktif di situs.
+      Pilihan dirender dari MAHREEN.minat sebagai radio button bawaan HTML,
+      jadi panah kiri dan kanan (atau atas dan bawah) langsung berpindah pilihan.
+      Panel hasil baru muncul setelah pembaca memilih.
+    -->
+    <section class="section pilih-posisi" aria-labelledby="pilih-posisi-judul">
+      <div class="container">
+        <h2 id="pilih-posisi-judul" class="section__judul">
+          <svg class="section__penanda" aria-hidden="true" focusable="false"><use href="#motif-bunga" /></svg>
+          Posisi mana yang cocok buat kamu?
+        </h2>
+        <p class="section__pengantar">Pilih bidang yang kamu minati, lalu lihat posisi magang yang berkaitan.</p>
+        <fieldset class="minat" id="minat-pilihan">
+          <legend class="visually-hidden">Pilih bidang yang kamu minati</legend>
+        </fieldset>
+        <p class="minat__petunjuk" id="minat-petunjuk">Hasilnya muncul di bawah setelah kamu memilih salah satu bidang.</p>
+        <!-- Hasil diumumkan ke pembaca layar setiap pilihan berganti. Kosong sampai ada pilihan. -->
+        <div class="minat-hasil" id="minat-hasil" aria-live="polite"></div>
       </div>
     </section>
 
