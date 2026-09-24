@@ -90,6 +90,9 @@
   --space-10: 5rem;     /* 80px */
   --space-12: 6rem;     /* 96px */
 
+  /* Jarak atas dan bawah setiap bagian: satu nilai untuk HP, satu untuk desktop */
+  --section-space: var(--space-8);   /* 64px di HP */
+
   /* ---------- Grid ---------- */
   --grid-columns: 4;          /* HP */
   --grid-gutter: var(--space-2);
@@ -133,6 +136,7 @@
   :root {
     --grid-columns: 12;
     --grid-gutter: var(--space-3);
+    --section-space: var(--space-12); /* 96px di desktop */
     --page-padding: var(--space-4);
   }
 }

@@ -19,7 +19,7 @@ Tema "Berkarya untuk Indonesia" dipakai sebagai alur cerita yang dibagi ke empat
 | Urutan | Halaman | Label di navigasi | Isi |
 |---|---|---|---|
 | 1 | **Beranda** (`index.html`) | Beranda | Siapa Mahreen: visi, misi, ekosistem dan tiga kata (Innovation, Collaboration, Impact), dan tautan untuk menjelajah |
-| 2 | **Karya** (`karya.html`) | Unit & Kegiatan | Bagaimana Mahreen berkarya lewat unit-unitnya, dengan contoh nyata dari unggahan mereka |
+| 2 | **Karya** (`karya.html`) | Unit & Kegiatan | Bagaimana Mahreen berkarya lewat unit-unitnya, dengan jejak karya setiap unit |
 | 3 | **Anak Muda** (`anak-muda.html`) | Program Magang | Ruang yang Mahreen sediakan untuk anak muda: program magang. Di bagian "Posisi mana yang cocok buat kamu?", pembaca memilih bidang minatnya lalu melihat posisi magang, mentor, dan penghargaan Batch 1 yang berkaitan |
 | 4 | **Program Aktif** (`program-aktif.html`) | Program Aktif | Program aktif Mahreen yang bisa kamu ikuti: status terbaru, cara ikut atau memantaunya, dan sumbernya. |
 
@@ -61,7 +61,7 @@ Kaitan dengan tiga kata kunci tugas:
 |---|---|---|
 | Teks putih di atas oranye `#F2653A` | 3,14:1 | Tidak dipakai. Oranye hanya untuk dekorasi. |
 | Oranye di atas merah tua | 2,83:1 | Nomor penghargaan memakai oranye muda (7,26:1). |
-| Magenta di atas oranye muda | 4,06:1 | Label "Contoh nyata" memakai oranye gelap (5,23:1). |
+| Magenta di atas oranye muda | 4,06:1 | Label "Jejak karya" memakai oranye gelap (5,23:1). |
 | Putih di atas magenta (pilihan aktif) | 4,98:1 | Dipakai. |
 
 **Tipografi.** Poppins untuk judul dan Plus Jakarta Sans untuk teks. Skala ukurannya kelipatan 1,25 dari 16px. Panjang baris dibatasi 45 sampai 75 karakter lewat token `--measure: 46ch`. Angkanya 46, bukan 65, karena satuan `ch` mengikuti lebar angka "0" yang lebih lebar dari rata-rata huruf: di Plus Jakarta Sans, 1ch memuat sekitar 1,5 karakter teks.
@@ -69,10 +69,10 @@ Kaitan dengan tiga kata kunci tugas:
 **Gestalt.**
 - Proximity: nama, bidang, penjelasan, dan akun satu unit dikelompokkan rapat, dan antar unit diberi jarak lebar.
 - Similarity: header, footer, tombol, dan keterangan sumber sama persis di keempat halaman.
-- Continuity: tautan "Lanjut" antarhalaman, nomor 01 sampai 03 di bagian Jelajahi, dan motif bunga kecil di depan judul halaman dan judul bagian.
-- Common region: kotak "Contoh nyata" berlatar oranye muda, dan hasil pilihan minat di halaman Program Magang berada dalam satu panel putih. Panel itu baru dibuat setelah pembaca memilih, jadi sebelumnya hanya ada satu baris petunjuk kecil, bukan panel kosong.
+- Continuity: tautan "Lanjut" antarhalaman, nomor 01 sampai 03 di bagian Jelajahi, dan motif bunga kecil di depan judul halaman (h1). Judul sub-bagian (h2) tanpa motif, jadi motif hanya muncul di hero dan di h1 setiap halaman.
+- Common region: kotak "Jejak karya" berlatar oranye muda, dan hasil pilihan minat di halaman Program Magang berada dalam satu panel putih. Panel itu baru dibuat setelah pembaca memilih, jadi sebelumnya hanya ada satu baris petunjuk kecil, bukan panel kosong.
 
-**Variasi yang bermakna.** Blok unit tidak dibuat kartu identik. Unit yang punya contoh nyata dibagi dua di desktop (keterangan di kiri, contoh di kanan) sehingga contohnya mendapat ruang terbesar. Sorotan 10 kategori penghargaan menjadi satu-satunya blok berlatar merah tua. Di halaman Program Aktif, setiap program tampil sebagai satu baris bergaris pemisah dengan label status bertuliskan "Status" (tidak hanya dibedakan warna). Di halaman Anak Muda, chip posisi berisi warna pink muda, sedangkan chip bidang mentoring hanya bergaris tepi, supaya keduanya tidak tertukar.
+**Variasi yang bermakna.** Blok unit tidak dibuat kartu identik. Unit yang punya jejak karya dibagi dua di desktop (keterangan di kiri, kotak "Jejak karya" di kanan) sehingga jejak karyanya mendapat ruang terbesar. Sorotan 10 kategori penghargaan menjadi satu-satunya blok berlatar merah tua. Di halaman Program Aktif, setiap program tampil sebagai satu baris bergaris pemisah dengan label status bertuliskan "Status" (tidak hanya dibedakan warna). Di halaman Anak Muda, chip posisi berisi warna pink muda, sedangkan chip bidang mentoring hanya bergaris tepi, supaya keduanya tidak tertukar.
 
 **Grid dan ruang.** 4 kolom di HP dan 12 kolom mulai 1024px, jarak kelipatan 8px, dan area sentuh minimal 44px.
 
@@ -139,7 +139,7 @@ Semua konten ada di satu objek `MAHREEN`. Mengubah isi halaman cukup di file ini
 Aturan kecil yang perlu diingat:
 
 - Setiap `sumber` berisi `label` (akun dan tanggal unggahan) dan `url` (tautan ke unggahannya). Di halaman, hanya nama akun di `label` yang menjadi tautan: akun pertama memakai `url`, akun berikutnya (kalau ada) memakai alamat akunnya dari `akun`.
-- `contoh: null` pada unit berarti belum ada contoh nyata. Kotak contoh dilewati dan sumber tampil di bawah keterangan unit. Saat ini keempat unit sudah punya contoh.
+- `contoh: null` pada unit berarti belum ada jejak karya. Kotak "Jejak karya" dilewati dan sumber tampil di bawah keterangan unit. Saat ini keempat unit sudah punya contoh.
 - `posisi: []` pada minat berarti tidak ada posisi magang yang berkaitan. Blok posisinya (termasuk keterangan mentor) tidak ditampilkan. `penghargaanBatch1: []`, `catatan: null`, dan `tombol: null` juga berarti bagiannya dilewati.
 - `statusLabel` pada program ditulis apa adanya dari unggahan terakhir. Perbarui juga kalimat "Info terakhir diperbarui ..." di `program-aktif.html` setiap kali data program diperbarui.
 - `catatan: null` dan `detailUrl: null` berarti bagian itu tidak ditampilkan.
@@ -154,7 +154,7 @@ Contoh menambah unit baru:
   "nama": "Nama Unit",
   "bidang": "Bidang unit",
   "apa": "Satu kalimat netral tentang apa yang dikerjakan unit ini.",
-  "contoh": null,                     // atau satu kalimat contoh nyata dari unggahan
+  "contoh": null,                     // atau satu kalimat jejak karya dari unggahan
   "sumber": {
     "label": "@akun, 1 Oktober 2026",
     "url": "https://www.instagram.com/p/..."

@@ -167,20 +167,6 @@
   }
 }
 
-/*
- * Di halaman Karya, Anak Muda, dan Mulai, bagian pertama langsung berisi judul halaman.
- * Jarak atasnya dibuat lebih kecil dari bagian biasa supaya judul tidak terlalu jauh dari header.
- */
-main > .section:first-child {
-  padding-top: var(--space-5);
-}
-
-@media (min-width: 64em) {
-  main > .section:first-child {
-    padding-top: var(--space-8);
-  }
-}
-
 /* Pengantar di bawah judul: satu pesan utama, sedikit lebih besar dari teks baca */
 .section__pengantar {
   margin-top: var(--space-2);
@@ -844,7 +830,7 @@ main > .section:first-child {
   margin-top: var(--space-1);
 }
 
-/* Kotak contoh nyata: latar oranye muda sebagai sorotan kecil (common region) */
+/* Kotak "Jejak karya": latar oranye muda sebagai sorotan kecil (common region) */
 .unit__contoh {
   margin-top: var(--space-2);
   padding: var(--space-3);
@@ -868,7 +854,7 @@ main > .section:first-child {
 
 /*
  * Desktop: unit dengan contoh dibagi dua kolom (keterangan 5 kolom, contoh 7 kolom),
- * jadi contoh nyata mendapat ruang terbesar.
+ * jadi jejak karya mendapat ruang terbesar.
  */
 @media (min-width: 64em) {
   .unit--dengan-contoh {
@@ -1268,13 +1254,9 @@ main > .section:first-child {
 }
 
 /* ---------- Program Magang: pilih bidang minat (satu-satunya bagian interaktif) ---------- */
-/* Masih satu alur dengan isi magang di atasnya, jadi jarak atasnya dirapatkan */
-.anak-muda + .pilih-posisi {
-  padding-top: 0;
-}
-
+/* Jarak dari pengantar ke pilihan sama dengan jarak pengantar ke isi di bagian lain (40px) */
 .minat {
-  margin: var(--space-4) 0 0;
+  margin: var(--space-5) 0 0;
   padding: 0;
   border: 0;
   min-width: 0;
@@ -1358,7 +1340,7 @@ main > .section:first-child {
  * memakan tempat. Panelnya (common region putih bergaris) dibuat main.js setelah memilih.
  */
 .minat-hasil__panel {
-  margin-top: var(--space-4);
+  margin-top: var(--space-5);
   padding: var(--space-3);
   background-color: var(--color-region);
   border: var(--border-strong) solid var(--color-line);
@@ -1509,8 +1491,9 @@ main > .section:first-child {
  * Susunan sederhana di latar halaman biasa: satu kalimat pengantar, lalu satu
  * tombol utama berlabel nama menu tujuan. Dipisah garis tipis dari isi di atasnya.
  */
+/* Jarak atasnya berasal dari padding bawah bagian sebelumnya; jarak bawahnya dari token yang sama */
 .lanjut {
-  padding-bottom: var(--space-8);
+  padding-bottom: var(--section-space);
 }
 
 .lanjut__isi {

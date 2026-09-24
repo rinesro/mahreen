@@ -134,7 +134,7 @@ function renderKenalan(profil) {
 
 /* ---------- Karya: blok per unit ---------- */
 /*
- * Unit yang punya contoh nyata diberi ruang lebih besar: di desktop blok dibagi dua,
+ * Unit yang punya jejak karya (isi data `contoh`) diberi ruang lebih besar: di desktop blok dibagi dua,
  * keterangan unit di kiri dan kotak contoh di kanan. Kalau suatu unit belum punya
  * contoh (contoh: null), kotak contoh dilewati dan sumber tampil di bawah keterangan.
  */
@@ -166,7 +166,7 @@ function renderUnit(daftarUnit) {
 
     if (unit.contoh) {
       const contoh = buatElemen("div", "unit__contoh");
-      contoh.appendChild(buatElemen("p", "unit__contoh-label", "Contoh nyata"));
+      contoh.appendChild(buatElemen("p", "unit__contoh-label", "Jejak karya"));
       contoh.appendChild(buatElemen("p", "unit__contoh-teks", unit.contoh));
       contoh.appendChild(buatSumber(unit.sumber, "sumber unit__sumber"));
       li.appendChild(contoh);

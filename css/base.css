@@ -143,14 +143,9 @@ strong {
   column-gap: var(--grid-gutter);
 }
 
+/* Semua bagian memakai jarak atas dan bawah yang sama dari token --section-space */
 .section {
-  padding-block: var(--space-8);
-}
-
-@media (min-width: 64em) {
-  .section {
-    padding-block: var(--space-12);
-  }
+  padding-block: var(--section-space);
 }
 
 /* Elemen dengan atribut hidden selalu tersembunyi, walaupun kelasnya punya display lain.
