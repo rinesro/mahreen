@@ -466,7 +466,8 @@ main > .section:first-child {
 .hero {
   position: relative;
   overflow: hidden;
-  padding-block: var(--space-4) var(--space-8);
+  /* Ruang bawah cukup untuk penanda "# Berkarya untuk Indonesia" di pojok kanan bawah */
+  padding-block: var(--space-4) var(--space-12);
   background: var(--gradasi-kampanye);
   color: var(--color-on-gradasi);
 }
@@ -1459,49 +1460,47 @@ main > .section:first-child {
 
 /* ---------- Penanda tema "# Berkarya untuk Indonesia" ---------- */
 /*
- * Gaya seperti penanda di pojok kanan bawah postingan Mahreen: teks kecil tebal
- * dalam bingkai pil tipis, dengan tanda pagar berwarna. Dipakai di hero dan footer.
+ * Meniru penanda di postingan Mahreen: simbol "#" besar dan tebal, lalu teks
+ * "Berkarya / untuk / Indonesia" bertumpuk tiga baris di kanannya, kecil dan tebal,
+ * rata kiri dan sejajar vertikal dengan simbol. Tanpa bingkai. Putih di latar gelap
+ * dan gradasi. Dipakai di hero dan footer.
  */
 .tagar {
   display: inline-flex;
   align-items: center;
-  gap: 0.35em;
+  gap: 0.375rem;
   max-width: none;
-  padding: 0.25rem var(--space-2);
-  border: 1.5px solid currentColor;
-  border-radius: var(--radius-pill);
   font-family: var(--font-heading);
   font-size: var(--fs--1);
-  font-weight: var(--fw-semibold);
-  line-height: 1.6;
-  white-space: nowrap;
-}
-
-.tagar__pagar {
   font-weight: var(--fw-bold);
-}
-
-/* Di hero: putih di atas bagian gradasi yang paling gelap (pojok kanan bawah) */
-.tagar--hero {
-  position: absolute;
-  /* Sejajar tepi kanan isi (container), bukan tepi layar, di layar yang sangat lebar */
-  right: max(var(--page-padding), calc((100% - var(--container-max)) / 2));
-  bottom: var(--space-3);
   color: var(--color-on-gradasi);
 }
 
-.tagar--hero .tagar__pagar {
-  color: var(--color-accent-soft);
+/* Tinggi simbol kira-kira setinggi tiga baris teks di sebelahnya */
+.tagar__pagar {
+  font-size: 3.5em;
+  font-weight: var(--fw-bold);
+  line-height: 0.8;
+}
+
+.tagar__teks {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  text-align: left;
+}
+
+/* Di hero: pojok kanan bawah, sejajar tepi kanan isi (container) di layar yang sangat lebar */
+.tagar--hero {
+  position: absolute;
+  right: max(var(--page-padding), calc((100% - var(--container-max)) / 2));
+  bottom: var(--space-3);
 }
 
 /* Di footer: pojok kanan bawah, setelah catatan */
 .tagar--footer {
   flex-shrink: 0;
   color: var(--color-on-dark);
-}
-
-.tagar--footer .tagar__pagar {
-  color: var(--color-focus-on-dark);
 }
 
 /* ---------- Tautan "Lanjut" di akhir halaman ---------- */
@@ -1562,9 +1561,9 @@ main > .section:first-child {
   height: 3rem; /* 48px */
 }
 
+/* Satu kalimat satu baris, tidak bergantung lebar kolom */
 .site-footer__tagline {
   margin-top: var(--space-3);
-  max-width: 16ch;
   font-family: var(--font-heading);
   font-size: var(--fs-3);
   font-weight: var(--fw-bold);
@@ -1638,6 +1637,25 @@ main > .section:first-child {
 
 .site-footer__alamat .site-footer__list {
   margin-top: 0;
+}
+
+.site-footer__tagline span {
+  display: block;
+}
+
+/*
+ * Kontak: tanpa garis bawah permanen, sama seperti daftar akun. Garis bawah muncul
+ * saat hover atau fokus. Tinggi tautan 44px (batas minimal area sentuh), lebih rapat dari 48px.
+ */
+.site-footer .site-footer__list a {
+  min-height: 2.75rem;
+  text-decoration: none;
+}
+
+.site-footer .site-footer__list a:hover,
+.site-footer .site-footer__list a:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
 }
 
 .site-footer a {

@@ -358,7 +358,7 @@ const MAHREEN = {
   "akun": [
     {
       "nama": "@mahreenindonesia",
-      "fungsi": "Akun utama: profil, seminar, dan pengumuman",
+      "fungsi": "Akun utama",
       "url": "https://www.instagram.com/mahreenindonesia/"
     },
     {
