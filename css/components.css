@@ -1362,103 +1362,34 @@ main > .section:first-child {
   color: var(--color-focus-on-dark);
 }
 
-/* ---------- Tautan "Lanjut" di akhir setiap halaman ---------- */
+/* ---------- Tautan "Lanjut" di akhir halaman ---------- */
 /*
  * Continuity: menuntun pembaca ke halaman berikutnya dalam alur cerita.
- * Seluruh blok adalah satu tautan (area klik luas), berisi judul halaman tujuan
- * dan satu kalimat isinya. Latarnya gradasi kampanye yang sama dengan hero,
- * supaya blok ini terasa sebagai bagian dari alur, bukan kartu biasa.
+ * Susunan sederhana di latar halaman biasa: satu kalimat pengantar, lalu satu
+ * tombol utama berlabel nama menu tujuan. Dipisah garis tipis dari isi di atasnya.
  */
 .lanjut {
-  padding-block: var(--space-6);
+  padding-bottom: var(--space-8);
 }
 
-.lanjut__blok {
-  position: relative;
-  overflow: hidden;
-  display: grid;
-  row-gap: var(--space-1);
-  padding: var(--space-4) var(--space-3);
-  /* ruang kanan untuk motif bunga supaya tidak menutupi teks */
-  padding-right: var(--space-10);
-  border-radius: var(--radius-lg);
-  background: var(--gradasi-kampanye);
-  color: var(--color-on-gradasi);
-  text-decoration: none;
-}
-
-.lanjut__label {
-  font-size: var(--fs--1);
-  font-weight: var(--fw-semibold);
-  color: var(--color-accent-soft); /* 7,26:1 di crimson, jauh di atas 4,5:1 juga di magenta */
-}
-
-.lanjut__judul {
-  max-width: 20ch;
-  font-family: var(--font-heading);
-  font-size: var(--fs-2);
-  font-weight: var(--fw-bold);
-  line-height: var(--lh-tight);
-  text-decoration-color: var(--color-accent);
-  text-decoration-thickness: 0.1em;
-  text-underline-offset: 0.18em;
-  text-decoration-skip-ink: none;
-  text-wrap: balance;
+.lanjut__isi {
+  padding-top: var(--space-5);
+  border-top: var(--border-thin) solid var(--color-line);
 }
 
 .lanjut__teks {
-  max-width: var(--measure-narrow);
-  color: var(--color-on-gradasi);
+  max-width: var(--measure);
 }
 
-/* Bunga empat kelopak di pojok kanan, sebagian keluar dari blok */
-.lanjut__motif {
-  --motif-kelopak: var(--color-accent);
-  --motif-tengah: var(--color-accent-soft);
-  position: absolute;
-  right: calc(var(--space-4) * -1);
-  bottom: calc(var(--space-4) * -1);
-  width: 7rem;
-  height: 7rem;
-  overflow: visible;
-  opacity: 0.85;
-  transition: transform var(--duration-base) var(--ease-out);
+.lanjut__tombol {
+  margin-top: var(--space-2);
+  width: 100%; /* HP: selebar layar supaya mudah disentuh */
 }
 
-/* Respons terhadap aksi pengguna: bunga berputar sedikit saat blok disorot atau difokus */
-.lanjut__blok:hover .lanjut__motif,
-.lanjut__blok:focus-visible .lanjut__motif {
-  transform: rotate(45deg);
-}
-
-/* Seluruh blok bisa diklik, jadi garis bawah hanya muncul saat hover atau fokus */
-.lanjut__blok:hover .lanjut__judul,
-.lanjut__blok:focus-visible .lanjut__judul {
-  text-decoration-line: underline;
-}
-
-.lanjut__blok:focus-visible {
-  outline-color: var(--color-secondary);
-  border-radius: var(--radius-lg);
-}
-
-@media (min-width: 48em) {
-  .lanjut__blok {
-    padding: var(--space-5) var(--space-6);
-    padding-right: calc(var(--space-12) + var(--space-6));
-  }
-
-  .lanjut__judul {
-    font-size: var(--fs-3);
-  }
-
-  .lanjut__motif {
-    right: var(--space-4);
-    top: 50%;
-    bottom: auto;
-    width: 8rem;
-    height: 8rem;
-    margin-top: -4rem;
+/* Mulai 480px: lebar tombol mengikuti isinya, rata kiri */
+@media (min-width: 30em) {
+  .lanjut__tombol {
+    width: auto;
   }
 }
 
