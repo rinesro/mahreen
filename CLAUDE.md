@@ -61,7 +61,7 @@ Kaitan dengan kata kunci tugas:
 ├─ index.html       (Beranda)
 ├─ karya.html
 ├─ anak-muda.html
-├─ mulai.html
+├─ ikut-berkarya.html
 ├─ css/ (tokens.css, base.css, components.css)
 ├─ js/  (data.js, main.js)
 ├─ assets/
@@ -74,9 +74,9 @@ Situs terdiri dari **empat halaman**. Tidak ada tautan anchor ke bagian di halam
 
 ### Elemen di semua halaman
 
-- **Header:** logo (wordmark "Mahreen Indonesia" sementara, nanti diganti logo resmi) dan navigasi: Beranda, Karya, Anak Muda, Mulai. Halaman aktif ditandai secara visual dan dengan `aria-current="page"`. Di layar di bawah 480px, navigasi menjadi tombol "Menu" sederhana (disclosure dengan `aria-expanded`).
-- **Tautan "Lanjut"** di akhir isi setiap halaman, mengarah ke halaman berikutnya dalam alur cerita: Beranda, lalu Karya, lalu Anak Muda, lalu Mulai. Teksnya menyebut tujuan, misalnya "Lanjut: Cara Mahreen berkarya".
-- **Footer** (gaya gelap): tagline "Satu ide. Satu karya. Satu dampak.", daftar lima akun resmi dari `akun` beserta fungsinya, `kontak`, dan catatan: "Prototype oleh Sandhika Hamzah untuk Creative Challenge Mahreen Indonesia Internship Batch 2. Informasi dirangkum dari unggahan publik Mahreen Indonesia, Mei sampai September 2026. Untuk informasi terbaru, cek akun resmi."
+- **Header:** logo resmi (`assets/logo/mahreen-crimson.png`) dan navigasi: Beranda, Unit & Kegiatan, Program Magang, Ikut Berkarya. "Ikut Berkarya" tampil sebagai tombol kecil bergaya tombol utama. Halaman aktif ditandai secara visual dan dengan `aria-current="page"`, dengan gaya yang berbeda dari hover. Di layar di bawah 544px, navigasi menjadi tombol "Menu" sederhana (disclosure dengan `aria-expanded`). Header sticky; di bawah 768px header sembunyi saat scroll ke bawah dan muncul saat scroll ke atas.
+- **Bagian "Lanjut"** di akhir halaman Karya, Anak Muda, dan Ikut Berkarya, mengarah ke halaman berikutnya dalam alur cerita: Beranda, lalu Karya, lalu Anak Muda, lalu Ikut Berkarya. Susunannya sederhana: garis tipis, satu kalimat pengantar, lalu satu tombol utama berlabel nama menu tujuan ("Lanjut ke Program Magang", "Lanjut ke Ikut Berkarya", dan "Kembali ke Beranda" di halaman terakhir). Beranda tidak punya bagian Lanjut karena sudah diwakili Jelajahi.
+- **Footer** (gaya gelap): logo putih, tagline "Satu ide. Satu karya. Satu dampak.", daftar lima akun resmi dari `akun` beserta fungsinya, `kontak`, dan catatan: "Prototype oleh Sandhika Hamzah untuk Creative Challenge Mahreen Indonesia Internship Batch 2. Informasi dirangkum dari unggahan publik Mahreen Indonesia, Mei sampai September 2026. Untuk informasi terbaru, cek akun resmi."
 - `<title>` dan meta description berbeda di setiap halaman.
 
 ### 1. Beranda (`index.html`, `data-page="beranda"`)
@@ -84,12 +84,12 @@ Situs terdiri dari **empat halaman**. Tidak ada tautan anchor ke bagian di halam
 - **Hero** (pola baca Z)
   - Judul: "Berkarya untuk Indonesia. Kamu mulai dari mana?"
   - Subjudul: "Mahreen Indonesia adalah ekosistem kreatif, digital, bisnis, dan sosial. Lewat unit-unitnya, Mahreen berkarya di banyak bidang dan membuka ruang bagi anak muda untuk ikut berkarya."
-  - Tombol utama: "Cari yang cocok buat kamu" ke `mulai.html`
+  - Tombol utama: "Lihat program yang sedang berjalan" ke `ikut-berkarya.html`
   - Tombol kedua: "Lihat karya Mahreen" ke `karya.html`
   - Motif bunga empat kelopak sebagai elemen dekoratif.
 - **Kenalan dulu sama Mahreen:** `profil.visi`, empat `profil.misi` dalam daftar ringkas, dan tiga `profil.nilai` ditampilkan besar dengan padanan bahasa Indonesia kecil di bawahnya. Keterangan sumber dari `profil.sumber`.
-- **Jelajahi:** tiga blok tautan ke halaman Karya, Anak Muda, dan Mulai, masing-masing dengan satu kalimat penjelasan.
-- Lanjut: Karya.
+- **Jelajahi:** tiga blok tautan ke halaman Karya, Anak Muda, dan Ikut Berkarya (judul h1 halaman tujuan), masing-masing dengan satu kalimat penjelasan.
+- Tanpa bagian Lanjut (sudah diwakili Jelajahi).
 
 ### 2. Karya (`karya.html`, `data-page="karya"`)
 
@@ -98,24 +98,31 @@ Situs terdiri dari **empat halaman**. Tidak ada tautan anchor ke bagian di halam
 - Satu blok per `unit`: nama, bidang, penjelasan (`apa`), contoh nyata (`contoh`, lewati jika `null`), sumber, dan tautan akun.
 - Sub-bagian "Juga dari Mahreen Indonesia" berisi `kegiatanBersama`.
 - Tata letak blok jangan kartu identik semua. Unit dengan contoh nyata diberi ruang lebih besar.
-- Lanjut: Anak Muda.
+- Lanjut: "Lanjut ke Program Magang".
 
-### 3. Anak Muda (`anak-muda.html`, `data-page="anak-muda"`)
+### 3. Anak Muda (`anak-muda.html`, `data-page="anak-muda"`, menu "Program Magang")
 
 - Judul: "Ruang berkarya untuk anak muda"
 - Isi dari `internship`: ringkasan, periode Batch 2, status pendaftaran, benefit, posisi per grup, dan bidang mentoring.
 - Sorotan "10 kategori penghargaan Batch 1" dari `penghargaanBatch1`, sebagai gambaran apa yang dikerjakan dan dihargai dari peserta.
 - Tombol: `internship.ikuti`. Keterangan sumber.
-- Lanjut: Mulai.
+- Lanjut: "Lanjut ke Ikut Berkarya".
 
-### 4. Mulai (`mulai.html`, `data-page="mulai"`), satu-satunya halaman interaktif
+### 4. Ikut Berkarya (`ikut-berkarya.html`, `data-page="ikut-berkarya"`, menu "Ikut Berkarya")
 
-- Judul: "Kamu tertarik di bidang apa?"
-- Pengantar: "Pilih satu, lalu lihat bagian Mahreen yang berkaitan dengan minatmu."
+Bagian 1, program yang sedang berjalan:
+- Judul (h1): "Program Mahreen yang sedang berjalan"
+- Pengantar: "Status terbaru setiap program dan cara kamu bisa ikut atau memantaunya."
+- Keterangan kecil: "Dirangkum dari unggahan Mahreen sampai 14 September 2026." (perbarui setiap kali `programBerjalan` diperbarui)
+- Satu baris per `programBerjalan`: nama, label status yang jelas (kata "Status" tertulis, bukan hanya warna), ringkasan, cara ikut atau memantau, catatan (jika ada), tautan akun, tombol ke halaman detail (jika ada `detailUrl`), dan sumber.
+
+Bagian 2, "Belum tahu mulai dari mana?" (h2), satu-satunya bagian interaktif:
+- Pengantar: "Kamu tertarik di bidang apa? Pilih satu, lalu lihat bagian Mahreen yang berkaitan dengan minatmu."
 - Tombol pilihan dari `minat`, berperilaku seperti radio group dan bisa dipakai dengan keyboard.
 - Hasil: posisi internship yang berkaitan (jika ada, dengan catatan "posisi di Batch 2"), kalimat `unit`, dan daftar `akun` yang bisa dipantau. Diumumkan dengan `aria-live="polite"`.
-- Pilihan disimpan di query URL (misalnya `mulai.html?minat=teknologi`) supaya hasilnya bisa dibagikan dan tetap ada saat halaman dimuat ulang.
-- Penutup: tautan "Kembali ke Beranda".
+- Pilihan disimpan di query URL (misalnya `ikut-berkarya.html?minat=teknologi`) supaya hasilnya bisa dibagikan dan tetap ada saat halaman dimuat ulang.
+
+Penutup: bagian Lanjut dengan tombol "Kembali ke Beranda".
 
 ## Arahan desain (prinsip desain grafis dan DKV)
 
@@ -200,7 +207,7 @@ Salin ke `js/data.js` sebagai `const MAHREEN = { ... };` dengan isi objek persis
       "nama": "Peduli Mahreen",
       "bidang": "Social & Humanity Movement",
       "apa": "Gerakan sosial dan kemanusiaan dengan empat tujuan: kepedulian, edukasi, bantuan sosial, dan pemberdayaan.",
-      "contoh": "Akhir Juni 2026, Peduli Mahreen memperkenalkan diri, membagikan cerita aksi sosialnya, dan mengajak followers menuliskan isu sosial yang menurut mereka paling mendesak.",
+      "contoh": "Akhir Juni 2026, Peduli Mahreen memperkenalkan diri lewat cerita awal perjalanan, visi misi, dan hal yang sedang diperjuangkan, lalu mengajak followers menuliskan isu sosial yang menurut mereka paling mendesak.",
       "sumber": {
         "label": "@pedulimahreen, 29 dan 30 Juni 2026",
         "url": "https://www.instagram.com/pedulimahreen/"
@@ -212,7 +219,7 @@ Salin ke `js/data.js` sebagai `const MAHREEN = { ... };` dengan isi objek persis
       "id": "mahreen-csr",
       "nama": "Mahreen CSR",
       "bidang": "Corporate Social Responsibility",
-      "apa": "Unit yang mengumumkan kemitraan resmi Mahreen dengan kampus, organisasi mahasiswa, brand, dan yayasan.",
+      "apa": "Pengumuman kemitraan resmi Mahreen dibagikan lewat akun ini.",
       "contoh": "Juli sampai Agustus 2026: kerja sama dengan Universitas Teknologi Bandung, Nice To Meet You (NTMY), Yayasan Fauzan Adzima Sukajadi, dan BEM Universitas Teknologi Bandung.",
       "sumber": {
         "label": "@mahreencsr, 7 Juli sampai 20 Agustus 2026",
@@ -225,11 +232,11 @@ Salin ke `js/data.js` sebagai `const MAHREEN = { ... };` dengan isi objek persis
       "id": "mahreen-studio",
       "nama": "Mahreen Studio",
       "bidang": "Creative Lifestyle & Fashion",
-      "apa": "Unit Mahreen di bidang creative lifestyle dan fashion.",
-      "contoh": null,
+      "apa": "Menurut unggahan @mahreenindonesia, Mahreen Studio adalah divisi creative lifestyle yang menjadi ruang pengembangan apparel, visual branding, dan identitas kreatif.",
+      "contoh": "Mei 2026, Mahreen Studio memperkenalkan empat lini koleksi: Elevated Esentials, Mahreen Signature Tee, Everyday Motion, dan Refined Modisty. Signature Collection diumumkan akan segera hadir.",
       "sumber": {
-        "label": "@mahreenindonesia, 19 Mei 2026",
-        "url": "https://www.instagram.com/mahreenindonesia/"
+        "label": "@mahreenindonesia, 13 Mei 2026",
+        "url": "https://www.instagram.com/p/DYS1aHxk12a/?img_index=3"
       },
       "akun": "@mahreenindonesia",
       "akunUrl": "https://www.instagram.com/mahreenindonesia/"
@@ -311,10 +318,71 @@ Salin ke `js/data.js` sebagai `const MAHREEN = { ... };` dengan isi objek persis
       "url": "https://www.instagram.com/mahreenindonesiainternship/"
     },
     "ikuti": {
-      "label": "Pantau batch berikutnya di @mahreenindonesiainternship",
+      "label": "Pantau batch berikutnya",
+      "akun": "@mahreenindonesiainternship",
       "url": "https://www.instagram.com/mahreenindonesiainternship/"
     }
   },
+  "programBerjalan": [
+    {
+      "nama": "Mahreen Indonesia Internship",
+      "statusLabel": "Batch 2 dimulai 1 Oktober 2026, pendaftaran ditutup",
+      "ringkas": "Program magang remote (WFH atau WFA) dengan mentor dan proyek nyata.",
+      "caraIkut": [
+        "Pantau @mahreenindonesiainternship untuk pengumuman batch berikutnya."
+      ],
+      "catatan": null,
+      "tautan": {
+        "label": "@mahreenindonesiainternship",
+        "url": "https://www.instagram.com/mahreenindonesiainternship/"
+      },
+      "sumber": {
+        "label": "@mahreenindonesiainternship dan Story MI Batch 2, 30 Agustus sampai 14 September 2026",
+        "url": "https://www.instagram.com/mahreenindonesiainternship/"
+      },
+      "detailUrl": "anak-muda.html",
+      "detailLabel": "Lihat detail Program Magang"
+    },
+    {
+      "nama": "Peduli Mahreen",
+      "statusLabel": "Gerakan aktif",
+      "ringkas": "Gerakan sosial dan kemanusiaan dengan empat tujuan: kepedulian, edukasi, bantuan sosial, dan pemberdayaan.",
+      "caraIkut": [
+        "Ikuti @pedulimahreen untuk kabar aksi sosialnya.",
+        "Sampaikan isu sosial yang menurutmu mendesak di kolom komentar unggahan mereka, seperti yang pernah mereka ajak pada Juni 2026."
+      ],
+      "catatan": "Cara bergabung sebagai relawan belum diumumkan.",
+      "tautan": {
+        "label": "@pedulimahreen",
+        "url": "https://www.instagram.com/pedulimahreen/"
+      },
+      "sumber": {
+        "label": "@pedulimahreen, 29 dan 30 Juni 2026",
+        "url": "https://www.instagram.com/pedulimahreen/"
+      },
+      "detailUrl": null,
+      "detailLabel": null
+    },
+    {
+      "nama": "Seminar dan edukasi",
+      "statusLabel": "Jadwal berikutnya belum diumumkan",
+      "ringkas": "Mahreen mengadakan seminar untuk UMKM pada Juli dan Agustus 2026.",
+      "caraIkut": [
+        "Pantau @mahreenindonesia untuk jadwal seminar berikutnya."
+      ],
+      "catatan": null,
+      "tautan": {
+        "label": "@mahreenindonesia",
+        "url": "https://www.instagram.com/mahreenindonesia/"
+      },
+      "sumber": {
+        "label": "@mahreenindonesia, 14 Juli dan 1 Agustus 2026",
+        "url": "https://www.instagram.com/mahreenindonesia/"
+      },
+      "detailUrl": null,
+      "detailLabel": null
+    }
+  ],
   "minat": [
     {
       "id": "visual",
@@ -323,7 +391,7 @@ Salin ke `js/data.js` sebagai `const MAHREEN = { ... };` dengan isi objek persis
         "Graphic Design",
         "UI/UX"
       ],
-      "unit": "Mahreen Studio bergerak di creative lifestyle dan fashion.",
+      "unit": "Mahreen Studio mengembangkan apparel, visual branding, dan identitas kreatif.",
       "akun": [
         {
           "nama": "@mahreenindonesiainternship",
@@ -362,7 +430,7 @@ Salin ke `js/data.js` sebagai `const MAHREEN = { ... };` dengan isi objek persis
         "Backend Development",
         "UI/UX"
       ],
-      "unit": "Website termasuk layanan Tanya Mahreen, dan websitenya pernah dikerjakan tim magang Batch 1.",
+      "unit": "Website termasuk layanan Tanya Mahreen. Ada tim magang Batch 1 di Tanya Mahreen Website Development UI/UX yang meraih Best Team Player.",
       "akun": [
         {
           "nama": "@mahreenindonesiainternship",
@@ -380,7 +448,7 @@ Salin ke `js/data.js` sebagai `const MAHREEN = { ... };` dengan isi objek persis
       "posisi": [
         "Business Development & Partnership"
       ],
-      "unit": "Tanya Mahreen melayani UMKM dan bisnis, dan Mahreen beberapa kali mengadakan seminar untuk UMKM.",
+      "unit": "Tanya Mahreen melayani UMKM dan bisnis, dan Mahreen mengadakan seminar untuk UMKM pada Juli dan Agustus 2026.",
       "akun": [
         {
           "nama": "@mahreenindonesia",
@@ -456,7 +524,7 @@ Catatan: URL sumber masih mengarah ke halaman akun. Saya akan menggantinya denga
 4. `feat`: halaman Beranda.
 5. `feat`: halaman Karya.
 6. `feat`: halaman Anak Muda.
-7. `feat`: halaman Mulai (interaktif).
+7. `feat`: halaman Mulai (interaktif), kini Ikut Berkarya.
 8. `fix`: responsif (360px, 768px, 1280px), keyboard, dan kontras di semua halaman.
 9. `perf`: Lighthouse 90 ke atas di setiap halaman, meta tag, Open Graph per halaman.
 10. `docs`: README berisi tugas, konsep, keputusan desain (termasuk alasan memilih multi-halaman), cara memperbarui `js/data.js`, dan cara menjalankan.
@@ -464,7 +532,7 @@ Catatan: URL sumber masih mengarah ke halaman akun. Saya akan menggantinya denga
 ## Definisi selesai
 
 - Semua bagian tampil dari data, tanpa fakta di luar file ini.
-- Halaman Mulai berfungsi dengan mouse, sentuhan, dan keyboard.
+- Pilihan minat di halaman Ikut Berkarya berfungsi dengan mouse, sentuhan, dan keyboard.
 - Navigasi dan tautan "Lanjut" konsisten di keempat halaman, tanpa tautan anchor selain skip link.
 - Tidak ada em dash, en dash, kata "kami", atau bahasa jualan.
 - Rapi di HP dan desktop, Lighthouse 90 ke atas.

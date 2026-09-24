@@ -173,6 +173,66 @@ const MAHREEN = {
       "url": "https://www.instagram.com/mahreenindonesiainternship/"
     }
   },
+  "programBerjalan": [
+    {
+      "nama": "Mahreen Indonesia Internship",
+      "statusLabel": "Batch 2 dimulai 1 Oktober 2026, pendaftaran ditutup",
+      "ringkas": "Program magang remote (WFH atau WFA) dengan mentor dan proyek nyata.",
+      "caraIkut": [
+        "Pantau @mahreenindonesiainternship untuk pengumuman batch berikutnya."
+      ],
+      "catatan": null,
+      "tautan": {
+        "label": "@mahreenindonesiainternship",
+        "url": "https://www.instagram.com/mahreenindonesiainternship/"
+      },
+      "sumber": {
+        "label": "@mahreenindonesiainternship dan Story MI Batch 2, 30 Agustus sampai 14 September 2026",
+        "url": "https://www.instagram.com/mahreenindonesiainternship/"
+      },
+      "detailUrl": "anak-muda.html",
+      "detailLabel": "Lihat detail Program Magang"
+    },
+    {
+      "nama": "Peduli Mahreen",
+      "statusLabel": "Gerakan aktif",
+      "ringkas": "Gerakan sosial dan kemanusiaan dengan empat tujuan: kepedulian, edukasi, bantuan sosial, dan pemberdayaan.",
+      "caraIkut": [
+        "Ikuti @pedulimahreen untuk kabar aksi sosialnya.",
+        "Sampaikan isu sosial yang menurutmu mendesak di kolom komentar unggahan mereka, seperti yang pernah mereka ajak pada Juni 2026."
+      ],
+      "catatan": "Cara bergabung sebagai relawan belum diumumkan.",
+      "tautan": {
+        "label": "@pedulimahreen",
+        "url": "https://www.instagram.com/pedulimahreen/"
+      },
+      "sumber": {
+        "label": "@pedulimahreen, 29 dan 30 Juni 2026",
+        "url": "https://www.instagram.com/pedulimahreen/"
+      },
+      "detailUrl": null,
+      "detailLabel": null
+    },
+    {
+      "nama": "Seminar dan edukasi",
+      "statusLabel": "Jadwal berikutnya belum diumumkan",
+      "ringkas": "Mahreen mengadakan seminar untuk UMKM pada Juli dan Agustus 2026.",
+      "caraIkut": [
+        "Pantau @mahreenindonesia untuk jadwal seminar berikutnya."
+      ],
+      "catatan": null,
+      "tautan": {
+        "label": "@mahreenindonesia",
+        "url": "https://www.instagram.com/mahreenindonesia/"
+      },
+      "sumber": {
+        "label": "@mahreenindonesia, 14 Juli dan 1 Agustus 2026",
+        "url": "https://www.instagram.com/mahreenindonesia/"
+      },
+      "detailUrl": null,
+      "detailLabel": null
+    }
+  ],
   "minat": [
     {
       "id": "visual",

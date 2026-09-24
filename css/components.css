@@ -360,7 +360,7 @@ main > .section:first-child {
 }
 
 /*
- * Menu di HP (di bawah 480px), hanya kalau JavaScript berjalan (kelas "js" pada <html>).
+ * Menu di HP (di bawah 544px), hanya kalau JavaScript berjalan (kelas "js" pada <html>).
  * Navigasi dilipat di balik tombol Menu, lalu tampil sebagai daftar bertumpuk saat dibuka.
  */
 .menu-tombol {
@@ -381,7 +381,7 @@ main > .section:first-child {
   color: var(--color-on-primary);
 }
 
-@media (max-width: 29.99em) {
+@media (max-width: 33.99em) {
   .js .site-nav {
     display: none;
   }
@@ -430,8 +430,11 @@ main > .section:first-child {
   }
 }
 
-/* Di 480px ke atas navigasi selalu tampil, tombol Menu tidak dipakai */
-@media (min-width: 30em) {
+/*
+ * Di 544px ke atas navigasi selalu tampil, tombol Menu tidak dipakai.
+ * Batasnya 544px (bukan 480px) karena empat label navigasi butuh sekitar 500px.
+ */
+@media (min-width: 34em) {
   .menu-tombol {
     display: none;
   }
@@ -1149,6 +1152,123 @@ main > .section:first-child {
     flex-direction: column;
     gap: 0.25rem;
   }
+}
+
+/* ---------- Ikut Berkarya: program yang sedang berjalan ---------- */
+.program-berjalan__waktu {
+  margin-top: var(--space-1);
+  font-size: var(--fs--1);
+  color: var(--color-neutral);
+}
+
+.program-list {
+  margin-top: var(--space-5);
+}
+
+/* Proximity: satu program satu baris, dipisah garis tipis (bukan kartu identik) */
+.program {
+  max-width: none;
+  padding-block: var(--space-4);
+  border-top: var(--border-thin) solid var(--color-line);
+}
+
+.program:last-child {
+  border-bottom: var(--border-thin) solid var(--color-line);
+}
+
+.program__nama {
+  font-size: var(--fs-2);
+}
+
+/*
+ * Label status: kotak oranye muda dengan teks oranye gelap (5,23:1).
+ * Kata "Status" selalu tertulis, jadi status tidak hanya dibedakan lewat warna.
+ */
+.program__status {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem var(--space-1);
+  margin-top: var(--space-1);
+  padding: 0.25rem var(--space-2);
+  background-color: var(--color-accent-soft);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs--1);
+  color: var(--color-accent-strong);
+}
+
+.program__status-label {
+  font-weight: var(--fw-regular);
+}
+
+.program__status-teks {
+  font-weight: var(--fw-bold);
+}
+
+.program__ringkas {
+  margin-top: var(--space-2);
+}
+
+.program__ikut {
+  margin-top: var(--space-3);
+}
+
+.program__subjudul {
+  font-size: var(--fs-0);
+  font-weight: var(--fw-semibold);
+  color: var(--color-ink);
+}
+
+.program__cara {
+  margin-top: var(--space-1);
+  padding-left: 1.25rem;
+}
+
+.program__cara li + li {
+  margin-top: var(--space-1);
+}
+
+.program__catatan {
+  margin-top: var(--space-2);
+  font-size: var(--fs--1);
+  font-style: italic;
+  color: var(--color-neutral);
+}
+
+.program__aksi {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.program__sumber {
+  margin-top: var(--space-1);
+}
+
+/* Desktop: nama, status, dan ringkasan di kiri (5 kolom); cara ikut di kanan (7 kolom) */
+@media (min-width: 64em) {
+  .program {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--grid-gutter);
+    align-items: start;
+  }
+
+  .program__kepala {
+    grid-column: 1 / span 5;
+  }
+
+  .program__ikut {
+    grid-column: 6 / -1;
+    margin-top: 0;
+  }
+}
+
+/* Bagian kedua di halaman yang sama: jarak atas lebih rapat karena masih satu alur */
+.program-berjalan + .mulai {
+  padding-top: 0;
 }
 
 /* ---------- Mulai: pilih minat (satu-satunya bagian interaktif) ---------- */

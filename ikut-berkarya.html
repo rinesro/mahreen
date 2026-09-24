@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kamu tertarik di bidang apa? | Mahreen untuk Anak Muda</title>
-  <meta name="description" content="Pilih bidang yang kamu minati, lalu lihat posisi magang, unit, dan akun Mahreen Indonesia yang berkaitan.">
+  <title>Program Mahreen yang sedang berjalan | Mahreen untuk Anak Muda</title>
+  <meta name="description" content="Status terbaru program Mahreen Indonesia dan cara kamu bisa ikut atau memantaunya, ditambah pilihan bidang sesuai minatmu.">
   <meta name="theme-color" content="#FFF5F9">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
@@ -12,8 +12,8 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="id_ID">
   <meta property="og:site_name" content="Mahreen untuk Anak Muda">
-  <meta property="og:title" content="Kamu tertarik di bidang apa?">
-  <meta property="og:description" content="Pilih bidang yang kamu minati, lalu lihat posisi magang, unit, dan akun Mahreen Indonesia yang berkaitan.">
+  <meta property="og:title" content="Program Mahreen yang sedang berjalan">
+  <meta property="og:description" content="Status terbaru program Mahreen Indonesia dan cara kamu bisa ikut atau memantaunya, ditambah pilihan bidang sesuai minatmu.">
   <meta property="og:image" content="assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -48,7 +48,7 @@
   <script src="js/data.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
-<body data-page="mulai">
+<body data-page="ikut-berkarya">
   <a class="skip-link" href="#konten">Langsung ke konten</a>
 
   <!-- Sprite SVG: motif bunga empat kelopak dan ikon garis, dipakai ulang lewat <use> -->
@@ -92,21 +92,35 @@
         <ul class="site-nav__list" role="list">
           <li><a class="site-nav__link" href="index.html">Beranda</a></li>
           <li><a class="site-nav__link" href="karya.html">Unit &amp; Kegiatan</a></li>
-          <li><a class="site-nav__link" href="anak-muda.html">Magang</a></li>
-          <li><a class="site-nav__link site-nav__link--aksi" href="mulai.html" aria-current="page">Cari yang Cocok</a></li>
+          <li><a class="site-nav__link" href="anak-muda.html">Program Magang</a></li>
+          <li><a class="site-nav__link site-nav__link--aksi" href="ikut-berkarya.html" aria-current="page">Ikut Berkarya</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="konten">
+    <!-- Bagian 1: program yang sedang berjalan, dirender js/main.js dari MAHREEN.programBerjalan -->
+    <section class="section program-berjalan" aria-labelledby="program-judul">
+      <div class="container">
+        <h1 id="program-judul" class="section__judul halaman__judul">
+          <svg class="section__penanda" aria-hidden="true" focusable="false"><use href="#motif-bunga" /></svg>
+          Program Mahreen yang sedang berjalan
+        </h1>
+        <p class="section__pengantar">Status terbaru setiap program dan cara kamu bisa ikut atau memantaunya.</p>
+        <p class="program-berjalan__waktu">Dirangkum dari unggahan Mahreen sampai 14 September 2026.</p>
+        <ul class="program-list" id="program-list" role="list"></ul>
+      </div>
+    </section>
+
+    <!-- Bagian 2: pilih minat, satu-satunya bagian interaktif -->
     <section class="section mulai" aria-labelledby="mulai-judul">
       <div class="container">
-        <h1 id="mulai-judul" class="section__judul halaman__judul">
+        <h2 id="mulai-judul" class="section__judul">
           <svg class="section__penanda" aria-hidden="true" focusable="false"><use href="#motif-bunga" /></svg>
-          Kamu tertarik di bidang apa?
-        </h1>
-        <p class="section__pengantar">Pilih satu, lalu lihat bagian Mahreen yang berkaitan dengan minatmu.</p>
+          Belum tahu mulai dari mana?
+        </h2>
+        <p class="section__pengantar">Kamu tertarik di bidang apa? Pilih satu, lalu lihat bagian Mahreen yang berkaitan dengan minatmu.</p>
         <!--
           Common region: pilihan dan hasil berada dalam satu panel, terpisah dari isi lain.
           Pilihan dirender dari MAHREEN.minat sebagai radio button bawaan HTML,

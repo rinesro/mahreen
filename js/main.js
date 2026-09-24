@@ -320,7 +320,7 @@ function renderAnakMuda(data) {
  * (satu pilihan aktif, panah untuk berpindah, dibaca "1 dari 5" oleh pembaca layar)
  * sudah disediakan browser tanpa kode tambahan.
  *
- * Pilihan disimpan di query URL, misalnya mulai.html?minat=teknologi, supaya hasilnya
+ * Pilihan disimpan di query URL, misalnya ikut-berkarya.html?minat=teknologi, supaya hasilnya
  * bisa dibagikan dan tetap ada saat halaman dimuat ulang. Dipakai replaceState (bukan
  * pushState) supaya setiap ganti pilihan tidak menambah riwayat browser.
  */
@@ -372,12 +372,12 @@ function renderMinat(daftarMinat, internship) {
 
   function tampilkanHasil(minat) {
     const isi = [];
-    isi.push(buatElemen("h2", "minat-hasil__judul", minat.label));
+    isi.push(buatElemen("h3", "minat-hasil__judul", minat.label));
 
     // Posisi internship yang berkaitan, hanya kalau ada
     if (minat.posisi.length) {
       const blok = buatElemen("div", "minat-hasil__blok");
-      blok.appendChild(buatElemen("h3", "minat-hasil__subjudul", "Posisi internship yang berkaitan"));
+      blok.appendChild(buatElemen("h4", "minat-hasil__subjudul", "Posisi internship yang berkaitan"));
       blok.appendChild(buatDaftarLabel(minat.posisi, true));
       blok.appendChild(buatElemen("p", "minat-hasil__catatan", "Posisi di Batch 2. " + internship.statusPendaftaran));
       isi.push(blok);
@@ -385,13 +385,13 @@ function renderMinat(daftarMinat, internship) {
 
     // Unit Mahreen yang berkaitan
     const unit = buatElemen("div", "minat-hasil__blok");
-    unit.appendChild(buatElemen("h3", "minat-hasil__subjudul", "Di Mahreen"));
+    unit.appendChild(buatElemen("h4", "minat-hasil__subjudul", "Di Mahreen"));
     unit.appendChild(buatElemen("p", "minat-hasil__unit", minat.unit));
     isi.push(unit);
 
     // Akun yang bisa dipantau
     const akun = buatElemen("div", "minat-hasil__blok");
-    akun.appendChild(buatElemen("h3", "minat-hasil__subjudul", "Akun yang bisa kamu pantau"));
+    akun.appendChild(buatElemen("h4", "minat-hasil__subjudul", "Akun yang bisa kamu pantau"));
     const list = buatElemen("ul", "minat-hasil__akun");
     list.setAttribute("role", "list");
     minat.akun.forEach(function (a) {
@@ -409,6 +409,51 @@ function renderMinat(daftarMinat, internship) {
     void hasil.offsetWidth;
     hasil.classList.add("minat-hasil--muncul");
   }
+}
+
+/* ---------- Ikut Berkarya: program yang sedang berjalan ---------- */
+/*
+ * Satu baris per program: nama, label status, dan ringkasan di kiri;
+ * cara ikut atau memantau, catatan, tautan akun, tombol detail (kalau ada), dan sumber di kanan.
+ * Label status selalu ditulis sebagai teks, tidak hanya dibedakan lewat warna.
+ */
+function renderProgram(daftar) {
+  const list = document.getElementById("program-list");
+  if (!list) return;
+
+  daftar.forEach(function (program) {
+    const li = buatElemen("li", "program");
+
+    const kepala = buatElemen("div", "program__kepala");
+    kepala.appendChild(buatElemen("h2", "program__nama", program.nama));
+    const status = buatElemen("p", "program__status");
+    status.appendChild(buatElemen("span", "program__status-label", "Status"));
+    status.appendChild(buatElemen("span", "visually-hidden", ": "));
+    status.appendChild(buatElemen("span", "program__status-teks", program.statusLabel));
+    kepala.appendChild(status);
+    kepala.appendChild(buatElemen("p", "program__ringkas", program.ringkas));
+    li.appendChild(kepala);
+
+    const ikut = buatElemen("div", "program__ikut");
+    ikut.appendChild(buatElemen("h3", "program__subjudul", "Cara ikut atau memantau"));
+    const cara = buatElemen("ul", "program__cara");
+    program.caraIkut.forEach(function (teks) { cara.appendChild(buatElemen("li", null, teks)); });
+    ikut.appendChild(cara);
+    if (program.catatan) ikut.appendChild(buatElemen("p", "program__catatan", program.catatan));
+
+    const aksi = buatElemen("div", "program__aksi");
+    aksi.appendChild(buatTautanAkun(program.tautan.label, program.tautan.url, "tautan-akun program__akun"));
+    if (program.detailUrl) {
+      const detail = buatElemen("a", "btn btn--secondary program__detail", program.detailLabel || "Lihat detail");
+      detail.href = program.detailUrl;
+      aksi.appendChild(detail);
+    }
+    ikut.appendChild(aksi);
+    ikut.appendChild(buatSumber(program.sumber, "sumber program__sumber"));
+    li.appendChild(ikut);
+
+    list.appendChild(li);
+  });
 }
 
 /* ---------- Satu Mahreen, lima akun ---------- */
@@ -454,7 +499,7 @@ function renderKontak(kontak) {
 
 /* ---------- Menu navigasi di HP ---------- */
 /*
- * Di bawah 480px navigasi dilipat di balik tombol "Menu" (disclosure).
+ * Di bawah 544px navigasi dilipat di balik tombol "Menu" (disclosure).
  * Tombolnya hidden di HTML dan baru ditampilkan di sini, jadi tanpa JavaScript
  * navigasi tetap tampil lengkap. aria-expanded memberi tahu pembaca layar
  * apakah menu sedang terbuka. Tombol Esc menutup menu dan mengembalikan fokus ke tombol.
@@ -557,7 +602,7 @@ function pasangHeader() {
 /* ---------- Jalankan ---------- */
 /*
  * Setiap halaman hanya merender bagiannya sendiri, berdasarkan data-page pada <body>:
- * beranda, karya, anak-muda, atau mulai. Menu, akun, dan kontak di footer ada di semua halaman.
+ * beranda, karya, anak-muda, atau ikut-berkarya. Menu, akun, dan kontak di footer ada di semua halaman.
  */
 const RENDER_HALAMAN = {
   "beranda": function () {
@@ -570,7 +615,8 @@ const RENDER_HALAMAN = {
   "anak-muda": function () {
     renderAnakMuda(MAHREEN.internship);
   },
-  "mulai": function () {
+  "ikut-berkarya": function () {
+    renderProgram(MAHREEN.programBerjalan);
     renderMinat(MAHREEN.minat, MAHREEN.internship);
   },
 };
