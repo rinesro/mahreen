@@ -74,28 +74,6 @@ Informasi tentang Mahreen Indonesia tersebar di lima akun Instagram (@mahreenind
 
 Tidak perlu instalasi. Unduh atau clone repo ini, lalu buka `index.html` langsung di browser.
 
-## Cara memperbarui konten
-
-Semua konten ada di objek `MAHREEN` di `js/data.js`. Kuncinya dikelompokkan per bagian: `profil`, `unit`, `kegiatanBersama`, `internship`, `programBerjalan`, `minat`, `akun`, dan `kontak`.
-
-Contoh: memperbarui status sebuah program di halaman Program Aktif.
-
-```js
-"programBerjalan": [
-  {
-    "nama": "Mahreen Indonesia Internship",
-    "statusLabel": "Tulis status terbaru di sini",
-    ...
-    "sumber": {
-      "label": "@namaakun, tanggal unggahan",
-      "url": "tautan unggahan"
-    }
-  }
-]
-```
-
-Setiap fakta sebaiknya disertai `sumber` berisi akun, tanggal, dan tautan unggahannya. Setelah memperbarui `programBerjalan`, ubah juga tanggal pada kalimat "Info terakhir diperbarui ..." di `program-aktif.html`.
-
 ## Sumber informasi dan catatan
 
 - Website ini adalah prototype dan bukan website resmi Mahreen Indonesia.
