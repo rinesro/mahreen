@@ -82,11 +82,11 @@ const MAHREEN = {
       "id": "mahreen-studio",
       "nama": "Mahreen Studio",
       "bidang": "Creative Lifestyle & Fashion",
-      "apa": "Unit Mahreen di bidang creative lifestyle dan fashion.",
-      "contoh": null,
+      "apa": "Menurut unggahan @mahreenindonesia, Mahreen Studio adalah divisi creative lifestyle yang menjadi ruang pengembangan apparel, visual branding, dan identitas kreatif.",
+      "contoh": "Mei 2026, Mahreen Studio memperkenalkan empat lini koleksi: Elevated Esentials, Mahreen Signature Tee, Everyday Motion, dan Refined Modisty. Signature Collection diumumkan akan segera hadir.",
       "sumber": {
-        "label": "@mahreenindonesia, 19 Mei 2026",
-        "url": "https://www.instagram.com/mahreenindonesia/"
+        "label": "@mahreenindonesia, 13 Mei 2026",
+        "url": "https://www.instagram.com/p/DYS1aHxk12a/?img_index=3"
       },
       "akun": "@mahreenindonesia",
       "akunUrl": "https://www.instagram.com/mahreenindonesia/"
@@ -181,7 +181,7 @@ const MAHREEN = {
         "Graphic Design",
         "UI/UX"
       ],
-      "unit": "Mahreen Studio bergerak di creative lifestyle dan fashion.",
+      "unit": "Mahreen Studio mengembangkan apparel, visual branding, dan identitas kreatif.",
       "akun": [
         {
           "nama": "@mahreenindonesiainternship",

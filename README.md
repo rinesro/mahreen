@@ -70,7 +70,7 @@ Kaitan dengan tiga kata kunci tugas:
 - Continuity: tautan "Lanjut" antarhalaman, nomor 01 sampai 03 di bagian Jelajahi, dan motif bunga kecil di depan judul halaman dan judul bagian.
 - Common region: kotak "Contoh nyata" berlatar oranye muda, dan area interaktif di halaman Mulai berada dalam satu panel putih.
 
-**Variasi yang bermakna.** Blok unit tidak dibuat kartu identik. Unit yang punya contoh nyata dibagi dua di desktop (keterangan di kiri, contoh di kanan) sehingga contohnya mendapat ruang terbesar. Unit tanpa contoh tampil sebagai satu baris ringkas: di desktop, logo dan nama di kolom kiri, keterangan, akun, dan sumber di kolom kanan, tanpa kotak contoh yang kosong. Sorotan 10 kategori penghargaan menjadi satu-satunya blok berlatar merah tua. Di halaman Anak Muda, chip posisi berisi warna pink muda, sedangkan chip bidang mentoring hanya bergaris tepi, supaya keduanya tidak tertukar.
+**Variasi yang bermakna.** Blok unit tidak dibuat kartu identik. Unit yang punya contoh nyata dibagi dua di desktop (keterangan di kiri, contoh di kanan) sehingga contohnya mendapat ruang terbesar. Sorotan 10 kategori penghargaan menjadi satu-satunya blok berlatar merah tua. Di halaman Anak Muda, chip posisi berisi warna pink muda, sedangkan chip bidang mentoring hanya bergaris tepi, supaya keduanya tidak tertukar.
 
 **Grid dan ruang.** 4 kolom di HP dan 12 kolom mulai 1024px, jarak kelipatan 8px, dan area sentuh minimal 44px.
 
@@ -136,7 +136,7 @@ Semua konten ada di satu objek `MAHREEN`. Mengubah isi halaman cukup di file ini
 Aturan kecil yang perlu diingat:
 
 - Setiap `sumber` berisi `label` (akun dan tanggal unggahan) dan `url` (tautan ke unggahannya). Di halaman, hanya nama akun di `label` yang menjadi tautan: akun pertama memakai `url`, akun berikutnya (kalau ada) memakai alamat akunnya dari `akun`.
-- `contoh: null` pada unit berarti belum ada contoh nyata. Unit itu tampil ringkas tanpa kotak contoh.
+- `contoh: null` pada unit berarti belum ada contoh nyata. Kotak contoh dilewati dan sumber tampil di bawah keterangan unit. Saat ini keempat unit sudah punya contoh.
 - `posisi: []` pada minat berarti tidak ada posisi magang yang berkaitan. Blok posisinya tidak ditampilkan.
 - `id` pada minat muncul di alamat halaman (`mulai.html?minat=id`). Kalau `id` diganti, tautan lama yang sudah dibagikan tidak akan memilih apa pun, tapi halamannya tetap terbuka normal.
 - Jumlah pada judul "10 kategori penghargaan Batch 1" dihitung otomatis dari panjang `penghargaanBatch1`.

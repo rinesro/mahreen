@@ -131,8 +131,8 @@ function renderKenalan(profil) {
 /* ---------- Karya: blok per unit ---------- */
 /*
  * Unit yang punya contoh nyata diberi ruang lebih besar: di desktop blok dibagi dua,
- * keterangan unit di kiri dan kotak contoh di kanan. Unit tanpa contoh (contoh: null)
- * tampil ringkas tanpa kotak itu, sesuai brief.
+ * keterangan unit di kiri dan kotak contoh di kanan. Kalau suatu unit belum punya
+ * contoh (contoh: null), kotak contoh dilewati dan sumber tampil di bawah keterangan.
  */
 function renderUnit(daftarUnit) {
   const wadah = document.getElementById("karya-unit");
@@ -142,14 +142,12 @@ function renderUnit(daftarUnit) {
   list.setAttribute("role", "list");
 
   daftarUnit.forEach(function (unit) {
-    const li = buatElemen("li", "unit" + (unit.contoh ? " unit--dengan-contoh" : " unit--ringkas"));
+    const li = buatElemen("li", "unit" + (unit.contoh ? " unit--dengan-contoh" : ""));
     li.id = "unit-" + unit.id;
 
     // Proximity: logo, nama, bidang, penjelasan, dan akun dikelompokkan rapat
     const info = buatElemen("div", "unit__info");
     const kepala = buatElemen("div", "unit__kepala");
-    // Unit tanpa contoh dibuat satu baris ringkas: kepala di kiri, keterangan di kanan
-    const detail = unit.contoh ? info : buatElemen("div", "unit__detail");
     kepala.appendChild(buatLogo("assets/logo/" + unit.id + "-crimson.png", unit.nama, "unit__logo"));
     const namaBidang = buatElemen("div");
     namaBidang.appendChild(buatElemen("h2", "unit__nama", unit.nama));
@@ -158,10 +156,9 @@ function renderUnit(daftarUnit) {
     namaBidang.appendChild(bidang);
     kepala.appendChild(namaBidang);
     info.appendChild(kepala);
-    detail.appendChild(buatElemen("p", "unit__apa", unit.apa));
-    detail.appendChild(buatTautanAkun(unit.akun, unit.akunUrl, "tautan-akun unit__akun"));
+    info.appendChild(buatElemen("p", "unit__apa", unit.apa));
+    info.appendChild(buatTautanAkun(unit.akun, unit.akunUrl, "tautan-akun unit__akun"));
     li.appendChild(info);
-    if (detail !== info) li.appendChild(detail);
 
     if (unit.contoh) {
       const contoh = buatElemen("div", "unit__contoh");
@@ -171,7 +168,7 @@ function renderUnit(daftarUnit) {
       li.appendChild(contoh);
     } else {
       // Tanpa contoh, sumber tetap ditampilkan di bawah keterangan unit
-      detail.appendChild(buatSumber(unit.sumber, "sumber unit__sumber"));
+      info.appendChild(buatSumber(unit.sumber, "sumber unit__sumber"));
     }
 
     list.appendChild(li);
