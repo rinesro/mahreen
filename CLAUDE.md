@@ -41,6 +41,7 @@ Kaitan dengan kata kunci tugas:
 
 - Semua fakta hanya dari data di file ini. Jangan mengarang program, link pendaftaran, harga, jadwal, manfaat, atau testimoni.
 - Contoh nyata dan fakta penting diberi keterangan sumber kecil (akun dan tanggal), dengan tautan ke unggahannya.
+- Visi, misi, dan pernyataan resmi Mahreen lainnya ditulis persis seperti di postingan aslinya, termasuk tanda baca dan pilihan kata.
 - **Sudut pandang dan nada.** Website ini memperkenalkan Mahreen kepada generasi muda. Fakta ditulis langsung dengan Mahreen atau nama unitnya sebagai subjek ("Mahreen", "Peduli Mahreen"), dengan nada mengajak. Pembaca disapa "kamu".
 - Jangan memakai kata "mereka" untuk Mahreen, dan jangan menulis "menurut unggahan" atau "yang disebutkan" di dalam kalimat. Sumber cukup ditampilkan di baris kecil "Sumber".
 - Jangan memakai "kami".
@@ -89,7 +90,7 @@ Situs terdiri dari **empat halaman**. Tidak ada tautan anchor ke bagian di halam
   - Tombol utama: "Lihat program aktif" ke `program-aktif.html`
   - Tombol kedua: "Lihat karya Mahreen" ke `karya.html`
   - Motif bunga empat kelopak sebagai elemen dekoratif.
-- **Kenalan dulu sama Mahreen:** `profil.visi`, empat `profil.misi` dalam daftar ringkas, dan tiga `profil.nilai` ditampilkan besar dengan padanan bahasa Indonesia kecil di bawahnya. Keterangan sumber dari `profil.sumber`.
+- **Kenalan dulu sama Mahreen:** `profil.visi` dan empat `profil.misi` dalam daftar ringkas, dengan sumber `profil.sumber` (14 Mei 2026). Lalu bagian ekosistem seperti postingan Our Ecosystem: kalimat `profil.ekosistem`, baris kecil `profil.ekosistemBidang` ("Creative • Digital • Social Development"), dan tiga kata `profil.tigaKata` (Innovation, Collaboration, Impact) ditampilkan besar tanpa judul dan tanpa padanan, dengan sumber `profil.sumberEkosistem` (19 Mei 2026).
 - **Jelajahi:** tiga blok tautan ke halaman Karya, Anak Muda, dan Program Aktif (judul h1 halaman tujuan), masing-masing dengan satu kalimat penjelasan.
 - Tanpa bagian Lanjut (sudah diwakili Jelajahi).
 
@@ -163,29 +164,26 @@ Salin ke `js/data.js` sebagai `const MAHREEN = { ... };` dengan isi objek persis
 {
   "profil": {
     "ringkas": "Mahreen Indonesia adalah ekosistem kreatif, digital, bisnis, dan sosial.",
-    "visi": "Menjadi perusahaan yang inovatif dalam menghadirkan karya, solusi, dan kontribusi positif bagi masyarakat Indonesia, sampai ke tingkat internasional.",
+    "visi": "Menjadi perusahaan yang inovatif dalam menghadirkan karya dan solusi serta kontribusi positif bagi masyarakat Indonesia hingga internasional.",
     "misi": [
-      "Mengembangkan bidang fashion, digital, kreatif, dan sosial secara profesional dan adaptif.",
-      "Menghadirkan layanan, karya, dan solusi yang bermanfaat bagi masyarakat, generasi muda, dan pelaku usaha.",
+      "Mengembangkan bidang fashion, digital, kreatif, dan sosial secara profesional dan adaptif di era modern.",
+      "Menghadirkan layanan, karya, dan solusi yang bermanfaat bagi masyarakat, generasi muda, serta pelaku usaha.",
       "Membangun kolaborasi dan pemberdayaan yang mendorong kreativitas, inovasi, dan perkembangan berkelanjutan.",
-      "Menjadikan Mahreen Indonesia ruang untuk bertumbuh, berkarya, dan berbagi manfaat."
-    ],
-    "nilai": [
-      {
-        "en": "Innovation",
-        "id": "Inovasi"
-      },
-      {
-        "en": "Collaboration",
-        "id": "Kolaborasi"
-      },
-      {
-        "en": "Impact",
-        "id": "Dampak"
-      }
+      "Menjadikan Mahreen Indonesia sebagai ruang bertumbuh, berkarya, dan berbagi manfaat melalui setiap bidang yang dijalankan."
     ],
     "sumber": {
-      "label": "@mahreenindonesia, 14 dan 19 Mei 2026",
+      "label": "@mahreenindonesia, 14 Mei 2026",
+      "url": "https://www.instagram.com/mahreenindonesia/"
+    },
+    "ekosistem": "Mahreen Indonesia membangun ekosistem kreatif, digital, bisnis, dan sosial yang terintegrasi untuk menghadirkan karya, solusi, serta dampak berkelanjutan bagi masyarakat.",
+    "ekosistemBidang": "Creative • Digital • Social Development",
+    "tigaKata": [
+      "Innovation",
+      "Collaboration",
+      "Impact"
+    ],
+    "sumberEkosistem": {
+      "label": "@mahreenindonesia, 19 Mei 2026",
       "url": "https://www.instagram.com/mahreenindonesia/"
     }
   },

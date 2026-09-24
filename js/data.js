@@ -12,29 +12,26 @@
 const MAHREEN = {
   "profil": {
     "ringkas": "Mahreen Indonesia adalah ekosistem kreatif, digital, bisnis, dan sosial.",
-    "visi": "Menjadi perusahaan yang inovatif dalam menghadirkan karya, solusi, dan kontribusi positif bagi masyarakat Indonesia, sampai ke tingkat internasional.",
+    "visi": "Menjadi perusahaan yang inovatif dalam menghadirkan karya dan solusi serta kontribusi positif bagi masyarakat Indonesia hingga internasional.",
     "misi": [
-      "Mengembangkan bidang fashion, digital, kreatif, dan sosial secara profesional dan adaptif.",
-      "Menghadirkan layanan, karya, dan solusi yang bermanfaat bagi masyarakat, generasi muda, dan pelaku usaha.",
+      "Mengembangkan bidang fashion, digital, kreatif, dan sosial secara profesional dan adaptif di era modern.",
+      "Menghadirkan layanan, karya, dan solusi yang bermanfaat bagi masyarakat, generasi muda, serta pelaku usaha.",
       "Membangun kolaborasi dan pemberdayaan yang mendorong kreativitas, inovasi, dan perkembangan berkelanjutan.",
-      "Menjadikan Mahreen Indonesia ruang untuk bertumbuh, berkarya, dan berbagi manfaat."
-    ],
-    "nilai": [
-      {
-        "en": "Innovation",
-        "id": "Inovasi"
-      },
-      {
-        "en": "Collaboration",
-        "id": "Kolaborasi"
-      },
-      {
-        "en": "Impact",
-        "id": "Dampak"
-      }
+      "Menjadikan Mahreen Indonesia sebagai ruang bertumbuh, berkarya, dan berbagi manfaat melalui setiap bidang yang dijalankan."
     ],
     "sumber": {
-      "label": "@mahreenindonesia, 14 dan 19 Mei 2026",
+      "label": "@mahreenindonesia, 14 Mei 2026",
+      "url": "https://www.instagram.com/mahreenindonesia/"
+    },
+    "ekosistem": "Mahreen Indonesia membangun ekosistem kreatif, digital, bisnis, dan sosial yang terintegrasi untuk menghadirkan karya, solusi, serta dampak berkelanjutan bagi masyarakat.",
+    "ekosistemBidang": "Creative • Digital • Social Development",
+    "tigaKata": [
+      "Innovation",
+      "Collaboration",
+      "Impact"
+    ],
+    "sumberEkosistem": {
+      "label": "@mahreenindonesia, 19 Mei 2026",
       "url": "https://www.instagram.com/mahreenindonesia/"
     }
   },

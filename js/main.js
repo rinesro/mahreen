@@ -87,7 +87,12 @@ function buatTautanAkun(nama, url, className) {
   return a;
 }
 
-/* ---------- Kenalan: visi, misi, tiga kata kunci ---------- */
+/* ---------- Kenalan: visi, misi, dan ekosistem ---------- */
+/*
+ * Visi, misi, kalimat ekosistem, dan tiga kata ditulis persis seperti di postingan
+ * Mahreen (lihat CLAUDE.md). Visi dan misi punya sumber sendiri (14 Mei 2026),
+ * ekosistem dan tiga kata punya sumber sendiri (postingan Our Ecosystem, 19 Mei 2026).
+ */
 function renderKenalan(profil) {
   const wadah = document.getElementById("kenalan-isi");
   if (!wadah) return;
@@ -108,24 +113,23 @@ function renderKenalan(profil) {
   visiMisi.appendChild(misi);
 
   wadah.appendChild(visiMisi);
-
-  // Tiga kata kunci ditampilkan besar, istilah Inggrisnya diberi padanan bahasa Indonesia
-  const nilai = buatElemen("div", "kenalan__nilai");
-  nilai.appendChild(buatElemen("h3", "kenalan__label", "Tiga kata kunci Mahreen"));
-  const daftarNilai = buatElemen("ul", "nilai");
-  daftarNilai.setAttribute("role", "list");
-  profil.nilai.forEach(function (n) {
-    const li = buatElemen("li", "nilai__item");
-    const en = buatElemen("span", "nilai__en", n.en);
-    en.lang = "en";
-    li.appendChild(en);
-    li.appendChild(buatElemen("span", "nilai__id", n.id));
-    daftarNilai.appendChild(li);
-  });
-  nilai.appendChild(daftarNilai);
-  wadah.appendChild(nilai);
-
   wadah.appendChild(buatSumber(profil.sumber, "sumber kenalan__sumber"));
+
+  // Ekosistem: kalimat asli, baris kecil bidang, lalu tiga kata besar seperti di postingan
+  const ekosistem = buatElemen("div", "kenalan__ekosistem");
+  ekosistem.appendChild(buatElemen("p", "ekosistem__kalimat", profil.ekosistem));
+  const bidang = buatElemen("p", "ekosistem__bidang", profil.ekosistemBidang);
+  bidang.lang = "en";
+  ekosistem.appendChild(bidang);
+  const daftarKata = buatElemen("ul", "tiga-kata");
+  daftarKata.setAttribute("role", "list");
+  daftarKata.lang = "en";
+  profil.tigaKata.forEach(function (kata) {
+    daftarKata.appendChild(buatElemen("li", "tiga-kata__item", kata));
+  });
+  ekosistem.appendChild(daftarKata);
+  ekosistem.appendChild(buatSumber(profil.sumberEkosistem, "sumber kenalan__sumber"));
+  wadah.appendChild(ekosistem);
 }
 
 /* ---------- Karya: blok per unit ---------- */

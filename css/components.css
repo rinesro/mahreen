@@ -659,25 +659,32 @@ main > .section:first-child {
   color: var(--color-primary);
 }
 
-.kenalan__nilai {
+/* Ekosistem: kalimat asli, baris kecil bidang, lalu tiga kata besar */
+.kenalan__ekosistem {
   margin-top: var(--space-6);
 }
 
-/* Tiga kata kunci ditampilkan besar, dengan padanan bahasa Indonesia kecil di bawahnya */
-.nilai {
+.ekosistem__kalimat {
+  font-size: var(--fs-1);
+  line-height: var(--lh-body);
+}
+
+.ekosistem__bidang {
+  margin-top: var(--space-2);
+  font-size: var(--fs--1);
+  font-weight: var(--fw-semibold);
+  color: var(--color-neutral);
+}
+
+.tiga-kata {
   display: grid;
   gap: var(--space-3);
   margin-top: var(--space-2);
 }
 
-.nilai__item {
-  display: flex;
-  flex-direction: column;
+.tiga-kata__item {
   padding-top: var(--space-2);
   border-top: 4px solid var(--color-primary);
-}
-
-.nilai__en {
   font-family: var(--font-heading);
   font-size: var(--fs-3);
   font-weight: var(--fw-bold);
@@ -685,19 +692,12 @@ main > .section:first-child {
   color: var(--color-secondary);
 }
 
-.nilai__id {
-  margin-top: 0.25rem;
-  font-size: var(--fs--1);
-  font-weight: var(--fw-semibold);
-  color: var(--color-neutral);
-}
-
 .kenalan__sumber {
   margin-top: var(--space-4);
 }
 
 @media (min-width: 48em) {
-  .nilai {
+  .tiga-kata {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
@@ -712,7 +712,7 @@ main > .section:first-child {
     font-size: var(--fs-2);
   }
 
-  .nilai__en {
+  .tiga-kata__item {
     font-size: var(--fs-4);
   }
 }

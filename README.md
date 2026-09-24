@@ -18,7 +18,7 @@ Tema "Berkarya untuk Indonesia" dipakai sebagai alur cerita yang dibagi ke empat
 
 | Urutan | Halaman | Label di navigasi | Isi |
 |---|---|---|---|
-| 1 | **Beranda** (`index.html`) | Beranda | Siapa Mahreen: visi, misi, tiga kata kunci, dan tautan untuk menjelajah |
+| 1 | **Beranda** (`index.html`) | Beranda | Siapa Mahreen: visi, misi, ekosistem dan tiga kata (Innovation, Collaboration, Impact), dan tautan untuk menjelajah |
 | 2 | **Karya** (`karya.html`) | Unit & Kegiatan | Bagaimana Mahreen berkarya lewat unit-unitnya, dengan contoh nyata dari unggahan mereka |
 | 3 | **Anak Muda** (`anak-muda.html`) | Program Magang | Ruang yang Mahreen sediakan untuk anak muda: program magang. Di bagian "Posisi mana yang cocok buat kamu?", pembaca memilih bidang minatnya lalu melihat posisi magang, mentor, dan penghargaan Batch 1 yang berkaitan |
 | 4 | **Program Aktif** (`program-aktif.html`) | Program Aktif | Program aktif Mahreen yang bisa kamu ikuti: status terbaru, cara ikut atau memantaunya, dan sumbernya. |
@@ -30,7 +30,7 @@ Penanda "# Berkarya untuk Indonesia" di hero dan footer meniru penanda di postin
 Kaitan dengan tiga kata kunci tugas:
 
 - **Menarik:** alur bercerita dengan tema sebagai benang merah, visual mengikuti identitas kampanye Mahreen, dan satu halaman interaktif.
-- **Mudah dipahami:** satu halaman satu tujuan, bahasa sederhana, dan istilah Inggris pada tiga kata kunci diberi padanan bahasa Indonesia.
+- **Mudah dipahami:** satu halaman satu tujuan dan bahasa sederhana. Pernyataan resmi Mahreen (visi, misi, ekosistem, dan tiga kata) ditulis persis seperti di postingan aslinya, tanpa parafrase.
 - **Relevan:** halaman Program Magang menghubungkan minat pembaca (desain, konten, teknologi, bisnis, sosial) dengan posisi magang, mentor, dan penghargaan Batch 1 yang berkaitan, dan halaman Program Aktif menunjukkan program yang benar-benar sedang berjalan beserta cara ikut atau memantaunya.
 
 ### Kenapa multi-halaman, bukan satu halaman panjang
@@ -127,7 +127,7 @@ Semua konten ada di satu objek `MAHREEN`. Mengubah isi halaman cukup di file ini
 
 | Kunci | Tampil di | Isi |
 |---|---|---|
-| `profil` | Beranda, "Kenalan dulu sama Mahreen" | `visi`, `misi` (daftar), `nilai` (tiga kata kunci: `en` dan padanan `id`), `sumber` |
+| `profil` | Beranda, "Kenalan dulu sama Mahreen" | `visi`, `misi` (daftar), `sumber` (visi dan misi), `ekosistem` (kalimat), `ekosistemBidang`, `tigaKata` (daftar), `sumberEkosistem`. Semua teks resmi disalin persis dari postingan |
 | `unit` | Karya | Satu objek per unit: `nama`, `bidang`, `apa`, `contoh`, `sumber`, `akun`, `akunUrl` |
 | `kegiatanBersama` | Karya, "Juga dari Mahreen Indonesia" | `judul`, `tanggal`, `keterangan`, `sumber` |
 | `internship` | Anak Muda, juga catatan di hasil pilihan minat | `ringkas`, `periodeBatch2`, `statusPendaftaran`, `benefit`, `posisi` per `grup`, `mentorBatch2`, `penghargaanBatch1`, `sumber`, `ikuti` (`label` tombol, `akun` sebagai keterangan kecil di bawahnya, `url`) |
