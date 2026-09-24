@@ -57,7 +57,7 @@ const MAHREEN = {
       "nama": "Peduli Mahreen",
       "bidang": "Social & Humanity Movement",
       "apa": "Gerakan sosial dan kemanusiaan dengan empat tujuan: kepedulian, edukasi, bantuan sosial, dan pemberdayaan.",
-      "contoh": "Akhir Juni 2026, Peduli Mahreen memperkenalkan diri lewat cerita awal perjalanan, visi misi, dan hal yang sedang diperjuangkan, lalu mengajak followers menuliskan isu sosial yang menurut mereka paling mendesak.",
+      "contoh": "Akhir Juni 2026, Peduli Mahreen memperkenalkan diri lewat cerita awal perjalanan, visi misi, dan hal yang sedang diperjuangkan, sekaligus mengajak followers menyampaikan isu sosial yang dianggap paling mendesak.",
       "sumber": {
         "label": "@pedulimahreen, 29 dan 30 Juni 2026",
         "url": "https://www.instagram.com/pedulimahreen/"
@@ -82,8 +82,8 @@ const MAHREEN = {
       "id": "mahreen-studio",
       "nama": "Mahreen Studio",
       "bidang": "Creative Lifestyle & Fashion",
-      "apa": "Menurut unggahan @mahreenindonesia, Mahreen Studio adalah divisi creative lifestyle yang menjadi ruang pengembangan apparel, visual branding, dan identitas kreatif.",
-      "contoh": "Mei 2026, Mahreen Studio memperkenalkan empat lini koleksi: Elevated Esentials, Mahreen Signature Tee, Everyday Motion, dan Refined Modisty. Signature Collection diumumkan akan segera hadir.",
+      "apa": "Mahreen Studio adalah divisi creative lifestyle Mahreen Indonesia, ruang pengembangan apparel, visual branding, dan identitas kreatif.",
+      "contoh": "Mei 2026, Mahreen Studio memperkenalkan empat lini koleksi: Elevated Esentials, Mahreen Signature Tee, Everyday Motion, dan Refined Modisty. Signature Collection sedang disiapkan.",
       "sumber": {
         "label": "@mahreenindonesia, 13 Mei 2026",
         "url": "https://www.instagram.com/p/DYS1aHxk12a/?img_index=3"
@@ -113,7 +113,7 @@ const MAHREEN = {
     }
   ],
   "internship": {
-    "ringkas": "Program magang Mahreen Indonesia. Menurut pengumuman Batch 2, sistem kerjanya remote (WFH atau WFA).",
+    "ringkas": "Program magang Mahreen Indonesia dengan sistem kerja remote (WFH atau WFA), jadi bisa diikuti dari mana saja.",
     "periodeBatch2": "1 Oktober 2026 sampai 31 Januari 2027",
     "statusPendaftaran": "Pendaftaran Batch 2 sudah ditutup.",
     "benefit": [
@@ -199,9 +199,9 @@ const MAHREEN = {
       "ringkas": "Gerakan sosial dan kemanusiaan dengan empat tujuan: kepedulian, edukasi, bantuan sosial, dan pemberdayaan.",
       "caraIkut": [
         "Ikuti @pedulimahreen untuk kabar aksi sosialnya.",
-        "Sampaikan isu sosial yang menurutmu mendesak di kolom komentar unggahan mereka, seperti yang pernah mereka ajak pada Juni 2026."
+        "Sampaikan isu sosial yang menurutmu mendesak di kolom komentar @pedulimahreen, seperti ajakan Peduli Mahreen pada Juni 2026."
       ],
-      "catatan": "Cara bergabung sebagai relawan belum diumumkan.",
+      "catatan": "Info cara bergabung sebagai relawan bisa dipantau di @pedulimahreen.",
       "tautan": {
         "label": "@pedulimahreen",
         "url": "https://www.instagram.com/pedulimahreen/"
@@ -330,7 +330,7 @@ const MAHREEN = {
       "mentorBatch2": false,
       "mentorBidang": null,
       "penghargaanBatch1": [],
-      "catatan": "Bidang mentoring untuk posisi ini belum disebutkan di pengumuman Batch 2.",
+      "catatan": "Info mentoring untuk posisi ini bisa dipantau di @mahreenindonesiainternship.",
       "tombol": null,
       "sumber": {
         "label": "@mahreenindonesiainternship, 30 Agustus sampai 1 September 2026; Story MI Batch 2, 14 September 2026",
@@ -346,8 +346,8 @@ const MAHREEN = {
       "penghargaanBatch1": [],
       "catatan": "Belum ada posisi magang khusus bidang sosial di Batch 2. Kegiatan sosial Mahreen dijalankan lewat Peduli Mahreen.",
       "tombol": {
-        "label": "Lihat Peduli Mahreen di Ikut Berkarya",
-        "url": "ikut-berkarya.html"
+        "label": "Lihat Peduli Mahreen di Program Aktif",
+        "url": "program-aktif.html"
       },
       "sumber": {
         "label": "@mahreenindonesiainternship, 30 Agustus sampai 1 September 2026; Story MI Batch 2, 14 September 2026",

@@ -21,20 +21,20 @@ Tema "Berkarya untuk Indonesia" dipakai sebagai alur cerita yang dibagi ke empat
 | 1 | **Beranda** (`index.html`) | Beranda | Siapa Mahreen: visi, misi, tiga kata kunci, dan tautan untuk menjelajah |
 | 2 | **Karya** (`karya.html`) | Unit & Kegiatan | Bagaimana Mahreen berkarya lewat unit-unitnya, dengan contoh nyata dari unggahan mereka |
 | 3 | **Anak Muda** (`anak-muda.html`) | Program Magang | Ruang yang Mahreen sediakan untuk anak muda: program magang. Di bagian "Posisi mana yang cocok buat kamu?", pembaca memilih bidang minatnya lalu melihat posisi magang, mentor, dan penghargaan Batch 1 yang berkaitan |
-| 4 | **Ikut Berkarya** (`ikut-berkarya.html`) | Ikut Berkarya | Program Mahreen yang sedang berjalan: status terbaru, cara ikut atau memantaunya, dan sumbernya. |
+| 4 | **Program Aktif** (`program-aktif.html`) | Program Aktif | Program aktif Mahreen yang bisa kamu ikuti: status terbaru, cara ikut atau memantaunya, dan sumbernya. |
 
-Halaman Karya, Anak Muda, dan Ikut Berkarya ditutup bagian "Lanjut" yang sederhana: di latar halaman biasa dan dipisah garis tipis di atasnya, berisi satu kalimat pengantar tentang halaman tujuan, lalu satu tombol utama berlabel nama menu tujuan. Labelnya "Lanjut ke Program Magang" di Karya, "Lanjut ke Ikut Berkarya" di Anak Muda, dan "Kembali ke Beranda" di Ikut Berkarya. Lebar tombol mengikuti isinya dan rata kiri, sedangkan di HP (di bawah 480px) tombol selebar layar supaya mudah disentuh. Beranda sendiri tidak punya blok Lanjut, karena bagian Jelajahi sudah menautkan ketiga halaman lain dengan urutan yang sama. Footer di semua halaman memuat lima akun Instagram resmi (karena informasi Mahreen tersebar di beberapa akun) dan kontak resmi. Di desktop, footer disusun dua lapis. Lapis atas berisi tiga kolom rata atas: logo dan tagline, lima akun (dibagi dua kolom kecil mulai 1280px), dan kontak. Kolom yang lebih pendek dibiarkan pendek. Lapis bawah dipisah garis tipis dan berisi catatan prototype di kiri serta penanda "# Berkarya untuk Indonesia" di kanan. Di HP semuanya bertumpuk satu kolom.
+Halaman Karya, Anak Muda, dan Program Aktif ditutup bagian "Lanjut" yang sederhana: di latar halaman biasa dan dipisah garis tipis di atasnya, berisi satu kalimat pengantar tentang halaman tujuan, lalu satu tombol utama berlabel nama menu tujuan. Labelnya "Lanjut ke Program Magang" di Karya, "Lanjut ke Program Aktif" di Anak Muda, dan "Kembali ke Beranda" di Program Aktif. Lebar tombol mengikuti isinya dan rata kiri, sedangkan di HP (di bawah 480px) tombol selebar layar supaya mudah disentuh. Beranda sendiri tidak punya blok Lanjut, karena bagian Jelajahi sudah menautkan ketiga halaman lain dengan urutan yang sama. Footer di semua halaman memuat lima akun Instagram resmi (karena informasi Mahreen tersebar di beberapa akun) dan kontak resmi. Di desktop, footer disusun dua lapis. Lapis atas berisi tiga kolom rata atas: logo dan tagline, lima akun (dibagi dua kolom kecil mulai 1280px), dan kontak. Kolom yang lebih pendek dibiarkan pendek. Lapis bawah dipisah garis tipis dan berisi catatan prototype di kiri serta penanda "# Berkarya untuk Indonesia" di kanan. Di HP semuanya bertumpuk satu kolom.
 
 Kaitan dengan tiga kata kunci tugas:
 
 - **Menarik:** alur bercerita dengan tema sebagai benang merah, visual mengikuti identitas kampanye Mahreen, dan satu halaman interaktif.
 - **Mudah dipahami:** satu halaman satu tujuan, bahasa sederhana, dan istilah Inggris pada tiga kata kunci diberi padanan bahasa Indonesia.
-- **Relevan:** halaman Program Magang menghubungkan minat pembaca (desain, konten, teknologi, bisnis, sosial) dengan posisi magang, mentor, dan penghargaan Batch 1 yang berkaitan, dan halaman Ikut Berkarya menunjukkan program yang benar-benar sedang berjalan beserta cara ikut atau memantaunya.
+- **Relevan:** halaman Program Magang menghubungkan minat pembaca (desain, konten, teknologi, bisnis, sosial) dengan posisi magang, mentor, dan penghargaan Batch 1 yang berkaitan, dan halaman Program Aktif menunjukkan program yang benar-benar sedang berjalan beserta cara ikut atau memantaunya.
 
 ### Kenapa multi-halaman, bukan satu halaman panjang
 
 - **Satu halaman, satu tujuan.** Pembaca yang hanya ingin tahu soal magang bisa langsung ke Anak Muda tanpa melewati bagian lain. Setiap halaman punya satu judul utama (`h1`), dan isinya bisa dipahami hanya dengan membaca judul-judulnya.
-- **Alur cerita lebih terasa.** Bagian Jelajahi di Beranda dan blok "Lanjut" di akhir halaman berikutnya membuat urutan Beranda, Karya, Anak Muda, lalu Ikut Berkarya jadi langkah yang jelas, bukan sekadar gulir panjang.
+- **Alur cerita lebih terasa.** Bagian Jelajahi di Beranda dan blok "Lanjut" di akhir halaman berikutnya membuat urutan Beranda, Karya, Anak Muda, lalu Program Aktif jadi langkah yang jelas, bukan sekadar gulir panjang.
 - **Bisa dibagikan per topik.** Setiap halaman punya alamat, `<title>`, deskripsi, dan pratinjau Open Graph sendiri. Pilihan minat di halaman Program Magang bahkan tersimpan di alamatnya (misalnya `anak-muda.html?minat=teknologi`), jadi hasilnya bisa langsung dibagikan.
 - **Tetap sederhana.** Keempat halaman memakai CSS, `data.js`, dan `main.js` yang sama. Tidak perlu router atau build tool.
 
@@ -42,7 +42,7 @@ Kaitan dengan tiga kata kunci tugas:
 
 - Semua fakta hanya dari data di `js/data.js`. Tidak ada program, jadwal, manfaat, atau testimoni karangan.
 - Contoh nyata dan fakta penting diberi keterangan sumber kecil (akun dan tanggal), dengan tautan ke unggahannya.
-- Mahreen dibicarakan sebagai orang ketiga, dan pembaca disapa "kamu". Tidak memakai "kami" dan tidak memakai bahasa jualan.
+- Fakta ditulis langsung dengan Mahreen atau nama unitnya sebagai subjek, dengan nada mengajak, dan pembaca disapa "kamu". Tidak memakai "mereka" untuk Mahreen, tidak menulis "menurut unggahan" atau "yang disebutkan" di dalam kalimat (sumber cukup di baris kecil "Sumber"), tidak memakai "kami", dan tidak memakai bahasa jualan.
 - Tidak ada foto atau nama pribadi orang.
 - Tidak ada em dash atau en dash di seluruh teks.
 - Tidak ada tautan anchor ke bagian di halaman yang sama, kecuali skip link untuk aksesibilitas.
@@ -51,7 +51,7 @@ Kaitan dengan tiga kata kunci tugas:
 
 **Pola baca.** Hero di Beranda memakai pola Z: judul di kiri atas, motif bunga di kanan atas, subjudul menyilang ke bawah, lalu tombol di kiri bawah. Di tablet dan desktop pola ini terbentuk lewat grid; di HP semuanya bertumpuk.
 
-**Hierarki.** Setiap halaman punya satu `h1`. Judul halaman Karya, Anak Muda, dan Ikut Berkarya dibuat selevel judul bagian, tidak sebesar judul hero, karena halaman-halaman ini adalah lanjutan alur cerita. Level judul di dalam halaman tidak pernah meloncat (misalnya dari `h1` langsung ke `h3`), karena pembaca layar memakai urutan judul untuk bernavigasi.
+**Hierarki.** Setiap halaman punya satu `h1`. Judul halaman Karya, Anak Muda, dan Program Aktif dibuat selevel judul bagian, tidak sebesar judul hero, karena halaman-halaman ini adalah lanjutan alur cerita. Level judul di dalam halaman tidak pernah meloncat (misalnya dari `h1` langsung ke `h3`), karena pembaca layar memakai urutan judul untuk bernavigasi.
 
 **Warna.** Gaya kampanye Mahreen (magenta, pink, kelopak oranye) untuk seluruh halaman, dan gaya gelap bertekstur hanya untuk footer. Semua nilai ada di `css/tokens.css`. Kontras teks selalu minimal 4,5:1, dan beberapa kombinasi sengaja dihindari:
 
@@ -70,16 +70,16 @@ Kaitan dengan tiga kata kunci tugas:
 - Continuity: tautan "Lanjut" antarhalaman, nomor 01 sampai 03 di bagian Jelajahi, dan motif bunga kecil di depan judul halaman dan judul bagian.
 - Common region: kotak "Contoh nyata" berlatar oranye muda, dan hasil pilihan minat di halaman Program Magang berada dalam satu panel putih. Panel itu baru dibuat setelah pembaca memilih, jadi sebelumnya hanya ada satu baris petunjuk kecil, bukan panel kosong.
 
-**Variasi yang bermakna.** Blok unit tidak dibuat kartu identik. Unit yang punya contoh nyata dibagi dua di desktop (keterangan di kiri, contoh di kanan) sehingga contohnya mendapat ruang terbesar. Sorotan 10 kategori penghargaan menjadi satu-satunya blok berlatar merah tua. Di halaman Ikut Berkarya, setiap program tampil sebagai satu baris bergaris pemisah dengan label status bertuliskan "Status" (tidak hanya dibedakan warna). Di halaman Anak Muda, chip posisi berisi warna pink muda, sedangkan chip bidang mentoring hanya bergaris tepi, supaya keduanya tidak tertukar.
+**Variasi yang bermakna.** Blok unit tidak dibuat kartu identik. Unit yang punya contoh nyata dibagi dua di desktop (keterangan di kiri, contoh di kanan) sehingga contohnya mendapat ruang terbesar. Sorotan 10 kategori penghargaan menjadi satu-satunya blok berlatar merah tua. Di halaman Program Aktif, setiap program tampil sebagai satu baris bergaris pemisah dengan label status bertuliskan "Status" (tidak hanya dibedakan warna). Di halaman Anak Muda, chip posisi berisi warna pink muda, sedangkan chip bidang mentoring hanya bergaris tepi, supaya keduanya tidak tertukar.
 
 **Grid dan ruang.** 4 kolom di HP dan 12 kolom mulai 1024px, jarak kelipatan 8px, dan area sentuh minimal 44px.
 
 **Motion.** Hanya untuk merespons aksi pengguna: membuka menu dan memilih minat. Semua gerak mati kalau pengguna memilih `prefers-reduced-motion`.
 
 **Navigasi.**
-- Label navigasi memakai nama yang langsung menjelaskan isinya: Beranda, Unit & Kegiatan, Program Magang, dan Ikut Berkarya. Nama halaman Karya dan Anak Muda di README tetap dipakai sebagai nama file dan nama internal.
-- "Ikut Berkarya" mengarah ke halaman tentang cara ikut program yang sedang berjalan, akhir dari alur cerita, jadi tampil sebagai tombol kecil bergaya tombol utama.
-- Halaman aktif ditandai `aria-current="page"` (ditulis langsung di HTML setiap halaman) dan gaya yang berbeda dari hover. Tautan biasa yang aktif berwarna magenta dengan garis bawah tebal berjarak, sedangkan hover hanya berwarna crimson dengan garis tipis. Tombol "Ikut Berkarya" berlatar magenta, berubah crimson saat hover, dan saat aktif menjadi latar pink muda bergaris tepi magenta. Gaya aktif tidak berubah saat di-hover.
+- Label navigasi memakai nama yang langsung menjelaskan isinya: Beranda, Unit & Kegiatan, Program Magang, dan Program Aktif. Nama halaman Karya dan Anak Muda di README tetap dipakai sebagai nama file dan nama internal.
+- "Program Aktif" mengarah ke halaman tentang cara ikut program yang sedang berjalan, akhir dari alur cerita, jadi tampil sebagai tombol kecil bergaya tombol utama.
+- Halaman aktif ditandai `aria-current="page"` (ditulis langsung di HTML setiap halaman) dan gaya yang berbeda dari hover. Tautan biasa yang aktif berwarna magenta dengan garis bawah tebal berjarak, sedangkan hover hanya berwarna crimson dengan garis tipis. Tombol "Program Aktif" berlatar magenta, berubah crimson saat hover, dan saat aktif menjadi latar pink muda bergaris tepi magenta. Gaya aktif tidak berubah saat di-hover.
 - Di layar di bawah 544px, navigasi dilipat di balik tombol "Menu" (disclosure dengan `aria-expanded`). Batasnya 544px karena empat label navigasi butuh sekitar 500px. Tombol Esc menutup menu dan mengembalikan fokus ke tombolnya.
 - Tanpa JavaScript, tombol Menu tidak muncul dan navigasi tampil lengkap.
 - Header sticky di semua halaman, dengan latar solid dan bayangan tipis setelah halaman di-scroll lebih dari 8px. `<header>` harus tetap anak langsung `<body>`, karena elemen sticky hanya menempel selama induknya masih terlihat.
@@ -98,7 +98,7 @@ Kaitan dengan tiga kata kunci tugas:
 
 - **HTML, CSS, dan JavaScript murni.** Tanpa framework, tanpa build tool, tanpa npm.
 - **Konten dipisah dari tampilan.** Semua konten ada di `js/data.js` sebagai `const MAHREEN = { ... };`, dan dirender oleh `js/main.js`.
-- **Satu `main.js` untuk empat halaman.** Setiap halaman memuat file yang sama. `main.js` membaca `data-page` pada `<body>` (`beranda`, `karya`, `anak-muda`, atau `ikut-berkarya`) untuk menentukan bagian mana yang dirender.
+- **Satu `main.js` untuk empat halaman.** Setiap halaman memuat file yang sama. `main.js` membaca `data-page` pada `<body>` (`beranda`, `karya`, `anak-muda`, atau `program-aktif`) untuk menentukan bagian mana yang dirender.
 - **Tidak memakai `fetch()` atau `type="module"`.** Keduanya diblokir browser saat halaman dibuka langsung tanpa server. Sebagai gantinya, `data.js` dan `main.js` dimuat berurutan dengan `<script defer>` biasa.
 - **Tetap terbaca tanpa JavaScript.** Header, navigasi, footer, teks hero, dan judul setiap halaman ditulis langsung di HTML.
 - **Tanpa pergeseran tata letak.** Isi halaman dalam dirender sesaat setelah halaman tampil. Supaya tautan "Lanjut" dan footer tidak terdorong ke bawah di depan pembaca, keduanya disembunyikan (tetap memakan tempat) sampai `main.js` selesai. Kalau JavaScript gagal di tengah jalan, keduanya tetap muncul setelah 2 detik.
@@ -129,7 +129,7 @@ Semua konten ada di satu objek `MAHREEN`. Mengubah isi halaman cukup di file ini
 | `unit` | Karya | Satu objek per unit: `nama`, `bidang`, `apa`, `contoh`, `sumber`, `akun`, `akunUrl` |
 | `kegiatanBersama` | Karya, "Juga dari Mahreen Indonesia" | `judul`, `tanggal`, `keterangan`, `sumber` |
 | `internship` | Anak Muda, juga catatan di hasil pilihan minat | `ringkas`, `periodeBatch2`, `statusPendaftaran`, `benefit`, `posisi` per `grup`, `mentorBatch2`, `penghargaanBatch1`, `sumber`, `ikuti` (`label` tombol, `akun` sebagai keterangan kecil di bawahnya, `url`) |
-| `programBerjalan` | Ikut Berkarya, bagian pertama | Satu objek per program: `nama`, `statusLabel`, `ringkas`, `caraIkut` (daftar), `catatan` (opsional), `tautan` (`label` dan `url` akun), `sumber`, `detailUrl` dan `detailLabel` (opsional, tombol ke halaman detail) |
+| `programBerjalan` | Program Aktif | Satu objek per program: `nama`, `statusLabel`, `ringkas`, `caraIkut` (daftar), `catatan` (opsional), `tautan` (`label` dan `url` akun), `sumber`, `detailUrl` dan `detailLabel` (opsional, tombol ke halaman detail) |
 | `minat` | Anak Muda, "Posisi mana yang cocok buat kamu?" | Satu objek per pilihan: `id` (juga dipakai di URL), `label`, `posisi`, `mentorBatch2` (true/false) dan `mentorBidang`, `penghargaanBatch1` (daftar `nama` penghargaan dan `posisi` peraihnya, tanpa nama orang), `catatan` dan `tombol` (opsional), `sumber` |
 | `akun` | Footer semua halaman | `nama`, `fungsi`, `url` |
 | `kontak` | Footer semua halaman | `website`, `email`, `whatsapp`, `whatsappUrl`, `alamat` |
@@ -139,7 +139,7 @@ Aturan kecil yang perlu diingat:
 - Setiap `sumber` berisi `label` (akun dan tanggal unggahan) dan `url` (tautan ke unggahannya). Di halaman, hanya nama akun di `label` yang menjadi tautan: akun pertama memakai `url`, akun berikutnya (kalau ada) memakai alamat akunnya dari `akun`.
 - `contoh: null` pada unit berarti belum ada contoh nyata. Kotak contoh dilewati dan sumber tampil di bawah keterangan unit. Saat ini keempat unit sudah punya contoh.
 - `posisi: []` pada minat berarti tidak ada posisi magang yang berkaitan. Blok posisinya (termasuk keterangan mentor) tidak ditampilkan. `penghargaanBatch1: []`, `catatan: null`, dan `tombol: null` juga berarti bagiannya dilewati.
-- `statusLabel` pada program ditulis apa adanya dari unggahan terakhir. Perbarui juga kalimat "Dirangkum dari unggahan Mahreen sampai ..." di `ikut-berkarya.html` setiap kali data program diperbarui.
+- `statusLabel` pada program ditulis apa adanya dari unggahan terakhir. Perbarui juga kalimat "Info terakhir diperbarui ..." di `program-aktif.html` setiap kali data program diperbarui.
 - `catatan: null` dan `detailUrl: null` berarti bagian itu tidak ditampilkan.
 - `id` pada minat muncul di alamat halaman (`anak-muda.html?minat=id`). Kalau `id` diganti, tautan lama yang sudah dibagikan tidak akan memilih apa pun, tapi halamannya tetap terbuka normal.
 - Jumlah pada judul "10 kategori penghargaan Batch 1" dihitung otomatis dari panjang `penghargaanBatch1`.
@@ -169,7 +169,7 @@ Contoh menambah unit baru:
 ├─ index.html          Beranda (data-page="beranda")
 ├─ karya.html          Karya (data-page="karya")
 ├─ anak-muda.html      Anak Muda (data-page="anak-muda")
-├─ ikut-berkarya.html  Ikut Berkarya (data-page="ikut-berkarya")
+├─ program-aktif.html  Program Aktif (data-page="program-aktif")
 ├─ css/
 │  ├─ tokens.css       design tokens: warna, huruf, jarak, gerak
 │  ├─ base.css         reset, tipografi dasar, grid, fokus, reduced motion

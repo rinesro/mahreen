@@ -196,7 +196,7 @@ strong {
 
 /* ---------- Mencegah pergeseran tata letak ---------- */
 /*
- * Di halaman Karya, Anak Muda, dan Ikut Berkarya, isi utama dirender main.js sesaat setelah
+ * Di halaman Karya, Anak Muda, dan Program Aktif, isi utama dirender main.js sesaat setelah
  * halaman tampil. Tanpa aturan ini, tautan Lanjut, bagian pilih minat di Anak Muda,
  * dan footer yang sudah terlihat akan terdorong ke bawah (layout shift). Jadi semuanya
  * disembunyikan (tetap memakan tempat) sampai main.js memasang kelas "siap" pada <body>.

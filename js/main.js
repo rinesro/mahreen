@@ -262,7 +262,7 @@ function renderAnakMuda(data) {
   const kanan = buatElemen("div", "anak-muda__kanan");
 
   const benefit = buatElemen("div", "anak-muda__blok");
-  benefit.appendChild(buatElemen("h3", "anak-muda__subjudul", "Benefit yang disebutkan"));
+  benefit.appendChild(buatElemen("h3", "anak-muda__subjudul", "Benefit program"));
   const daftarBenefit = buatElemen("ul", "benefit-list");
   data.benefit.forEach(function (teks) { daftarBenefit.appendChild(buatElemen("li", null, teks)); });
   benefit.appendChild(daftarBenefit);
@@ -442,7 +442,7 @@ function renderMinat(daftarMinat, internship) {
   }
 }
 
-/* ---------- Ikut Berkarya: program yang sedang berjalan ---------- */
+/* ---------- Program Aktif: program yang sedang berjalan ---------- */
 /*
  * Satu baris per program: nama, label status, dan ringkasan di kiri;
  * cara ikut atau memantau, catatan, tautan akun, tombol detail (kalau ada), dan sumber di kanan.
@@ -633,7 +633,7 @@ function pasangHeader() {
 /* ---------- Jalankan ---------- */
 /*
  * Setiap halaman hanya merender bagiannya sendiri, berdasarkan data-page pada <body>:
- * beranda, karya, anak-muda, atau ikut-berkarya. Menu, akun, dan kontak di footer ada di semua halaman.
+ * beranda, karya, anak-muda, atau program-aktif. Menu, akun, dan kontak di footer ada di semua halaman.
  */
 const RENDER_HALAMAN = {
   "beranda": function () {
@@ -647,7 +647,7 @@ const RENDER_HALAMAN = {
     renderAnakMuda(MAHREEN.internship);
     renderMinat(MAHREEN.minat, MAHREEN.internship);
   },
-  "ikut-berkarya": function () {
+  "program-aktif": function () {
     renderProgram(MAHREEN.programBerjalan);
   },
 };

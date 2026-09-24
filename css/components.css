@@ -1154,7 +1154,7 @@ main > .section:first-child {
   }
 }
 
-/* ---------- Ikut Berkarya: program yang sedang berjalan ---------- */
+/* ---------- Program Aktif: program yang sedang berjalan ---------- */
 .program-berjalan__waktu {
   margin-top: var(--space-1);
   font-size: var(--fs--1);
